@@ -15,11 +15,15 @@ import Models.Database.ORM.*;
  */
 public class Customer {
     
-    private final SQLiteAdapter customerTable = new SQLiteAdapter(Table.Customer);
+    private final SQLiteAdapter customerTable;
     private SelectQuery selectQuery;
     private ResultSet resultSet;
     private Resource resource;
     
+    public Customer(){
+    
+        this.customerTable = new SQLiteAdapter(Table.Customer);
+    }
     
     public void insert(
             

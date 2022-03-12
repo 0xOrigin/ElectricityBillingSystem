@@ -14,10 +14,15 @@ import Models.Database.ORM.*;
  */
 public class Administrator {
     
-    private final SQLiteAdapter administratorTable = new SQLiteAdapter(Table.Administrator);
+    private final SQLiteAdapter administratorTable;
     private SelectQuery selectQuery;
     private ResultSet resultSet;
     private Resource resource;
+    
+    public Administrator(){
+    
+        this.administratorTable = new SQLiteAdapter(Table.Administrator);
+    }
     
     public void insert(
             

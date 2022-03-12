@@ -13,10 +13,15 @@ import Models.Database.ORM.*;
  */
 public class CollectedMoney {
     
-    private final SQLiteAdapter collectedMoneyTable = new SQLiteAdapter(Table.CollectedMoney);
+    private final SQLiteAdapter collectedMoneyTable;
     private SelectQuery selectQuery;
     private ResultSet resultSet;
     private Resource resource;
+    
+    public CollectedMoney(){
+
+        this.collectedMoneyTable = new SQLiteAdapter(Table.CollectedMoney);
+    }
     
     public void collectPayment(double moneyValue){
     

@@ -11,12 +11,15 @@ public class SelectBuilder extends DML {
     
     private final String table;
     private final List<Object> fields;
-    private String where = "", orderBy = "", limit = "";
+    private String where, orderBy, limit;
     
     public SelectBuilder(List<Object> fields, Enum table){
         
         this.table = table.name();
         this.fields = fields;
+        this.where = "";
+        this.orderBy = "";
+        this.limit = "";
     }
     
     

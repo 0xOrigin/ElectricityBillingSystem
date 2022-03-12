@@ -9,7 +9,7 @@ public class SelectQuery {
     
     private final String table;
     private final List<Object> fields;
-    private String where = "", orderBy = "", limit = "";
+    private String where, orderBy, limit;
     
     public SelectQuery(SelectBuilder builder){
         

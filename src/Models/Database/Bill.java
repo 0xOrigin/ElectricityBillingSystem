@@ -16,11 +16,15 @@ import java.util.Map;
  */
 public class Bill {
     
-    private final SQLiteAdapter billTable = new SQLiteAdapter(Table.Bill);
+    private final SQLiteAdapter billTable;
     private SelectQuery selectQuery;
     private ResultSet resultSet;
     private Resource resource;
     
+    public Bill(){
+    
+        this.billTable = new SQLiteAdapter(Table.Bill);
+    }
     
     public void insert(
             
