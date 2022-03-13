@@ -14,7 +14,7 @@ import java.util.Queue;
  */
 public class QueryExecutor {
     
-    public static void execute(String query, Queue<String> imagesPaths){
+    static void execute(String query, Queue<String> imagesPaths){
         
         if(query.isBlank())
             throw new UnsupportedOperationException("Query is Empty!");
