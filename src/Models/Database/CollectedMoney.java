@@ -47,6 +47,8 @@ public class CollectedMoney {
             return result;
         }
     
+        resource.close();
+        
         return "";
     }
     

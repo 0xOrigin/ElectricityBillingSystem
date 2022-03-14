@@ -75,6 +75,8 @@ public class Administrator {
             return result;
         }
 
+        resource.close();
+        
         return false;
     }
     
@@ -98,6 +100,8 @@ public class Administrator {
             return result;
         }
 
+        resource.close();
+        
         return 0;
     }
     
@@ -125,12 +129,14 @@ public class Administrator {
             
             return info;
         }
+        
+        resource.close();
 
         return info;
     }
     
     
-    public boolean loginValidator(String ID, String password) throws SQLException {
+    public boolean isValidAccount(String ID, String password) throws SQLException {
     
         if(!isAdministratorExists(ID))
             return false;
@@ -152,6 +158,8 @@ public class Administrator {
             return result;
         }
 
+        resource.close();
+        
         return false;
     }
     

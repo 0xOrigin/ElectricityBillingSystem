@@ -122,6 +122,8 @@ public class Bill {
             resource.close();
         }
     
+        resource.close();
+        
         return billsContainer;
     }
     
@@ -162,6 +164,8 @@ public class Bill {
             resource.close();
         }
     
+        resource.close();
+        
         return billsContainer;
     }
     
@@ -188,6 +192,8 @@ public class Bill {
             return result;
         }
 
+        resource.close();
+        
         return 0;
     }
     
@@ -235,6 +241,8 @@ public class Bill {
             resource.close();
         }
         
+        resource.close();
+        
         return statInfo;
     }
     
@@ -265,6 +273,8 @@ public class Bill {
             return info;
         }
 
+        resource.close();
+        
         return info;
     }
 }

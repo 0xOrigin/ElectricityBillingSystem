@@ -1,5 +1,6 @@
 package Models.Database.ORM;
 
+import Models.Database.ORM.Utilities.Debugger;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
@@ -35,7 +36,7 @@ public class Resource {
     public boolean isResultSetEmpty() throws SQLException{
     
         if(resultSet == null || resultSet.isClosed())
-            System.out.println("Empty ResultSet!");
+            Debugger.emptyResultSet(true);
         
         return resultSet == null || resultSet.isClosed();
     }

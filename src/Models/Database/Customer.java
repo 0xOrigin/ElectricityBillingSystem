@@ -100,6 +100,8 @@ public class Customer {
             return info;
         }
 
+        resource.close();
+        
         return info;
     }
     
@@ -123,6 +125,8 @@ public class Customer {
             return result;
         }
 
+        resource.close();
+        
         return 0;
     }
     
@@ -149,7 +153,37 @@ public class Customer {
             return meterStatus;
         }
 
+        resource.close();
+        
         return meterStatus;
     }
-     
+    
+    
+    public boolean isValidAccount(String meterCode, String password) throws SQLException{
+    
+        if(!isMeterCodeExists_Active(meterCode)[0])
+            return false;
+        
+        selectQuery = new SelectBuilder(Arrays.asList(Column.Password),
+                                        Table.Customer)
+                                        .where(Column.MeterCode, "=", meterCode)
+                                        .build();
+
+        resultSet = QueryExecutor.executeSelectQuery(selectQuery);
+
+        resource = new Resource(resultSet);
+        
+        if(!resource.isResultSetEmpty()){
+            
+            boolean result = resultSet.getString(Column.Password.name()).equals(password);
+            
+            resource.close();
+            
+            return result;
+        }
+
+        resource.close();
+        
+        return false;
+    }
 }

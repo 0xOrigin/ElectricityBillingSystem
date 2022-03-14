@@ -16,7 +16,7 @@ class MakeConsumptionStats {
     
     MakeConsumptionStats(IAdapter adapter, String governmentCode) throws SQLException{
     
-        statInfo = new Bill(adapter).getConsumptionStatforRegion(governmentCode);    
+        this.statInfo = new Bill(adapter).getConsumptionStatforRegion(governmentCode);    
     }
     
     Map<Enum, Object> make(){

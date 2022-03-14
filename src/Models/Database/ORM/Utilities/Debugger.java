@@ -14,4 +14,12 @@ public class Debugger {
             System.out.println(query);
     }
     
+    public static void emptyResultSet(boolean On){
+    
+//        On = false; // For self-disabling
+
+        if(On)
+            System.out.println("Empty ResultSet!");
+        
+    }
 }
