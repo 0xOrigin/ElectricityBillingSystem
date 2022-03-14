@@ -1,10 +1,10 @@
-package Models.Database.ORM.Utilities;
+package Models.Database.ORM;
 
 /**
  *
  * @author xorigin
  */
-public abstract class DML {
+abstract class DML {
     
     protected DML(){
     

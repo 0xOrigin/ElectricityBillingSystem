@@ -18,7 +18,7 @@ class DatabaseConnection {
     
     }
     
-    public static Connection getInstance(IConnection connStrings) throws SQLException{
+    static Connection getInstance(IConnection connStrings) throws SQLException{
     
         if(uniqueInstance == null || uniqueInstance.isClosed())
             uniqueInstance = new DatabaseConnection().getConnection(connStrings);
