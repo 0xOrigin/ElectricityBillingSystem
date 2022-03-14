@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 import Models.Database.ORM.*;
+import Models.Enum.PaymentState;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -29,7 +30,7 @@ public class Bill {
         this.billTable = adapter;
     }
     
-    public void insert(
+    void insert(
             
             String governmentCode, String meterCode, int tariff, int lastReading, int currentReading, int consumption,
             double moneyValue, String status, String releaseDate
@@ -48,25 +49,27 @@ public class Bill {
     
     public void payBill(String meterCode){
     
-        selectQuery = new SelectBuilder(Arrays.asList(Column.Status), Table.Bill)
+        selectQuery = new SelectBuilder(Arrays.asList(Column.Num), Table.Bill)
                                         .where(Column.MeterCode, "=", meterCode)
                                         .operator("and")
-                                        .where(Column.Status, "=", "Unpaid")
+                                        .where(Column.Status, "=", PaymentState.Unpaid.name())
                                         .orderBy(Column.Num, "ASC")
                                         .limit("1")
                                         .build();
         
-        billTable.update(Arrays.asList(Column.Status), Arrays.asList("Paid"), selectQuery.toString());
+        billTable.update(Arrays.asList(Column.Status), Arrays.asList(PaymentState.Paid.name()), billTable.Where(Column.Num, "in", selectQuery.toString()));
     }
     
     
     public void releaseNewBill(String meterCode, String releaseDate, int currentReading, int tariff, double moneyValue) throws SQLException{
         
-        int lastReading = (int) getBillConstructionInfo(Column.CurrentReading, meterCode);
+        Map<Enum, Object> info = getBillInfo(Arrays.asList(Column.CurrentReading, Column.GovernmentCode), meterCode);
         
-        insert((String) getBillConstructionInfo(Column.GovernmentCode, meterCode), meterCode,
+        int lastReading = (int) info.get(Column.CurrentReading);
+        
+        insert((String) info.get(Column.GovernmentCode), meterCode,
                tariff, lastReading, currentReading,
-               getConsumption(lastReading, currentReading), moneyValue, "Unpaid",
+               getConsumption(lastReading, currentReading), moneyValue, PaymentState.Unpaid.name(),
                releaseDate);
     }
     
@@ -88,11 +91,11 @@ public class Bill {
         Map<Enum, Object> billInfo;
         List<Map<Enum, Object>> billsContainer = new ArrayList<>();
         
-        List<Object> fields = Arrays.asList(Column.Num, Column.GovernmentCode, Column.Tariff, Column.LastReading,
+        List<Enum> fields = Arrays.asList(Column.Num, Column.GovernmentCode, Column.Tariff, Column.LastReading,
                                          Column.CurrentReading, Column.Consumption, Column.MoneyValue, Column.Status,
                                          Column.ReleaseDate);
         
-        selectQuery = new SelectBuilder(fields,
+        selectQuery = new SelectBuilder(Arrays.asList(fields),
                                         Table.Bill)
                                         .where(Column.MeterCode, "=", meterCode)
                                         .orderBy(Column.Num, "ASC")
@@ -108,16 +111,11 @@ public class Bill {
                 
                 billInfo = new HashMap<>();
                 
-                billInfo.put(Column.Num, resultSet.getInt(Column.Num.name()));
-                billInfo.put(Column.GovernmentCode, resultSet.getString(Column.GovernmentCode.name()));
-                billInfo.put(Column.Tariff, resultSet.getInt(Column.Tariff.name()));
-                billInfo.put(Column.LastReading, resultSet.getInt(Column.LastReading.name()));
-                billInfo.put(Column.CurrentReading, resultSet.getInt(Column.CurrentReading.name()));
-                billInfo.put(Column.Consumption, resultSet.getInt(Column.Consumption.name()));
-                billInfo.put(Column.MoneyValue, resultSet.getDouble(Column.MoneyValue.name()));
-                billInfo.put(Column.Status, resultSet.getString(Column.Status.name()));
-                billInfo.put(Column.ReleaseDate, resultSet.getString(Column.ReleaseDate.name()));
-
+                for(Enum field : fields){
+                
+                    billInfo.put(field, resultSet.getObject(field.name()));
+                }
+                
                 billsContainer.add(billInfo);
             }
             
@@ -133,11 +131,11 @@ public class Bill {
         Map<Enum, Object> billInfo;
         List<Map<Enum, Object>> billsContainer = new ArrayList<>();
         
-        List<Object> fields = Arrays.asList(Column.Num, Column.MeterCode, Column.Tariff, Column.LastReading,
+        List<Enum> fields = Arrays.asList(Column.Num, Column.MeterCode, Column.Tariff, Column.LastReading,
                                          Column.CurrentReading, Column.Consumption, Column.MoneyValue, Column.Status,
                                          Column.ReleaseDate);
         
-        selectQuery = new SelectBuilder(fields,
+        selectQuery = new SelectBuilder(Arrays.asList(fields),
                                         Table.Bill)
                                         .where(Column.GovernmentCode, "=", governmentCode)
                                         .orderBy(Column.Num, "ASC")
@@ -153,16 +151,11 @@ public class Bill {
                 
                 billInfo = new HashMap<>();
                 
-                billInfo.put(Column.Num, resultSet.getInt(Column.Num.name()));
-                billInfo.put(Column.MeterCode, resultSet.getString(Column.MeterCode.name()));
-                billInfo.put(Column.Tariff, resultSet.getInt(Column.Tariff.name()));
-                billInfo.put(Column.LastReading, resultSet.getInt(Column.LastReading.name()));
-                billInfo.put(Column.CurrentReading, resultSet.getInt(Column.CurrentReading.name()));
-                billInfo.put(Column.Consumption, resultSet.getInt(Column.Consumption.name()));
-                billInfo.put(Column.MoneyValue, resultSet.getDouble(Column.MoneyValue.name()));
-                billInfo.put(Column.Status, resultSet.getString(Column.Status.name()));
-                billInfo.put(Column.ReleaseDate, resultSet.getString(Column.ReleaseDate.name()));
-
+                for(Enum field : fields){
+                
+                    billInfo.put(field, resultSet.getObject(field.name()));
+                }
+                
                 billsContainer.add(billInfo);
             }
             
@@ -179,7 +172,7 @@ public class Bill {
                                         Table.Bill)
                                         .where(Column.MeterCode, "=", meterCode)
                                         .operator("and")
-                                        .where(Column.Status, "=", "Unpaid")
+                                        .where(Column.Status, "=", PaymentState.Unpaid.name())
                                         .build();
 
         resultSet = QueryExecutor.executeSelectQuery(selectQuery);
@@ -246,9 +239,11 @@ public class Bill {
     }
     
     
-    public Object getBillConstructionInfo(Enum field, String meterCode) throws SQLException {
+    public Map<Enum, Object> getBillInfo(List<Enum> fields, String meterCode) throws SQLException {
     
-        selectQuery = new SelectBuilder(Arrays.asList(field), Table.Bill)
+        Map<Enum, Object> info = new HashMap<>();
+        
+        selectQuery = new SelectBuilder(Arrays.asList(fields), Table.Bill)
                                         .where(Column.MeterCode, "=", meterCode)
                                         .orderBy(Column.Num, "DESC")
                                         .limit("1")
@@ -260,13 +255,16 @@ public class Bill {
         
         if(!resource.isResultSetEmpty()){
 
-            Object result = resultSet.getObject(field.name());
+            for(Enum field : fields){
+            
+                info.put(field, resultSet.getObject(field.name()));
+            }
             
             resource.close();
             
-            return result;
+            return info;
         }
 
-        return 0;
+        return info;
     }
 }

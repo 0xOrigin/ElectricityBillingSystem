@@ -9,6 +9,9 @@ import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 import Models.Database.ORM.*;
+import Models.Enum.PaymentState;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -45,7 +48,7 @@ public class Customer {
         Bill billDB = new Bill(new SQLiteAdapter(Table.Bill));
         
         // From format "E, dd/MM/yyyy, hh:mm:ss a" get "MM/yyyy" -> dateOfContract.substring(8, 15)
-        billDB.insert(governmentCode, meterCode, 0, 0, 0, 0, 0.0, "Paid", dateOfContract.substring(8, 15));
+        billDB.insert(governmentCode, meterCode, 0, 0, 0, 0, 0.0, PaymentState.Paid.name(), dateOfContract.substring(8, 15));
     }
     
     
@@ -63,18 +66,21 @@ public class Customer {
     
     public void toggleActivation(String meterCode) throws SQLException{
     
-        String currentState = getInfo(Column.Activation, meterCode);
+        String currentState = (String) getInfo(Arrays.asList(Column.Activation), meterCode).get(Column.Activation);
         
         currentState = (currentState.equals(ActivationState.Active.name()) ? 
                         ActivationState.Inactive.name() : ActivationState.Active.name());
             
-        customerTable.update(Arrays.asList(Column.Activation), Arrays.asList(currentState), meterCode);
+        customerTable.update(Arrays.asList(Column.Activation), Arrays.asList(currentState),
+                             customerTable.Where(Column.MeterCode, "=", meterCode));
     }
     
     
-    public String getInfo(Enum field, String meterCode) throws SQLException{
+    public Map<Enum, Object> getInfo(List<Enum> fields, String meterCode) throws SQLException{
     
-        selectQuery = new SelectBuilder(Arrays.asList(field),
+        Map<Enum, Object> info = new HashMap<>();
+        
+        selectQuery = new SelectBuilder(Arrays.asList(fields),
                                         Table.Customer)
                                         .where(Column.MeterCode, "=", meterCode).build();
         
@@ -84,14 +90,17 @@ public class Customer {
         
         if(!resource.isResultSetEmpty()){
 
-            String result = resultSet.getString(field.name());
+            for(Enum field : fields){
+            
+                info.put(field, resultSet.getObject(field.name()));
+            }
             
             resource.close();
             
-            return result;
+            return info;
         }
 
-        return "";
+        return info;
     }
     
     
@@ -142,6 +151,5 @@ public class Customer {
 
         return meterStatus;
     }
-    
-    
+     
 }

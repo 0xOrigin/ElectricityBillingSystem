@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 import Models.Database.ORM.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -66,7 +68,7 @@ public class Administrator {
         
         if(!resource.isResultSetEmpty()){
 
-            boolean result = resultSet.getInt(1) > 0;
+            boolean result = (resultSet.getInt(1) == 0);
             
             resource.close();
             
@@ -100,9 +102,11 @@ public class Administrator {
     }
     
     
-    public String getInfo(Enum field, String ID) throws SQLException{
-    
-        selectQuery = new SelectBuilder(Arrays.asList(field),
+    public Map<Enum, Object> getInfo(List<Enum> fields, String ID) throws SQLException{
+        
+        Map<Enum, Object> info = new HashMap<>();
+        
+        selectQuery = new SelectBuilder(Arrays.asList(fields),
                                         Table.Administrator)
                                         .where(Column.ID, "=", ID).build();
         
@@ -112,14 +116,17 @@ public class Administrator {
         
         if(!resource.isResultSetEmpty()){
 
-            String result = resultSet.getString(field.name());
+            for(Enum field : fields){
+            
+                info.put(field, resultSet.getObject(field.name()));
+            }
             
             resource.close();
             
-            return result;
+            return info;
         }
 
-        return "";
+        return info;
     }
     
     

@@ -44,7 +44,7 @@ public class SQLiteAdapter extends DML implements IAdapter {
                 query = query.concat(" " + fields.get(index).name() + "=" + processValues(Arrays.asList(values.get(index))) + ",");
 
             query = query.substring(0, query.length()-1).concat(" WHERE " + where);
-            
+
             QueryExecutor.execute(query, getImagesPaths(values));
         }
     }

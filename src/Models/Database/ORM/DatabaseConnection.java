@@ -9,7 +9,7 @@ import Models.Interface.IConnection;
  *
  * @author 0xOrigin
  */
-public class DatabaseConnection {
+class DatabaseConnection {
     
     // Singleton pattern
     private static Connection uniqueInstance;

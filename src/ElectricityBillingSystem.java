@@ -15,7 +15,7 @@ public class ElectricityBillingSystem {
                 new MainView().setVisible(true);
             }
         });
-          
+        
     }
     
 }
