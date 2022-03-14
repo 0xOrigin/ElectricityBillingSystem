@@ -1,7 +1,8 @@
 package Models.Database;
 
-import Models.Database.Enum.Column;
-import Models.Database.Enum.Table;
+import Models.Enum.Column;
+import Models.Enum.Table;
+import Models.Interface.IAdapter;
 import java.util.Arrays;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,14 +14,14 @@ import Models.Database.ORM.*;
  */
 public class CollectedMoney {
     
-    private final SQLiteAdapter collectedMoneyTable;
+    private final IAdapter collectedMoneyTable;
     private SelectQuery selectQuery;
     private ResultSet resultSet;
     private Resource resource;
     
-    public CollectedMoney(){
+    public CollectedMoney(IAdapter adapter){
 
-        this.collectedMoneyTable = new SQLiteAdapter(Table.CollectedMoney);
+        this.collectedMoneyTable = adapter;
     }
     
     public void collectPayment(double moneyValue){

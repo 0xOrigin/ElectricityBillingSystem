@@ -1,5 +1,7 @@
 package Controllers.Email;
 
+import Models.Interface.IEmail;
+import Models.Enum.Name;
 import java.util.Properties;
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
@@ -17,12 +19,12 @@ class EmailConfiguration {
     private final String port;
     private Session session;
 
-    EmailConfiguration(String senderEmail, String senderPassword, String host, String port) {
+    EmailConfiguration(IEmail emailConfig) {
         
-        this.senderMail = senderEmail;
-        this.senderPassword = senderPassword;
-        this.host = host;
-        this.port = port;
+        this.senderMail = emailConfig.get(Name.SenderEmail);
+        this.senderPassword = emailConfig.get(Name.SenderPassword);
+        this.host = emailConfig.get(Name.Host);
+        this.port = emailConfig.get(Name.Port);
         
         createSession();
     }

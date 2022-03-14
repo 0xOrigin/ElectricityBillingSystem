@@ -3,35 +3,37 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import Models.Interface.IConnection;
+
 /**
  *
  * @author 0xOrigin
  */
 public class DatabaseConnection {
     
-    // Applying Singleton pattern
+    // Singleton pattern
     private static Connection uniqueInstance;
     
     private DatabaseConnection(){
     
     }
     
-    public static Connection getInstance() throws SQLException{
+    public static Connection getInstance(IConnection connStrings) throws SQLException{
     
         if(uniqueInstance == null || uniqueInstance.isClosed())
-            uniqueInstance = new DatabaseConnection().getConnection();
+            uniqueInstance = new DatabaseConnection().getConnection(connStrings);
         
         return uniqueInstance;
     }
     
-    private Connection getConnection(){
+    private Connection getConnection(IConnection connStrings){
         
         Connection connection = null; 
         
         try {
             
-            Class.forName("org.sqlite.JDBC");
-            connection = DriverManager.getConnection("jdbc:sqlite:EBS.db");
+            Class.forName(connStrings.getClassName());
+            connection = DriverManager.getConnection(connStrings.getConnectionPath());
             
             try(PreparedStatement preparedStatement = connection.prepareStatement("PRAGMA foreign_keys = ON;");){
                 

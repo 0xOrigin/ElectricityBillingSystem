@@ -1,4 +1,5 @@
 package Models.Database.ORM;
+import Models.Interface.IAdapter;
 import Models.Database.ORM.Utilities.DML;
 import java.io.File;
 import java.util.Arrays;
@@ -9,7 +10,7 @@ import java.util.Queue;
  *
  * @author xorigin
  */
-public class SQLiteAdapter extends DML {
+public class SQLiteAdapter extends DML implements IAdapter {
     
     private final String table;
     
@@ -19,6 +20,7 @@ public class SQLiteAdapter extends DML {
     }    
     
     
+    @Override
     public void insert(List<Enum> fields, List<Object> values){
     
         if(checkEquality(fields.size(), values.size())){
@@ -31,6 +33,7 @@ public class SQLiteAdapter extends DML {
     }
     
     
+    @Override
     public void update(List<Enum> fields, List<Object> values, String where){
         
         if(checkEquality(fields.size(), values.size())){
@@ -47,6 +50,7 @@ public class SQLiteAdapter extends DML {
     }
     
     
+    @Override
     public void delete(String where){
         
         String query = "DELETE FROM " + this.table + " WHERE " + where;

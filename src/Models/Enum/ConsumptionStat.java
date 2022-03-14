@@ -1,4 +1,4 @@
-package Models.Database.Enum;
+package Models.Enum;
 
 /**
  *

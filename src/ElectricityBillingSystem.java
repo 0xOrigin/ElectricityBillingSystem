@@ -1,5 +1,4 @@
 import Views.MainView;
-import java.sql.SQLException;
 
 /**
  *
@@ -8,7 +7,7 @@ import java.sql.SQLException;
 public class ElectricityBillingSystem {
 
     
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) {
       
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
@@ -16,7 +15,7 @@ public class ElectricityBillingSystem {
                 new MainView().setVisible(true);
             }
         });
-
+          
     }
     
 }

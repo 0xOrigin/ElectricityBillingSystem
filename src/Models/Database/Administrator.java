@@ -1,7 +1,8 @@
 package Models.Database;
 
-import Models.Database.Enum.Column;
-import Models.Database.Enum.Table;
+import Models.Interface.IAdapter;
+import Models.Enum.Column;
+import Models.Enum.Table;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
@@ -14,14 +15,14 @@ import Models.Database.ORM.*;
  */
 public class Administrator {
     
-    private final SQLiteAdapter administratorTable;
+    private final IAdapter administratorTable;
     private SelectQuery selectQuery;
     private ResultSet resultSet;
     private Resource resource;
     
-    public Administrator(){
+    public Administrator(IAdapter adapter){
     
-        this.administratorTable = new SQLiteAdapter(Table.Administrator);
+        this.administratorTable = adapter;
     }
     
     public void insert(

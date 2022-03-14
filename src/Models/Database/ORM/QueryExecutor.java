@@ -2,12 +2,16 @@ package Models.Database.ORM;
 
 import Models.Database.ORM.Utilities.ImageConverter;
 import Models.Database.ORM.Utilities.Debugger;
+import Models.AppDate.ConnectionStrings;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.Queue;
+import org.json.simple.parser.ParseException;
+
 /**
  *
  * @author xorigin
@@ -76,22 +80,33 @@ public class QueryExecutor {
         return resultSet;
     }
     
+    
     private static PreparedStatement prepareQuery(String query, Queue<String> imagesPaths) throws SQLException{
     
         // Lazy connection to SQLite
-        Connection connection = DatabaseConnection.getInstance();
-        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        Connection connection;
+        PreparedStatement preparedStatement = null;
         
-        if(query.contains(" ? ")){
+        try {
+            
+            connection = DatabaseConnection.getInstance(new ConnectionStrings());
+            
+            preparedStatement = connection.prepareStatement(query);
+        
+            if(query.contains(" ? ")){
 
-            int iterator = 1;
+                int iterator = 1;
 
-            while(!imagesPaths.isEmpty()){
+                while(!imagesPaths.isEmpty()){
 
-                preparedStatement.setBytes(iterator++, ImageConverter.readImage(imagesPaths.remove()));
+                    preparedStatement.setBytes(iterator++, ImageConverter.readImage(imagesPaths.remove()));
+                }
             }
+              
+        } catch (IOException | ParseException ex) {
+            System.out.println(ex);
         }
-                 
+           
         return preparedStatement;
     }
     

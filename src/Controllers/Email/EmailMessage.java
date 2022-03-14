@@ -1,5 +1,6 @@
 package Controllers.Email;
 
+import Models.Interface.IEmail;
 import java.io.UnsupportedEncodingException;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -10,15 +11,15 @@ import javax.mail.internet.MimeMessage;
  *
  * @author xorigin
  */
-public class EmailMessage {
+class EmailMessage {
     
     private final EmailConfiguration emailConfiguration;
     private final String personalName;
     
-    EmailMessage(String personalName, String senderEmail, String senderPassword, String host, String port) {
+    EmailMessage(String personalName, IEmail emailConfig) {
         
         this.personalName = personalName;
-        this.emailConfiguration = new EmailConfiguration(senderEmail, senderPassword, host, port);
+        this.emailConfiguration = new EmailConfiguration(emailConfig);
     }
     
     Message generateMessage(String recepientEmail, String messageSubject, String messageText) {

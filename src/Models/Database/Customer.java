@@ -1,8 +1,9 @@
 package Models.Database;
 
-import Models.Database.Enum.Column;
-import Models.Database.Enum.Table;
-import Models.Database.Enum.ActivationState;
+import Models.Enum.Column;
+import Models.Enum.Table;
+import Models.Enum.ActivationState;
+import Models.Interface.IAdapter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
@@ -15,14 +16,14 @@ import Models.Database.ORM.*;
  */
 public class Customer {
     
-    private final SQLiteAdapter customerTable;
+    private final IAdapter customerTable;
     private SelectQuery selectQuery;
     private ResultSet resultSet;
     private Resource resource;
     
-    public Customer(){
+    public Customer(IAdapter adapter){
     
-        this.customerTable = new SQLiteAdapter(Table.Customer);
+        this.customerTable = adapter;
     }
     
     public void insert(
@@ -41,7 +42,9 @@ public class Customer {
         
         customerTable.insert(fields, values);
         
-        Bill billDB = new Bill();
+        Bill billDB = new Bill(new SQLiteAdapter(Table.Bill));
+        
+        // From format "E, dd/MM/yyyy, hh:mm:ss a" get "MM/yyyy" -> dateOfContract.substring(8, 15)
         billDB.insert(governmentCode, meterCode, 0, 0, 0, 0, 0.0, "Paid", dateOfContract.substring(8, 15));
     }
     

@@ -1,5 +1,6 @@
 package Controllers.Email;
 
+import Models.Interface.IEmail;
 import javax.mail.MessagingException;
 import javax.mail.Transport;
 
@@ -11,9 +12,9 @@ public class SendEmail {
     
     private final EmailMessage emailMessage;
     
-    public SendEmail(String personalName, String senderEmail, String senderPassword, String host, String port){
+    public SendEmail(String personalName, IEmail emailConfig){
         
-        this.emailMessage = new EmailMessage(personalName, senderEmail, senderPassword, host, port);
+        this.emailMessage = new EmailMessage(personalName, emailConfig);
     }
     
     public void send(String recepientEmail, String messageSubject, String messageText){

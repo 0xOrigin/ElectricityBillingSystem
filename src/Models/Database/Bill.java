@@ -1,6 +1,9 @@
 package Models.Database;
 
-import Models.Database.Enum.*;
+import Models.Enum.Table;
+import Models.Enum.Column;
+import Models.Enum.ConsumptionStat;
+import Models.Interface.IAdapter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
@@ -16,14 +19,14 @@ import java.util.Map;
  */
 public class Bill {
     
-    private final SQLiteAdapter billTable;
+    private final IAdapter billTable;
     private SelectQuery selectQuery;
     private ResultSet resultSet;
     private Resource resource;
     
-    public Bill(){
+    public Bill(IAdapter adapter){
     
-        this.billTable = new SQLiteAdapter(Table.Bill);
+        this.billTable = adapter;
     }
     
     public void insert(

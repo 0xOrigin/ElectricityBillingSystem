@@ -3,23 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Controllers/Admin/MakeConsumptionStats.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Controllers/Bill/BillCalculations.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/ElectricityBillingSystem.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Controllers/Bill/BillController.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/Database/Bill.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/Database/ORM/SQLiteAdapter.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Controllers/Bill/ReadingValidation.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/Database/ORM/Resource.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/Database/ORM/SelectBuilder.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/Database/ORM/DatabaseConnection.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/Database/ORM/SelectQuery.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/Database/Customer.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/Database/CollectedMoney.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/Database/Administrator.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/Database/ORM/Utilities/DML.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Controllers/Email/SendEmail.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/Database/ORM/QueryExecutor.java</file>
         </group>
     </open-files>
 </project-private>

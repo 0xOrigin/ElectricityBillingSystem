@@ -1,7 +1,8 @@
 package Controllers.Admin;
 
 import Models.Database.Bill;
-import Models.Database.Enum.ConsumptionStat;
+import Models.Enum.ConsumptionStat;
+import Models.Interface.IAdapter;
 import java.sql.SQLException;
 import java.util.Map;
 
@@ -9,16 +10,16 @@ import java.util.Map;
  *
  * @author xorigin
  */
-public class MakeConsumptionStats {
+class MakeConsumptionStats {
     
     private final Map<Enum, Object> statInfo;
     
-    public MakeConsumptionStats(String governmentCode) throws SQLException{
+    MakeConsumptionStats(IAdapter adapter, String governmentCode) throws SQLException{
     
-        statInfo = new Bill().getConsumptionStatforRegion(governmentCode);    
+        statInfo = new Bill(adapter).getConsumptionStatforRegion(governmentCode);    
     }
     
-    public Map<Enum, Object> make(){
+    Map<Enum, Object> make(){
     
         int actualNumOfConsumers = (int) statInfo.get(ConsumptionStat.ActualNumberOfConsumers);
         double averageConsumption;

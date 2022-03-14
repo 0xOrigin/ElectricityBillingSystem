@@ -1,23 +1,24 @@
 package Controllers.Bill;
 
 import Models.Database.Bill;
-import Models.Database.Enum.Column;
+import Models.Enum.Column;
+import Models.Interface.IAdapter;
 import java.sql.SQLException;
 
 /**
  *
  * @author xorigin
  */
-public class ReadingValidation {
+class ReadingValidation {
     
     private final Bill billDB;
     
-    public ReadingValidation(){
+    ReadingValidation(IAdapter adapter){
     
-        billDB = new Bill();
+        this.billDB = new Bill(adapter);
     }
     
-    public boolean isValid(int currentReading, String meterCode) throws SQLException{
+    boolean isValid(int currentReading, String meterCode) throws SQLException{
     
         return currentReading >= (int) billDB.getBillConstructionInfo(Column.CurrentReading, meterCode);
     }

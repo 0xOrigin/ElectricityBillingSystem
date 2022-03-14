@@ -4,18 +4,18 @@ package Controllers.Bill;
  *
  * @author xorigin
  */
-public class BillCalculations {
+class BillCalculations {
     
     private double moneyValue;
     private int tariff;
     
-    public BillCalculations(){
+    BillCalculations(){
     
         this.moneyValue = 0.0;
         this.tariff = 0;
     }
     
-    public double getMoneyValue(int consumption, String typeOfUse){
+    double getMoneyValue(int consumption, String typeOfUse){
     
         this.moneyValue = 0.0;
         
@@ -90,7 +90,7 @@ public class BillCalculations {
         return moneyValue;    
     }
     
-    public int getTariff(){
+    int getTariff(){
     
         return this.tariff;
     }
