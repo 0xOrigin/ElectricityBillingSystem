@@ -8,14 +8,12 @@ import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 import Models.Database.ORM.*;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  *
  * @author xorigin
  */
-public class Administrator {
+public class Administrator extends ModelUtility {
     
     private final IAdapter administratorTable;
     private SelectQuery selectQuery;
@@ -24,6 +22,7 @@ public class Administrator {
     
     public Administrator(IAdapter adapter){
     
+        super(adapter);
         this.administratorTable = adapter;
     }
     
@@ -105,37 +104,7 @@ public class Administrator {
         return 0;
     }
     
-    
-    public Map<Enum, Object> getInfo(List<Enum> fields, String ID) throws SQLException{
-        
-        Map<Enum, Object> info = new HashMap<>();
-        
-        selectQuery = new SelectBuilder(Arrays.asList(fields),
-                                        Table.Administrator)
-                                        .where(Column.ID, "=", ID).build();
-        
-        resultSet = QueryExecutor.executeSelectQuery(selectQuery);
-
-        resource = new Resource(resultSet);
-        
-        if(!resource.isResultSetEmpty()){
-
-            for(Enum field : fields){
-            
-                info.put(field, resultSet.getObject(field.name()));
-            }
-            
-            resource.close();
-            
-            return info;
-        }
-        
-        resource.close();
-
-        return info;
-    }
-    
-    
+     
     public boolean isValidAccount(String ID, String password) throws SQLException {
     
         if(!isAdministratorExists(ID))

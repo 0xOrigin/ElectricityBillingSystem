@@ -10,14 +10,12 @@ import java.util.Arrays;
 import java.util.List;
 import Models.Database.ORM.*;
 import Models.Enum.PaymentState;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  *
  * @author xorigin
  */
-public class Customer {
+public class Customer extends ModelUtility {
     
     private final IAdapter customerTable;
     private SelectQuery selectQuery;
@@ -26,6 +24,7 @@ public class Customer {
     
     public Customer(IAdapter adapter){
     
+        super(adapter);
         this.customerTable = adapter;
     }
     
@@ -73,36 +72,6 @@ public class Customer {
             
         customerTable.update(Arrays.asList(Column.Activation), Arrays.asList(currentState),
                              customerTable.Where(Column.MeterCode, "=", meterCode));
-    }
-    
-    
-    public Map<Enum, Object> getInfo(List<Enum> fields, String meterCode) throws SQLException{
-    
-        Map<Enum, Object> info = new HashMap<>();
-        
-        selectQuery = new SelectBuilder(Arrays.asList(fields),
-                                        Table.Customer)
-                                        .where(Column.MeterCode, "=", meterCode).build();
-        
-        resultSet = QueryExecutor.executeSelectQuery(selectQuery);
-
-        resource = new Resource(resultSet);
-        
-        if(!resource.isResultSetEmpty()){
-
-            for(Enum field : fields){
-            
-                info.put(field, resultSet.getObject(field.name()));
-            }
-            
-            resource.close();
-            
-            return info;
-        }
-
-        resource.close();
-        
-        return info;
     }
     
     
@@ -186,4 +155,5 @@ public class Customer {
         
         return false;
     }
+    
 }

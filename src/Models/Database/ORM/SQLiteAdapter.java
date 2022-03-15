@@ -11,11 +11,11 @@ import java.util.Queue;
  */
 public class SQLiteAdapter extends DML implements IAdapter {
     
-    private final String table;
+    private final Enum table;
     
     public SQLiteAdapter(Enum table){
     
-        this.table = table.name();
+        this.table = table;
     }    
     
     
@@ -24,7 +24,7 @@ public class SQLiteAdapter extends DML implements IAdapter {
     
         if(checkEquality(fields.size(), values.size())){
         
-            String query = "INSERT INTO " + this.table + " (" + fields.toString().replaceAll("[\\[\\]]", "") + ")" +
+            String query = "INSERT INTO " + this.table.name() + " (" + fields.toString().replaceAll("[\\[\\]]", "") + ")" +
                            " VALUES "  + "(" + processValues(values) + ")";
             
             QueryExecutor.execute(query, getImagesPaths(values));
@@ -37,7 +37,7 @@ public class SQLiteAdapter extends DML implements IAdapter {
         
         if(checkEquality(fields.size(), values.size())){
             
-            String query = "UPDATE " + this.table + " SET";
+            String query = "UPDATE " + this.table.name() + " SET";
             
             for(int index = 0; index < fields.size(); index++)
                 query = query.concat(" " + fields.get(index).name() + "=" + processValues(Arrays.asList(values.get(index))) + ",");
@@ -52,12 +52,16 @@ public class SQLiteAdapter extends DML implements IAdapter {
     @Override
     public void delete(String where){
         
-        String query = "DELETE FROM " + this.table + " WHERE " + where;
+        String query = "DELETE FROM " + this.table.name() + " WHERE " + where;
         
         QueryExecutor.execute(query, new LinkedList<>());
     }
     
+    @Override
+    public Enum getTableName(){
     
+        return this.table;
+    }
     
     
     private static String processValues(List<Object> values){

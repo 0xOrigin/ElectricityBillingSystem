@@ -22,4 +22,6 @@ public interface IAdapter {
     
     String Operator(String operator);
     
+    Enum getTableName();
+    
 }
