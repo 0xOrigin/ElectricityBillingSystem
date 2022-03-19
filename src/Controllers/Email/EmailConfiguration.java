@@ -1,6 +1,6 @@
 package Controllers.Email;
 
-import Models.Interface.IEmail;
+import Models.AppDate.IEmail;
 import Models.Enum.Name;
 import java.util.Properties;
 import javax.mail.Authenticator;

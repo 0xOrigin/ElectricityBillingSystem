@@ -1,5 +1,4 @@
 package Models.Database.ORM;
-import Models.Interface.IAdapter;
 import java.io.File;
 import java.util.Arrays;
 import java.util.LinkedList;

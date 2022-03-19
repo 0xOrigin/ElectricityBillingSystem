@@ -3,7 +3,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import Models.Interface.IConnection;
+import Models.AppDate.IConnection;
 
 /**
  *

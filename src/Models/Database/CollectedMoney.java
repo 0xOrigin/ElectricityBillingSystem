@@ -2,7 +2,7 @@ package Models.Database;
 
 import Models.Enum.Column;
 import Models.Enum.Table;
-import Models.Interface.IAdapter;
+import Models.Database.ORM.IAdapter;
 import java.util.Arrays;
 import java.sql.ResultSet;
 import java.sql.SQLException;

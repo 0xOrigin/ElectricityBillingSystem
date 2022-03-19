@@ -3,13 +3,15 @@ package Models.Database;
 import Models.Enum.Column;
 import Models.Enum.Table;
 import Models.Enum.ActivationState;
-import Models.Interface.IAdapter;
+import Models.Database.ORM.IAdapter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 import Models.Database.ORM.*;
 import Models.Enum.PaymentState;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -46,8 +48,12 @@ public class Customer extends ModelUtility {
         
         Bill billDB = new Bill(new SQLiteAdapter(Table.Bill));
         
-        // From format "E, dd/MM/yyyy, hh:mm:ss a" get "MM/yyyy" -> dateOfContract.substring(8, 15)
-        billDB.insert(governmentCode, meterCode, 0, 0, 0, 0, 0.0, PaymentState.Paid.name(), dateOfContract.substring(8, 15));
+        // For example 03/2022
+        Matcher matcher = Pattern.compile("(\\d\\d\\/\\d\\d\\d\\d)").matcher(dateOfContract);
+        
+        String releaseDate = (matcher.find() ? matcher.group(1) : dateOfContract.substring(0, 7));
+        
+        billDB.insert(governmentCode, meterCode, 0, 0, 0, 0, 0.0, PaymentState.Paid.name(), releaseDate);
     }
     
     
@@ -115,7 +121,11 @@ public class Customer extends ModelUtility {
         if(!resource.isResultSetEmpty()){
             
             meterStatus[0] = (resultSet.getInt(1) == 1);
-            meterStatus[1] = (resultSet.getString(Column.Activation.name()).equals(ActivationState.Active.name()));
+            
+            if(!meterStatus[0])
+                meterStatus[1] = false;
+            else
+                meterStatus[1] = (resultSet.getString(Column.Activation.name()).equals(ActivationState.Active.name()));
             
             resource.close();
             

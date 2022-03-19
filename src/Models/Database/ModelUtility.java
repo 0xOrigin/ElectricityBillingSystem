@@ -6,7 +6,7 @@ import Models.Database.ORM.SelectBuilder;
 import Models.Database.ORM.SelectQuery;
 import Models.Enum.Column;
 import Models.Enum.Table;
-import Models.Interface.IAdapter;
+import Models.Database.ORM.IAdapter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;

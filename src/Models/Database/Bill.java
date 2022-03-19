@@ -3,7 +3,7 @@ package Models.Database;
 import Models.Enum.Table;
 import Models.Enum.Column;
 import Models.Enum.ConsumptionStat;
-import Models.Interface.IAdapter;
+import Models.Database.ORM.IAdapter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
@@ -61,22 +61,17 @@ public class Bill {
     }
     
     
-    public void releaseNewBill(String meterCode, String releaseDate, int currentReading, int tariff, double moneyValue) throws SQLException{
+    public void releaseNewBill(String meterCode, String releaseDate, int currentReading, int consumption, double moneyValue, int tariff) throws SQLException{
         
-        Map<Enum, Object> info = getBillInfo(Arrays.asList(Column.CurrentReading, Column.GovernmentCode), meterCode);
+        Map<Enum, Object> info = getLastBillInfo(Arrays.asList(Column.CurrentReading, Column.GovernmentCode), meterCode);
         
         int lastReading = (int) info.get(Column.CurrentReading);
         
         insert((String) info.get(Column.GovernmentCode), meterCode,
-               tariff, lastReading, currentReading,
-               getConsumption(lastReading, currentReading), moneyValue, PaymentState.Unpaid.name(),
-               releaseDate);
+               tariff, lastReading, currentReading, consumption,
+               moneyValue, PaymentState.Unpaid.name(), releaseDate);
     }
     
-    private int getConsumption(int lastReading, int currentReading) throws SQLException{
-        
-        return currentReading - lastReading;
-    }
     
     public void complainAboutBill(String complain, int billNumber){
     
@@ -247,7 +242,7 @@ public class Bill {
     }
     
     
-    public Map<Enum, Object> getBillInfo(List<Enum> fields, String meterCode) throws SQLException {
+    public Map<Enum, Object> getLastBillInfo(List<Enum> fields, String meterCode) throws SQLException {
     
         Map<Enum, Object> info = new HashMap<>();
         

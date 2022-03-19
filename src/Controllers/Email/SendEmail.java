@@ -1,6 +1,6 @@
 package Controllers.Email;
 
-import Models.Interface.IEmail;
+import Models.AppDate.IEmail;
 import javax.mail.MessagingException;
 import javax.mail.Transport;
 
@@ -24,7 +24,12 @@ public class SendEmail {
             Transport.send(this.emailMessage.generateMessage(recepientEmail, messageSubject, messageText));
 
         } catch (MessagingException exception) {
-            System.out.println(exception);
+            
+            System.out.println("-----------------------------------");
+            System.out.println("Mail subject : " + messageSubject);
+            System.out.println("Mail text : \n" + messageText);
+            System.out.println("----------------------------------------------------------");
+//            System.out.println(exception);
         }
     
     }

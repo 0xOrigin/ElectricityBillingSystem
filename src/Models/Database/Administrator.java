@@ -1,6 +1,6 @@
 package Models.Database;
 
-import Models.Interface.IAdapter;
+import Models.Database.ORM.IAdapter;
 import Models.Enum.Column;
 import Models.Enum.Table;
 import java.sql.ResultSet;
@@ -67,7 +67,7 @@ public class Administrator extends ModelUtility {
         
         if(!resource.isResultSetEmpty()){
 
-            boolean result = (resultSet.getInt(1) == 0);
+            boolean result = (resultSet.getInt(1) == 1);
             
             resource.close();
             
@@ -123,7 +123,7 @@ public class Administrator extends ModelUtility {
             boolean result = resultSet.getString(Column.Password.name()).equals(password);
             
             resource.close();
-            
+
             return result;
         }
 

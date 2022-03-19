@@ -1,6 +1,6 @@
 package Controllers.Email;
 
-import Models.Interface.IEmail;
+import Models.AppDate.IEmail;
 import java.io.UnsupportedEncodingException;
 import javax.mail.Message;
 import javax.mail.MessagingException;

@@ -1,18 +1,27 @@
 package Views;
 
+import Controllers.AdministratorLoginController;
+import Controllers.NewCustomerController;
+import Models.AdministratorLogin;
+import Models.CustomerLogin;
+import Models.NewCustomer;
+import Controllers.CustomerLoginController;
+
 /**
  *
  * @author xorigin
  */
-public class MainView extends javax.swing.JFrame {
+public class MainView extends javax.swing.JFrame{
 
     /**
      * Creates new form MainFrame
      */
     public MainView() {
         
+        this.tryLookAndFeel();
         initComponents();
-        this.setLocationRelativeTo(null);
+        
+        this.setSpecialSettings();
     }
 
     /**
@@ -24,33 +33,88 @@ public class MainView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        NewCustomerButton = new javax.swing.JButton();
+        OldCutomerButton = new javax.swing.JButton();
+        AdministratorButton = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Electricity Billing System");
         setResizable(false);
+
+        NewCustomerButton.setText("New Customer");
+        NewCustomerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NewCustomerButtonActionPerformed(evt);
+            }
+        });
+
+        OldCutomerButton.setText("Old Customer");
+        OldCutomerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OldCutomerButtonActionPerformed(evt);
+            }
+        });
+
+        AdministratorButton.setText("Administrator");
+        AdministratorButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AdministratorButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 608, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(AdministratorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(OldCutomerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NewCustomerButton))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(NewCustomerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(OldCutomerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(AdministratorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+    private void NewCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewCustomerButtonActionPerformed
+        
+        this.dispose();
+        NewCustomerController newCustomerController = new NewCustomerController(new NewCustomerView(this), new NewCustomer());
+    }//GEN-LAST:event_NewCustomerButtonActionPerformed
+
+    private void OldCutomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OldCutomerButtonActionPerformed
+        
+        this.dispose();
+        CustomerLoginController customerLoginController = new CustomerLoginController(new CustomerLoginView(this), new CustomerLogin());
+    }//GEN-LAST:event_OldCutomerButtonActionPerformed
+
+    private void AdministratorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdministratorButtonActionPerformed
+        
+        this.dispose();
+        AdministratorLoginController administratorLoginController = new AdministratorLoginController(new AdministratorLoginView(this),
+                                                                                                     new AdministratorLogin());
+    }//GEN-LAST:event_AdministratorButtonActionPerformed
+
+    public final void setSpecialSettings() {
+        
+        this.setLocationRelativeTo(null);
+    }
+    
+    private void tryLookAndFeel(){
+    
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -58,26 +122,14 @@ public class MainView extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainView().setVisible(true);
-            }
-        });
+        
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AdministratorButton;
+    private javax.swing.JButton NewCustomerButton;
+    private javax.swing.JButton OldCutomerButton;
     // End of variables declaration//GEN-END:variables
 }
