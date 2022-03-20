@@ -5,7 +5,6 @@ import Models.Database.ORM.SQLiteAdapter;
 import Models.Enum.Column;
 import Models.Enum.Table;
 import Models.Interface.IAdministratorLogin;
-import java.sql.SQLException;
 import java.util.Arrays;
 
 /**
@@ -23,44 +22,20 @@ public class AdministratorLogin implements IAdministratorLogin {
     
     @Override
     public boolean isValidAccount(String ID, String password){
-    
-        try {
-            
-            return this.administratorTable.isValidAccount(ID, password);
-            
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        }
-        
-        return false;
+
+        return this.administratorTable.isValidAccount(ID, password);
     }
     
     @Override
     public boolean isAdministratorExists(String ID){
-    
-        try {
-            
-            return this.administratorTable.isAdministratorExists(ID);
-            
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        }
         
-        return false;
+        return this.administratorTable.isAdministratorExists(ID);
     }
     
     @Override
     public String getRole(String ID){
-    
-        try {
-            
-            return (String) this.administratorTable.getInfo(Arrays.asList(Column.Role), ID).get(Column.Role);
-            
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        }
-        
-        return "";
+
+        return (String) this.administratorTable.getInfo(Arrays.asList(Column.Role), ID).get(Column.Role);
     }
     
     @Override
@@ -72,15 +47,7 @@ public class AdministratorLogin implements IAdministratorLogin {
     @Override
     public String getEmail(String ID){
     
-        try {
-            
-            return (String) this.administratorTable.getInfo(Arrays.asList(Column.Email), ID).get(Column.Email);
-            
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        }
-        
-        return "";
+        return (String) this.administratorTable.getInfo(Arrays.asList(Column.Email), ID).get(Column.Email);
     }
     
 }

@@ -5,7 +5,6 @@ import Models.Database.CollectedMoney;
 import Models.Database.Customer;
 import Models.Database.ORM.SQLiteAdapter;
 import Models.Enum.Table;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 import Models.Interface.IOperatorDashboard;
@@ -40,25 +39,25 @@ public class OperatorDashboard implements IOperatorDashboard {
     }
     
     @Override
-    public List<Map<Enum, Object>> getAllBillsOfMeterCode(String meterCode) throws SQLException{
+    public List<Map<Enum, Object>> getAllBillsOfMeterCode(String meterCode){
     
         return this.billTable.getAllBillsOfMeterCode(meterCode);
     }
     
     @Override
-    public List<Map<Enum, Object>> getAllBillsOfRegion(String governmentCode) throws SQLException{
+    public List<Map<Enum, Object>> getAllBillsOfRegion(String governmentCode){
     
         return this.billTable.getAllBillsOfRegion(governmentCode);
     }
     
     @Override
-    public boolean[] isMeterCodeExists_Active(String meterCode) throws SQLException{
+    public boolean[] isMeterCodeExists_Active(String meterCode){
     
         return this.customerTable.isMeterCodeExists_Active(meterCode);
     }
     
     @Override
-    public void toggleActivation(String meterCode) throws SQLException{
+    public void toggleActivation(String meterCode){
     
         this.customerTable.toggleActivation(meterCode);
     }
@@ -70,13 +69,13 @@ public class OperatorDashboard implements IOperatorDashboard {
     }
     
     @Override
-    public int getNumOfUnpaidBills(String meterCode) throws SQLException{
+    public int getNumOfUnpaidBills(String meterCode){
     
         return this.billTable.getNumOfUnpaidBills(meterCode);
     }
     
     @Override
-    public Map<Enum, Object> getLastBillInfo(List<Enum> fields, String meterCode) throws SQLException{
+    public Map<Enum, Object> getLastBillInfo(List<Enum> fields, String meterCode){
     
         return this.billTable.getLastBillInfo(fields, meterCode);
     }

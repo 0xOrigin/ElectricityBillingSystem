@@ -1,6 +1,5 @@
 package Models.Interface;
 
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -10,11 +9,11 @@ import java.util.Map;
  */
 public interface IAdminDashboard extends IModel {
     
-    Map<Enum, Object> getConsumptionStatforRegion(String governmentCode) throws SQLException;
+    Map<Enum, Object> getConsumptionStatforRegion(String governmentCode);
     
-    List<Map<Enum, Object>> getAllBillsOfRegion(String governmentCode) throws SQLException;
+    List<Map<Enum, Object>> getAllBillsOfRegion(String governmentCode);
     
-    String getTotalCollected() throws SQLException;
+    String getTotalCollected();
     
     void addCustomer(
             
@@ -37,16 +36,16 @@ public interface IAdminDashboard extends IModel {
     
     void deleteAdministrator(String ID);
     
-    boolean isCustomerNationalIdExists(String nationalId) throws SQLException;
+    boolean isCustomerNationalIdExists(String nationalId);
     
-    boolean isAdministratorNationalIdExists(String nationalId) throws SQLException;
+    boolean isAdministratorNationalIdExists(String nationalId);
     
-    boolean isAdministratorExists(String ID) throws SQLException;
+    boolean isAdministratorExists(String ID);
     
-    boolean[] isMeterCodeExists_Active(String meterCode) throws SQLException;
+    boolean[] isMeterCodeExists_Active(String meterCode);
     
-    int getNumOfSpecificRole(Enum role) throws SQLException;
+    int getNumOfSpecificRole(Enum role);
     
-    int getNumOfUnpaidBills(String meterCode) throws SQLException;
+    int getNumOfUnpaidBills(String meterCode);
     
 }

@@ -34,7 +34,7 @@ abstract class ModelUtility {
     }
     
     
-    public Map<Enum, Object> getInfo(List<Enum> fields, String identifier) throws SQLException{
+    public Map<Enum, Object> getInfo(List<Enum> fields, String identifier){
         
         Map<Enum, Object> info = new HashMap<>();
         
@@ -46,27 +46,33 @@ abstract class ModelUtility {
         
         resultSet = QueryExecutor.executeSelectQuery(selectQuery);
 
-        resource = new Resource(resultSet);
+        try {
         
-        if(!resource.isResultSetEmpty()){
+            resource = new Resource(resultSet);
 
-            for(Enum field : fields){
-            
-                info.put(field, resultSet.getObject(field.name()));
+            if(!resource.isResultSetEmpty()){
+
+                for(Enum field : fields){
+
+                    info.put(field, resultSet.getObject(field.name()));
+                }
+
+                resource.close();
+
+                return info;
             }
-            
+
             resource.close();
-            
-            return info;
+
+        } catch(SQLException ex){
+            System.out.println(ex);
         }
         
-        resource.close();
-
         return info;
     }
     
     
-    public boolean isNationalIdExists(String nationalId) throws SQLException{
+    public boolean isNationalIdExists(String nationalId){
     
         selectQuery = new SelectBuilder(Arrays.asList(this.tableInstance.Aggregate("count", "", Column.NationalID)),
                                         this.tableName)
@@ -75,18 +81,24 @@ abstract class ModelUtility {
         
         resultSet = QueryExecutor.executeSelectQuery(selectQuery);
 
-        resource = new Resource(resultSet);
+        try {
         
-        if(!resource.isResultSetEmpty()){
-            
-            boolean result = (resultSet.getInt(1) == 1);
-            
-            resource.close();
-            
-            return result;
-        }
+            resource = new Resource(resultSet);
 
-        resource.close();
+            if(!resource.isResultSetEmpty()){
+
+                boolean result = (resultSet.getInt(1) == 1);
+
+                resource.close();
+
+                return result;
+            }
+
+            resource.close();
+        
+        } catch(SQLException ex){
+            System.out.println(ex);
+        }
         
         return false;
     }

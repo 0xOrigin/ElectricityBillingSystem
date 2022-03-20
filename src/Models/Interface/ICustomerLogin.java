@@ -1,7 +1,5 @@
 package Models.Interface;
 
-import java.sql.SQLException;
-
 /**
  *
  * @author xorigin

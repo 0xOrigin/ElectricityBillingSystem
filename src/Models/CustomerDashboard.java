@@ -5,7 +5,6 @@ import Models.Database.Customer;
 import Models.Database.ORM.SQLiteAdapter;
 import Models.Enum.Column;
 import Models.Enum.Table;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 import Models.Interface.ICustomerDashboard;
@@ -27,7 +26,7 @@ public class CustomerDashboard implements ICustomerDashboard {
     }
     
     @Override
-    public void releaseNewBill(String meterCode, String releaseDate, int currentReading, int consumption, double moneyValue, int tariff) throws SQLException{
+    public void releaseNewBill(String meterCode, String releaseDate, int currentReading, int consumption, double moneyValue, int tariff){
     
         this.billTable.releaseNewBill(meterCode, releaseDate, currentReading, consumption, moneyValue, tariff);
     }
@@ -39,31 +38,31 @@ public class CustomerDashboard implements ICustomerDashboard {
     }
 
     @Override
-    public List<Map<Enum, Object>> getAllBillsOfMeterCode(String meterCode) throws SQLException{
+    public List<Map<Enum, Object>> getAllBillsOfMeterCode(String meterCode){
     
         return this.billTable.getAllBillsOfMeterCode(meterCode);
     }
     
     @Override
-    public Map<Enum, Object> getLastBillInfo(List<Enum> fields, String meterCode) throws SQLException{
+    public Map<Enum, Object> getLastBillInfo(List<Enum> fields, String meterCode){
     
         return this.billTable.getLastBillInfo(fields, meterCode);
     }
     
     @Override
-    public int getNumOfUnpaidBills(String meterCode) throws SQLException{
+    public int getNumOfUnpaidBills(String meterCode){
     
         return this.billTable.getNumOfUnpaidBills(meterCode);
     }
     
     @Override
-    public String getActivationState(String meterCode) throws SQLException{
+    public String getActivationState(String meterCode){
     
         return (String) this.customerTable.getInfo(Arrays.asList(Column.Activation), meterCode).get(Column.Activation);
     }
     
     @Override
-    public String getTypeOfUse(String meterCode) throws SQLException{
+    public String getTypeOfUse(String meterCode){
     
         return (String) this.customerTable.getInfo(Arrays.asList(Column.TypeOfUse), meterCode).get(Column.TypeOfUse);
     }

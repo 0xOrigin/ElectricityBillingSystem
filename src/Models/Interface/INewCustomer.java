@@ -1,7 +1,5 @@
 package Models.Interface;
 
-import java.sql.SQLException;
-
 /**
  *
  * @author xorigin
@@ -15,7 +13,7 @@ public interface INewCustomer extends IModel {
             String password, String activation, String dateOfContract, String propertyOwnershipContract 
     );
     
-    boolean isNationalIdExists(String nationalId) throws SQLException;
+    boolean isNationalIdExists(String nationalId);
     
-    int getNumOfCustomers() throws SQLException;
+    int getNumOfCustomers();
 }

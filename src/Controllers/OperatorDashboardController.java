@@ -3,8 +3,7 @@ package Controllers;
 import Controllers.Interface.IOperatorDashboardController;
 import Models.Interface.IModel;
 import Models.Interface.IOperatorDashboard;
-import Views.Interface.IOperatorDashboardView;
-import Views.Interface.IView;
+import Views.IView;
 
 /**
  *
@@ -12,13 +11,13 @@ import Views.Interface.IView;
  */
 public class OperatorDashboardController implements IOperatorDashboardController{
     
-    private final IOperatorDashboardView view;
+    private final IView view;
     private final IOperatorDashboard model;
     private final String ID;
     
     public OperatorDashboardController(IView view, IModel model, String loggedinID){
     
-        this.view = (IOperatorDashboardView) view;
+        this.view = view;
         this.model = (IOperatorDashboard) model;
         this.ID = loggedinID;
         

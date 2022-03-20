@@ -1,11 +1,11 @@
 package Views;
 
+import Controllers.CustomerLoginController;
 import Controllers.AdministratorLoginController;
 import Controllers.NewCustomerController;
 import Models.AdministratorLogin;
 import Models.CustomerLogin;
 import Models.NewCustomer;
-import Controllers.CustomerLoginController;
 
 /**
  *
@@ -92,20 +92,19 @@ public class MainView extends javax.swing.JFrame{
     private void NewCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewCustomerButtonActionPerformed
         
         this.dispose();
-        NewCustomerController newCustomerController = new NewCustomerController(new NewCustomerView(this), new NewCustomer());
+        new NewCustomerController(new NewCustomerView(this), new NewCustomer());
     }//GEN-LAST:event_NewCustomerButtonActionPerformed
 
     private void OldCutomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OldCutomerButtonActionPerformed
         
         this.dispose();
-        CustomerLoginController customerLoginController = new CustomerLoginController(new CustomerLoginView(this), new CustomerLogin());
+        new CustomerLoginController(new CustomerLoginView(this), new CustomerLogin());
     }//GEN-LAST:event_OldCutomerButtonActionPerformed
 
     private void AdministratorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdministratorButtonActionPerformed
         
         this.dispose();
-        AdministratorLoginController administratorLoginController = new AdministratorLoginController(new AdministratorLoginView(this),
-                                                                                                     new AdministratorLogin());
+        new AdministratorLoginController(new AdministratorLoginView(this), new AdministratorLogin());
     }//GEN-LAST:event_AdministratorButtonActionPerformed
 
     public final void setSpecialSettings() {

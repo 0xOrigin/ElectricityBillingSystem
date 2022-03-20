@@ -55,7 +55,7 @@ public class Administrator extends ModelUtility {
     }
     
     
-    public boolean isAdministratorExists(String ID) throws SQLException{
+    public boolean isAdministratorExists(String ID){
 
         selectQuery = new SelectBuilder(Arrays.asList(administratorTable.Aggregate("count", "", Column.ID)),
                                         Table.Administrator)
@@ -63,24 +63,30 @@ public class Administrator extends ModelUtility {
 
         resultSet = QueryExecutor.executeSelectQuery(selectQuery);
 
-        resource = new Resource(resultSet);
-        
-        if(!resource.isResultSetEmpty()){
-
-            boolean result = (resultSet.getInt(1) == 1);
+        try {
             
+            resource = new Resource(resultSet);
+
+            if(!resource.isResultSetEmpty()){
+
+                boolean result = (resultSet.getInt(1) == 1);
+
+                resource.close();
+
+                return result;
+            }
+
             resource.close();
             
-            return result;
+        } catch(SQLException ex){
+            System.out.println(ex);
         }
-
-        resource.close();
         
         return false;
     }
     
     
-    public int getNumOfSpecificRole(Enum role) throws SQLException{
+    public int getNumOfSpecificRole(Enum role){
 
         selectQuery = new SelectBuilder(Arrays.asList(administratorTable.Aggregate("count", "", Column.Role)),
                                         Table.Administrator)
@@ -88,24 +94,30 @@ public class Administrator extends ModelUtility {
 
         resultSet = QueryExecutor.executeSelectQuery(selectQuery);
 
-        resource = new Resource(resultSet);
+        try {
         
-        if(!resource.isResultSetEmpty()){
+            resource = new Resource(resultSet);
 
-            int result = resultSet.getInt(1);
-            
+            if(!resource.isResultSetEmpty()){
+
+                int result = resultSet.getInt(1);
+
+                resource.close();
+
+                return result;
+            }
+
             resource.close();
-            
-            return result;
+        
+        } catch(SQLException ex){
+            System.out.println(ex);
         }
-
-        resource.close();
         
         return 0;
     }
     
      
-    public boolean isValidAccount(String ID, String password) throws SQLException {
+    public boolean isValidAccount(String ID, String password){
     
         if(!isAdministratorExists(ID))
             return false;
@@ -116,18 +128,24 @@ public class Administrator extends ModelUtility {
 
         resultSet = QueryExecutor.executeSelectQuery(selectQuery);
 
-        resource = new Resource(resultSet);
+        try {
         
-        if(!resource.isResultSetEmpty()){
-            
-            boolean result = resultSet.getString(Column.Password.name()).equals(password);
-            
+            resource = new Resource(resultSet);
+
+            if(!resource.isResultSetEmpty()){
+
+                boolean result = resultSet.getString(Column.Password.name()).equals(password);
+
+                resource.close();
+
+                return result;
+            }
+
             resource.close();
-
-            return result;
+        
+        } catch(SQLException ex){
+            System.out.println(ex);
         }
-
-        resource.close();
         
         return false;
     }

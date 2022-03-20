@@ -69,7 +69,7 @@ public class Customer extends ModelUtility {
     }
     
     
-    public void toggleActivation(String meterCode) throws SQLException{
+    public void toggleActivation(String meterCode){
     
         String currentState = (String) getInfo(Arrays.asList(Column.Activation), meterCode).get(Column.Activation);
         
@@ -81,7 +81,7 @@ public class Customer extends ModelUtility {
     }
     
     
-    public int getNumOfCustomers() throws SQLException{
+    public int getNumOfCustomers(){
     
         selectQuery = new SelectBuilder(Arrays.asList(customerTable.Aggregate("count", "", Column.MeterCode)),
                                         Table.Customer)
@@ -89,24 +89,30 @@ public class Customer extends ModelUtility {
         
         resultSet = QueryExecutor.executeSelectQuery(selectQuery);
 
-        resource = new Resource(resultSet);
+        try {
         
-        if(!resource.isResultSetEmpty()){
+            resource = new Resource(resultSet);
 
-            int result = resultSet.getInt(1);
-            
+            if(!resource.isResultSetEmpty()){
+
+                int result = resultSet.getInt(1);
+
+                resource.close();
+
+                return result;
+            }
+
             resource.close();
-            
-            return result;
+        
+        } catch(SQLException ex){
+            System.out.println(ex);
         }
-
-        resource.close();
         
         return 0;
     }
     
     
-    public boolean[] isMeterCodeExists_Active(String meterCode) throws SQLException{
+    public boolean[] isMeterCodeExists_Active(String meterCode){
         
         boolean[] meterStatus = new boolean[2];
         
@@ -116,29 +122,35 @@ public class Customer extends ModelUtility {
         
         resultSet = QueryExecutor.executeSelectQuery(selectQuery);
 
-        resource = new Resource(resultSet);
+        try {
         
-        if(!resource.isResultSetEmpty()){
-            
-            meterStatus[0] = (resultSet.getInt(1) == 1);
-            
-            if(!meterStatus[0])
-                meterStatus[1] = false;
-            else
-                meterStatus[1] = (resultSet.getString(Column.Activation.name()).equals(ActivationState.Active.name()));
-            
-            resource.close();
-            
-            return meterStatus;
-        }
+            resource = new Resource(resultSet);
 
-        resource.close();
+            if(!resource.isResultSetEmpty()){
+
+                meterStatus[0] = (resultSet.getInt(1) == 1);
+
+                if(!meterStatus[0])
+                    meterStatus[1] = false;
+                else
+                    meterStatus[1] = (resultSet.getString(Column.Activation.name()).equals(ActivationState.Active.name()));
+
+                resource.close();
+
+                return meterStatus;
+            }
+
+            resource.close();
+        
+        } catch(SQLException ex){
+            System.out.println(ex);
+        }
         
         return meterStatus;
     }
     
     
-    public boolean isValidAccount(String meterCode, String password) throws SQLException{
+    public boolean isValidAccount(String meterCode, String password){
     
         if(!isMeterCodeExists_Active(meterCode)[0])
             return false;
@@ -150,18 +162,24 @@ public class Customer extends ModelUtility {
 
         resultSet = QueryExecutor.executeSelectQuery(selectQuery);
 
-        resource = new Resource(resultSet);
-        
-        if(!resource.isResultSetEmpty()){
-            
-            boolean result = resultSet.getString(Column.Password.name()).equals(password);
-            
-            resource.close();
-            
-            return result;
-        }
+        try {
 
-        resource.close();
+            resource = new Resource(resultSet);
+
+            if(!resource.isResultSetEmpty()){
+
+                boolean result = resultSet.getString(Column.Password.name()).equals(password);
+
+                resource.close();
+
+                return result;
+            }
+
+            resource.close();
+        
+        } catch(SQLException ex){
+            System.out.println(ex);
+        }
         
         return false;
     }

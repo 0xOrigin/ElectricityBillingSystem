@@ -17,6 +17,7 @@ public interface INewCustomerController extends IController {
     
     boolean isValidPhoneNumber(String phoneNumber);
     
-    void registerCustomer();
+    void registerCustomer(String name, String nationalID, String address, String email, String governmentCode,
+                          String phoneNumber, String typeOfUse, String propertyOwnershipContract);
     
 }

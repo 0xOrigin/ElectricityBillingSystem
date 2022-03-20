@@ -2,13 +2,12 @@ package Views;
 
 import Controllers.Interface.IController;
 import Controllers.Interface.IOperatorDashboardController;
-import Views.Interface.IOperatorDashboardView;
 
 /**
  *
  * @author xorigin
  */
-public class OperatorDashboardView extends javax.swing.JFrame implements IOperatorDashboardView{
+public class OperatorDashboardView extends javax.swing.JFrame implements IView{
 
     /**
      * Creates new form OperatorDashboardView

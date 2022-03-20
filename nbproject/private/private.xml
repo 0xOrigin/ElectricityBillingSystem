@@ -3,35 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Controllers/Interface/IAdministratorLoginController.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Views/FixedSizeDocument.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Views/Interface/IAdminDashboardView.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Views/Interface/INewCustomerView.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Controllers/AdministratorLoginController.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/ElectricityBillingSystem.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Views/CustomerLoginView.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/Interface/ICustomerLogin.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Views/MainView.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/CustomerLogin.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Controllers/AdminDashboardController.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Controllers/Interface/IAdminDashboardController.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Views/AdminDashboardView.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/Database/Customer.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/Interface/IAdminDashboard.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Views/Interface/ICustomerLoginView.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Views/OperatorDashboardView.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/Database/Administrator.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/AdministratorLogin.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/Interface/IAdministratorLogin.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Controllers/OperatorDashboardController.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Views/CustomerDashboardView.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Views/NewCustomerView.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Controllers/CustomerDashboardController.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/AdminDashboard.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Controllers/Interface/INewCustomerController.java</file>
+            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/Database/Bill.java</file>
+            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/Interface/ICustomerLogin.java</file>
+            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Controllers/Bill/ReadingValidation.java</file>
+            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/CustomerLogin.java</file>
+            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Controllers/Bill/MakeConsumptionStats.java</file>
+            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Views/Interface/IView.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Controllers/Interface/ICustomerLoginController.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Views/AdministratorLoginView.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Controllers/NewCustomerController.java</file>
+            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/Interface/IAdminDashboard.java</file>
+            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/Interface/ICustomerDashboard.java</file>
+            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Controllers/Generator.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Controllers/CustomerLoginController.java</file>
         </group>
     </open-files>

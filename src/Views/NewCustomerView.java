@@ -4,7 +4,6 @@ import Controllers.Interface.IController;
 import Controllers.Interface.INewCustomerController;
 import Models.Enum.GovernmentCode;
 import Models.Enum.TypeOfUse;
-import Views.Interface.INewCustomerView;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -14,7 +13,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  *
  * @author xorigin
  */
-public class NewCustomerView extends javax.swing.JFrame implements INewCustomerView{
+public class NewCustomerView extends javax.swing.JFrame implements IView{
 
     /**
      * Creates new form NewCustomerView
@@ -413,29 +412,7 @@ public class NewCustomerView extends javax.swing.JFrame implements INewCustomerV
         }
         
     }//GEN-LAST:event_BrowseButtonActionPerformed
-
-    private void fillGovernmentField(){
-    
-        String[] governmentNames = ViewsHelper.getSortedEnumValues(GovernmentCode.values());
-        
-        this.GovernmentField.addItem(this.governmentFieldInitialState);
-        this.GovernmentField.setSelectedIndex(0);
-
-        for(String governorate : governmentNames)
-            this.GovernmentField.addItem(governorate);            
-    }
-    
-    private void fillTypeOfUse(){
-    
-        String[] types = ViewsHelper.getEnumValues(TypeOfUse.values());
-        
-        this.TypeOfUseField.addItem(typeOfUseFieldInitialState);
-        this.TypeOfUseField.setSelectedIndex(0);
-        
-        for(String type : types)
-            this.TypeOfUseField.addItem(type);
-    }
-        
+     
     private void RequestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RequestButtonActionPerformed
         
         this.globalValidationState = true;
@@ -453,7 +430,10 @@ public class NewCustomerView extends javax.swing.JFrame implements INewCustomerV
         
             String message = "You will receive an email with your Meter code and Password";
             
-            this.controller.registerCustomer();
+            this.controller.registerCustomer(this.NameField.getText(), this.NationalIDField.getText(),
+                                             this.AddressField.getText(), this.EmailField.getText(),
+                                             this.getGovernmentCode(), this.PhoneNumberField.getText(),
+                                             this.getTypeOfUse(), this.PropertyOwnershipContractField.getText());
             
             JOptionPane.showMessageDialog(this, message, "Successful operation", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -544,6 +524,39 @@ public class NewCustomerView extends javax.swing.JFrame implements INewCustomerV
         }
     }//GEN-LAST:event_GovernmentFieldFocusLost
     
+     private void fillGovernmentField(){
+    
+        String[] governmentNames = ViewsHelper.getSortedEnumValues(GovernmentCode.values());
+        
+        this.GovernmentField.addItem(this.governmentFieldInitialState);
+        this.GovernmentField.setSelectedIndex(0);
+
+        for(String governorate : governmentNames)
+            this.GovernmentField.addItem(governorate);            
+    }
+    
+    private void fillTypeOfUse(){
+    
+        String[] types = ViewsHelper.getEnumValues(TypeOfUse.values());
+        
+        this.TypeOfUseField.addItem(typeOfUseFieldInitialState);
+        this.TypeOfUseField.setSelectedIndex(0);
+        
+        for(String type : types)
+            this.TypeOfUseField.addItem(type);
+    }
+    
+    private String getGovernmentCode(){
+    
+        return GovernmentCode.valueOf(this.GovernmentField.getSelectedItem().toString()).getCode();
+    }
+    
+    private String getTypeOfUse(){
+    
+        return this.TypeOfUseField.getSelectedItem().toString();
+    }
+    
+    
     @Override
     public final void setSpecialSettings(){
     
@@ -570,53 +583,6 @@ public class NewCustomerView extends javax.swing.JFrame implements INewCustomerV
         return this.previousFrame;
     }
     
-    @Override
-    public String getName(){
-    
-        return this.NameField.getText();
-    }
-    
-    @Override
-    public String getNationalID(){
-    
-        return this.NationalIDField.getText();
-    }
-    
-    @Override
-    public String getAddress(){
-    
-        return this.AddressField.getText();
-    }
-    
-    @Override
-    public String getEmail(){
-    
-        return this.EmailField.getText();
-    }
-    
-    @Override
-    public String getPhoneNumber(){
-    
-        return this.PhoneNumberField.getText();
-    }
-    
-    @Override
-    public String getGovernmentCode(){
-    
-        return GovernmentCode.valueOf(this.GovernmentField.getSelectedItem().toString()).getCode();
-    }
-    
-    @Override
-    public String getTypeOfUse(){
-    
-        return this.TypeOfUseField.getSelectedItem().toString();
-    }
-    
-    @Override
-    public String getPropertyOwnershipContract(){
-    
-        return this.PropertyOwnershipContractField.getText();
-    }
     
     private final String governmentFieldInitialState = "Select governorate";
     private final String typeOfUseFieldInitialState = "Select your type of use";

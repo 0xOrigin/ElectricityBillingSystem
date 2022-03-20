@@ -6,7 +6,6 @@ import Models.Database.ORM.SQLiteAdapter;
 import Models.Enum.Column;
 import Models.Enum.Table;
 import Models.Enum.TypeOfUse;
-import java.sql.SQLException;
 import java.util.Arrays;
 
 /**
@@ -36,30 +35,18 @@ public class BillCalculations {
     }
     
     private void setTypeOfUse(){
-    
-        try {
-            
-            this.typeOfUse = (String) new Customer(new SQLiteAdapter(Table.Customer))
-                    .getInfo(Arrays.asList(Column.TypeOfUse), this.meterCode)
-                    .get(Column.TypeOfUse);
-            
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        }
+
+        this.typeOfUse = (String) new Customer(new SQLiteAdapter(Table.Customer))
+                .getInfo(Arrays.asList(Column.TypeOfUse), this.meterCode)
+                .get(Column.TypeOfUse);
     }
     
     private void calculateConsumption(){
-    
-        try {
+
+        this.consumption = this.currentReading - (int) new Bill(new SQLiteAdapter(Table.Bill))
+                                                        .getLastBillInfo(Arrays.asList(Column.CurrentReading), this.meterCode)
+                                                        .get(Column.CurrentReading);
             
-            this.consumption = this.currentReading
-                    - (int) new Bill(new SQLiteAdapter(Table.Bill))
-                            .getLastBillInfo(Arrays.asList(Column.CurrentReading), this.meterCode)
-                            .get(Column.CurrentReading);
-            
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        }
     }
     
     private void calculateMoneyValue(){

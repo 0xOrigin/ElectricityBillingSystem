@@ -5,8 +5,7 @@ import Controllers.Interface.ICustomerLoginController;
 import Models.AppDate.EmailConfig;
 import Models.Interface.ICustomerLogin;
 import Models.Interface.IModel;
-import Views.Interface.ICustomerLoginView;
-import Views.Interface.IView;
+import Views.IView;
 import java.io.IOException;
 import org.json.simple.parser.ParseException;
 
@@ -16,12 +15,12 @@ import org.json.simple.parser.ParseException;
  */
 public class CustomerLoginController implements ICustomerLoginController{
     
-    private final ICustomerLoginView view;
+    private final IView view;
     private final ICustomerLogin model;
     
     public CustomerLoginController(IView view, IModel model){
     
-        this.view = (ICustomerLoginView) view;
+        this.view = view;
         this.model = (ICustomerLogin) model;
         
         this.start();

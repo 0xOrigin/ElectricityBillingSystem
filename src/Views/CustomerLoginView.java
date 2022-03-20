@@ -4,14 +4,13 @@ import Controllers.CustomerDashboardController;
 import Controllers.Interface.IController;
 import Controllers.Interface.ICustomerLoginController;
 import Models.CustomerDashboard;
-import Views.Interface.ICustomerLoginView;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author xorigin
  */
-public class CustomerLoginView extends javax.swing.JFrame implements ICustomerLoginView {
+public class CustomerLoginView extends javax.swing.JFrame implements IView {
 
     /**
      * Creates new form CustomerLogin
@@ -238,6 +237,13 @@ public class CustomerLoginView extends javax.swing.JFrame implements ICustomerLo
         }
     }//GEN-LAST:event_ForgetPasswordButtonActionPerformed
 
+    
+    public void redirectToCustomerDashboard(){
+    
+        this.dispose();
+        new CustomerDashboardController(new CustomerDashboardView(this.previousFrame), new CustomerDashboard(), this.MeterCodeField.getText());
+    }
+    
     @Override
     public final void setSpecialSettings() {
         
@@ -245,15 +251,6 @@ public class CustomerLoginView extends javax.swing.JFrame implements ICustomerLo
         
         this.MeterCodeField.setDocument(new FixedSizeDocument(15));
         this.PasswordField.setDocument(new FixedSizeDocument(10));
-    }
-    
-    @Override
-    public void redirectToCustomerDashboard(){
-    
-        this.dispose();
-        CustomerDashboardController customerDashboardController 
-                = new CustomerDashboardController(new CustomerDashboardView(this.previousFrame),
-                                                  new CustomerDashboard(), this.MeterCodeField.getText());
     }
     
     @Override

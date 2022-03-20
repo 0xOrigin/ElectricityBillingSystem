@@ -61,7 +61,7 @@ public class Bill {
     }
     
     
-    public void releaseNewBill(String meterCode, String releaseDate, int currentReading, int consumption, double moneyValue, int tariff) throws SQLException{
+    public void releaseNewBill(String meterCode, String releaseDate, int currentReading, int consumption, double moneyValue, int tariff){
         
         Map<Enum, Object> info = getLastBillInfo(Arrays.asList(Column.CurrentReading, Column.GovernmentCode), meterCode);
         
@@ -81,7 +81,7 @@ public class Bill {
     }
     
     
-    public List<Map<Enum, Object>> getAllBillsOfMeterCode(String meterCode) throws SQLException{
+    public List<Map<Enum, Object>> getAllBillsOfMeterCode(String meterCode){
     
         Map<Enum, Object> billInfo;
         List<Map<Enum, Object>> billsContainer = new ArrayList<>();
@@ -98,32 +98,38 @@ public class Bill {
         
         resultSet = QueryExecutor.executeSelectQuery(selectQuery);
         
-        resource = new Resource(resultSet);
+        try {
         
-        if(!resource.isResultSetEmpty()){
-        
-            while(resultSet.next()){
-                
-                billInfo = new HashMap<>();
-                
-                for(Enum field : fields){
-                
-                    billInfo.put(field, resultSet.getObject(field.name()));
+            resource = new Resource(resultSet);
+
+            if(!resource.isResultSetEmpty()){
+
+                while(resultSet.next()){
+
+                    billInfo = new HashMap<>();
+
+                    for(Enum field : fields){
+
+                        billInfo.put(field, resultSet.getObject(field.name()));
+                    }
+
+                    billsContainer.add(billInfo);
                 }
-                
-                billsContainer.add(billInfo);
+
+                resource.close();
             }
-            
+
             resource.close();
+        
+        } catch(SQLException ex){
+            System.out.println(ex);
         }
-    
-        resource.close();
         
         return billsContainer;
     }
     
     
-    public List<Map<Enum, Object>> getAllBillsOfRegion(String governmentCode) throws SQLException{
+    public List<Map<Enum, Object>> getAllBillsOfRegion(String governmentCode){
     
         Map<Enum, Object> billInfo;
         List<Map<Enum, Object>> billsContainer = new ArrayList<>();
@@ -140,32 +146,38 @@ public class Bill {
         
         resultSet = QueryExecutor.executeSelectQuery(selectQuery);
         
-        resource = new Resource(resultSet);
+        try {
         
-        if(!resource.isResultSetEmpty()){
-        
-            while(resultSet.next()){
-                
-                billInfo = new HashMap<>();
-                
-                for(Enum field : fields){
-                
-                    billInfo.put(field, resultSet.getObject(field.name()));
+            resource = new Resource(resultSet);
+
+            if(!resource.isResultSetEmpty()){
+
+                while(resultSet.next()){
+
+                    billInfo = new HashMap<>();
+
+                    for(Enum field : fields){
+
+                        billInfo.put(field, resultSet.getObject(field.name()));
+                    }
+
+                    billsContainer.add(billInfo);
                 }
-                
-                billsContainer.add(billInfo);
+
+                resource.close();
             }
-            
+
             resource.close();
+        
+        } catch(SQLException ex){
+            System.out.println(ex);
         }
-    
-        resource.close();
         
         return billsContainer;
     }
     
     
-    public int getNumOfUnpaidBills(String meterCode) throws SQLException{
+    public int getNumOfUnpaidBills(String meterCode){
     
         selectQuery = new SelectBuilder(Arrays.asList(billTable.Aggregate("count", "", Column.Status)),
                                         Table.Bill)
@@ -176,24 +188,30 @@ public class Bill {
 
         resultSet = QueryExecutor.executeSelectQuery(selectQuery);
 
-        resource = new Resource(resultSet);
+        try {
         
-        if(!resource.isResultSetEmpty()){
+            resource = new Resource(resultSet);
 
-            int result = resultSet.getInt(1);
-            
+            if(!resource.isResultSetEmpty()){
+
+                int result = resultSet.getInt(1);
+
+                resource.close();
+
+                return result;
+            }
+
             resource.close();
-            
-            return result;
+        
+        } catch(SQLException ex){
+            System.out.println(ex);
         }
-
-        resource.close();
         
         return 0;
     }
     
     
-    public Map<Enum, Object> getConsumptionStatforRegion(String governmentCode) throws SQLException{
+    public Map<Enum, Object> getConsumptionStatforRegion(String governmentCode){
     
         Map<Enum, Object> statInfo = new HashMap<>();
         
@@ -204,15 +222,20 @@ public class Bill {
         
         resultSet = QueryExecutor.executeSelectQuery(selectQuery);
         
-        resource = new Resource(resultSet);
+        try {
         
-        if(!resource.isResultSetEmpty()){
-        
-            statInfo.put(ConsumptionStat.SumOfConsumptions, resultSet.getInt(1));
-            
-            resource.close();
-        }
+            resource = new Resource(resultSet);
+
+            if(!resource.isResultSetEmpty()){
+
+                statInfo.put(ConsumptionStat.SumOfConsumptions, resultSet.getInt(1));
+
+                resource.close();
+            }
     
+        } catch(SQLException ex){
+            System.out.println(ex);
+        }
         
         selectQuery = new SelectBuilder(Arrays.asList(billTable.Aggregate("count", "distinct", Column.MeterCode)),
                                         Table.Bill)
@@ -227,22 +250,28 @@ public class Bill {
         
         resultSet = QueryExecutor.executeSelectQuery(selectQuery);
         
-        resource = new Resource(resultSet);
+        try {
         
-        if(!resource.isResultSetEmpty()){
-        
-            statInfo.put(ConsumptionStat.ActualNumberOfConsumers, resultSet.getInt(1));
-            
+            resource = new Resource(resultSet);
+
+            if(!resource.isResultSetEmpty()){
+
+                statInfo.put(ConsumptionStat.ActualNumberOfConsumers, resultSet.getInt(1));
+
+                resource.close();
+            }
+
             resource.close();
-        }
         
-        resource.close();
+        } catch(SQLException ex){
+            System.out.println(ex);
+        }
         
         return statInfo;
     }
     
     
-    public Map<Enum, Object> getLastBillInfo(List<Enum> fields, String meterCode) throws SQLException {
+    public Map<Enum, Object> getLastBillInfo(List<Enum> fields, String meterCode){
     
         Map<Enum, Object> info = new HashMap<>();
         
@@ -254,21 +283,27 @@ public class Bill {
         
         resultSet = QueryExecutor.executeSelectQuery(selectQuery);
         
-        resource = new Resource(resultSet);
+        try {
         
-        if(!resource.isResultSetEmpty()){
+            resource = new Resource(resultSet);
 
-            for(Enum field : fields){
-            
-                info.put(field, resultSet.getObject(field.name()));
+            if(!resource.isResultSetEmpty()){
+
+                for(Enum field : fields){
+
+                    info.put(field, resultSet.getObject(field.name()));
+                }
+
+                resource.close();
+
+                return info;
             }
-            
-            resource.close();
-            
-            return info;
-        }
 
-        resource.close();
+            resource.close();
+        
+        } catch(SQLException ex){
+            System.out.println(ex);
+        }
         
         return info;
     }

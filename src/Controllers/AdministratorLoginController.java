@@ -5,8 +5,7 @@ import Controllers.Interface.IAdministratorLoginController;
 import Models.AppDate.EmailConfig;
 import Models.Interface.IAdministratorLogin;
 import Models.Interface.IModel;
-import Views.Interface.IAdministratorLoginView;
-import Views.Interface.IView;
+import Views.IView;
 import java.io.IOException;
 import org.json.simple.parser.ParseException;
 
@@ -16,12 +15,12 @@ import org.json.simple.parser.ParseException;
  */
 public class AdministratorLoginController implements IAdministratorLoginController {
     
-    private final IAdministratorLoginView view;
+    private final IView view;
     private final IAdministratorLogin model;
     
     public AdministratorLoginController(IView view, IModel model){
     
-        this.view = (IAdministratorLoginView) view;
+        this.view = view;
         this.model = (IAdministratorLogin) model;
         
         this.start();

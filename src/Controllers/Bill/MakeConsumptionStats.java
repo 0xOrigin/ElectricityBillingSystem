@@ -4,7 +4,6 @@ import Models.Database.Bill;
 import Models.Database.ORM.SQLiteAdapter;
 import Models.Enum.ConsumptionStat;
 import Models.Enum.Table;
-import java.sql.SQLException;
 import java.util.Map;
 
 /**
@@ -15,7 +14,7 @@ public class MakeConsumptionStats {
     
     private final Map<Enum, Object> statInfo;
     
-    public MakeConsumptionStats(String governmentCode) throws SQLException{
+    public MakeConsumptionStats(String governmentCode){
     
         this.statInfo = new Bill(new SQLiteAdapter(Table.Bill)).getConsumptionStatforRegion(governmentCode);    
     }

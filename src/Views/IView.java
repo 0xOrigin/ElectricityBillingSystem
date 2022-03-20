@@ -1,4 +1,4 @@
-package Views.Interface;
+package Views;
 
 import Controllers.Interface.IController;
 

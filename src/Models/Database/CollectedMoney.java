@@ -31,23 +31,29 @@ public class CollectedMoney {
                                    "1 == 1");
     }
     
-    public String getTotalCollected() throws SQLException{
+    public String getTotalCollected(){
     
         selectQuery = new SelectBuilder(Arrays.asList(Column.TotalCollected), Table.CollectedMoney).build();
         resultSet = QueryExecutor.executeSelectQuery(selectQuery);
         
-        resource = new Resource(resultSet);
+        try {
         
-        if(!resource.isResultSetEmpty()){
-            
-            String result = String.format("%,.2f", resultSet.getDouble(Column.TotalCollected.name()));
-            
+            resource = new Resource(resultSet);
+
+            if(!resource.isResultSetEmpty()){
+
+                String result = String.format("%,.2f", resultSet.getDouble(Column.TotalCollected.name()));
+
+                resource.close();
+
+                return result;
+            }
+
             resource.close();
-            
-            return result;
+        
+        } catch(SQLException ex){
+            System.out.println(ex);
         }
-    
-        resource.close();
         
         return "";
     }

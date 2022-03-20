@@ -1,18 +1,15 @@
 package Views;
 
-import Controllers.CustomerDashboardController;
 import Controllers.Interface.IController;
 import Controllers.Interface.ICustomerDashboardController;
-import Models.CustomerDashboard;
 import Models.Enum.ActivationState;
-import Views.Interface.ICustomerDashboardView;
 import java.awt.Color;
 
 /**
  *
  * @author xorigin
  */
-public class CustomerDashboardView extends javax.swing.JFrame implements ICustomerDashboardView{
+public class CustomerDashboardView extends javax.swing.JFrame implements IView{
 
     /**
      * Creates new form CustomerDashboardView
@@ -138,9 +135,9 @@ public class CustomerDashboardView extends javax.swing.JFrame implements ICustom
                     .addComponent(BackButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(FrameDescription, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 21, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ActivationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ActivationStateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ActivationStateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ActivationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(MonthlyReadingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
@@ -167,7 +164,7 @@ public class CustomerDashboardView extends javax.swing.JFrame implements ICustom
     private void MonthlyReadingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MonthlyReadingButtonActionPerformed
      
         this.dispose();
-        MonthlyReadingView monthlyReadingView = new MonthlyReadingView(this, this.controller);
+        new MonthlyReadingView(this, this.controller);
     }//GEN-LAST:event_MonthlyReadingButtonActionPerformed
 
     private void ComplainButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComplainButtonActionPerformed

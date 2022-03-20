@@ -4,7 +4,6 @@ import Models.Database.Customer;
 import Models.Database.ORM.SQLiteAdapter;
 import Models.Enum.Table;
 import Models.Interface.INewCustomer;
-import java.sql.SQLException;
 
 /**
  *
@@ -31,13 +30,13 @@ public class NewCustomer implements INewCustomer {
     }
     
     @Override
-    public boolean isNationalIdExists(String nationalId) throws SQLException{
+    public boolean isNationalIdExists(String nationalId){
     
         return this.customerTable.isNationalIdExists(nationalId);
     }
 
     @Override
-    public int getNumOfCustomers() throws SQLException{
+    public int getNumOfCustomers(){
         
         return this.customerTable.getNumOfCustomers();
     }

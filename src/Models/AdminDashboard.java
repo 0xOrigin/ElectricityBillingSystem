@@ -6,7 +6,6 @@ import Models.Database.CollectedMoney;
 import Models.Database.Customer;
 import Models.Database.ORM.SQLiteAdapter;
 import Models.Enum.Table;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 import Models.Interface.IAdminDashboard;
@@ -31,19 +30,19 @@ public class AdminDashboard implements IAdminDashboard {
     }
     
     @Override
-    public List<Map<Enum, Object>> getAllBillsOfRegion(String governmentCode) throws SQLException {
+    public List<Map<Enum, Object>> getAllBillsOfRegion(String governmentCode){
     
         return this.billTable.getAllBillsOfRegion(governmentCode);
     }
     
     @Override
-    public Map<Enum, Object> getConsumptionStatforRegion(String governmentCode) throws SQLException {
+    public Map<Enum, Object> getConsumptionStatforRegion(String governmentCode){
 
         return this.billTable.getConsumptionStatforRegion(governmentCode);
     }
     
     @Override
-    public String getTotalCollected() throws SQLException {
+    public String getTotalCollected(){
     
         return this.collectedMoneyTable.getTotalCollected();
     }
@@ -94,37 +93,37 @@ public class AdminDashboard implements IAdminDashboard {
     }
     
     @Override
-    public boolean isCustomerNationalIdExists(String nationalId) throws SQLException{
+    public boolean isCustomerNationalIdExists(String nationalId){
     
         return this.customerTable.isNationalIdExists(nationalId);
     }
     
     @Override
-    public boolean isAdministratorNationalIdExists(String nationalId) throws SQLException{
+    public boolean isAdministratorNationalIdExists(String nationalId){
     
         return this.administratorTable.isNationalIdExists(nationalId);
     }
     
     @Override
-    public boolean isAdministratorExists(String ID) throws SQLException{
+    public boolean isAdministratorExists(String ID){
     
         return this.administratorTable.isAdministratorExists(ID);
     }
 
     @Override
-    public boolean[] isMeterCodeExists_Active(String meterCode) throws SQLException{
+    public boolean[] isMeterCodeExists_Active(String meterCode){
     
         return this.customerTable.isMeterCodeExists_Active(meterCode);
     }
     
     @Override
-    public int getNumOfSpecificRole(Enum role) throws SQLException{
+    public int getNumOfSpecificRole(Enum role){
         
         return this.administratorTable.getNumOfSpecificRole(role);
     }
     
     @Override
-    public int getNumOfUnpaidBills(String meterCode) throws SQLException{
+    public int getNumOfUnpaidBills(String meterCode){
     
         return this.billTable.getNumOfUnpaidBills(meterCode);
     }

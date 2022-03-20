@@ -7,14 +7,13 @@ import Controllers.OperatorDashboardController;
 import Models.AdminDashboard;
 import Models.Enum.Role;
 import Models.OperatorDashboard;
-import Views.Interface.IAdministratorLoginView;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author xorigin
  */
-public class AdministratorLoginView extends javax.swing.JFrame implements IAdministratorLoginView {
+public class AdministratorLoginView extends javax.swing.JFrame implements IView {
 
     /**
      * Creates new form AdministratorLoginView
@@ -236,7 +235,7 @@ public class AdministratorLoginView extends javax.swing.JFrame implements IAdmin
         }
     }//GEN-LAST:event_ForgetPasswordButtonActionPerformed
 
-    @Override
+    
     public void redirectToDashboard(String role){
     
         if(role.equals(Role.Admin.name()))
@@ -245,22 +244,18 @@ public class AdministratorLoginView extends javax.swing.JFrame implements IAdmin
             this.openOperatorDashboard();
     }
     
-    @Override
+    
     public void openAdminDashboard(){
     
         this.dispose();
-        AdminDashboardController adminDashboardController 
-                = new AdminDashboardController(new AdminDashboardView(this.previousFrame),
-                                               new AdminDashboard(), this.IDField.getText());
+        new AdminDashboardController(new AdminDashboardView(this.previousFrame), new AdminDashboard(), this.IDField.getText());
     }
     
-    @Override
+    
     public void openOperatorDashboard(){
     
         this.dispose();
-        OperatorDashboardController operatorDashboardController 
-                = new OperatorDashboardController(new OperatorDashboardView(this.previousFrame),
-                                                  new OperatorDashboard(), this.IDField.getText());
+        new OperatorDashboardController(new OperatorDashboardView(this.previousFrame), new OperatorDashboard(), this.IDField.getText());
     }
     
     @Override

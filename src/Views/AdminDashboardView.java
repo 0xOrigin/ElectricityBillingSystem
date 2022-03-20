@@ -2,13 +2,12 @@ package Views;
 
 import Controllers.Interface.IAdminDashboardController;
 import Controllers.Interface.IController;
-import Views.Interface.IAdminDashboardView;
 
 /**
  *
  * @author xorigin
  */
-public class AdminDashboardView extends javax.swing.JFrame implements IAdminDashboardView {
+public class AdminDashboardView extends javax.swing.JFrame implements IView {
 
     /**
      * Creates new form AdminDashboardView
