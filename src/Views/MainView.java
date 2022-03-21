@@ -3,9 +3,7 @@ package Views;
 import Controllers.CustomerLoginController;
 import Controllers.AdministratorLoginController;
 import Controllers.NewCustomerController;
-import Models.AdministratorLogin;
-import Models.CustomerLogin;
-import Models.NewCustomer;
+import Models.EBS_DbContext;
 
 /**
  *
@@ -92,19 +90,19 @@ public class MainView extends javax.swing.JFrame{
     private void NewCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewCustomerButtonActionPerformed
         
         this.dispose();
-        new NewCustomerController(new NewCustomerView(this), new NewCustomer());
+        new NewCustomerController(new NewCustomerView(this), new EBS_DbContext());
     }//GEN-LAST:event_NewCustomerButtonActionPerformed
 
     private void OldCutomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OldCutomerButtonActionPerformed
         
         this.dispose();
-        new CustomerLoginController(new CustomerLoginView(this), new CustomerLogin());
+        new CustomerLoginController(new CustomerLoginView(this), new EBS_DbContext());
     }//GEN-LAST:event_OldCutomerButtonActionPerformed
 
     private void AdministratorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdministratorButtonActionPerformed
         
         this.dispose();
-        new AdministratorLoginController(new AdministratorLoginView(this), new AdministratorLogin());
+        new AdministratorLoginController(new AdministratorLoginView(this), new EBS_DbContext());
     }//GEN-LAST:event_AdministratorButtonActionPerformed
 
     public final void setSpecialSettings() {

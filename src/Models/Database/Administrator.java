@@ -13,7 +13,7 @@ import Models.Database.ORM.*;
  *
  * @author xorigin
  */
-public class Administrator extends ModelUtility {
+public class Administrator extends ModelUtility{
     
     private final IAdapter administratorTable;
     private SelectQuery selectQuery;
@@ -22,7 +22,7 @@ public class Administrator extends ModelUtility {
     
     public Administrator(IAdapter adapter){
     
-        super(adapter);
+        super(adapter, adapter.getPrimaryKeyColumnName());
         this.administratorTable = adapter;
     }
     
@@ -62,26 +62,23 @@ public class Administrator extends ModelUtility {
                                         .where(Column.ID, "=", ID).build();
 
         resultSet = QueryExecutor.executeSelectQuery(selectQuery);
+        resource = new Resource(resultSet);
 
-        try {
-            
-            resource = new Resource(resultSet);
+        if(!resource.isResultSetEmpty()){
 
-            if(!resource.isResultSetEmpty()){
-
+            try {
+                
                 boolean result = (resultSet.getInt(1) == 1);
 
                 resource.close();
-
                 return result;
-            }
-
-            resource.close();
             
-        } catch(SQLException ex){
-            System.out.println(ex);
+            } catch(SQLException ex){
+                System.out.println(ex);
+            }
         }
-        
+
+        resource.close();
         return false;
     }
     
@@ -93,26 +90,23 @@ public class Administrator extends ModelUtility {
                                         .where(Column.Role, "=", role.name()).build();
 
         resultSet = QueryExecutor.executeSelectQuery(selectQuery);
+        resource = new Resource(resultSet);
 
-        try {
-        
-            resource = new Resource(resultSet);
+        if(!resource.isResultSetEmpty()){
 
-            if(!resource.isResultSetEmpty()){
-
+            try {
+                
                 int result = resultSet.getInt(1);
 
                 resource.close();
-
                 return result;
+                
+            } catch(SQLException ex){
+                System.out.println(ex);
             }
-
-            resource.close();
-        
-        } catch(SQLException ex){
-            System.out.println(ex);
         }
-        
+
+        resource.close();
         return 0;
     }
     
@@ -127,26 +121,23 @@ public class Administrator extends ModelUtility {
                                         .where(Column.ID, "=", ID).build();
 
         resultSet = QueryExecutor.executeSelectQuery(selectQuery);
+        resource = new Resource(resultSet);
 
-        try {
-        
-            resource = new Resource(resultSet);
+        if(!resource.isResultSetEmpty()){
 
-            if(!resource.isResultSetEmpty()){
-
+            try {
+            
                 boolean result = resultSet.getString(Column.Password.name()).equals(password);
 
                 resource.close();
-
                 return result;
+                
+            } catch(SQLException ex){
+                System.out.println(ex);
             }
-
-            resource.close();
-        
-        } catch(SQLException ex){
-            System.out.println(ex);
         }
-        
+    
+        resource.close();
         return false;
     }
     

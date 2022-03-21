@@ -1,8 +1,7 @@
 package Controllers;
 
 import Controllers.Interface.IAdminDashboardController;
-import Models.Interface.IAdminDashboard;
-import Models.Interface.IModel;
+import Models.IDbContext;
 import Views.IView;
 
 /**
@@ -12,20 +11,20 @@ import Views.IView;
 public class AdminDashboardController implements IAdminDashboardController{
     
     private final IView view;
-    private final IAdminDashboard model;
+    private final IDbContext dbContext;
     private final String ID;
     
-    public AdminDashboardController(IView view, IModel model, String loggedinID){
+    public AdminDashboardController(IView view, IDbContext dbContext, String loggedinID){
     
         this.view = view;
-        this.model = (IAdminDashboard) model;
+        this.dbContext = dbContext;
         this.ID = loggedinID;
         
-        this.start();
+        this.startView();
     }
     
     @Override
-    public final void start(){
+    public final void startView(){
     
         this.view.setController(this);
         this.view.setVisible(true);

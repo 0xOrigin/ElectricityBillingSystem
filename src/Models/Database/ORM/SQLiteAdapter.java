@@ -11,10 +11,12 @@ import java.util.Queue;
 public class SQLiteAdapter extends DML implements IAdapter {
     
     private final Enum table;
+    private final Enum primaryKey;
     
-    public SQLiteAdapter(Enum table){
+    public SQLiteAdapter(Enum table, Enum primaryKeyOfthisTable){
     
         this.table = table;
+        this.primaryKey = primaryKeyOfthisTable;
     }    
     
     
@@ -63,6 +65,13 @@ public class SQLiteAdapter extends DML implements IAdapter {
     }
     
     
+    @Override
+    public Enum getPrimaryKeyColumnName(){
+    
+        return this.primaryKey;
+    }
+    
+    
     private static String processValues(List<Object> values){
         
         int size = values.size();
@@ -84,8 +93,8 @@ public class SQLiteAdapter extends DML implements IAdapter {
         
         if(fieldsSize != valuesSize)
             throw new UnsupportedOperationException("Check number of passed fields or values");
-        else
-            return true;
+
+        return true;
     }
     
     

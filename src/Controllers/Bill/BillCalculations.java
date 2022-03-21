@@ -1,11 +1,8 @@
 package Controllers.Bill;
 
-import Models.Database.Bill;
-import Models.Database.Customer;
-import Models.Database.ORM.SQLiteAdapter;
 import Models.Enum.Column;
-import Models.Enum.Table;
 import Models.Enum.TypeOfUse;
+import Models.IDbContext;
 import java.util.Arrays;
 
 /**
@@ -14,6 +11,7 @@ import java.util.Arrays;
  */
 public class BillCalculations {
     
+    private final IDbContext dbContext;
     private double moneyValue;
     private int tariff;
     private String typeOfUse;
@@ -21,8 +19,10 @@ public class BillCalculations {
     private int consumption;
     private final int currentReading;
     
-    public BillCalculations(String meterCode, int currentReading){
+    public BillCalculations(IDbContext dbContext, String meterCode, int currentReading){
     
+        this.dbContext = dbContext;
+        
         this.meterCode = meterCode;
         this.moneyValue = 0.0;
         this.tariff = 0;
@@ -36,14 +36,14 @@ public class BillCalculations {
     
     private void setTypeOfUse(){
 
-        this.typeOfUse = (String) new Customer(new SQLiteAdapter(Table.Customer))
+        this.typeOfUse = (String) dbContext.getCustomerModel()
                 .getInfo(Arrays.asList(Column.TypeOfUse), this.meterCode)
                 .get(Column.TypeOfUse);
     }
     
     private void calculateConsumption(){
 
-        this.consumption = this.currentReading - (int) new Bill(new SQLiteAdapter(Table.Bill))
+        this.consumption = this.currentReading - (int) dbContext.getBillModel()
                                                         .getLastBillInfo(Arrays.asList(Column.CurrentReading), this.meterCode)
                                                         .get(Column.CurrentReading);
             

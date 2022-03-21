@@ -5,7 +5,6 @@ import Models.Database.ORM.Resource;
 import Models.Database.ORM.SelectBuilder;
 import Models.Database.ORM.SelectQuery;
 import Models.Enum.Column;
-import Models.Enum.Table;
 import Models.Database.ORM.IAdapter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,17 +19,17 @@ import java.util.Map;
  */
 abstract class ModelUtility {
     
-    private final Enum tableName;
     private final IAdapter tableInstance;
+    private final Enum primaryKey;
     private SelectQuery selectQuery;
     private ResultSet resultSet;
     private Resource resource;
     
     
-    protected ModelUtility(IAdapter adapter){
+    protected ModelUtility(IAdapter adapter, Enum primaryKeyColumnName){
     
         this.tableInstance = adapter;
-        this.tableName = adapter.getTableName();
+        this.primaryKey = primaryKeyColumnName;
     }
     
     
@@ -38,36 +37,31 @@ abstract class ModelUtility {
         
         Map<Enum, Object> info = new HashMap<>();
         
-        Enum columnName = (this.tableName == Table.Administrator ? Column.ID : Column.MeterCode);
-        
         selectQuery = new SelectBuilder(Arrays.asList(fields),
-                                        this.tableName)
-                                        .where(columnName, "=", identifier).build();
+                                        this.tableInstance.getTableName())
+                                        .where(this.primaryKey, "=", identifier).build();
         
         resultSet = QueryExecutor.executeSelectQuery(selectQuery);
+        resource = new Resource(resultSet);
 
-        try {
-        
-            resource = new Resource(resultSet);
+        if(!resource.isResultSetEmpty()){
 
-            if(!resource.isResultSetEmpty()){
-
+            try {
+            
                 for(Enum field : fields){
 
                     info.put(field, resultSet.getObject(field.name()));
                 }
 
                 resource.close();
-
                 return info;
+                
+            } catch(SQLException ex){
+                System.out.println(ex);
             }
-
-            resource.close();
-
-        } catch(SQLException ex){
-            System.out.println(ex);
         }
-        
+
+        resource.close();
         return info;
     }
     
@@ -75,31 +69,28 @@ abstract class ModelUtility {
     public boolean isNationalIdExists(String nationalId){
     
         selectQuery = new SelectBuilder(Arrays.asList(this.tableInstance.Aggregate("count", "", Column.NationalID)),
-                                        this.tableName)
+                                        this.tableInstance.getTableName())
                                         .where(Column.NationalID, "=", nationalId)
                                         .build();
         
         resultSet = QueryExecutor.executeSelectQuery(selectQuery);
+        resource = new Resource(resultSet);
 
-        try {
-        
-            resource = new Resource(resultSet);
+        if(!resource.isResultSetEmpty()){
 
-            if(!resource.isResultSetEmpty()){
-
+            try {
+                
                 boolean result = (resultSet.getInt(1) == 1);
 
                 resource.close();
-
                 return result;
+            
+            } catch(SQLException ex){
+                System.out.println(ex);
             }
-
-            resource.close();
-        
-        } catch(SQLException ex){
-            System.out.println(ex);
         }
-        
+
+        resource.close();
         return false;
     }
     

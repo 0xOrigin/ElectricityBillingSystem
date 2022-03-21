@@ -3,11 +3,10 @@ package Controllers;
 import Controllers.Email.SendEmail;
 import Controllers.Interface.ICustomerLoginController;
 import Models.AppDate.EmailConfig;
-import Models.Interface.ICustomerLogin;
-import Models.Interface.IModel;
+import Models.Enum.Column;
+import Models.IDbContext;
 import Views.IView;
-import java.io.IOException;
-import org.json.simple.parser.ParseException;
+import java.util.Arrays;
 
 /**
  *
@@ -16,18 +15,18 @@ import org.json.simple.parser.ParseException;
 public class CustomerLoginController implements ICustomerLoginController{
     
     private final IView view;
-    private final ICustomerLogin model;
+    private final IDbContext dbContext;
     
-    public CustomerLoginController(IView view, IModel model){
+    public CustomerLoginController(IView view, IDbContext dbContext){
     
         this.view = view;
-        this.model = (ICustomerLogin) model;
+        this.dbContext = dbContext;
         
-        this.start();
+        this.startView();
     }
     
     @Override
-    public final void start(){
+    public final void startView(){
     
         this.view.setController(this);
         this.view.setVisible(true);
@@ -36,13 +35,13 @@ public class CustomerLoginController implements ICustomerLoginController{
     @Override
     public boolean isValidAccount(String meterCode, String password){
     
-        return this.model.isValidAccount(meterCode, password);
+        return this.dbContext.getCustomerModel().isValidAccount(meterCode, password);
     }
     
     @Override
     public boolean isMeterCodeExists(String meterCode){
     
-        return this.model.isMeterCodeExists(meterCode);
+        return this.dbContext.getCustomerModel().isMeterCodeExists_Active(meterCode)[0];
     }
     
     @Override
@@ -50,9 +49,9 @@ public class CustomerLoginController implements ICustomerLoginController{
     
         String password = new Generator().generateCustomerPassword();
         
-        this.model.updateCustomerPassword(password, meterCode);
+        this.dbContext.getCustomerModel().update(Arrays.asList(Column.Password), Arrays.asList(password), meterCode);
         
-        String email = this.model.getEmail(meterCode);
+        String email = (String) this.dbContext.getCustomerModel().getInfo(Arrays.asList(Column.Email), meterCode).get(Column.Email);
         
         this.sendNewPasswordEmail(email, password);
     }
@@ -61,13 +60,7 @@ public class CustomerLoginController implements ICustomerLoginController{
     
         String messageSubject = "Password changed successfully";
         String messageText = "Your new Password is " + password + " .";
-        
-        try {
             
-            new SendEmail("Electricity Company", new EmailConfig()).send(email, messageSubject, messageText);
-
-        } catch (ParseException | IOException ex) {
-            System.out.println(ex);
-        } 
+        new SendEmail("Electricity Company", new EmailConfig()).send(email, messageSubject, messageText);
     }
 }

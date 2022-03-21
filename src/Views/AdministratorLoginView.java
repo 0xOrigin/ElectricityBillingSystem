@@ -4,9 +4,8 @@ import Controllers.AdminDashboardController;
 import Controllers.Interface.IAdministratorLoginController;
 import Controllers.Interface.IController;
 import Controllers.OperatorDashboardController;
-import Models.AdminDashboard;
+import Models.EBS_DbContext;
 import Models.Enum.Role;
-import Models.OperatorDashboard;
 import javax.swing.JOptionPane;
 
 /**
@@ -248,14 +247,14 @@ public class AdministratorLoginView extends javax.swing.JFrame implements IView 
     public void openAdminDashboard(){
     
         this.dispose();
-        new AdminDashboardController(new AdminDashboardView(this.previousFrame), new AdminDashboard(), this.IDField.getText());
+        new AdminDashboardController(new AdminDashboardView(this.previousFrame), new EBS_DbContext(), this.IDField.getText());
     }
     
     
     public void openOperatorDashboard(){
     
         this.dispose();
-        new OperatorDashboardController(new OperatorDashboardView(this.previousFrame), new OperatorDashboard(), this.IDField.getText());
+        new OperatorDashboardController(new OperatorDashboardView(this.previousFrame), new EBS_DbContext(), this.IDField.getText());
     }
     
     @Override

@@ -3,7 +3,7 @@ package Views;
 import Controllers.CustomerDashboardController;
 import Controllers.Interface.IController;
 import Controllers.Interface.ICustomerLoginController;
-import Models.CustomerDashboard;
+import Models.EBS_DbContext;
 import javax.swing.JOptionPane;
 
 /**
@@ -241,7 +241,7 @@ public class CustomerLoginView extends javax.swing.JFrame implements IView {
     public void redirectToCustomerDashboard(){
     
         this.dispose();
-        new CustomerDashboardController(new CustomerDashboardView(this.previousFrame), new CustomerDashboard(), this.MeterCodeField.getText());
+        new CustomerDashboardController(new CustomerDashboardView(this.previousFrame), new EBS_DbContext(), this.MeterCodeField.getText());
     }
     
     @Override

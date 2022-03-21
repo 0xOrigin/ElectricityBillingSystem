@@ -18,10 +18,16 @@ class DatabaseConnection {
     
     }
     
-    static Connection getInstance(IConnection connStrings) throws SQLException{
+    static Connection getInstance(IConnection connStrings){
     
-        if(uniqueInstance == null || uniqueInstance.isClosed())
-            uniqueInstance = new DatabaseConnection().getConnection(connStrings);
+        try {
+            
+            if(uniqueInstance == null || uniqueInstance.isClosed())
+                uniqueInstance = new DatabaseConnection().getConnection(connStrings);
+            
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
         
         return uniqueInstance;
     }

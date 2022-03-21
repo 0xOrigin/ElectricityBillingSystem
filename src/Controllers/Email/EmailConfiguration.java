@@ -1,7 +1,7 @@
 package Controllers.Email;
 
 import Models.AppDate.IEmail;
-import Models.Enum.Name;
+import Models.Enum.AppData;
 import java.util.Properties;
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
@@ -21,10 +21,10 @@ class EmailConfiguration {
 
     EmailConfiguration(IEmail emailConfig) {
         
-        this.senderMail = emailConfig.get(Name.SenderEmail);
-        this.senderPassword = emailConfig.get(Name.SenderPassword);
-        this.host = emailConfig.get(Name.Host);
-        this.port = emailConfig.get(Name.Port);
+        this.senderMail = emailConfig.get(AppData.SenderEmail);
+        this.senderPassword = emailConfig.get(AppData.SenderPassword);
+        this.host = emailConfig.get(AppData.Host);
+        this.port = emailConfig.get(AppData.Port);
         
         createSession();
     }

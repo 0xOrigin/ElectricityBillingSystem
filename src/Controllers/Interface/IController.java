@@ -6,6 +6,6 @@ package Controllers.Interface;
  */
 public interface IController {
     
-    void start();
+    void startView();
     
 }

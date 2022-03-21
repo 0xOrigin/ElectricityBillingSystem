@@ -12,40 +12,68 @@ import java.sql.SQLException;
  */
 public class Resource {
     
-    private final Connection connection;
-    private final Statement statement;
-    private final ResultSet resultSet;
+    private Connection connection;
+    private Statement statement;
+    private ResultSet resultSet;
     
     
-    public Resource(ResultSet resource) throws SQLException{
+    public Resource(ResultSet resource){
     
         this.resultSet = resource;
-        this.statement = resource.getStatement();
-        this.connection = resource.getStatement().getConnection();
+        
+        try {
+            
+            this.statement = resource.getStatement();
+            this.connection = resource.getStatement().getConnection();
+            
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
     }
     
     
-    public Resource(Statement resource) throws SQLException{
+    public Resource(Statement resource){
     
         this.resultSet = null;
         this.statement = resource;
-        this.connection = resource.getConnection();
-    }
-    
-    
-    public boolean isResultSetEmpty() throws SQLException{
-    
-        if(resultSet == null || resultSet.isClosed())
-            Debugger.emptyResultSet(true);
         
-        return resultSet == null || resultSet.isClosed();
+        try {
+            
+            this.connection = resource.getConnection();
+        
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        } 
     }
     
     
-    public void close() throws SQLException{
+    public boolean isResultSetEmpty(){
     
-        this.statement.close();
-        this.connection.close();
+        try {
+            
+            if(resultSet == null || resultSet.isClosed())
+                Debugger.emptyResultSet(true);
+            
+            return resultSet == null || resultSet.isClosed();
+            
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        
+        return false;
+    }
+    
+    
+    public void close(){
+    
+        try {
+            
+            this.statement.close();
+            this.connection.close();
+            
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
     }
     
 }

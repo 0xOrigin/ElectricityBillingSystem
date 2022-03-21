@@ -4,7 +4,7 @@ package Models.Enum;
  *
  * @author xorigin
  */
-public enum Name {
+public enum AppData {
     
     // For App_Data
     

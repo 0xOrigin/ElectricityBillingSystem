@@ -1,8 +1,7 @@
 package Controllers;
 
 import Controllers.Interface.IOperatorDashboardController;
-import Models.Interface.IModel;
-import Models.Interface.IOperatorDashboard;
+import Models.IDbContext;
 import Views.IView;
 
 /**
@@ -12,20 +11,20 @@ import Views.IView;
 public class OperatorDashboardController implements IOperatorDashboardController{
     
     private final IView view;
-    private final IOperatorDashboard model;
+    private final IDbContext dbContext;
     private final String ID;
     
-    public OperatorDashboardController(IView view, IModel model, String loggedinID){
+    public OperatorDashboardController(IView view, IDbContext dbContext, String loggedinID){
     
         this.view = view;
-        this.model = (IOperatorDashboard) model;
+        this.dbContext = dbContext;
         this.ID = loggedinID;
         
-        this.start();
+        this.startView();
     }
     
     @Override
-    public final void start(){
+    public final void startView(){
     
         this.view.setController(this);
         this.view.setVisible(true);

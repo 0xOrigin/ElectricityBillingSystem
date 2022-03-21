@@ -1,12 +1,11 @@
 package Controllers;
 
 import Controllers.Interface.ICustomerDashboardController;
-import Controllers.Bill.ReadingValidation;
+import Controllers.Bill.ReadingValidator;
 import Controllers.Bill.BillCalculations;
 import Models.Enum.Column;
-import Models.Interface.IModel;
+import Models.IDbContext;
 import Views.IView;
-import Models.Interface.ICustomerDashboard;
 import java.util.Arrays;
 
 /**
@@ -16,20 +15,20 @@ import java.util.Arrays;
 public class CustomerDashboardController implements ICustomerDashboardController {
     
     private final IView view;
-    private final ICustomerDashboard model;
+    private final IDbContext dbContext;
     private final String meterCode;
     
-    public CustomerDashboardController(IView view, IModel model, String loggedinMeterCode){
+    public CustomerDashboardController(IView view, IDbContext dbContext, String loggedinMeterCode){
     
         this.view = view;
-        this.model = (ICustomerDashboard) model;
+        this.dbContext = dbContext;
         this.meterCode = loggedinMeterCode;
 
-        this.start();
+        this.startView();
     }
     
     @Override
-    public final void start(){
+    public final void startView(){
     
         this.view.setController(this);
         this.view.setVisible(true);
@@ -38,34 +37,34 @@ public class CustomerDashboardController implements ICustomerDashboardController
     @Override
     public String getActivationState(){
             
-        return this.model.getActivationState(this.meterCode);
+        return (String) this.dbContext.getCustomerModel().getInfo(Arrays.asList(Column.Activation), this.meterCode).get(Column.Activation);
     }
     
     @Override
     public String getLastReading(){
 
-        return String.valueOf(this.model.getLastBillInfo(Arrays.asList(Column.CurrentReading), meterCode).get(Column.CurrentReading));
+        return String.valueOf(this.dbContext.getBillModel().getLastBillInfo(Arrays.asList(Column.CurrentReading), this.meterCode).get(Column.CurrentReading));
     }
     
     @Override
     public String[] getLastReleaseDate(){
         
-        // dd/dddd -> index 0 -> dd, index 1 - > dddd    
-        return ((String) this.model.getLastBillInfo(Arrays.asList(Column.ReleaseDate), meterCode).get(Column.ReleaseDate)).split("/");
+        // dd/dddd [index 0 -> dd, index 1 - > dddd].
+        return ((String) this.dbContext.getBillModel().getLastBillInfo(Arrays.asList(Column.ReleaseDate), meterCode).get(Column.ReleaseDate)).split("/");
     }
     
     @Override
     public boolean isValidReading(int currentReading){
 
-        return new ReadingValidation().isValid(currentReading, meterCode);
+        return new ReadingValidator(this.dbContext).validate(currentReading, meterCode);
     }
     
     @Override
     public void releaseNewBill(int currentReading, String releaseDate){
     
-        BillCalculations billCalculations = new BillCalculations(this.meterCode, currentReading);
+        BillCalculations billCalculations = new BillCalculations(this.dbContext ,this.meterCode, currentReading);
 
-        this.model.releaseNewBill(this.meterCode, releaseDate, currentReading,
+        this.dbContext.getBillModel().releaseNewBill(this.meterCode, releaseDate, currentReading,
                 billCalculations.getConsumption(), billCalculations.getMoneyValue(), billCalculations.getTariff()
         );
     }

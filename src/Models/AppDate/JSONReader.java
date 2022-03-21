@@ -14,14 +14,21 @@ import java.util.Map;
  */
 class JSONReader {
 
-    private final Object parsedFile;
-    private final JSONObject json;
+    private Object parsedFile;
+    private JSONObject json;
     
     
-    JSONReader(String filePath) throws IOException, ParseException {
+    JSONReader(String filePath){
         
-        this.parsedFile = new JSONParser().parse(new FileReader(filePath));
-        this.json = (JSONObject) this.parsedFile;
+        try {
+        
+            this.parsedFile = new JSONParser().parse(new FileReader(filePath));
+            this.json = (JSONObject) this.parsedFile;
+        
+        } catch(IOException | ParseException exception){
+            System.out.println(exception);
+        }
+        
     }
     
     

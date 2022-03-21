@@ -18,7 +18,7 @@ import java.util.Map;
  *
  * @author xorigin
  */
-public class Bill {
+public class Bill{
     
     private final IAdapter billTable;
     private SelectQuery selectQuery;
@@ -97,13 +97,12 @@ public class Bill {
                                         .build();
         
         resultSet = QueryExecutor.executeSelectQuery(selectQuery);
-        
-        try {
-        
-            resource = new Resource(resultSet);
+        resource = new Resource(resultSet);
 
-            if(!resource.isResultSetEmpty()){
+        if(!resource.isResultSetEmpty()){
 
+            try {
+                
                 while(resultSet.next()){
 
                     billInfo = new HashMap<>();
@@ -115,16 +114,13 @@ public class Bill {
 
                     billsContainer.add(billInfo);
                 }
-
-                resource.close();
+            
+            } catch(SQLException ex){
+                System.out.println(ex);
             }
-
-            resource.close();
-        
-        } catch(SQLException ex){
-            System.out.println(ex);
         }
-        
+
+        resource.close();
         return billsContainer;
     }
     
@@ -145,13 +141,12 @@ public class Bill {
                                         .build();
         
         resultSet = QueryExecutor.executeSelectQuery(selectQuery);
-        
-        try {
-        
-            resource = new Resource(resultSet);
+        resource = new Resource(resultSet);
 
-            if(!resource.isResultSetEmpty()){
+        if(!resource.isResultSetEmpty()){
 
+            try {
+                
                 while(resultSet.next()){
 
                     billInfo = new HashMap<>();
@@ -163,16 +158,13 @@ public class Bill {
 
                     billsContainer.add(billInfo);
                 }
-
-                resource.close();
+                
+            } catch(SQLException ex){
+                System.out.println(ex);
             }
-
-            resource.close();
-        
-        } catch(SQLException ex){
-            System.out.println(ex);
         }
-        
+
+        resource.close();
         return billsContainer;
     }
     
@@ -187,26 +179,23 @@ public class Bill {
                                         .build();
 
         resultSet = QueryExecutor.executeSelectQuery(selectQuery);
+        resource = new Resource(resultSet);
 
-        try {
-        
-            resource = new Resource(resultSet);
+        if(!resource.isResultSetEmpty()){
 
-            if(!resource.isResultSetEmpty()){
-
+            try {
+                
                 int result = resultSet.getInt(1);
 
                 resource.close();
-
                 return result;
+                
+            } catch(SQLException ex){
+                System.out.println(ex);
             }
-
-            resource.close();
-        
-        } catch(SQLException ex){
-            System.out.println(ex);
         }
-        
+
+        resource.close();
         return 0;
     }
     
@@ -221,21 +210,21 @@ public class Bill {
                                         .build();
         
         resultSet = QueryExecutor.executeSelectQuery(selectQuery);
-        
-        try {
-        
-            resource = new Resource(resultSet);
+        resource = new Resource(resultSet);
 
-            if(!resource.isResultSetEmpty()){
+        if(!resource.isResultSetEmpty()){
 
+            try {
+            
                 statInfo.put(ConsumptionStat.SumOfConsumptions, resultSet.getInt(1));
 
-                resource.close();
+            } catch(SQLException ex){
+                System.out.println(ex);
             }
-    
-        } catch(SQLException ex){
-            System.out.println(ex);
         }
+        
+        resource.close();
+
         
         selectQuery = new SelectBuilder(Arrays.asList(billTable.Aggregate("count", "distinct", Column.MeterCode)),
                                         Table.Bill)
@@ -249,24 +238,20 @@ public class Bill {
                                         .build();
         
         resultSet = QueryExecutor.executeSelectQuery(selectQuery);
-        
-        try {
-        
-            resource = new Resource(resultSet);
+        resource = new Resource(resultSet);
 
-            if(!resource.isResultSetEmpty()){
+        if(!resource.isResultSetEmpty()){
 
+            try {
+            
                 statInfo.put(ConsumptionStat.ActualNumberOfConsumers, resultSet.getInt(1));
 
-                resource.close();
+            } catch(SQLException ex){
+                System.out.println(ex);
             }
-
-            resource.close();
-        
-        } catch(SQLException ex){
-            System.out.println(ex);
         }
-        
+
+        resource.close();
         return statInfo;
     }
     
@@ -282,29 +267,23 @@ public class Bill {
                                         .build();
         
         resultSet = QueryExecutor.executeSelectQuery(selectQuery);
-        
-        try {
-        
-            resource = new Resource(resultSet);
+        resource = new Resource(resultSet);
 
-            if(!resource.isResultSetEmpty()){
+        if(!resource.isResultSetEmpty()){
 
+            try {
+            
                 for(Enum field : fields){
 
                     info.put(field, resultSet.getObject(field.name()));
                 }
 
-                resource.close();
-
-                return info;
+            } catch(SQLException ex){
+                System.out.println(ex);
             }
-
-            resource.close();
-        
-        } catch(SQLException ex){
-            System.out.println(ex);
         }
-        
+
+        resource.close();
         return info;
     }
 }

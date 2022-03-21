@@ -4,11 +4,8 @@ import Controllers.Email.SendEmail;
 import Controllers.Interface.INewCustomerController;
 import Models.AppDate.EmailConfig;
 import Models.Enum.ActivationState;
-import Models.Interface.IModel;
-import Models.Interface.INewCustomer;
+import Models.IDbContext;
 import Views.IView;
-import java.io.IOException;
-import org.json.simple.parser.ParseException;
 
 /**
  *
@@ -17,23 +14,23 @@ import org.json.simple.parser.ParseException;
 public class NewCustomerController implements INewCustomerController {
     
     private final IView view;
-    private final INewCustomer model;
+    private final IDbContext dbContext;
     private final Generator generator;
     private final Validator validator;
     
-    public NewCustomerController(IView view, IModel model){
+    public NewCustomerController(IView view, IDbContext dbContext){
     
         this.view = view;
-        this.model = (INewCustomer) model;
+        this.dbContext = dbContext;
         
         this.generator = new Generator();
         this.validator = new Validator();
         
-        this.start();
+        this.startView();
     }
     
     @Override
-    public final void start(){
+    public final void startView(){
     
         this.view.setController(this);
         this.view.setVisible(true);
@@ -74,16 +71,16 @@ public class NewCustomerController implements INewCustomerController {
     public void registerCustomer(String name, String nationalID, String address, String email, String governmentCode,
                                  String phoneNumber, String typeOfUse, String propertyOwnershipContract){
     
-        String gender, dateOfBirth, dateOfContract, meterCode = "", password = "";
+        String gender, dateOfBirth, dateOfContract, meterCode, password;
         
         gender = this.generator.generateGender(nationalID);
         dateOfBirth = this.generator.generateDateOfBirth(nationalID);
         dateOfContract = this.generator.generateDateOfContract();
                     
-        meterCode = this.generator.generateMeterCode(governmentCode, nationalID, this.model.getNumOfCustomers());
+        meterCode = this.generator.generateMeterCode(governmentCode, nationalID, this.dbContext.getCustomerModel().getNumOfCustomers());
         password = this.generator.generateCustomerPassword();
 
-        this.model.insert(name, nationalID, address, email, governmentCode, phoneNumber,
+        this.dbContext.getCustomerModel().insert(name, nationalID, address, email, governmentCode, phoneNumber,
                           gender, dateOfBirth, typeOfUse, meterCode, password,
                           ActivationState.Active.name(), dateOfContract, propertyOwnershipContract);
         
@@ -95,13 +92,7 @@ public class NewCustomerController implements INewCustomerController {
         String messageSubject = "Successful Registration";
         String messageText = "Your meter code is " + meterCode + "\n" 
                            + "Your Password is " + password + " .";
-        
-        try {
-            
-           new SendEmail("Electricity Company", new EmailConfig()).send(email, messageSubject, messageText);
-            
-        } catch (ParseException | IOException ex) {
-            System.out.println(ex);
-        } 
+
+        new SendEmail("Electricity Company", new EmailConfig()).send(email, messageSubject, messageText);
     }
 }

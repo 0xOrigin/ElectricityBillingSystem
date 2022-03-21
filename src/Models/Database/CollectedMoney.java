@@ -12,7 +12,7 @@ import Models.Database.ORM.*;
  *
  * @author xorigin
  */
-public class CollectedMoney {
+public class CollectedMoney{
     
     private final IAdapter collectedMoneyTable;
     private SelectQuery selectQuery;
@@ -34,27 +34,25 @@ public class CollectedMoney {
     public String getTotalCollected(){
     
         selectQuery = new SelectBuilder(Arrays.asList(Column.TotalCollected), Table.CollectedMoney).build();
+        
         resultSet = QueryExecutor.executeSelectQuery(selectQuery);
-        
-        try {
-        
-            resource = new Resource(resultSet);
+        resource = new Resource(resultSet);
 
-            if(!resource.isResultSetEmpty()){
+        if(!resource.isResultSetEmpty()){
 
+            try {
+            
                 String result = String.format("%,.2f", resultSet.getDouble(Column.TotalCollected.name()));
 
                 resource.close();
-
                 return result;
+            
+            } catch(SQLException ex){
+                System.out.println(ex);
             }
-
-            resource.close();
-        
-        } catch(SQLException ex){
-            System.out.println(ex);
         }
-        
+
+        resource.close();
         return "";
     }
     

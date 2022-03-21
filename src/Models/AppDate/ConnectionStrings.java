@@ -1,10 +1,7 @@
 package Models.AppDate;
 
-import Models.Enum.Name;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import Models.Enum.AppData;
 import java.util.Map;
-import org.json.simple.parser.ParseException;
 
 /**
  *
@@ -15,22 +12,22 @@ public class ConnectionStrings implements IConnection {
     private final JSONReader jsonReader;
     private final Map<Object, Object> connMap;
     
-    public ConnectionStrings() throws FileNotFoundException, IOException, ParseException{
+    public ConnectionStrings(){
     
         this.jsonReader = new JSONReader(new ConfigPath().get());
         
-        this.connMap = (Map) this.jsonReader.getMap(Name.ConnectionStrings);
+        this.connMap = (Map) this.jsonReader.getMap(AppData.ConnectionStrings);
     }
     
     @Override
     public String getClassName(){
     
-        return (String) this.connMap.get(Name.ClassName.name());
+        return (String) this.connMap.get(AppData.ClassName.name());
     }
     
     @Override
     public String getConnectionPath(){
     
-        return (String) this.connMap.get(Name.ClassPath.name()) + ":" + (String) this.connMap.get(Name.DatabasePath.name());
+        return (String) this.connMap.get(AppData.ClassPath.name()) + ":" + (String) this.connMap.get(AppData.DatabasePath.name());
     }
 }

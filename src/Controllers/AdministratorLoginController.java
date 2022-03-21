@@ -3,11 +3,10 @@ package Controllers;
 import Controllers.Email.SendEmail;
 import Controllers.Interface.IAdministratorLoginController;
 import Models.AppDate.EmailConfig;
-import Models.Interface.IAdministratorLogin;
-import Models.Interface.IModel;
+import Models.Enum.Column;
+import Models.IDbContext;
 import Views.IView;
-import java.io.IOException;
-import org.json.simple.parser.ParseException;
+import java.util.Arrays;
 
 /**
  *
@@ -16,18 +15,18 @@ import org.json.simple.parser.ParseException;
 public class AdministratorLoginController implements IAdministratorLoginController {
     
     private final IView view;
-    private final IAdministratorLogin model;
+    private final IDbContext dbContext;
     
-    public AdministratorLoginController(IView view, IModel model){
+    public AdministratorLoginController(IView view, IDbContext dbContext){
     
         this.view = view;
-        this.model = (IAdministratorLogin) model;
+        this.dbContext = dbContext;
         
-        this.start();
+        this.startView();
     }
     
     @Override
-    public final void start(){
+    public final void startView(){
     
         this.view.setController(this);
         this.view.setVisible(true);
@@ -36,13 +35,13 @@ public class AdministratorLoginController implements IAdministratorLoginControll
     @Override
     public boolean isValidAccount(String ID, String password) {
         
-        return this.model.isValidAccount(ID, password);
+        return this.dbContext.getAdministratorModel().isValidAccount(ID, password);
     }
 
     @Override
     public boolean isAdministratorExists(String ID) {
         
-        return this.model.isAdministratorExists(ID);
+        return this.dbContext.getAdministratorModel().isAdministratorExists(ID);
     }
 
     @Override
@@ -50,9 +49,9 @@ public class AdministratorLoginController implements IAdministratorLoginControll
         
         String password = new Generator().generateAdministratorPassword();
         
-        this.model.updateAdministratorPassword(password, ID);
+        this.dbContext.getAdministratorModel().update(Arrays.asList(Column.Password), Arrays.asList(password), ID);
         
-        String email = this.model.getEmail(ID);
+        String email = (String) this.dbContext.getAdministratorModel().getInfo(Arrays.asList(Column.Email), ID).get(Column.Email);
         
         this.sendNewPasswordEmail(email, password);
     }
@@ -60,21 +59,15 @@ public class AdministratorLoginController implements IAdministratorLoginControll
     @Override
     public String getRole(String ID) {
         
-        return this.model.getRole(ID);
+        return (String) this.dbContext.getAdministratorModel().getInfo(Arrays.asList(Column.Role), ID).get(Column.Role);
     }
 
     private void sendNewPasswordEmail(String email, String password){
     
         String messageSubject = "Password changed successfully";
         String messageText = "Your new Password is " + password + " .";
-        
-        try {
             
-            new SendEmail("Electricity Company", new EmailConfig()).send(email, messageSubject, messageText);
-
-        } catch (ParseException | IOException ex) {
-            System.out.println(ex);
-        } 
+        new SendEmail("Electricity Company", new EmailConfig()).send(email, messageSubject, messageText);
     }
     
 }

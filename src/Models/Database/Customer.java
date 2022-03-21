@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
  *
  * @author xorigin
  */
-public class Customer extends ModelUtility {
+public class Customer extends ModelUtility{
     
     private final IAdapter customerTable;
     private SelectQuery selectQuery;
@@ -26,7 +26,7 @@ public class Customer extends ModelUtility {
     
     public Customer(IAdapter adapter){
     
-        super(adapter);
+        super(adapter, adapter.getPrimaryKeyColumnName());
         this.customerTable = adapter;
     }
     
@@ -46,14 +46,14 @@ public class Customer extends ModelUtility {
         
         customerTable.insert(fields, values);
         
-        Bill billDB = new Bill(new SQLiteAdapter(Table.Bill));
+        Bill billTable = new Bill(new SQLiteAdapter(Table.Bill, Column.Num));
         
         // For example 03/2022
         Matcher matcher = Pattern.compile("(\\d\\d\\/\\d\\d\\d\\d)").matcher(dateOfContract);
         
         String releaseDate = (matcher.find() ? matcher.group(1) : dateOfContract.substring(0, 7));
         
-        billDB.insert(governmentCode, meterCode, 0, 0, 0, 0, 0.0, PaymentState.Paid.name(), releaseDate);
+        billTable.insert(governmentCode, meterCode, 0, 0, 0, 0, 0.0, PaymentState.Paid.name(), releaseDate);
     }
     
     
@@ -68,7 +68,7 @@ public class Customer extends ModelUtility {
         customerTable.delete(customerTable.Where(Column.MeterCode, "=", meterCode));
     }
     
-    
+        
     public void toggleActivation(String meterCode){
     
         String currentState = (String) getInfo(Arrays.asList(Column.Activation), meterCode).get(Column.Activation);
@@ -88,26 +88,23 @@ public class Customer extends ModelUtility {
                                         .build();
         
         resultSet = QueryExecutor.executeSelectQuery(selectQuery);
+        resource = new Resource(resultSet);
 
-        try {
-        
-            resource = new Resource(resultSet);
+        if(!resource.isResultSetEmpty()){
 
-            if(!resource.isResultSetEmpty()){
-
+            try {
+                
                 int result = resultSet.getInt(1);
 
                 resource.close();
-
                 return result;
+                
+            } catch(SQLException ex){
+                System.out.println(ex);
             }
-
-            resource.close();
-        
-        } catch(SQLException ex){
-            System.out.println(ex);
         }
-        
+
+        resource.close();
         return 0;
     }
     
@@ -121,31 +118,30 @@ public class Customer extends ModelUtility {
                                         .where(Column.MeterCode, "=", meterCode).build();
         
         resultSet = QueryExecutor.executeSelectQuery(selectQuery);
+        resource = new Resource(resultSet);
 
-        try {
-        
-            resource = new Resource(resultSet);
+        if(!resource.isResultSetEmpty()){
 
-            if(!resource.isResultSetEmpty()){
-
+            try {
+                
+                // To get the existence of meter code.
                 meterStatus[0] = (resultSet.getInt(1) == 1);
 
+                // To get the activation state.
                 if(!meterStatus[0])
                     meterStatus[1] = false;
                 else
                     meterStatus[1] = (resultSet.getString(Column.Activation.name()).equals(ActivationState.Active.name()));
 
                 resource.close();
-
                 return meterStatus;
+                
+            } catch(SQLException ex){
+                System.out.println(ex);
             }
-
-            resource.close();
-        
-        } catch(SQLException ex){
-            System.out.println(ex);
         }
-        
+
+        resource.close();
         return meterStatus;
     }
     
@@ -161,26 +157,23 @@ public class Customer extends ModelUtility {
                                         .build();
 
         resultSet = QueryExecutor.executeSelectQuery(selectQuery);
+        resource = new Resource(resultSet);
 
-        try {
+        if(!resource.isResultSetEmpty()){
 
-            resource = new Resource(resultSet);
-
-            if(!resource.isResultSetEmpty()){
-
+            try {
+                
                 boolean result = resultSet.getString(Column.Password.name()).equals(password);
 
                 resource.close();
-
                 return result;
+                
+            } catch(SQLException ex){
+                System.out.println(ex);
             }
-
-            resource.close();
-        
-        } catch(SQLException ex){
-            System.out.println(ex);
         }
-        
+
+        resource.close();
         return false;
     }
     

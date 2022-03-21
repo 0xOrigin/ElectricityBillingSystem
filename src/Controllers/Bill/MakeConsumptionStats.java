@@ -1,9 +1,7 @@
 package Controllers.Bill;
 
-import Models.Database.Bill;
-import Models.Database.ORM.SQLiteAdapter;
 import Models.Enum.ConsumptionStat;
-import Models.Enum.Table;
+import Models.IDbContext;
 import java.util.Map;
 
 /**
@@ -14,9 +12,9 @@ public class MakeConsumptionStats {
     
     private final Map<Enum, Object> statInfo;
     
-    public MakeConsumptionStats(String governmentCode){
+    public MakeConsumptionStats(IDbContext dbContext, String governmentCode){
     
-        this.statInfo = new Bill(new SQLiteAdapter(Table.Bill)).getConsumptionStatforRegion(governmentCode);    
+        this.statInfo = dbContext.getBillModel().getConsumptionStatforRegion(governmentCode);    
     }
     
     public Map<Enum, Object> make(){

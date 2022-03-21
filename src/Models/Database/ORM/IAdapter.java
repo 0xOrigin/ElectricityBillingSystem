@@ -24,4 +24,6 @@ public interface IAdapter {
     
     Enum getTableName();
     
+    Enum getPrimaryKeyColumnName();    
+
 }

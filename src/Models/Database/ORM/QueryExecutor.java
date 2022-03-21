@@ -3,14 +3,12 @@ package Models.Database.ORM;
 import Models.Database.ORM.Utilities.ImageConverter;
 import Models.Database.ORM.Utilities.Debugger;
 import Models.AppDate.ConnectionStrings;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.Queue;
-import org.json.simple.parser.ParseException;
 
 /**
  *
@@ -22,14 +20,14 @@ public class QueryExecutor {
         
         if(query.isBlank())
             throw new UnsupportedOperationException("Query is Empty!");
-        
-        try {
             
-            PreparedStatement preparedStatement = prepareQuery(query, imagesPaths);
+        PreparedStatement preparedStatement = prepareQuery(query, imagesPaths);
+
+        try {
             
             // Determine the type of Query to execute
             switch(query.split(" ")[0].toLowerCase()){
-                
+
                 case "insert":
                     Debugger.printQuery(query, true);
                     preparedStatement.execute();
@@ -46,13 +44,11 @@ public class QueryExecutor {
                     throw new UnsupportedOperationException("Invalid Query Syntax!");
             }
             
-            Resource resource = new Resource(preparedStatement);
-            resource.close();
-            
-        } catch (SQLException exception) {
-            System.out.println(exception);
+        } catch(SQLException ex){
+            System.out.println(ex);
         }
         
+        new Resource(preparedStatement).close();       
     }
     
     
@@ -61,16 +57,14 @@ public class QueryExecutor {
         String query = selectQuery.toString();
         Debugger.printQuery(query, true);
         
-        
         if(query.isBlank() || !query.toLowerCase().contains("select"))
             throw new UnsupportedOperationException("Invalid Query!");
         
+        PreparedStatement preparedStatement = prepareQuery(query, new LinkedList<>());
         ResultSet resultSet = null;
-        PreparedStatement preparedStatement;
         
         try {
-            
-            preparedStatement = prepareQuery(query, new LinkedList<>());
+
             resultSet = preparedStatement.executeQuery();
             
         } catch (SQLException exception) {
@@ -81,18 +75,16 @@ public class QueryExecutor {
     }
     
     
-    private static PreparedStatement prepareQuery(String query, Queue<String> imagesPaths) throws SQLException{
+    private static PreparedStatement prepareQuery(String query, Queue<String> imagesPaths){
     
         // Lazy connection to SQLite
-        Connection connection;
+        Connection connection = DatabaseConnection.getInstance(new ConnectionStrings());
         PreparedStatement preparedStatement = null;
-        
+
         try {
-            
-            connection = DatabaseConnection.getInstance(new ConnectionStrings());
-            
-            preparedStatement = connection.prepareStatement(query);
         
+            preparedStatement = connection.prepareStatement(query);
+
             if(query.contains(" ? ")){
 
                 int iterator = 1;
@@ -102,8 +94,8 @@ public class QueryExecutor {
                     preparedStatement.setBytes(iterator++, ImageConverter.readImage(imagesPaths.remove()));
                 }
             }
-              
-        } catch (IOException | ParseException ex) {
+            
+        } catch (SQLException ex){
             System.out.println(ex);
         }
            
