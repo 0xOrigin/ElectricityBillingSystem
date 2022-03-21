@@ -22,7 +22,7 @@ public class Administrator extends ModelUtility{
     
     public Administrator(IAdapter adapter){
     
-        super(adapter, adapter.getPrimaryKeyColumnName());
+        super(adapter);
         this.administratorTable = adapter;
     }
     

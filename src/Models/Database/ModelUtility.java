@@ -26,10 +26,10 @@ abstract class ModelUtility {
     private Resource resource;
     
     
-    protected ModelUtility(IAdapter adapter, Enum primaryKeyColumnName){
+    protected ModelUtility(IAdapter adapter){
     
         this.tableInstance = adapter;
-        this.primaryKey = primaryKeyColumnName;
+        this.primaryKey = adapter.getPrimaryKeyColumnName();
     }
     
     

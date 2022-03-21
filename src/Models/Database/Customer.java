@@ -26,7 +26,7 @@ public class Customer extends ModelUtility{
     
     public Customer(IAdapter adapter){
     
-        super(adapter, adapter.getPrimaryKeyColumnName());
+        super(adapter);
         this.customerTable = adapter;
     }
     
