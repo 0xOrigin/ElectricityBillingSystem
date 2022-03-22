@@ -41,7 +41,7 @@ public class CustomerLoginController implements ICustomerLoginController{
     @Override
     public boolean isMeterCodeExists(String meterCode){
     
-        return this.dbContext.getCustomerModel().isMeterCodeExists_Active(meterCode)[0];
+        return this.dbContext.getCustomerModel().isMeterCodeExists(meterCode);
     }
     
     @Override

@@ -2,7 +2,6 @@ package Models.Database;
 
 import Models.Enum.Table;
 import Models.Enum.Column;
-import Models.Enum.ConsumptionStat;
 import Models.Database.ORM.IAdapter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,14 +19,14 @@ import java.util.Map;
  */
 public class Bill{
     
-    private final IAdapter billTable;
+    private final IAdapter billModel;
     private SelectQuery selectQuery;
     private ResultSet resultSet;
     private Resource resource;
     
     public Bill(IAdapter adapter){
     
-        this.billTable = adapter;
+        this.billModel = adapter;
     }
     
     void insert(
@@ -43,13 +42,13 @@ public class Bill{
         List<Object> values = Arrays.asList(governmentCode, meterCode, tariff, lastReading, currentReading, consumption,
                                             moneyValue, status, releaseDate);
         
-        billTable.insert(fields, values);
+        this.billModel.insert(fields, values);
     }
     
     
     public void payBill(String meterCode){
     
-        selectQuery = new SelectBuilder(Arrays.asList(Column.Num), Table.Bill)
+        this.selectQuery = new SelectBuilder(Arrays.asList(Column.Num), Table.Bill)
                                         .where(Column.MeterCode, "=", meterCode)
                                         .operator("and")
                                         .where(Column.Status, "=", PaymentState.Unpaid.name())
@@ -57,176 +56,154 @@ public class Bill{
                                         .limit("1")
                                         .build();
         
-        billTable.update(Arrays.asList(Column.Status), Arrays.asList(PaymentState.Paid.name()), billTable.Where(Column.Num, "in", selectQuery.toString()));
+        this.billModel.update(Arrays.asList(Column.Status), Arrays.asList(PaymentState.Paid.name()), this.billModel.Where(Column.Num, "in", selectQuery.toString()));
     }
     
     
     public void releaseNewBill(String meterCode, String releaseDate, int currentReading, int consumption, double moneyValue, int tariff){
         
-        Map<Enum, Object> info = getLastBillInfo(Arrays.asList(Column.CurrentReading, Column.GovernmentCode), meterCode);
+        Map<Enum, Object> info = this.getLastBillInfo(Arrays.asList(Column.CurrentReading, Column.GovernmentCode), meterCode);
         
         int lastReading = (int) info.get(Column.CurrentReading);
         
-        insert((String) info.get(Column.GovernmentCode), meterCode,
-               tariff, lastReading, currentReading, consumption,
-               moneyValue, PaymentState.Unpaid.name(), releaseDate);
+        this.insert((String) info.get(Column.GovernmentCode), meterCode,
+                    tariff, lastReading, currentReading, consumption,
+                    moneyValue, PaymentState.Unpaid.name(), releaseDate);
     }
     
     
     public void complainAboutBill(String complain, int billNumber){
     
-        billTable.update(Arrays.asList(Column.Complain),
-                         Arrays.asList(complain),
-                         billTable.Where(Column.Num, "=", billNumber));
+        this.billModel.update(Arrays.asList(Column.Complain),
+                              Arrays.asList(complain),
+                              this.billModel.Where(Column.Num, "=", billNumber));
     }
     
     
     public List<Map<Enum, Object>> getAllBillsOfMeterCode(String meterCode){
-    
-        Map<Enum, Object> billInfo;
-        List<Map<Enum, Object>> billsContainer = new ArrayList<>();
         
         List<Enum> fields = Arrays.asList(Column.Num, Column.GovernmentCode, Column.Tariff, Column.LastReading,
                                          Column.CurrentReading, Column.Consumption, Column.MoneyValue, Column.Status,
                                          Column.ReleaseDate);
         
-        selectQuery = new SelectBuilder(Arrays.asList(fields),
+        this.selectQuery = new SelectBuilder(Arrays.asList(fields),
                                         Table.Bill)
                                         .where(Column.MeterCode, "=", meterCode)
                                         .orderBy(Column.Num, "ASC")
                                         .build();
         
-        resultSet = QueryExecutor.executeSelectQuery(selectQuery);
-        resource = new Resource(resultSet);
-
-        if(!resource.isResultSetEmpty()){
-
-            try {
-                
-                while(resultSet.next()){
-
-                    billInfo = new HashMap<>();
-
-                    for(Enum field : fields){
-
-                        billInfo.put(field, resultSet.getObject(field.name()));
-                    }
-
-                    billsContainer.add(billInfo);
-                }
-            
-            } catch(SQLException ex){
-                System.out.println(ex);
-            }
-        }
-
-        resource.close();
-        return billsContainer;
+        return this.getAllBills(fields, this.selectQuery);
     }
     
     
     public List<Map<Enum, Object>> getAllBillsOfRegion(String governmentCode){
-    
-        Map<Enum, Object> billInfo;
-        List<Map<Enum, Object>> billsContainer = new ArrayList<>();
-        
+
         List<Enum> fields = Arrays.asList(Column.Num, Column.MeterCode, Column.Tariff, Column.LastReading,
                                          Column.CurrentReading, Column.Consumption, Column.MoneyValue, Column.Status,
                                          Column.ReleaseDate);
         
-        selectQuery = new SelectBuilder(Arrays.asList(fields),
+        this.selectQuery = new SelectBuilder(Arrays.asList(fields),
                                         Table.Bill)
                                         .where(Column.GovernmentCode, "=", governmentCode)
                                         .orderBy(Column.Num, "ASC")
                                         .build();
         
-        resultSet = QueryExecutor.executeSelectQuery(selectQuery);
-        resource = new Resource(resultSet);
-
-        if(!resource.isResultSetEmpty()){
-
-            try {
+        return this.getAllBills(fields, this.selectQuery);
+    }
+    
+    private List<Map<Enum, Object>> getAllBills(List<Enum> fields, SelectQuery selectQuery){
+    
+        Map<Enum, Object> billInfo;
+        List<Map<Enum, Object>> billsContainer = new ArrayList<>();
+        
+        this.resultSet = QueryExecutor.executeSelectQuery(selectQuery);
+        this.resource = new Resource(this.resultSet);
+        
+        try { 
+        
+            if(!this.resource.isResultSetEmpty()){
                 
-                while(resultSet.next()){
+                while(this.resultSet.next()){
 
                     billInfo = new HashMap<>();
 
-                    for(Enum field : fields){
-
-                        billInfo.put(field, resultSet.getObject(field.name()));
-                    }
-
+                    for(Enum field : fields)
+                        billInfo.put(field, this.resultSet.getObject(field.name()));
+                    
                     billsContainer.add(billInfo);
                 }
-                
-            } catch(SQLException ex){
-                System.out.println(ex);
             }
+            
+        } catch(SQLException ex){
+            System.out.println(ex);
+        } finally {
+            this.resource.close();
         }
-
-        resource.close();
+        
         return billsContainer;
     }
     
-    
     public int getNumOfUnpaidBills(String meterCode){
     
-        selectQuery = new SelectBuilder(Arrays.asList(billTable.Aggregate("count", "", Column.Status)),
-                                        Table.Bill)
-                                        .where(Column.MeterCode, "=", meterCode)
-                                        .operator("and")
-                                        .where(Column.Status, "=", PaymentState.Unpaid.name())
-                                        .build();
+        int numOfUnpaidBills = 0;
+        
+        this.selectQuery = new SelectBuilder(Arrays.asList(this.billModel.Aggregate("count", "", Column.Status)),
+                                             Table.Bill)
+                                            .where(Column.MeterCode, "=", meterCode)
+                                            .operator("and")
+                                            .where(Column.Status, "=", PaymentState.Unpaid.name())
+                                            .build();
 
-        resultSet = QueryExecutor.executeSelectQuery(selectQuery);
-        resource = new Resource(resultSet);
+        this.resultSet = QueryExecutor.executeSelectQuery(this.selectQuery);
+        this.resource = new Resource(this.resultSet);
 
-        if(!resource.isResultSetEmpty()){
-
-            try {
-                
-                int result = resultSet.getInt(1);
-
-                resource.close();
-                return result;
-                
-            } catch(SQLException ex){
-                System.out.println(ex);
-            }
+        try { 
+        
+            if(!this.resource.isResultSetEmpty())
+                numOfUnpaidBills = this.resultSet.getInt(1);
+            
+        } catch(SQLException ex){
+            System.out.println(ex);
+        } finally {
+            this.resource.close();
         }
-
-        resource.close();
-        return 0;
+        
+        return numOfUnpaidBills;
     }
     
+  
+    public int getSumOfConsumptionsForRegion(String governmentCode){
     
-    public Map<Enum, Object> getConsumptionStatforRegion(String governmentCode){
-    
-        Map<Enum, Object> statInfo = new HashMap<>();
+        int sumOfConsumptions = 0;
         
-        selectQuery = new SelectBuilder(Arrays.asList(billTable.Aggregate("sum", "", Column.Consumption)),
+        this.selectQuery = new SelectBuilder(Arrays.asList(this.billModel.Aggregate("sum", "", Column.Consumption)),
                                         Table.Bill)
                                         .where(Column.GovernmentCode, "=", governmentCode)
                                         .build();
         
-        resultSet = QueryExecutor.executeSelectQuery(selectQuery);
-        resource = new Resource(resultSet);
-
-        if(!resource.isResultSetEmpty()){
-
-            try {
+        this.resultSet = QueryExecutor.executeSelectQuery(this.selectQuery);
+        this.resource = new Resource(this.resultSet);
+        
+        try { 
+        
+            if(!this.resource.isResultSetEmpty())
+                sumOfConsumptions = this.resultSet.getInt(1);
             
-                statInfo.put(ConsumptionStat.SumOfConsumptions, resultSet.getInt(1));
-
-            } catch(SQLException ex){
-                System.out.println(ex);
-            }
+        } catch(SQLException ex){
+            System.out.println(ex);
+        } finally {
+            this.resource.close();
         }
         
-        resource.close();
-
+        return sumOfConsumptions;
+    }
+    
+    
+    public int getActualNumberOfConsumersForRegion(String governmentCode){
+    
+        int actualNumberOfConsumers = 0;
         
-        selectQuery = new SelectBuilder(Arrays.asList(billTable.Aggregate("count", "distinct", Column.MeterCode)),
+        this.selectQuery = new SelectBuilder(Arrays.asList(this.billModel.Aggregate("count", "distinct", Column.MeterCode)),
                                         Table.Bill)
                                         .where(Column.GovernmentCode, "=", governmentCode)
                                         .operator("and")
@@ -237,53 +214,50 @@ public class Bill{
                                         .controlPrecedence(")")
                                         .build();
         
-        resultSet = QueryExecutor.executeSelectQuery(selectQuery);
-        resource = new Resource(resultSet);
-
-        if(!resource.isResultSetEmpty()){
-
-            try {
+        this.resultSet = QueryExecutor.executeSelectQuery(this.selectQuery);
+        this.resource = new Resource(this.resultSet);
+        
+        try { 
+        
+            if(!this.resource.isResultSetEmpty())
+                actualNumberOfConsumers = this.resultSet.getInt(1);
             
-                statInfo.put(ConsumptionStat.ActualNumberOfConsumers, resultSet.getInt(1));
-
-            } catch(SQLException ex){
-                System.out.println(ex);
-            }
+        } catch(SQLException ex){
+            System.out.println(ex);
+        } finally {
+            this.resource.close();
         }
-
-        resource.close();
-        return statInfo;
+        
+        return actualNumberOfConsumers;
     }
     
     
     public Map<Enum, Object> getLastBillInfo(List<Enum> fields, String meterCode){
     
-        Map<Enum, Object> info = new HashMap<>();
+        Map<Enum, Object> lastBillInfo = new HashMap<>();
         
-        selectQuery = new SelectBuilder(Arrays.asList(fields), Table.Bill)
+        this.selectQuery = new SelectBuilder(Arrays.asList(fields), Table.Bill)
                                         .where(Column.MeterCode, "=", meterCode)
                                         .orderBy(Column.Num, "DESC")
                                         .limit("1")
                                         .build();
         
-        resultSet = QueryExecutor.executeSelectQuery(selectQuery);
-        resource = new Resource(resultSet);
+        this.resultSet = QueryExecutor.executeSelectQuery(this.selectQuery);
+        this.resource = new Resource(this.resultSet);
 
-        if(!resource.isResultSetEmpty()){
-
-            try {
+        try { 
+        
+            if(!this.resource.isResultSetEmpty())
+                for(Enum field : fields)
+                    lastBillInfo.put(field, this.resultSet.getObject(field.name()));
             
-                for(Enum field : fields){
-
-                    info.put(field, resultSet.getObject(field.name()));
-                }
-
-            } catch(SQLException ex){
-                System.out.println(ex);
-            }
+        } catch(SQLException ex){
+            System.out.println(ex);
+        } finally {
+            this.resource.close();
         }
 
-        resource.close();
-        return info;
+        return lastBillInfo;
     }
+    
 }

@@ -51,10 +51,10 @@ public class Resource {
     
         try {
             
-            if(resultSet == null || resultSet.isClosed())
+            if(this.resultSet == null || this.resultSet.isClosed())
                 Debugger.emptyResultSet(true);
             
-            return resultSet == null || resultSet.isClosed();
+            return this.resultSet == null || this.resultSet.isClosed();
             
         } catch (SQLException ex) {
             System.out.println(ex);

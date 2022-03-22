@@ -15,7 +15,7 @@ import Models.Database.ORM.*;
  */
 public class Administrator extends ModelUtility{
     
-    private final IAdapter administratorTable;
+    private final IAdapter administratorModel;
     private SelectQuery selectQuery;
     private ResultSet resultSet;
     private Resource resource;
@@ -23,7 +23,7 @@ public class Administrator extends ModelUtility{
     public Administrator(IAdapter adapter){
     
         super(adapter);
-        this.administratorTable = adapter;
+        this.administratorModel = adapter;
     }
     
     public void insert(
@@ -39,106 +39,80 @@ public class Administrator extends ModelUtility{
         List<Object> values = Arrays.asList(name, nationalID, address, email, phoneNumber, gender,
                                                 dateOfBirth, ID, password, role, dateOfContract);
         
-        administratorTable.insert(fields, values);
+        this.administratorModel.insert(fields, values);
     }
     
     
     public void update(List<Enum> fields, List<Object> values, String ID){
     
-        administratorTable.update(fields, values, administratorTable.Where(Column.ID, "=", ID));
+        this.administratorModel.update(fields, values, this.administratorModel.Where(Column.ID, "=", ID));
     }
     
     
     public void delete(String ID){
     
-        administratorTable.delete(administratorTable.Where(Column.ID, "=", ID));
+        this.administratorModel.delete(this.administratorModel.Where(Column.ID, "=", ID));
     }
     
     
     public boolean isAdministratorExists(String ID){
 
-        selectQuery = new SelectBuilder(Arrays.asList(administratorTable.Aggregate("count", "", Column.ID)),
+        boolean isExists = false;
+        
+        this.selectQuery = new SelectBuilder(Arrays.asList(this.administratorModel.Aggregate("count", "", Column.ID)),
                                         Table.Administrator)
                                         .where(Column.ID, "=", ID).build();
 
-        resultSet = QueryExecutor.executeSelectQuery(selectQuery);
-        resource = new Resource(resultSet);
+        this.resultSet = QueryExecutor.executeSelectQuery(this.selectQuery);
+        this.resource = new Resource(this.resultSet);
 
-        if(!resource.isResultSetEmpty()){
-
-            try {
-                
-                boolean result = (resultSet.getInt(1) == 1);
-
-                resource.close();
-                return result;
+        try { 
+        
+            if(!this.resource.isResultSetEmpty())
+                isExists = (this.resultSet.getInt(1) == 1);
             
-            } catch(SQLException ex){
-                System.out.println(ex);
-            }
+        } catch(SQLException ex){
+            System.out.println(ex);
+        } finally {
+            this.resource.close();
         }
-
-        resource.close();
-        return false;
+        
+        return isExists;
     }
     
     
-    public int getNumOfSpecificRole(Enum role){
+    public int getNumOfRegisteredInRole(Enum role){
 
-        selectQuery = new SelectBuilder(Arrays.asList(administratorTable.Aggregate("count", "", Column.Role)),
+        int numOfRegisteredInRole = 0;
+        
+        this.selectQuery = new SelectBuilder(Arrays.asList(this.administratorModel.Aggregate("count", "", Column.Role)),
                                         Table.Administrator)
                                         .where(Column.Role, "=", role.name()).build();
 
-        resultSet = QueryExecutor.executeSelectQuery(selectQuery);
-        resource = new Resource(resultSet);
+        this.resultSet = QueryExecutor.executeSelectQuery(this.selectQuery);
+        this.resource = new Resource(this.resultSet);
 
-        if(!resource.isResultSetEmpty()){
-
-            try {
-                
-                int result = resultSet.getInt(1);
-
-                resource.close();
-                return result;
-                
-            } catch(SQLException ex){
-                System.out.println(ex);
-            }
+        try { 
+        
+            if(!this.resource.isResultSetEmpty())
+                numOfRegisteredInRole = this.resultSet.getInt(1);
+            
+        } catch(SQLException ex){
+            System.out.println(ex);
+        } finally {
+            this.resource.close();
         }
-
-        resource.close();
-        return 0;
+        
+        return numOfRegisteredInRole;
     }
     
      
     public boolean isValidAccount(String ID, String password){
-    
-        if(!isAdministratorExists(ID))
+
+        if(!this.isAdministratorExists(ID))
             return false;
         
-        selectQuery = new SelectBuilder(Arrays.asList(Column.Password),
-                                        Table.Administrator)
-                                        .where(Column.ID, "=", ID).build();
-
-        resultSet = QueryExecutor.executeSelectQuery(selectQuery);
-        resource = new Resource(resultSet);
-
-        if(!resource.isResultSetEmpty()){
-
-            try {
-            
-                boolean result = resultSet.getString(Column.Password.name()).equals(password);
-
-                resource.close();
-                return result;
-                
-            } catch(SQLException ex){
-                System.out.println(ex);
-            }
-        }
-    
-        resource.close();
-        return false;
+        return super.isPasswordMatch(ID, password);
     }
     
 }

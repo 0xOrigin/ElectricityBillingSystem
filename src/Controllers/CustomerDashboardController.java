@@ -50,13 +50,13 @@ public class CustomerDashboardController implements ICustomerDashboardController
     public String[] getLastReleaseDate(){
         
         // dd/dddd [index 0 -> dd, index 1 - > dddd].
-        return ((String) this.dbContext.getBillModel().getLastBillInfo(Arrays.asList(Column.ReleaseDate), meterCode).get(Column.ReleaseDate)).split("/");
+        return ((String) this.dbContext.getBillModel().getLastBillInfo(Arrays.asList(Column.ReleaseDate), this.meterCode).get(Column.ReleaseDate)).split("/");
     }
     
     @Override
     public boolean isValidReading(int currentReading){
 
-        return new ReadingValidator(this.dbContext).validate(currentReading, meterCode);
+        return new ReadingValidator(this.dbContext).validate(currentReading, this.meterCode);
     }
     
     @Override

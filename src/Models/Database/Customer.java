@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 import Models.Database.ORM.*;
+import Models.EBS_DbContext;
 import Models.Enum.PaymentState;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -19,7 +20,7 @@ import java.util.regex.Pattern;
  */
 public class Customer extends ModelUtility{
     
-    private final IAdapter customerTable;
+    private final IAdapter customerModel;
     private SelectQuery selectQuery;
     private ResultSet resultSet;
     private Resource resource;
@@ -27,7 +28,7 @@ public class Customer extends ModelUtility{
     public Customer(IAdapter adapter){
     
         super(adapter);
-        this.customerTable = adapter;
+        this.customerModel = adapter;
     }
     
     public void insert(
@@ -44,137 +45,135 @@ public class Customer extends ModelUtility{
         List<Object> values = Arrays.asList(name, nationalID, address, email, governmentCode, phoneNumber, gender, dateOfBirth,
                                             typeOfUse, meterCode, password, activation, dateOfContract, propertyOwnershipContract);
         
-        customerTable.insert(fields, values);
-        
-        Bill billTable = new Bill(new SQLiteAdapter(Table.Bill, Column.Num));
-        
+        this.customerModel.insert(fields, values);
+        this.insertFirstCustomerBill(governmentCode, meterCode, dateOfContract);
+    }
+    
+    private void insertFirstCustomerBill(String governmentCode, String meterCode, String dateOfContract){
+                
+        new EBS_DbContext().getBillModel()
+            .insert(governmentCode, meterCode, 0, 0, 0, 0, 0.0, PaymentState.Paid.name(), this.getReleaseDate(dateOfContract));
+    }
+    
+    private String getReleaseDate(String dateOfContract){
+    
         // For example 03/2022
         Matcher matcher = Pattern.compile("(\\d\\d\\/\\d\\d\\d\\d)").matcher(dateOfContract);
         
-        String releaseDate = (matcher.find() ? matcher.group(1) : dateOfContract.substring(0, 7));
-        
-        billTable.insert(governmentCode, meterCode, 0, 0, 0, 0, 0.0, PaymentState.Paid.name(), releaseDate);
+        return (matcher.find() ? matcher.group(1) : dateOfContract.substring(0, 7));
     }
-    
     
     public void update(List<Enum> fields, List<Object> values, String meterCode){
     
-        customerTable.update(fields, values, customerTable.Where(Column.MeterCode, "=", meterCode));
+        this.customerModel.update(fields, values, this.customerModel.Where(Column.MeterCode, "=", meterCode));
     }
     
     
     public void delete(String meterCode){
     
-        customerTable.delete(customerTable.Where(Column.MeterCode, "=", meterCode));
+        this.customerModel.delete(this.customerModel.Where(Column.MeterCode, "=", meterCode));
     }
     
         
     public void toggleActivation(String meterCode){
     
-        String currentState = (String) getInfo(Arrays.asList(Column.Activation), meterCode).get(Column.Activation);
+        String currentActivationState = (String) super.getInfo(Arrays.asList(Column.Activation), meterCode).get(Column.Activation);
         
-        currentState = (currentState.equals(ActivationState.Active.name()) ? 
+        currentActivationState = (currentActivationState.equals(ActivationState.Active.name()) ? 
                         ActivationState.Inactive.name() : ActivationState.Active.name());
             
-        customerTable.update(Arrays.asList(Column.Activation), Arrays.asList(currentState),
-                             customerTable.Where(Column.MeterCode, "=", meterCode));
+        this.customerModel.update(Arrays.asList(Column.Activation), Arrays.asList(currentActivationState),
+                             this.customerModel.Where(Column.MeterCode, "=", meterCode));
     }
     
     
     public int getNumOfCustomers(){
     
-        selectQuery = new SelectBuilder(Arrays.asList(customerTable.Aggregate("count", "", Column.MeterCode)),
+        int numOfCustomers = 0;
+        
+        this.selectQuery = new SelectBuilder(Arrays.asList(this.customerModel.Aggregate("count", "", Column.MeterCode)),
                                         Table.Customer)
                                         .build();
         
-        resultSet = QueryExecutor.executeSelectQuery(selectQuery);
-        resource = new Resource(resultSet);
+        this.resultSet = QueryExecutor.executeSelectQuery(this.selectQuery);
+        this.resource = new Resource(this.resultSet);
 
-        if(!resource.isResultSetEmpty()){
-
-            try {
-                
-                int result = resultSet.getInt(1);
-
-                resource.close();
-                return result;
-                
-            } catch(SQLException ex){
-                System.out.println(ex);
-            }
+        try { 
+        
+            if(!this.resource.isResultSetEmpty())
+                numOfCustomers = this.resultSet.getInt(1);
+            
+        } catch(SQLException ex){
+            System.out.println(ex);
+        } finally {
+            this.resource.close();
         }
-
-        resource.close();
-        return 0;
+        
+        return numOfCustomers;
     }
     
     
-    public boolean[] isMeterCodeExists_Active(String meterCode){
+    public boolean isMeterCodeExists(String meterCode){
         
-        boolean[] meterStatus = new boolean[2];
+        boolean isExists = false;
         
-        selectQuery = new SelectBuilder(Arrays.asList(customerTable.Aggregate("count", "", Column.MeterCode), Column.Activation),
-                                        Table.Customer)
-                                        .where(Column.MeterCode, "=", meterCode).build();
+        this.selectQuery = new SelectBuilder(Arrays.asList(this.customerModel.Aggregate("count", "", Column.MeterCode)),
+                                             Table.Customer)
+                                            .where(Column.MeterCode, "=", meterCode).build();
         
-        resultSet = QueryExecutor.executeSelectQuery(selectQuery);
-        resource = new Resource(resultSet);
+        this.resultSet = QueryExecutor.executeSelectQuery(this.selectQuery);
+        this.resource = new Resource(this.resultSet);
 
-        if(!resource.isResultSetEmpty()){
-
-            try {
-                
-                // To get the existence of meter code.
-                meterStatus[0] = (resultSet.getInt(1) == 1);
-
-                // To get the activation state.
-                if(!meterStatus[0])
-                    meterStatus[1] = false;
-                else
-                    meterStatus[1] = (resultSet.getString(Column.Activation.name()).equals(ActivationState.Active.name()));
-
-                resource.close();
-                return meterStatus;
-                
-            } catch(SQLException ex){
-                System.out.println(ex);
-            }
+        try { 
+        
+            if(!this.resource.isResultSetEmpty())
+                isExists = (this.resultSet.getInt(1) == 1);
+            
+        } catch(SQLException ex){
+            System.out.println(ex);
+        } finally {
+            this.resource.close();
         }
+        
+        return isExists;
+    }
+    
+    
+    public boolean isMeterCodeActive(String meterCode){
+    
+        boolean isActive = false;
+        
+        if(!this.isMeterCodeExists(meterCode))
+            return false;
+        
+        this.selectQuery = new SelectBuilder(Arrays.asList(Column.Activation),
+                                             Table.Customer)
+                                            .where(Column.MeterCode, "=", meterCode).build();
+        
+        this.resultSet = QueryExecutor.executeSelectQuery(this.selectQuery);
+        this.resource = new Resource(this.resultSet);
 
-        resource.close();
-        return meterStatus;
+        try { 
+        
+            if(!this.resource.isResultSetEmpty())
+                isActive = (this.resultSet.getString(Column.Activation.name()).equals(ActivationState.Active.name()));
+            
+        } catch(SQLException ex){
+            System.out.println(ex);
+        } finally {
+            this.resource.close();
+        }
+        
+        return isActive;
     }
     
     
     public boolean isValidAccount(String meterCode, String password){
-    
-        if(!isMeterCodeExists_Active(meterCode)[0])
+
+        if(!this.isMeterCodeExists(meterCode))
             return false;
         
-        selectQuery = new SelectBuilder(Arrays.asList(Column.Password),
-                                        Table.Customer)
-                                        .where(Column.MeterCode, "=", meterCode)
-                                        .build();
-
-        resultSet = QueryExecutor.executeSelectQuery(selectQuery);
-        resource = new Resource(resultSet);
-
-        if(!resource.isResultSetEmpty()){
-
-            try {
-                
-                boolean result = resultSet.getString(Column.Password.name()).equals(password);
-
-                resource.close();
-                return result;
-                
-            } catch(SQLException ex){
-                System.out.println(ex);
-            }
-        }
-
-        resource.close();
-        return false;
+        return super.isPasswordMatch(meterCode, password);
     }
     
 }

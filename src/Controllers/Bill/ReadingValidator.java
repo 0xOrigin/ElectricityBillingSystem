@@ -19,7 +19,7 @@ public class ReadingValidator {
     
     public boolean validate(int currentReading, String meterCode){
     
-        return currentReading >= (int) dbContext.getBillModel().getLastBillInfo(Arrays.asList(Column.CurrentReading), meterCode).get(Column.CurrentReading);
+        return currentReading >= (int) this.dbContext.getBillModel().getLastBillInfo(Arrays.asList(Column.CurrentReading), meterCode).get(Column.CurrentReading);
     }
     
 }

@@ -19,7 +19,7 @@ import java.util.Map;
  */
 abstract class ModelUtility {
     
-    private final IAdapter tableInstance;
+    private final IAdapter modelInstance;
     private final Enum primaryKey;
     private SelectQuery selectQuery;
     private ResultSet resultSet;
@@ -28,7 +28,7 @@ abstract class ModelUtility {
     
     protected ModelUtility(IAdapter adapter){
     
-        this.tableInstance = adapter;
+        this.modelInstance = adapter;
         this.primaryKey = adapter.getPrimaryKeyColumnName();
     }
     
@@ -37,61 +37,79 @@ abstract class ModelUtility {
         
         Map<Enum, Object> info = new HashMap<>();
         
-        selectQuery = new SelectBuilder(Arrays.asList(fields),
-                                        this.tableInstance.getTableName())
+        this.selectQuery = new SelectBuilder(Arrays.asList(fields),
+                                        this.modelInstance.getTableName())
                                         .where(this.primaryKey, "=", identifier).build();
         
-        resultSet = QueryExecutor.executeSelectQuery(selectQuery);
-        resource = new Resource(resultSet);
+        this.resultSet = QueryExecutor.executeSelectQuery(this.selectQuery);
+        this.resource = new Resource(this.resultSet);
 
-        if(!resource.isResultSetEmpty()){
-
-            try {
+        try { 
+        
+            if(!this.resource.isResultSetEmpty())
+                for(Enum field : fields)
+                    info.put(field, this.resultSet.getObject(field.name()));
             
-                for(Enum field : fields){
-
-                    info.put(field, resultSet.getObject(field.name()));
-                }
-
-                resource.close();
-                return info;
-                
-            } catch(SQLException ex){
-                System.out.println(ex);
-            }
+        } catch(SQLException ex){
+            System.out.println(ex);
+        } finally {
+            this.resource.close();
         }
-
-        resource.close();
+        
         return info;
     }
     
     
     public boolean isNationalIdExists(String nationalId){
     
-        selectQuery = new SelectBuilder(Arrays.asList(this.tableInstance.Aggregate("count", "", Column.NationalID)),
-                                        this.tableInstance.getTableName())
+        boolean isExists = false;
+        
+        this.selectQuery = new SelectBuilder(Arrays.asList(this.modelInstance.Aggregate("count", "", Column.NationalID)),
+                                        this.modelInstance.getTableName())
                                         .where(Column.NationalID, "=", nationalId)
                                         .build();
         
-        resultSet = QueryExecutor.executeSelectQuery(selectQuery);
-        resource = new Resource(resultSet);
+        this.resultSet = QueryExecutor.executeSelectQuery(this.selectQuery);
+        this.resource = new Resource(this.resultSet);
 
-        if(!resource.isResultSetEmpty()){
-
-            try {
-                
-                boolean result = (resultSet.getInt(1) == 1);
-
-                resource.close();
-                return result;
+        try { 
+        
+            if(!this.resource.isResultSetEmpty())
+                isExists = (this.resultSet.getInt(1) == 1);
             
-            } catch(SQLException ex){
-                System.out.println(ex);
-            }
+        } catch(SQLException ex){
+            System.out.println(ex);
+        } finally {
+            this.resource.close();
+        }
+        
+        return isExists;
+    }
+    
+    public boolean isPasswordMatch(String identifier, String password){
+    
+        boolean isMatch = false;
+        
+        this.selectQuery = new SelectBuilder(Arrays.asList(Column.Password),
+                                        this.modelInstance.getTableName())
+                                        .where(this.primaryKey, "=", identifier)
+                                        .build();
+
+        this.resultSet = QueryExecutor.executeSelectQuery(this.selectQuery);
+        this.resource = new Resource(this.resultSet);
+
+        try { 
+        
+            if(!this.resource.isResultSetEmpty())
+                isMatch = this.resultSet.getString(Column.Password.name()).equals(password);
+            
+        } catch(SQLException ex){
+            System.out.println(ex);
+        } finally {
+            this.resource.close();
         }
 
-        resource.close();
-        return false;
+        return isMatch;
     }
     
 }

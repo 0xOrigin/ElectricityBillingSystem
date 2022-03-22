@@ -14,46 +14,44 @@ import Models.Database.ORM.*;
  */
 public class CollectedMoney{
     
-    private final IAdapter collectedMoneyTable;
+    private final IAdapter collectedMoneyModel;
     private SelectQuery selectQuery;
     private ResultSet resultSet;
     private Resource resource;
     
     public CollectedMoney(IAdapter adapter){
 
-        this.collectedMoneyTable = adapter;
+        this.collectedMoneyModel = adapter;
     }
     
     public void collectPayment(double moneyValue){
     
-        collectedMoneyTable.update(Arrays.asList(Column.TotalCollected),
+        this.collectedMoneyModel.update(Arrays.asList(Column.TotalCollected),
                                    Arrays.asList(Column.TotalCollected.name() + "+" + moneyValue),
                                    "1 == 1");
     }
     
-    public String getTotalCollected(){
+    public double getTotalCollected(){
     
-        selectQuery = new SelectBuilder(Arrays.asList(Column.TotalCollected), Table.CollectedMoney).build();
+        double totalCollected = 0.0;
         
-        resultSet = QueryExecutor.executeSelectQuery(selectQuery);
-        resource = new Resource(resultSet);
+        this.selectQuery = new SelectBuilder(Arrays.asList(Column.TotalCollected), Table.CollectedMoney).build();
+        
+        this.resultSet = QueryExecutor.executeSelectQuery(this.selectQuery);
+        this.resource = new Resource(this.resultSet);
 
-        if(!resource.isResultSetEmpty()){
-
-            try {
+        try { 
+        
+            if(!this.resource.isResultSetEmpty())
+                totalCollected = this.resultSet.getDouble(Column.TotalCollected.name());
             
-                String result = String.format("%,.2f", resultSet.getDouble(Column.TotalCollected.name()));
-
-                resource.close();
-                return result;
-            
-            } catch(SQLException ex){
-                System.out.println(ex);
-            }
+        } catch(SQLException ex){
+            System.out.println(ex);
+        } finally {
+            this.resource.close();
         }
-
-        resource.close();
-        return "";
+        
+        return totalCollected;
     }
     
 }

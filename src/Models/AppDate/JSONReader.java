@@ -34,13 +34,13 @@ class JSONReader {
     
     Object getValue(Enum name){
         
-        return json.get(name.name());
+        return this.json.get(name.name());
     }
     
     
     Map<Object, Object> getMap(Enum name){
         
-        Map map = (Map) json.get(name.name());
+        Map map = (Map) this.json.get(name.name());
         Map<Object, Object> data = new HashMap<>();
         
         Iterator<Map.Entry> iterator = map.entrySet().iterator();

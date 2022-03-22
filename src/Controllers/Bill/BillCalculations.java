@@ -36,14 +36,14 @@ public class BillCalculations {
     
     private void setTypeOfUse(){
 
-        this.typeOfUse = (String) dbContext.getCustomerModel()
+        this.typeOfUse = (String) this.dbContext.getCustomerModel()
                 .getInfo(Arrays.asList(Column.TypeOfUse), this.meterCode)
                 .get(Column.TypeOfUse);
     }
     
     private void calculateConsumption(){
 
-        this.consumption = this.currentReading - (int) dbContext.getBillModel()
+        this.consumption = this.currentReading - (int) this.dbContext.getBillModel()
                                                         .getLastBillInfo(Arrays.asList(Column.CurrentReading), this.meterCode)
                                                         .get(Column.CurrentReading);
             
@@ -53,70 +53,70 @@ public class BillCalculations {
     
         this.moneyValue = 0.0;
         
-        if (typeOfUse.equals(TypeOfUse.Home.name())){
+        if (this.typeOfUse.equals(TypeOfUse.Home.name())){
             
-            if (consumption >= 0 && consumption <= 50) {
+            if (this.consumption >= 0 && this.consumption <= 50) {
                 
-                this.moneyValue = 0.38 * consumption;
+                this.moneyValue = 0.38 * this.consumption;
                 this.tariff = 1;
                 
-            } else if (consumption <= 100) {
+            } else if (this.consumption <= 100) {
                 
-                this.moneyValue = 19 + 0.48 * (consumption - 50);
+                this.moneyValue = 19 + 0.48 * (this.consumption - 50);
                 this.tariff = 2;
                 
-            } else if (consumption <= 200) {
+            } else if (this.consumption <= 200) {
                 
-                this.moneyValue = 0.65 * consumption;
+                this.moneyValue = 0.65 * this.consumption;
                 this.tariff = 3;
                 
-            } else if (consumption <= 350) {
+            } else if (this.consumption <= 350) {
                 
-                this.moneyValue = 130 + 0.96 * (consumption - 200);
+                this.moneyValue = 130 + 0.96 * (this.consumption - 200);
                 this.tariff = 4;
                 
-            } else if (consumption <= 650) {
+            } else if (this.consumption <= 650) {
                 
-                this.moneyValue = 274 + 1.18 * (consumption - 350);
+                this.moneyValue = 274 + 1.18 * (this.consumption - 350);
                 this.tariff = 5;
                 
-            } else if (consumption <= 1000) {
+            } else if (this.consumption <= 1000) {
                 
-                this.moneyValue = 1.18 * consumption;
+                this.moneyValue = 1.18 * this.consumption;
                 this.tariff = 6;
                 
             } else {
                 
-                this.moneyValue = 1.45 * consumption;
+                this.moneyValue = 1.45 * this.consumption;
                 this.tariff = 7;
                 
             }
             
         } else { // For Commercial use.
             
-            if (consumption <= 100) {
+            if (this.consumption <= 100) {
                 
-                this.moneyValue = consumption * 0.65;
+                this.moneyValue = this.consumption * 0.65;
                 this.tariff = 1;
                 
-            } else if (consumption <= 200) {
+            } else if (this.consumption <= 200) {
                 
-                this.moneyValue = consumption * 1.20;
+                this.moneyValue = this.consumption * 1.20;
                 this.tariff = 2;
                 
-            } else if (consumption <= 600) {
+            } else if (this.consumption <= 600) {
                 
-                this.moneyValue = consumption * 1.40;
+                this.moneyValue = this.consumption * 1.40;
                 this.tariff = 3;
                 
-            } else if (consumption <= 1000) {
+            } else if (this.consumption <= 1000) {
                 
-                this.moneyValue = 840 + (consumption - 600) * 1.55;
+                this.moneyValue = 840 + (this.consumption - 600) * 1.55;
                 this.tariff = 4;
                 
             } else {
                 
-                this.moneyValue = consumption * 1.60;
+                this.moneyValue = this.consumption * 1.60;
                 this.tariff = 5;   
             }
         }     

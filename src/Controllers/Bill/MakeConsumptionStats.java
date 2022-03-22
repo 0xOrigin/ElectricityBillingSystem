@@ -2,6 +2,7 @@ package Controllers.Bill;
 
 import Models.Enum.ConsumptionStat;
 import Models.IDbContext;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -10,24 +11,32 @@ import java.util.Map;
  */
 public class MakeConsumptionStats {
     
-    private final Map<Enum, Object> statInfo;
+    private final IDbContext dbContext;
+    private final String governmentCode;
     
     public MakeConsumptionStats(IDbContext dbContext, String governmentCode){
     
-        this.statInfo = dbContext.getBillModel().getConsumptionStatforRegion(governmentCode);    
+        this.dbContext = dbContext;
+        this.governmentCode = governmentCode;
     }
     
     public Map<Enum, Object> make(){
     
-        int actualNumOfConsumers = (int) statInfo.get(ConsumptionStat.ActualNumberOfConsumers);
+        int actualNumOfConsumers = this.dbContext.getBillModel().getActualNumberOfConsumersForRegion(this.governmentCode);
+        
+        int sumOfConsumptions = this.dbContext.getBillModel().getSumOfConsumptionsForRegion(this.governmentCode);
+        
         double averageConsumption;
         
         if(actualNumOfConsumers != 0)
-            averageConsumption = (int) statInfo.get(ConsumptionStat.SumOfConsumptions) / (double) actualNumOfConsumers;
+            averageConsumption = sumOfConsumptions / (double) actualNumOfConsumers;
         else
             averageConsumption = 0.0;
         
+        Map<Enum, Object> statInfo = new HashMap<>();
         
+        statInfo.put(ConsumptionStat.ActualNumberOfConsumers, actualNumOfConsumers);
+        statInfo.put(ConsumptionStat.SumOfConsumptions, sumOfConsumptions);
         statInfo.put(ConsumptionStat.AverageConsumption, averageConsumption);
     
         return statInfo;
