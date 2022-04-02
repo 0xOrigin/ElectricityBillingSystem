@@ -27,10 +27,10 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="AdministratorButton" min="-2" pref="115" max="-2" attributes="0"/>
-                  <Component id="OldCutomerButton" min="-2" pref="115" max="-2" attributes="0"/>
-                  <Component id="NewCustomerButton" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Component id="AdministratorButton" alignment="0" pref="115" max="32767" attributes="0"/>
+                  <Component id="OldCutomerButton" alignment="0" pref="115" max="32767" attributes="0"/>
+                  <Component id="NewCustomerButton" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="79" max="32767" attributes="0"/>
           </Group>
@@ -39,9 +39,9 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
               <Component id="NewCustomerButton" min="-2" pref="38" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Component id="OldCutomerButton" min="-2" pref="41" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Component id="AdministratorButton" min="-2" pref="44" max="-2" attributes="0"/>

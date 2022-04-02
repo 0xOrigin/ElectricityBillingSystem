@@ -1,13 +1,13 @@
 package Views;
 
-import Controllers.Interface.IAdminDashboardController;
-import Controllers.Interface.IController;
+import Controllers.Interface.AdminDashboardController;
+import Controllers.Interface.Controller;
 
 /**
  *
  * @author xorigin
  */
-public class AdminDashboardView extends javax.swing.JFrame implements IView {
+public class AdminDashboardView extends javax.swing.JFrame implements View {
 
     /**
      * Creates new form AdminDashboardView
@@ -42,6 +42,8 @@ public class AdminDashboardView extends javax.swing.JFrame implements IView {
         UpdateCustomerButton = new javax.swing.JButton();
         DeleteAdministratorButton = new javax.swing.JButton();
         DeleteCustomerButton = new javax.swing.JButton();
+        SignedAsField = new javax.swing.JLabel();
+        SignedAsLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Admin Dashboard");
@@ -140,18 +142,29 @@ public class AdminDashboardView extends javax.swing.JFrame implements IView {
             }
         });
 
+        SignedAsField.setFont(new java.awt.Font("Chandas", 1, 14)); // NOI18N
+        SignedAsField.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        SignedAsField.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                SignedAsFieldAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+
+        SignedAsLabel.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        SignedAsLabel.setForeground(new java.awt.Color(51, 51, 51));
+        SignedAsLabel.setText("Signed as: ");
+        SignedAsLabel.setOpaque(true);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(139, 139, 139)
-                .addComponent(FrameDescription)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(115, Short.MAX_VALUE)
+                .addContainerGap(104, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(MakeConsumptionStatButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ViewTotalCollectedButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -168,6 +181,19 @@ public class AdminDashboardView extends javax.swing.JFrame implements IView {
                                 .addComponent(UpdateCustomerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(DeleteCustomerButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(101, 101, 101))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(128, 128, 128)
+                        .addComponent(FrameDescription))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(167, 167, 167)
+                        .addComponent(SignedAsLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(SignedAsField, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(172, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,10 +203,14 @@ public class AdminDashboardView extends javax.swing.JFrame implements IView {
                     .addComponent(BackButton, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
                     .addComponent(FrameDescription, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(SignedAsField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SignedAsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(MakeConsumptionStatButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(ViewTotalCollectedButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(ViewBillsOfRegionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -243,6 +273,11 @@ public class AdminDashboardView extends javax.swing.JFrame implements IView {
         // TODO add your handling code here:
     }//GEN-LAST:event_DeleteCustomerButtonActionPerformed
 
+    private void SignedAsFieldAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_SignedAsFieldAncestorAdded
+
+        this.SignedAsField.setText(this.controller.getLoggedInID());
+    }//GEN-LAST:event_SignedAsFieldAncestorAdded
+
     @Override
     public final void setSpecialSettings() {
         
@@ -252,9 +287,9 @@ public class AdminDashboardView extends javax.swing.JFrame implements IView {
     }
     
     @Override
-    public void setController(IController controller){
+    public void setController(Controller controller){
     
-        this.controller = (IAdminDashboardController) controller;
+        this.controller = (AdminDashboardController) controller;
     }
     
     @Override
@@ -263,7 +298,7 @@ public class AdminDashboardView extends javax.swing.JFrame implements IView {
         return this.previousFrame;
     }
     
-    private IAdminDashboardController controller;
+    private AdminDashboardController controller;
     private final javax.swing.JFrame previousFrame;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddAdministratorButton;
@@ -273,6 +308,8 @@ public class AdminDashboardView extends javax.swing.JFrame implements IView {
     private javax.swing.JButton DeleteCustomerButton;
     private javax.swing.JLabel FrameDescription;
     private javax.swing.JButton MakeConsumptionStatButton;
+    private javax.swing.JLabel SignedAsField;
+    private javax.swing.JLabel SignedAsLabel;
     private javax.swing.JButton UpdateAdministratorButton;
     private javax.swing.JButton UpdateCustomerButton;
     private javax.swing.JButton ViewBillsOfRegionButton;

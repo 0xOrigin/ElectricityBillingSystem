@@ -1,6 +1,5 @@
 package Models.Database;
 
-import Models.Database.ORM.IAdapter;
 import Models.Enum.Column;
 import Models.Enum.Table;
 import java.sql.ResultSet;
@@ -8,6 +7,7 @@ import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 import Models.Database.ORM.*;
+import Models.Database.ORM.Adapter;
 
 /**
  *
@@ -15,12 +15,12 @@ import Models.Database.ORM.*;
  */
 public class Administrator extends ModelUtility{
     
-    private final IAdapter administratorModel;
+    private final Adapter administratorModel;
     private SelectQuery selectQuery;
     private ResultSet resultSet;
     private Resource resource;
     
-    public Administrator(IAdapter adapter){
+    public Administrator(Adapter adapter){
     
         super(adapter);
         this.administratorModel = adapter;

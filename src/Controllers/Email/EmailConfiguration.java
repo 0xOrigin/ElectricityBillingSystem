@@ -1,11 +1,11 @@
 package Controllers.Email;
 
-import Models.AppDate.IEmail;
 import Models.Enum.AppData;
 import java.util.Properties;
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
+import Models.AppDate.EmailConfig;
 
 /**
  *
@@ -19,7 +19,7 @@ class EmailConfiguration {
     private final String port;
     private Session session;
 
-    EmailConfiguration(IEmail emailConfig) {
+    private EmailConfiguration(EmailConfig emailConfig) {
         
         this.senderMail = emailConfig.get(AppData.SenderEmail);
         this.senderPassword = emailConfig.get(AppData.SenderPassword);
@@ -27,6 +27,27 @@ class EmailConfiguration {
         this.port = emailConfig.get(AppData.Port);
         
         createSession();
+    }
+    
+    
+    private EmailConfiguration(String senderMail, String senderPassword, String host, String port) {
+        
+        this.senderMail = senderMail;
+        this.senderPassword = senderPassword;
+        this.host = host;
+        this.port = port;
+        
+        createSession();
+    }
+    
+    static EmailConfiguration setDefaultConfig(EmailConfig emailConfig){
+    
+        return new EmailConfiguration(emailConfig);
+    }
+    
+    static EmailConfiguration setFullConfig(String senderMail, String senderPassword, String host, String port){
+    
+        return new EmailConfiguration(senderMail, senderPassword, host, port);
     }
     
     private void createSession(){

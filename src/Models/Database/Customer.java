@@ -3,7 +3,6 @@ package Models.Database;
 import Models.Enum.Column;
 import Models.Enum.Table;
 import Models.Enum.ActivationState;
-import Models.Database.ORM.IAdapter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
@@ -13,6 +12,7 @@ import Models.EBS_DbContext;
 import Models.Enum.PaymentState;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import Models.Database.ORM.Adapter;
 
 /**
  *
@@ -20,12 +20,12 @@ import java.util.regex.Pattern;
  */
 public class Customer extends ModelUtility{
     
-    private final IAdapter customerModel;
+    private final Adapter customerModel;
     private SelectQuery selectQuery;
     private ResultSet resultSet;
     private Resource resource;
     
-    public Customer(IAdapter adapter){
+    public Customer(Adapter adapter){
     
         super(adapter);
         this.customerModel = adapter;

@@ -10,6 +10,6 @@ public enum AppData {
     
     ConnectionStrings, ClassName, ClassPath, DatabasePath,
     
-    EmailConfigurations, SenderEmail, SenderPassword, Host, Port;
+    PersonalName, EmailConfigurations, SenderEmail, SenderPassword, Host, Port;
     
 }

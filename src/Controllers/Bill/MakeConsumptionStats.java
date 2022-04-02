@@ -1,9 +1,9 @@
 package Controllers.Bill;
 
 import Models.Enum.ConsumptionStat;
-import Models.IDbContext;
 import java.util.HashMap;
 import java.util.Map;
+import Models.DbContext;
 
 /**
  *
@@ -11,10 +11,10 @@ import java.util.Map;
  */
 public class MakeConsumptionStats {
     
-    private final IDbContext dbContext;
+    private final DbContext dbContext;
     private final String governmentCode;
     
-    public MakeConsumptionStats(IDbContext dbContext, String governmentCode){
+    public MakeConsumptionStats(DbContext dbContext, String governmentCode){
     
         this.dbContext = dbContext;
         this.governmentCode = governmentCode;

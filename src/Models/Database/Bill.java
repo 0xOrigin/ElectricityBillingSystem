@@ -2,7 +2,6 @@ package Models.Database;
 
 import Models.Enum.Table;
 import Models.Enum.Column;
-import Models.Database.ORM.IAdapter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
@@ -12,6 +11,7 @@ import Models.Enum.PaymentState;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import Models.Database.ORM.Adapter;
 
 /**
  *
@@ -19,12 +19,12 @@ import java.util.Map;
  */
 public class Bill{
     
-    private final IAdapter billModel;
+    private final Adapter billModel;
     private SelectQuery selectQuery;
     private ResultSet resultSet;
     private Resource resource;
     
-    public Bill(IAdapter adapter){
+    public Bill(Adapter adapter){
     
         this.billModel = adapter;
     }

@@ -1,8 +1,8 @@
 package Controllers.Bill;
 
 import Models.Enum.Column;
-import Models.IDbContext;
 import java.util.Arrays;
+import Models.DbContext;
 
 /**
  *
@@ -10,9 +10,9 @@ import java.util.Arrays;
  */
 public class ReadingValidator {
     
-    private final IDbContext dbContext;
+    private final DbContext dbContext;
     
-    public ReadingValidator(IDbContext dbContext){
+    public ReadingValidator(DbContext dbContext){
     
         this.dbContext = dbContext;
     }

@@ -5,13 +5,13 @@ import Models.Database.ORM.Resource;
 import Models.Database.ORM.SelectBuilder;
 import Models.Database.ORM.SelectQuery;
 import Models.Enum.Column;
-import Models.Database.ORM.IAdapter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import Models.Database.ORM.Adapter;
 
 /**
  *
@@ -19,14 +19,14 @@ import java.util.Map;
  */
 abstract class ModelUtility {
     
-    private final IAdapter modelInstance;
+    private final Adapter modelInstance;
     private final Enum primaryKey;
     private SelectQuery selectQuery;
     private ResultSet resultSet;
     private Resource resource;
     
     
-    protected ModelUtility(IAdapter adapter){
+    protected ModelUtility(Adapter adapter){
     
         this.modelInstance = adapter;
         this.primaryKey = adapter.getPrimaryKeyColumnName();

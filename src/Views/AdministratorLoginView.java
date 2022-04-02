@@ -1,18 +1,18 @@
 package Views;
 
-import Controllers.AdminDashboardController;
-import Controllers.Interface.IAdministratorLoginController;
-import Controllers.Interface.IController;
-import Controllers.OperatorDashboardController;
+import Controllers.AdminDashboardControllerImp;
+import Controllers.OperatorDashboardControllerImp;
 import Models.EBS_DbContext;
 import Models.Enum.Role;
 import javax.swing.JOptionPane;
+import Controllers.Interface.AdministratorLoginController;
+import Controllers.Interface.Controller;
 
 /**
  *
  * @author xorigin
  */
-public class AdministratorLoginView extends javax.swing.JFrame implements IView {
+public class AdministratorLoginView extends javax.swing.JFrame implements View {
 
     /**
      * Creates new form AdministratorLoginView
@@ -247,14 +247,14 @@ public class AdministratorLoginView extends javax.swing.JFrame implements IView 
     public void openAdminDashboard(){
     
         this.dispose();
-        new AdminDashboardController(new AdminDashboardView(this.previousFrame), new EBS_DbContext(), this.IDField.getText());
+        new AdminDashboardControllerImp(new AdminDashboardView(this.previousFrame), new EBS_DbContext(), this.IDField.getText());
     }
     
     
     public void openOperatorDashboard(){
     
         this.dispose();
-        new OperatorDashboardController(new OperatorDashboardView(this.previousFrame), new EBS_DbContext(), this.IDField.getText());
+        new OperatorDashboardControllerImp(new OperatorDashboardView(this.previousFrame), new EBS_DbContext(), this.IDField.getText());
     }
     
     @Override
@@ -267,9 +267,9 @@ public class AdministratorLoginView extends javax.swing.JFrame implements IView 
     }
     
     @Override
-    public void setController(IController controller){
+    public void setController(Controller controller){
     
-        this.controller = (IAdministratorLoginController) controller;
+        this.controller = (AdministratorLoginController) controller;
     }
     
     @Override
@@ -279,7 +279,7 @@ public class AdministratorLoginView extends javax.swing.JFrame implements IView 
     }
     
     
-    private IAdministratorLoginController controller;
+    private AdministratorLoginController controller;
     private boolean globalValidationState = false;
     private final javax.swing.JFrame previousFrame;
     // Variables declaration - do not modify//GEN-BEGIN:variables

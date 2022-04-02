@@ -3,7 +3,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import Models.AppDate.IConnection;
+import Models.AppDate.ConnectionString;
 
 /**
  *
@@ -18,7 +18,7 @@ class DatabaseConnection {
     
     }
     
-    static Connection getInstance(IConnection connStrings){
+    static Connection getInstance(ConnectionString connStrings){
     
         try {
             
@@ -32,7 +32,7 @@ class DatabaseConnection {
         return uniqueInstance;
     }
     
-    private Connection getConnection(IConnection connStrings){
+    private Connection getConnection(ConnectionString connStrings){
         
         Connection connection = null; 
         

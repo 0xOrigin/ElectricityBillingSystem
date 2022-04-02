@@ -2,11 +2,11 @@ package Models.Database;
 
 import Models.Enum.Column;
 import Models.Enum.Table;
-import Models.Database.ORM.IAdapter;
 import java.util.Arrays;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import Models.Database.ORM.*;
+import Models.Database.ORM.Adapter;
 
 /**
  *
@@ -14,12 +14,12 @@ import Models.Database.ORM.*;
  */
 public class CollectedMoney{
     
-    private final IAdapter collectedMoneyModel;
+    private final Adapter collectedMoneyModel;
     private SelectQuery selectQuery;
     private ResultSet resultSet;
     private Resource resource;
     
-    public CollectedMoney(IAdapter adapter){
+    public CollectedMoney(Adapter adapter){
 
         this.collectedMoneyModel = adapter;
     }

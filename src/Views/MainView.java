@@ -1,8 +1,8 @@
 package Views;
 
-import Controllers.CustomerLoginController;
-import Controllers.AdministratorLoginController;
-import Controllers.NewCustomerController;
+import Controllers.CustomerLoginControllerImp;
+import Controllers.AdministratorLoginControllerImp;
+import Controllers.NewCustomerControllerImp;
 import Models.EBS_DbContext;
 
 /**
@@ -66,18 +66,18 @@ public class MainView extends javax.swing.JFrame{
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(74, 74, 74)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(AdministratorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(OldCutomerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NewCustomerButton))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(AdministratorButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                    .addComponent(OldCutomerButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                    .addComponent(NewCustomerButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(79, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addGap(39, 39, 39)
                 .addComponent(NewCustomerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addGap(33, 33, 33)
                 .addComponent(OldCutomerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addComponent(AdministratorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -90,19 +90,19 @@ public class MainView extends javax.swing.JFrame{
     private void NewCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewCustomerButtonActionPerformed
         
         this.dispose();
-        new NewCustomerController(new NewCustomerView(this), new EBS_DbContext());
+        new NewCustomerControllerImp(new NewCustomerView(this), new EBS_DbContext());
     }//GEN-LAST:event_NewCustomerButtonActionPerformed
 
     private void OldCutomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OldCutomerButtonActionPerformed
         
         this.dispose();
-        new CustomerLoginController(new CustomerLoginView(this), new EBS_DbContext());
+        new CustomerLoginControllerImp(new CustomerLoginView(this), new EBS_DbContext());
     }//GEN-LAST:event_OldCutomerButtonActionPerformed
 
     private void AdministratorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdministratorButtonActionPerformed
         
         this.dispose();
-        new AdministratorLoginController(new AdministratorLoginView(this), new EBS_DbContext());
+        new AdministratorLoginControllerImp(new AdministratorLoginView(this), new EBS_DbContext());
     }//GEN-LAST:event_AdministratorButtonActionPerformed
 
     public final void setSpecialSettings() {

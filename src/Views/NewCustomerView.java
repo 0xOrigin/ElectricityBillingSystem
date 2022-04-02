@@ -1,19 +1,19 @@
 package Views;
 
-import Controllers.Interface.IController;
-import Controllers.Interface.INewCustomerController;
 import Models.Enum.GovernmentCode;
 import Models.Enum.TypeOfUse;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import Controllers.Interface.Controller;
+import Controllers.Interface.NewCustomerController;
 
 /**
  *
  * @author xorigin
  */
-public class NewCustomerView extends javax.swing.JFrame implements IView{
+public class NewCustomerView extends javax.swing.JFrame implements View{
 
     /**
      * Creates new form NewCustomerView
@@ -433,7 +433,7 @@ public class NewCustomerView extends javax.swing.JFrame implements IView{
             this.controller.registerCustomer(this.NameField.getText(), this.NationalIDField.getText(),
                                              this.AddressField.getText(), this.EmailField.getText(),
                                              this.getGovernmentCode(), this.PhoneNumberField.getText(),
-                                             this.getTypeOfUse(), this.PropertyOwnershipContractField.getText());
+                                             this.getTypeOfUse(), this.PropertyOwnershipContractField.getText().replaceAll("\\\\", "/"));
             
             JOptionPane.showMessageDialog(this, message, "Successful operation", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -503,8 +503,8 @@ public class NewCustomerView extends javax.swing.JFrame implements IView{
     }//GEN-LAST:event_PhoneNumberFieldFocusLost
 
     private void PropertyOwnershipContractFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PropertyOwnershipContractFieldFocusLost
-        
-        File file = new File(this.PropertyOwnershipContractField.getText());
+
+        File file = new File(this.PropertyOwnershipContractField.getText().replaceAll("\\\\", "/"));
         
         if(!file.exists()){
         
@@ -572,9 +572,9 @@ public class NewCustomerView extends javax.swing.JFrame implements IView{
     }
     
     @Override
-    public void setController(IController controller){
+    public void setController(Controller controller){
     
-        this.controller = (INewCustomerController) controller;
+        this.controller = (NewCustomerController) controller;
     }
     
     @Override
@@ -587,7 +587,7 @@ public class NewCustomerView extends javax.swing.JFrame implements IView{
     private final String governmentFieldInitialState = "Select governorate";
     private final String typeOfUseFieldInitialState = "Select your type of use";
     private boolean globalValidationState = false;
-    private INewCustomerController controller;
+    private NewCustomerController controller;
     private final javax.swing.JFrame previousFrame;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AddressField;

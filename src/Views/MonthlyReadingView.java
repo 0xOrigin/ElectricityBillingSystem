@@ -1,22 +1,22 @@
 package Views;
 
-import Controllers.Interface.IController;
-import Controllers.Interface.ICustomerDashboardController;
 import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
+import Controllers.Interface.Controller;
+import Controllers.Interface.CustomerDashboardController;
 
 /**
  *
  * @author xorigin
  */
-public class MonthlyReadingView extends javax.swing.JFrame implements IView {
+public class MonthlyReadingView extends javax.swing.JFrame implements View {
 
     /**
      * Creates new form MonthlyReadingView
      * @param previousFrame
      * @param controller
      */
-    public MonthlyReadingView(javax.swing.JFrame previousFrame, ICustomerDashboardController controller) {
+    public MonthlyReadingView(javax.swing.JFrame previousFrame, CustomerDashboardController controller) {
         
         this.previousFrame = previousFrame;
         
@@ -340,9 +340,9 @@ public class MonthlyReadingView extends javax.swing.JFrame implements IView {
     }
     
     @Override
-    public final void setController(IController controller){
+    public final void setController(Controller controller){
         
-        this.controller = (ICustomerDashboardController) controller;
+        this.controller = (CustomerDashboardController) controller;
     }
     
     @Override
@@ -352,7 +352,7 @@ public class MonthlyReadingView extends javax.swing.JFrame implements IView {
     }
     
     
-    private ICustomerDashboardController controller;
+    private CustomerDashboardController controller;
     private final String[] lastDate;
     private final String lastReading;
     private boolean globalValidationState = false;

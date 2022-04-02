@@ -12,7 +12,7 @@ import Models.Enum.Table;
  *
  * @author xorigin
  */
-public class EBS_DbContext implements IDbContext{
+public class EBS_DbContext implements DbContext{
     
     private final Administrator administratorModel;
     private final Bill billModel;

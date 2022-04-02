@@ -2,7 +2,7 @@ package Models.Database.ORM;
 
 import Models.Database.ORM.Utilities.ImageConverter;
 import Models.Database.ORM.Utilities.Debugger;
-import Models.AppDate.ConnectionStrings;
+import Models.AppDate.ConnectionStringImp;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -78,7 +78,7 @@ public class QueryExecutor {
     private static PreparedStatement prepareQuery(String query, Queue<String> imagesPaths){
     
         // Lazy connection to SQLite
-        Connection connection = DatabaseConnection.getInstance(new ConnectionStrings());
+        Connection connection = DatabaseConnection.getInstance(new ConnectionStringImp());
         PreparedStatement preparedStatement = null;
 
         try {

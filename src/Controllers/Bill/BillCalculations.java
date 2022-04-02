@@ -2,8 +2,8 @@ package Controllers.Bill;
 
 import Models.Enum.Column;
 import Models.Enum.TypeOfUse;
-import Models.IDbContext;
 import java.util.Arrays;
+import Models.DbContext;
 
 /**
  *
@@ -11,7 +11,7 @@ import java.util.Arrays;
  */
 public class BillCalculations {
     
-    private final IDbContext dbContext;
+    private final DbContext dbContext;
     private double moneyValue;
     private int tariff;
     private String typeOfUse;
@@ -19,7 +19,7 @@ public class BillCalculations {
     private int consumption;
     private final int currentReading;
     
-    public BillCalculations(IDbContext dbContext, String meterCode, int currentReading){
+    public BillCalculations(DbContext dbContext, String meterCode, int currentReading){
     
         this.dbContext = dbContext;
         

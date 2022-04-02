@@ -1,16 +1,16 @@
 package Views;
 
-import Controllers.CustomerDashboardController;
-import Controllers.Interface.IController;
-import Controllers.Interface.ICustomerLoginController;
+import Controllers.CustomerDashboardControllerImp;
 import Models.EBS_DbContext;
 import javax.swing.JOptionPane;
+import Controllers.Interface.Controller;
+import Controllers.Interface.CustomerLoginController;
 
 /**
  *
  * @author xorigin
  */
-public class CustomerLoginView extends javax.swing.JFrame implements IView {
+public class CustomerLoginView extends javax.swing.JFrame implements View {
 
     /**
      * Creates new form CustomerLogin
@@ -241,7 +241,7 @@ public class CustomerLoginView extends javax.swing.JFrame implements IView {
     public void redirectToCustomerDashboard(){
     
         this.dispose();
-        new CustomerDashboardController(new CustomerDashboardView(this.previousFrame), new EBS_DbContext(), this.MeterCodeField.getText());
+        new CustomerDashboardControllerImp(new CustomerDashboardView(this.previousFrame), new EBS_DbContext(), this.MeterCodeField.getText());
     }
     
     @Override
@@ -254,9 +254,9 @@ public class CustomerLoginView extends javax.swing.JFrame implements IView {
     }
     
     @Override
-    public void setController(IController controller){
+    public void setController(Controller controller){
     
-        this.controller = (ICustomerLoginController) controller;
+        this.controller = (CustomerLoginController) controller;
     }
     
     @Override
@@ -266,7 +266,7 @@ public class CustomerLoginView extends javax.swing.JFrame implements IView {
     }
     
     
-    private ICustomerLoginController controller;
+    private CustomerLoginController controller;
     private boolean globalValidationState = false;
     private final javax.swing.JFrame previousFrame;
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -1,15 +1,15 @@
 package Views;
 
-import Controllers.Interface.IController;
-import Controllers.Interface.ICustomerDashboardController;
 import Models.Enum.ActivationState;
 import java.awt.Color;
+import Controllers.Interface.Controller;
+import Controllers.Interface.CustomerDashboardController;
 
 /**
  *
  * @author xorigin
  */
-public class CustomerDashboardView extends javax.swing.JFrame implements IView{
+public class CustomerDashboardView extends javax.swing.JFrame implements View{
 
     /**
      * Creates new form CustomerDashboardView
@@ -40,6 +40,8 @@ public class CustomerDashboardView extends javax.swing.JFrame implements IView{
         ActivationStateLabel = new javax.swing.JLabel();
         MonthlyReadingButton = new javax.swing.JButton();
         ComplainButton = new javax.swing.JButton();
+        SignedAsLabel = new javax.swing.JLabel();
+        SignedAsField = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Customer Dashboard");
@@ -105,6 +107,23 @@ public class CustomerDashboardView extends javax.swing.JFrame implements IView{
             }
         });
 
+        SignedAsLabel.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        SignedAsLabel.setForeground(new java.awt.Color(51, 51, 51));
+        SignedAsLabel.setText("Signed as: ");
+        SignedAsLabel.setOpaque(true);
+
+        SignedAsField.setFont(new java.awt.Font("Chandas", 1, 14)); // NOI18N
+        SignedAsField.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        SignedAsField.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                SignedAsFieldAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -112,20 +131,22 @@ public class CustomerDashboardView extends javax.swing.JFrame implements IView{
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(56, 56, 56)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(FrameDescription)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(ActivationLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ActivationStateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(ViewBillsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ComplainButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(MonthlyReadingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(10, 10, 10)))
-                .addContainerGap(90, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(SignedAsLabel)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(SignedAsField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(ActivationLabel)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(ActivationStateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(ViewBillsButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ComplainButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(MonthlyReadingButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,7 +155,11 @@ public class CustomerDashboardView extends javax.swing.JFrame implements IView{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(BackButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(FrameDescription, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 21, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SignedAsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SignedAsField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ActivationStateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ActivationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -194,6 +219,11 @@ public class CustomerDashboardView extends javax.swing.JFrame implements IView{
         this.ActivationStateLabel.setBackground(Color.BLACK);
     }//GEN-LAST:event_ActivationStateLabelAncestorAdded
 
+    private void SignedAsFieldAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_SignedAsFieldAncestorAdded
+        
+        this.SignedAsField.setText(this.controller.getLoggedinMeterCode());
+    }//GEN-LAST:event_SignedAsFieldAncestorAdded
+
     
     @Override
     public final void setSpecialSettings() {
@@ -202,9 +232,9 @@ public class CustomerDashboardView extends javax.swing.JFrame implements IView{
     }
     
     @Override
-    public void setController(IController controller){
+    public void setController(Controller controller){
         
-        this.controller = (ICustomerDashboardController) controller;
+        this.controller = (CustomerDashboardController) controller;
     }
     
     @Override
@@ -214,7 +244,7 @@ public class CustomerDashboardView extends javax.swing.JFrame implements IView{
     }
     
     
-    private ICustomerDashboardController controller;
+    private CustomerDashboardController controller;
     private final javax.swing.JFrame previousFrame;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ActivationLabel;
@@ -223,6 +253,8 @@ public class CustomerDashboardView extends javax.swing.JFrame implements IView{
     private javax.swing.JButton ComplainButton;
     private javax.swing.JLabel FrameDescription;
     private javax.swing.JButton MonthlyReadingButton;
+    private javax.swing.JLabel SignedAsField;
+    private javax.swing.JLabel SignedAsLabel;
     private javax.swing.JButton ViewBillsButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -8,7 +8,7 @@ import java.util.Queue;
  *
  * @author xorigin
  */
-public class SQLiteAdapter extends DML implements IAdapter {
+public class SQLiteAdapter extends DML implements Adapter {
     
     private final Enum table;
     private final Enum primaryKey;

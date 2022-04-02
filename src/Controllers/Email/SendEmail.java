@@ -1,8 +1,8 @@
 package Controllers.Email;
 
-import Models.AppDate.IEmail;
 import javax.mail.MessagingException;
 import javax.mail.Transport;
+import Models.AppDate.EmailConfig;
 
 /**
  *
@@ -12,10 +12,37 @@ public class SendEmail {
     
     private final EmailMessage emailMessage;
     
-    public SendEmail(String personalName, IEmail emailConfig){
+    private SendEmail(EmailConfig emailConfig){
         
-        this.emailMessage = new EmailMessage(personalName, emailConfig);
+        this.emailMessage = EmailMessage.setDefaultConfig(emailConfig);
     }
+    
+    private SendEmail(String personalName, EmailConfig emailConfig){
+        
+        this.emailMessage = EmailMessage.setPersonalName(personalName, emailConfig);
+    }
+    
+    private SendEmail(String personalName, String senderMail, String senderPassword, String host, String port){
+        
+        this.emailMessage = EmailMessage.setFullConfig(personalName, senderMail, senderPassword, host, port);
+    }
+    
+    
+    public static SendEmail setDefaultConfig(EmailConfig emailConfig){
+    
+        return new SendEmail(emailConfig);
+    }
+    
+    public static SendEmail setPersonalName(String personalName, EmailConfig emailConfig){
+    
+        return new SendEmail(personalName, emailConfig);
+    }
+    
+    public static SendEmail setFullConfig(String personalName, String senderMail, String senderPassword, String host, String port){
+    
+        return new SendEmail(personalName, senderMail, senderPassword, host, port);
+    }
+    
     
     public void send(String recepientEmail, String messageSubject, String messageText){
     
@@ -25,11 +52,7 @@ public class SendEmail {
 
         } catch (MessagingException exception) {
             
-            System.out.println("-----------------------------------");
-            System.out.println("Mail subject : " + messageSubject);
-            System.out.println("Mail text : \n" + messageText);
-            System.out.println("----------------------------------------------------------");
-//            System.out.println(exception);
+            MessageExceptionHandler.handle(exception.toString(), messageSubject, messageText);
         }
     
     }
