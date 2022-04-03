@@ -6,7 +6,7 @@ import java.util.Map;
  *
  * @author xorigin
  */
-public interface AdminDashboardController extends Controller, AdministratorController{
+public interface AdminDashboardController extends AdministratorController{
     
     
     String getTotalCollectedMoney();
