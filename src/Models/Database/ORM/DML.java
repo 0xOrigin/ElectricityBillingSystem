@@ -16,7 +16,7 @@ abstract class DML {
         
         if(value instanceof String && !((String) value).toLowerCase().contains("select"))
             statement += "\'" + value + "\'";
-        else if(((String) value).toLowerCase().contains("select"))
+        else if(String.valueOf(value).toLowerCase().contains("select"))
             statement += "( " + value + " )";
         else
             statement += value;

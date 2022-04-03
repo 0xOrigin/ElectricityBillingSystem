@@ -7,6 +7,8 @@ import java.util.Arrays;
 import Controllers.Interface.CustomerDashboardController;
 import Models.DbContext;
 import Views.View;
+import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -24,14 +26,14 @@ public class CustomerDashboardControllerImp implements CustomerDashboardControll
         this.dbContext = dbContext;
         this.meterCode = loggedinMeterCode;
 
-        this.startView();
+        this.registerInView();
     }
     
     @Override
-    public final void startView(){
+    public final void registerInView(){
     
-        this.view.setController(this);
-        this.view.setVisible(true);
+        if(this.view != null)
+            this.view.setController(this);
     }
     
     @Override
@@ -67,6 +69,25 @@ public class CustomerDashboardControllerImp implements CustomerDashboardControll
         this.dbContext.getBillModel().releaseNewBill(this.meterCode, releaseDate, currentReading,
                 billCalculations.getConsumption(), billCalculations.getMoneyValue(), billCalculations.getTariff()
         );
+    }
+
+    
+    @Override
+    public List<Map<Enum, Object>> getAllBillsOfMeterCode(){
+    
+        return this.dbContext.getBillModel().getAllBillsOfMeterCode(meterCode);
+    }
+    
+    @Override
+    public void complainAboutBill(String complaint, int billNumber){
+    
+        this.dbContext.getBillModel().complainAboutBill(complaint, billNumber);
+    }
+    
+    @Override
+    public boolean isValidComplaint(String complaint){
+    
+        return new DataValidator().isValidComplaint(complaint);
     }
     
     @Override

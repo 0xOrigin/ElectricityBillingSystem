@@ -8,31 +8,15 @@ import Views.View;
  *
  * @author xorigin
  */
-public class OperatorDashboardControllerImp implements OperatorDashboardController{
+public class OperatorDashboardControllerImp extends AdministratorControllerImp implements OperatorDashboardController{
     
-    private final View view;
-    private final DbContext dbContext;
-    private final String ID;
     
     public OperatorDashboardControllerImp(View view, DbContext dbContext, String loggedinID){
     
-        this.view = view;
-        this.dbContext = dbContext;
-        this.ID = loggedinID;
+        super(view, dbContext, loggedinID);
         
-        this.startView();
+        this.registerInView(this);
     }
     
-    @Override
-    public final void startView(){
     
-        this.view.setController(this);
-        this.view.setVisible(true);
-    }
-    
-    @Override
-    public String getLoggedInID(){
-    
-        return this.ID;
-    }
 }

@@ -1,5 +1,6 @@
 package Views;
 
+import Views.Customer.NewCustomerView;
 import Controllers.CustomerLoginControllerImp;
 import Controllers.AdministratorLoginControllerImp;
 import Controllers.NewCustomerControllerImp;

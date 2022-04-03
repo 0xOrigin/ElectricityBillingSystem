@@ -23,4 +23,17 @@ public enum GovernmentCode {
         return this.code;
     }
     
+    public static String getEnumNameForValue(Object value){
+    
+        GovernmentCode[] governorates = GovernmentCode.values();
+                
+        for(GovernmentCode governorate : governorates){
+
+            if(governorate.getCode().equals(value))
+                return governorate.name();
+        }
+        
+        return null;
+    }
+    
 }

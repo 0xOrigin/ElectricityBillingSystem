@@ -4,8 +4,7 @@ package Controllers.Interface;
  *
  * @author xorigin
  */
-public interface OperatorDashboardController extends Controller{
+public interface OperatorDashboardController extends Controller, AdministratorController{
     
-    String getLoggedInID();
     
 }

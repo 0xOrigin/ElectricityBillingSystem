@@ -7,16 +7,16 @@ import java.util.Comparator;
  *
  * @author xorigin
  */
-class ViewsHelper {
+public class ViewsHelper {
     
-    static String[] getSortedEnumValues(Enum[] enumValues){
+    public static String[] getSortedEnumValues(Enum[] enumValues){
         
         Arrays.sort(enumValues, Comparator.comparing(Enum::name));
         
         return getEnumValues(enumValues);
     }
     
-    static String[] getEnumValues(Enum[] enumValues){
+    public static String[] getEnumValues(Enum[] enumValues){
     
         String[] names = new String[enumValues.length];
         

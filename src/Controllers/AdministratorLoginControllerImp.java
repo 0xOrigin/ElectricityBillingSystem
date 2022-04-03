@@ -22,14 +22,14 @@ public class AdministratorLoginControllerImp implements AdministratorLoginContro
         this.view = view;
         this.dbContext = dbContext;
         
-        this.startView();
+        this.registerInView();
     }
     
     @Override
-    public final void startView(){
+    public final void registerInView(){
     
-        this.view.setController(this);
-        this.view.setVisible(true);
+        if(this.view != null)
+            this.view.setController(this);
     }
 
     @Override

@@ -14,5 +14,7 @@ public interface View {
     
     void setController(Controller controller);
     
+    void setPreviousFrame(javax.swing.JFrame previousFrame);
+    
     javax.swing.JFrame getPreviousFrame();
 }

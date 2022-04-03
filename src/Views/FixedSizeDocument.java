@@ -8,11 +8,11 @@ import javax.swing.text.PlainDocument;
  *
  * @author xorigin
  */
-class FixedSizeDocument extends PlainDocument {
+public class FixedSizeDocument extends PlainDocument {
     
     private final int max;
 
-    FixedSizeDocument(int max) {
+    public FixedSizeDocument(int max) {
         
         super();
         this.max = max;

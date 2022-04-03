@@ -1,5 +1,7 @@
 package Views;
 
+import Views.Admin.AdminDashboardView;
+import Views.Operator.OperatorDashboardView;
 import Controllers.AdminDashboardControllerImp;
 import Controllers.OperatorDashboardControllerImp;
 import Models.EBS_DbContext;
@@ -7,6 +9,7 @@ import Models.Enum.Role;
 import javax.swing.JOptionPane;
 import Controllers.Interface.AdministratorLoginController;
 import Controllers.Interface.Controller;
+import javax.swing.JFrame;
 
 /**
  *
@@ -20,7 +23,7 @@ public class AdministratorLoginView extends javax.swing.JFrame implements View {
      */
     public AdministratorLoginView(javax.swing.JFrame previousFrame) {
         
-        this.previousFrame = previousFrame;
+        this.setPreviousFrame(previousFrame);
         
         initComponents();
         
@@ -65,9 +68,9 @@ public class AdministratorLoginView extends javax.swing.JFrame implements View {
         IDField.setToolTipText("Enter your ID");
         IDField.setMinimumSize(new java.awt.Dimension(64, 30));
         IDField.setPreferredSize(new java.awt.Dimension(64, 30));
-        IDField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                IDFieldFocusLost(evt);
+        IDField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IDFieldActionPerformed(evt);
             }
         });
 
@@ -79,9 +82,9 @@ public class AdministratorLoginView extends javax.swing.JFrame implements View {
         PasswordField.setToolTipText("Enter your password");
         PasswordField.setMinimumSize(new java.awt.Dimension(64, 30));
         PasswordField.setPreferredSize(new java.awt.Dimension(64, 30));
-        PasswordField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                PasswordFieldFocusLost(evt);
+        PasswordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PasswordFieldActionPerformed(evt);
             }
         });
 
@@ -163,32 +166,12 @@ public class AdministratorLoginView extends javax.swing.JFrame implements View {
         this.previousFrame.setVisible(true);
     }//GEN-LAST:event_BackButtonActionPerformed
 
-    private void IDFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_IDFieldFocusLost
-
-        if(this.IDField.getText().isBlank()){
-
-            this.globalValidationState = false;
-
-            JOptionPane.showMessageDialog(this, "Please enter a valid ID.", "ID field", JOptionPane.WARNING_MESSAGE);
-        }
-    }//GEN-LAST:event_IDFieldFocusLost
-
-    private void PasswordFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PasswordFieldFocusLost
-
-        if(String.copyValueOf(this.PasswordField.getPassword()).isBlank()){
-
-            this.globalValidationState = false;
-
-            JOptionPane.showMessageDialog(this, "Please enter a valid password.", "Password field", JOptionPane.WARNING_MESSAGE);
-        }
-    }//GEN-LAST:event_PasswordFieldFocusLost
-
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
 
         this.globalValidationState = true;
 
-        this.IDFieldFocusLost(null);
-        this.PasswordFieldFocusLost(null);
+        this.IDFieldActionPerformed(null);
+        this.PasswordFieldActionPerformed(null);
 
         String password = String.copyValueOf(this.PasswordField.getPassword());
 
@@ -214,7 +197,7 @@ public class AdministratorLoginView extends javax.swing.JFrame implements View {
 
         this.globalValidationState = true;
 
-        this.IDFieldFocusLost(null);
+        this.IDFieldActionPerformed(null);
 
         String ID = this.IDField.getText();
 
@@ -233,6 +216,26 @@ public class AdministratorLoginView extends javax.swing.JFrame implements View {
             JOptionPane.showMessageDialog(this, message, "Problem with ID", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_ForgetPasswordButtonActionPerformed
+
+    private void IDFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDFieldActionPerformed
+        
+        if(this.IDField.getText().isBlank()){
+
+            this.globalValidationState = false;
+
+            JOptionPane.showMessageDialog(this, "Please enter a valid ID.", "ID field", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_IDFieldActionPerformed
+
+    private void PasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordFieldActionPerformed
+        
+        if(String.copyValueOf(this.PasswordField.getPassword()).isBlank()){
+
+            this.globalValidationState = false;
+
+            JOptionPane.showMessageDialog(this, "Please enter a valid password.", "Password field", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_PasswordFieldActionPerformed
 
     
     public void redirectToDashboard(String role){
@@ -261,6 +264,7 @@ public class AdministratorLoginView extends javax.swing.JFrame implements View {
     public final void setSpecialSettings() {
         
         this.setLocationRelativeTo(null);
+        this.setVisible(true);
         
         this.IDField.setDocument(new FixedSizeDocument(10));
         this.PasswordField.setDocument(new FixedSizeDocument(10));
@@ -273,6 +277,12 @@ public class AdministratorLoginView extends javax.swing.JFrame implements View {
     }
     
     @Override
+    public final void setPreviousFrame(JFrame previousFrame) {
+        
+        this.previousFrame = previousFrame;
+    }
+    
+    @Override
     public javax.swing.JFrame getPreviousFrame(){
     
         return this.previousFrame;
@@ -281,7 +291,7 @@ public class AdministratorLoginView extends javax.swing.JFrame implements View {
     
     private AdministratorLoginController controller;
     private boolean globalValidationState = false;
-    private final javax.swing.JFrame previousFrame;
+    private javax.swing.JFrame previousFrame;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackButton;
     private javax.swing.JButton ForgetPasswordButton;

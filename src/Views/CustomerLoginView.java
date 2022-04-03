@@ -1,10 +1,12 @@
 package Views;
 
+import Views.Customer.CustomerDashboardView;
 import Controllers.CustomerDashboardControllerImp;
 import Models.EBS_DbContext;
 import javax.swing.JOptionPane;
 import Controllers.Interface.Controller;
 import Controllers.Interface.CustomerLoginController;
+import javax.swing.JFrame;
 
 /**
  *
@@ -18,7 +20,7 @@ public class CustomerLoginView extends javax.swing.JFrame implements View {
      */
     public CustomerLoginView(javax.swing.JFrame previousFrame) {
         
-        this.previousFrame = previousFrame;
+        this.setPreviousFrame(previousFrame);
         
         initComponents();
         
@@ -63,9 +65,9 @@ public class CustomerLoginView extends javax.swing.JFrame implements View {
         MeterCodeField.setToolTipText("Enter your meter code");
         MeterCodeField.setMinimumSize(new java.awt.Dimension(64, 30));
         MeterCodeField.setPreferredSize(new java.awt.Dimension(64, 30));
-        MeterCodeField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                MeterCodeFieldFocusLost(evt);
+        MeterCodeField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MeterCodeFieldActionPerformed(evt);
             }
         });
 
@@ -78,9 +80,9 @@ public class CustomerLoginView extends javax.swing.JFrame implements View {
         PasswordField.setToolTipText("Enter your password");
         PasswordField.setMinimumSize(new java.awt.Dimension(64, 30));
         PasswordField.setPreferredSize(new java.awt.Dimension(64, 30));
-        PasswordField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                PasswordFieldFocusLost(evt);
+        PasswordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PasswordFieldActionPerformed(evt);
             }
         });
 
@@ -168,32 +170,12 @@ public class CustomerLoginView extends javax.swing.JFrame implements View {
         this.previousFrame.setVisible(true);
     }//GEN-LAST:event_BackButtonActionPerformed
 
-    private void MeterCodeFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_MeterCodeFieldFocusLost
-
-        if(this.MeterCodeField.getText().isBlank()){
-
-            this.globalValidationState = false;
-
-            JOptionPane.showMessageDialog(this, "Please enter a valid meter code.", "Meter code field", JOptionPane.WARNING_MESSAGE);
-        }
-    }//GEN-LAST:event_MeterCodeFieldFocusLost
-
-    private void PasswordFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PasswordFieldFocusLost
-        
-        if(String.copyValueOf(this.PasswordField.getPassword()).isBlank()){
-
-            this.globalValidationState = false;
-
-            JOptionPane.showMessageDialog(this, "Please enter a valid password.", "Password field", JOptionPane.WARNING_MESSAGE);
-        }
-    }//GEN-LAST:event_PasswordFieldFocusLost
-
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
         
         this.globalValidationState = true;
         
-        this.MeterCodeFieldFocusLost(null);
-        this.PasswordFieldFocusLost(null);
+        this.MeterCodeFieldActionPerformed(null);
+        this.PasswordFieldActionPerformed(null);
         
         String password = String.copyValueOf(this.PasswordField.getPassword());
         
@@ -217,7 +199,7 @@ public class CustomerLoginView extends javax.swing.JFrame implements View {
         
         this.globalValidationState = true;
         
-        this.MeterCodeFieldFocusLost(null);
+        this.MeterCodeFieldActionPerformed(null);
         
         String meterCode = this.MeterCodeField.getText();
         
@@ -237,6 +219,26 @@ public class CustomerLoginView extends javax.swing.JFrame implements View {
         }
     }//GEN-LAST:event_ForgetPasswordButtonActionPerformed
 
+    private void MeterCodeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MeterCodeFieldActionPerformed
+        
+        if(this.MeterCodeField.getText().isBlank()){
+
+            this.globalValidationState = false;
+
+            JOptionPane.showMessageDialog(this, "Please enter a valid meter code.", "Meter code field", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_MeterCodeFieldActionPerformed
+
+    private void PasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordFieldActionPerformed
+        
+        if(String.copyValueOf(this.PasswordField.getPassword()).isBlank()){
+
+            this.globalValidationState = false;
+
+            JOptionPane.showMessageDialog(this, "Please enter a valid password.", "Password field", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_PasswordFieldActionPerformed
+
     
     public void redirectToCustomerDashboard(){
     
@@ -248,6 +250,7 @@ public class CustomerLoginView extends javax.swing.JFrame implements View {
     public final void setSpecialSettings() {
         
         this.setLocationRelativeTo(null);
+        this.setVisible(true);
         
         this.MeterCodeField.setDocument(new FixedSizeDocument(15));
         this.PasswordField.setDocument(new FixedSizeDocument(10));
@@ -260,6 +263,12 @@ public class CustomerLoginView extends javax.swing.JFrame implements View {
     }
     
     @Override
+    public final void setPreviousFrame(JFrame previousFrame) {
+        
+        this.previousFrame = previousFrame;
+    }
+    
+    @Override
     public javax.swing.JFrame getPreviousFrame(){
     
         return this.previousFrame;
@@ -268,7 +277,7 @@ public class CustomerLoginView extends javax.swing.JFrame implements View {
     
     private CustomerLoginController controller;
     private boolean globalValidationState = false;
-    private final javax.swing.JFrame previousFrame;
+    private javax.swing.JFrame previousFrame;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackButton;
     private javax.swing.JButton ForgetPasswordButton;

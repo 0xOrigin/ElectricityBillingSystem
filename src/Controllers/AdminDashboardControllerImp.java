@@ -1,37 +1,42 @@
 package Controllers;
 
+import Controllers.Bill.MakeConsumptionStats;
 import Controllers.Interface.AdminDashboardController;
 import Models.DbContext;
 import Views.View;
+import java.util.Map;
 
 /**
  *
  * @author xorigin
  */
-public class AdminDashboardControllerImp implements AdminDashboardController{
+public class AdminDashboardControllerImp extends AdministratorControllerImp implements AdminDashboardController{
     
-    private final View view;
-    private final DbContext dbContext;
-    private final String ID;
     
     public AdminDashboardControllerImp(View view, DbContext dbContext, String loggedinID){
     
-        this.view = view;
-        this.dbContext = dbContext;
-        this.ID = loggedinID;
+        super(view, dbContext, loggedinID);
         
-        this.startView();
+        this.registerInView(this);
+    }
+    
+    public AdminDashboardControllerImp(View view, DbContext dbContext){
+    
+        super(view, dbContext, "");
+        
+        this.registerInView(this);
     }
     
     @Override
-    public final void startView(){
+    public String getTotalCollectedMoney(){
     
-        this.view.setController(this);
-        this.view.setVisible(true);
+        return String.format("%.2f", this.dbContext.getCollectedMoneyModel().getTotalCollected());
     }
     
-    public String getLoggedInID(){
+    @Override
+    public Map<Enum, Object> getConsumptionStatOfRegion(String governmentCode){
     
-        return this.ID;
+        return new MakeConsumptionStats(this.dbContext, governmentCode).make();
     }
+    
 }

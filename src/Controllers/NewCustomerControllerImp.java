@@ -16,7 +16,7 @@ public class NewCustomerControllerImp implements NewCustomerController {
     private final View view;
     private final DbContext dbContext;
     private final CustomerDataGenerator generator;
-    private final Validator validator;
+    private final DataValidator validator;
     
     public NewCustomerControllerImp(View view, DbContext dbContext){
     
@@ -24,16 +24,16 @@ public class NewCustomerControllerImp implements NewCustomerController {
         this.dbContext = dbContext;
         
         this.generator = new CustomerDataGenerator();
-        this.validator = new Validator();
+        this.validator = new DataValidator();
         
-        this.startView();
+        this.registerInView();
     }
     
     @Override
-    public final void startView(){
+    public final void registerInView(){
     
-        this.view.setController(this);
-        this.view.setVisible(true);
+        if(this.view != null)
+            this.view.setController(this);
     }
 
     @Override

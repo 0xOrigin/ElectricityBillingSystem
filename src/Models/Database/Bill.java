@@ -76,7 +76,7 @@ public class Bill{
     
         this.billModel.update(Arrays.asList(Column.Complain),
                               Arrays.asList(complain),
-                              this.billModel.Where(Column.Num, "=", billNumber));
+                              this.billModel.Where(Column.Num, "=", String.valueOf(billNumber)));
     }
     
     
@@ -92,7 +92,7 @@ public class Bill{
                                         .orderBy(Column.Num, "ASC")
                                         .build();
         
-        return this.getAllBills(fields, this.selectQuery);
+        return this.getBills(fields, this.selectQuery);
     }
     
     
@@ -108,10 +108,10 @@ public class Bill{
                                         .orderBy(Column.Num, "ASC")
                                         .build();
         
-        return this.getAllBills(fields, this.selectQuery);
+        return this.getBills(fields, this.selectQuery);
     }
     
-    private List<Map<Enum, Object>> getAllBills(List<Enum> fields, SelectQuery selectQuery){
+    private List<Map<Enum, Object>> getBills(List<Enum> fields, SelectQuery selectQuery){
     
         Map<Enum, Object> billInfo;
         List<Map<Enum, Object>> billsContainer = new ArrayList<>();
