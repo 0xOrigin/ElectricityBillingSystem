@@ -15,4 +15,10 @@ public interface AdministratorController extends Controller{
     
     List<Map<Enum, Object>> getAllBillsOfRegion(String governmentCode);
     
+    // my code goes here 
+    
+    boolean deleteCustomer(String meterCode) ; 
+    
+    boolean deleteAdmin(String id); 
+    
 }

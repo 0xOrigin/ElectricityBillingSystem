@@ -6,6 +6,7 @@ import Models.DbContext;
 import Views.View;
 import java.util.List;
 import java.util.Map;
+import Models.Enum.Role; 
 
 /**
  *
@@ -50,5 +51,44 @@ public class AdministratorControllerImp implements AdministratorController{
     
         return this.ID;
     }
+    
+    // my code goes here 
+    
+    private boolean areThereUnPaidBills(String meterCode){
+        
+        return (dbContext.getBillModel().getNumOfUnpaidBills(meterCode) > 0) ; 
+    }
+    
+    @Override
+    public boolean deleteCustomer(String meterCode){
+        
+        if(!areThereUnPaidBills(meterCode)){
+            dbContext.getCustomerModel().delete(meterCode);
+            return true ; 
+        }
+        else
+            return false ; 
+    }
+    
+    private int getAdministratorsCount(){
+        
+        return (dbContext.getAdministratorModel().getNumOfRegisteredInRole(Role.Admin) + 
+                dbContext.getAdministratorModel().getNumOfRegisteredInRole(Role.Operator)) ; 
+    }
+    
+    @Override
+    public boolean deleteAdmin(String ID){
+      
+       if(getAdministratorsCount() == 1){
+           return false ;
+       }
+       
+       else{
+           dbContext.getAdministratorModel().delete(ID);
+           return true ;
+       }
+        
+    }
+    
     
 }

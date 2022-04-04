@@ -153,7 +153,7 @@ public class IdVerificator extends javax.swing.JFrame implements View{
     
         return this.controller.isAdministratorExists(this.IDField.getText());
     }
-
+     
     private void redirectToNextFrame(){
     
         this.dispose();
