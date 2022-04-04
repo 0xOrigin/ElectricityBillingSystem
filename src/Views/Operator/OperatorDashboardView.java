@@ -4,7 +4,6 @@ import Controllers.CustomerLoginControllerImp;
 import Controllers.Interface.Controller;
 import Controllers.Interface.OperatorDashboardController;
 import Models.EBS_DbContext;
-import Views.Admin.UpdateCustomerView;
 import Views.BillsOfRegionView;
 import Views.MeterCodeVerificator;
 import Views.View;
@@ -185,19 +184,19 @@ public class OperatorDashboardView extends javax.swing.JFrame implements View{
     private void ViewBillsCollectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewBillsCollectButtonActionPerformed
         
         this.dispose();
-        new MeterCodeVerificator(this, new CustomerLoginControllerImp(null, new EBS_DbContext()), new OperatorBillsView(this));
+        new MeterCodeVerificator(this, new CustomerLoginControllerImp(null, new EBS_DbContext()), new OperatorBillsView(this), this.controller.getLoggedInID());
     }//GEN-LAST:event_ViewBillsCollectButtonActionPerformed
 
     private void ActivationBoardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActivationBoardButtonActionPerformed
         
         this.dispose();
-        new MeterCodeVerificator(this, new CustomerLoginControllerImp(null, new EBS_DbContext()), new ActivationView(this));
+        new MeterCodeVerificator(this, new CustomerLoginControllerImp(null, new EBS_DbContext()), new ActivationView(this), this.controller.getLoggedInID());
     }//GEN-LAST:event_ActivationBoardButtonActionPerformed
 
     private void CancelSubscripButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelSubscripButtonActionPerformed
         
         this.dispose();
-        new MeterCodeVerificator(this, new CustomerLoginControllerImp(null, new EBS_DbContext()), new Stop_CancelSubscriptionView(this));
+        new MeterCodeVerificator(this, new CustomerLoginControllerImp(null, new EBS_DbContext()), new Stop_CancelSubscriptionView(this), this.controller.getLoggedInID());
     }//GEN-LAST:event_CancelSubscripButtonActionPerformed
 
     private void SignedAsFieldAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_SignedAsFieldAncestorAdded

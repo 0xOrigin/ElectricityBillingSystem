@@ -11,6 +11,8 @@ public interface AdministratorController extends Controller{
     
     String getLoggedInID();
     
+    String getTargetID();
+    
     void registerInView(Controller controller);
     
     List<Map<Enum, Object>> getAllBillsOfRegion(String governmentCode);

@@ -1,7 +1,7 @@
 package Views.Admin;
 
-import Controllers.CustomerDashboardControllerImp;
 import Controllers.Interface.Controller;
+import Controllers.Interface.CustomerDashboardController;
 import Views.View;
 import javax.swing.JFrame;
 
@@ -83,7 +83,7 @@ public class UpdateCustomerView extends javax.swing.JFrame implements View{
     @Override
     public void setController(Controller controller){
     
-        this.controller = (CustomerDashboardControllerImp) controller;
+        this.controller = (CustomerDashboardController) controller;
     }
     
     @Override
@@ -98,7 +98,7 @@ public class UpdateCustomerView extends javax.swing.JFrame implements View{
         return this.previousFrame;
     }
     
-    private CustomerDashboardControllerImp controller;
+    private CustomerDashboardController controller;
     private javax.swing.JFrame previousFrame;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

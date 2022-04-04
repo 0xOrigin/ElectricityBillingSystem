@@ -16,6 +16,7 @@ public class AdministratorControllerImp implements AdministratorController{
     protected final View view;
     protected final DbContext dbContext;
     protected final String ID;
+    protected String targetID = "";
     
     public AdministratorControllerImp(View view, DbContext dbContext, String loggedinID){
     
@@ -24,6 +25,12 @@ public class AdministratorControllerImp implements AdministratorController{
         this.ID = loggedinID;
         
         this.registerInView();
+    }
+    
+    public AdministratorControllerImp(View view, DbContext dbContext, String loggedinID, String targetID){
+    
+        this(view, dbContext, loggedinID);
+        this.targetID = targetID;
     }
     
     @Override
@@ -49,6 +56,12 @@ public class AdministratorControllerImp implements AdministratorController{
     public String getLoggedInID(){
     
         return this.ID;
+    }
+    
+    @Override
+    public String getTargetID(){
+    
+        return this.targetID;
     }
     
 }

@@ -18,12 +18,13 @@ public class MeterCodeVerificator extends javax.swing.JFrame implements View{
      * @param nextFrame
      * @param controller
      */
-    public MeterCodeVerificator(javax.swing.JFrame previousFrame, Controller controller, View nextFrame) {
+    public MeterCodeVerificator(javax.swing.JFrame previousFrame, Controller controller, View nextFrame, String loggedinMeterCode) {
         
         
         this.setPreviousFrame(previousFrame);
         
         this.nextFrame = nextFrame;
+        this.loggedinMeterCode = loggedinMeterCode;
         
         this.setController(controller);
         
@@ -159,7 +160,7 @@ public class MeterCodeVerificator extends javax.swing.JFrame implements View{
     
         this.dispose();
         
-        new CustomerDashboardControllerImp(this.nextFrame, new EBS_DbContext(), this.MeterCodeField.getText());
+        new CustomerDashboardControllerImp(this.nextFrame, new EBS_DbContext(), this.loggedinMeterCode, this.MeterCodeField.getText());
         this.nextFrame.setVisible(true);
     }
     
@@ -192,6 +193,8 @@ public class MeterCodeVerificator extends javax.swing.JFrame implements View{
     private CustomerLoginController controller;
     private javax.swing.JFrame previousFrame;
     private final View nextFrame;
+    private final String loggedinMeterCode;
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackButton;
     private javax.swing.JTextField MeterCodeField;
