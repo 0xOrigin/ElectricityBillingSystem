@@ -282,25 +282,25 @@ public class AdminDashboardView extends javax.swing.JFrame implements View {
     private void UpdateAdministratorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateAdministratorButtonActionPerformed
         
         this.dispose();
-        new IdVerificator(this, new AdministratorLoginControllerImp(null, new EBS_DbContext()), new UpdateAdministratorView(this));
+        new IdVerificator(this, new AdministratorLoginControllerImp(null, new EBS_DbContext()), new UpdateAdministratorView(this), this.controller.getLoggedInID());
     }//GEN-LAST:event_UpdateAdministratorButtonActionPerformed
 
     private void UpdateCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateCustomerButtonActionPerformed
         
         this.dispose();
-        new MeterCodeVerificator(this, new CustomerLoginControllerImp(null, new EBS_DbContext()), new UpdateCustomerView(this));
+        new MeterCodeVerificator(this, new CustomerLoginControllerImp(null, new EBS_DbContext()), new UpdateCustomerView(this), this.controller.getLoggedInID());
     }//GEN-LAST:event_UpdateCustomerButtonActionPerformed
 
     private void DeleteAdministratorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteAdministratorButtonActionPerformed
         
         this.dispose();
-        new IdVerificator(this, new AdministratorLoginControllerImp(null, new EBS_DbContext()), new DeleteAdministratorView(this));
+        new IdVerificator(this, new AdministratorLoginControllerImp(null, new EBS_DbContext()), new DeleteAdministratorView(this), this.controller.getLoggedInID());
     }//GEN-LAST:event_DeleteAdministratorButtonActionPerformed
 
     private void DeleteCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteCustomerButtonActionPerformed
         
         this.dispose();
-        new MeterCodeVerificator(this, new CustomerLoginControllerImp(null, new EBS_DbContext()), new DeleteCustomerView(this));
+        new MeterCodeVerificator(this, new CustomerLoginControllerImp(null, new EBS_DbContext()), new DeleteCustomerView(this), this.controller.getLoggedInID());
     }//GEN-LAST:event_DeleteCustomerButtonActionPerformed
 
     private void SignedAsFieldAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_SignedAsFieldAncestorAdded

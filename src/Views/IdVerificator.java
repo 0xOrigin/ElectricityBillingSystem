@@ -18,12 +18,13 @@ public class IdVerificator extends javax.swing.JFrame implements View{
      * @param controller
      * @param nextFrame
      */
-    public IdVerificator(javax.swing.JFrame previousFrame, Controller controller, View nextFrame) {
+    public IdVerificator(javax.swing.JFrame previousFrame, Controller controller, View nextFrame, String loggedinID) {
         
         
         this.setPreviousFrame(previousFrame);
         
         this.nextFrame = nextFrame;
+        this.loggedinID = loggedinID;
         
         this.setController(controller);
         
@@ -158,7 +159,7 @@ public class IdVerificator extends javax.swing.JFrame implements View{
     
         this.dispose();
         
-        new AdministratorControllerImp(this.nextFrame, new EBS_DbContext(), this.IDField.getText());
+        new AdministratorControllerImp(this.nextFrame, new EBS_DbContext(), this.loggedinID, this.IDField.getText());
         this.nextFrame.setVisible(true);
     }
     
@@ -191,7 +192,8 @@ public class IdVerificator extends javax.swing.JFrame implements View{
     private AdministratorLoginController controller;
     private javax.swing.JFrame previousFrame;
     private final View nextFrame;
-
+    private final String loggedinID;
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackButton;
     private javax.swing.JTextField IDField;

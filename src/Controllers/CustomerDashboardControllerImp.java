@@ -19,6 +19,7 @@ public class CustomerDashboardControllerImp implements CustomerDashboardControll
     private final View view;
     private final DbContext dbContext;
     private final String meterCode;
+    private String targetMeterCode = "";
     
     public CustomerDashboardControllerImp(View view, DbContext dbContext, String loggedinMeterCode){
     
@@ -27,6 +28,12 @@ public class CustomerDashboardControllerImp implements CustomerDashboardControll
         this.meterCode = loggedinMeterCode;
 
         this.registerInView();
+    }
+    
+    public CustomerDashboardControllerImp(View view, DbContext dbContext, String loggedinMeterCode, String targetMeterCode){
+    
+        this(view, dbContext, loggedinMeterCode);
+        this.targetMeterCode = targetMeterCode;
     }
     
     @Override
@@ -95,4 +102,30 @@ public class CustomerDashboardControllerImp implements CustomerDashboardControll
     
         return this.meterCode;
     }
+    
+    @Override
+    public String getTargetMeterCode(){
+    
+        return this.targetMeterCode;
+    }
+    
+    private boolean areThereUnPaidBills(String meterCode){
+
+        return (dbContext.getBillModel().getNumOfUnpaidBills(meterCode) > 0) ; 
+    }
+    
+    @Override
+    public String deleteCustomer(String meterCode){
+        String message = "" ;
+        
+        if(!areThereUnPaidBills(meterCode)){
+            dbContext.getCustomerModel().delete(meterCode);
+            message = "Customer Has Deleted Successfully" ; 
+        }
+        else
+            message = "Please Pay The Bills first" ; 
+        
+        return message ; 
+    }
+    
 }

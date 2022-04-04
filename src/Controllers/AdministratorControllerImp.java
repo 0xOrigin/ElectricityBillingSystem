@@ -17,6 +17,7 @@ public class AdministratorControllerImp implements AdministratorController{
     protected final View view;
     protected final DbContext dbContext;
     protected final String ID;
+    protected String targetID = "";
     
     public AdministratorControllerImp(View view, DbContext dbContext, String loggedinID){
     
@@ -25,6 +26,12 @@ public class AdministratorControllerImp implements AdministratorController{
         this.ID = loggedinID;
         
         this.registerInView();
+    }
+    
+    public AdministratorControllerImp(View view, DbContext dbContext, String loggedinID, String targetID){
+    
+        this(view, dbContext, loggedinID);
+        this.targetID = targetID;
     }
     
     @Override
@@ -54,41 +61,32 @@ public class AdministratorControllerImp implements AdministratorController{
     
     // my code goes here 
     
-    private boolean areThereUnPaidBills(String meterCode){
-        
-        return (dbContext.getBillModel().getNumOfUnpaidBills(meterCode) > 0) ; 
+    @Override
+    public String getTargetID(){
+    
+        return this.targetID;
     }
     
-    @Override
-    public boolean deleteCustomer(String meterCode){
-        
-        if(!areThereUnPaidBills(meterCode)){
-            dbContext.getCustomerModel().delete(meterCode);
-            return true ; 
-        }
-        else
-            return false ; 
-    }
     
     private int getAdministratorsCount(){
         
-        return (dbContext.getAdministratorModel().getNumOfRegisteredInRole(Role.Admin) + 
-                dbContext.getAdministratorModel().getNumOfRegisteredInRole(Role.Operator)) ; 
+        return dbContext.getAdministratorModel().getNumOfRegisteredInRole(Role.Admin) ; 
     }
     
     @Override
-    public boolean deleteAdmin(String ID){
-      
-       if(getAdministratorsCount() == 1){
-           return false ;
-       }
+    public String deleteAdmin(String ID){
+        
+       String message = "" ; 
+       if(getAdministratorsCount() == 1)
+           message = "Can't Preform The Deletion, Only One Admin Exists" ; 
        
        else{
+       
            dbContext.getAdministratorModel().delete(ID);
-           return true ;
+           message = "Administrator Has Deleted Successfully" ; 
        }
-        
+       return message ; 
     }
     
-    
+   
 }

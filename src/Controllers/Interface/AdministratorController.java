@@ -11,14 +11,14 @@ public interface AdministratorController extends Controller{
     
     String getLoggedInID();
     
+    String getTargetID();
+    
     void registerInView(Controller controller);
     
     List<Map<Enum, Object>> getAllBillsOfRegion(String governmentCode);
     
-    // my code goes here 
+    // my code goes here     
     
-    boolean deleteCustomer(String meterCode) ; 
-    
-    boolean deleteAdmin(String id); 
+    String deleteAdmin(String ID); 
     
 }

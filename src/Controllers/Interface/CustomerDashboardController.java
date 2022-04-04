@@ -26,4 +26,9 @@ public interface CustomerDashboardController extends Controller {
     boolean isValidComplaint(String complaint);
     
     String getLoggedinMeterCode();
+    
+    String getTargetMeterCode();
+    
+    String deleteCustomer(String meterCode) ; 
+    
 }
