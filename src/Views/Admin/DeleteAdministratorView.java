@@ -18,7 +18,7 @@ public class DeleteAdministratorView extends javax.swing.JFrame implements View{
      * Creates new form DeleteAdministratorView
      * @param previousFrame
      */
-
+    
     public DeleteAdministratorView(javax.swing.JFrame previousFrame) {
         
         this.setPreviousFrame(previousFrame);
@@ -41,10 +41,21 @@ public class DeleteAdministratorView extends javax.swing.JFrame implements View{
         delete = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         confirmDeletionMessage = new javax.swing.JLabel();
+        id = new javax.swing.JLabel();
+        role = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        idField = new javax.swing.JLabel();
+        roleField = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Delete Administrator");
         setResizable(false);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         BackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/BackIcon.png"))); // NOI18N
         BackButton.setToolTipText("Back");
@@ -54,6 +65,7 @@ public class DeleteAdministratorView extends javax.swing.JFrame implements View{
             }
         });
 
+        delete.setFont(new java.awt.Font("Liberation Sans", 0, 16)); // NOI18N
         delete.setText("Delete");
         delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,7 +73,24 @@ public class DeleteAdministratorView extends javax.swing.JFrame implements View{
             }
         });
 
+        confirmDeletionMessage.setFont(new java.awt.Font("Liberation Sans", 0, 16)); // NOI18N
         confirmDeletionMessage.setText("Sure You Want to Delete This Administrator? ");
+
+        id.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+
+        role.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Liberation Sans", 0, 16)); // NOI18N
+        jLabel3.setText("ID");
+
+        jLabel5.setFont(new java.awt.Font("Liberation Sans", 0, 16)); // NOI18N
+        jLabel5.setText("Role");
+
+        idField.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
+        idField.setText(".");
+
+        roleField.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
+        roleField.setText(".");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -70,31 +99,54 @@ public class DeleteAdministratorView extends javax.swing.JFrame implements View{
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(170, 170, 170)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
+                        .addGap(152, 152, 152)
+                        .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
                         .addComponent(confirmDeletionMessage))
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(152, 152, 152)
-                        .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(role, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(68, 68, 68)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(roleField, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BackButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(30, 30, 30)
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(id)
+                    .addComponent(role))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(idField)
+                    .addComponent(roleField))
+                .addGap(36, 36, 36)
                 .addComponent(confirmDeletionMessage)
-                .addGap(45, 45, 45)
+                .addGap(18, 18, 18)
                 .addComponent(delete)
-                .addGap(57, 57, 57))
+                .addGap(33, 33, 33))
         );
 
         pack();
@@ -109,26 +161,40 @@ public class DeleteAdministratorView extends javax.swing.JFrame implements View{
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
 
-        String ID = controller.getTargetID() ; 
-        String loggedAdminID = controller.getLoggedInID();
+         
+        String loggedAdminID = this.controller.getLoggedInID();
         
-        String message = controller.deleteAdmin(ID); 
+        boolean isDeleted = this.controller.deleteAdministrator(ID, Role) ; 
+        String message = "" ; 
         
-        JOptionPane.showMessageDialog(this, message,"", JOptionPane.INFORMATION_MESSAGE); 
+        if(isDeleted){
+            message = "This " + this.Role + " Has deleted Successfully" ; 
+            JOptionPane.showMessageDialog(this, message,this.Role +"Deleted", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else{
+            message = "Can't Preform The Deletion Only One "+ this.Role + " Left" ; 
+            JOptionPane.showMessageDialog(this, message,"Faild To Delete", JOptionPane.ERROR_MESSAGE); 
+        }
         
-        if(ID.equals(loggedAdminID)){
+        if(this.ID.equals(loggedAdminID) && this.Role.equals("Admin") && isDeleted){
             
             new MainView().setVisible(true);
             this.dispose();
         }
         else{
             
-            this.dispose();
-            this.previousFrame.revalidate();
-            this.previousFrame.setVisible(true);
+            this.BackButtonActionPerformed(null) ; 
         }
-       
     }//GEN-LAST:event_deleteActionPerformed
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        // TODO add your handling code here:
+        this.ID = this.controller.getTargetID() ; 
+        this.Role = this.controller.getRole(this.ID); 
+        this.idField.setText(this.ID);
+        this.roleField.setText(this.Role);
+        this.confirmDeletionMessage.setText("Sure You Want To delete This "+ this.Role + "?"); 
+    }//GEN-LAST:event_formComponentShown
 
     @Override
     public final void setSpecialSettings() {
@@ -156,11 +222,18 @@ public class DeleteAdministratorView extends javax.swing.JFrame implements View{
     
     private AdministratorController controller;
     private javax.swing.JFrame previousFrame;
+    private String ID , Role ; 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackButton;
     private javax.swing.JLabel confirmDeletionMessage;
     private javax.swing.JButton delete;
+    private javax.swing.JLabel id;
+    private javax.swing.JLabel idField;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel role;
+    private javax.swing.JLabel roleField;
     // End of variables declaration//GEN-END:variables
 }

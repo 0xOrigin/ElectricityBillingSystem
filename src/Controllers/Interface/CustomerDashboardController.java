@@ -29,6 +29,6 @@ public interface CustomerDashboardController extends Controller {
     
     String getTargetMeterCode();
     
-    String deleteCustomer(String meterCode) ; 
+    boolean deleteCustomer(String meterCode) ; 
     
 }

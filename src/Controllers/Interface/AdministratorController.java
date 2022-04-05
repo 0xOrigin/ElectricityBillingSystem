@@ -19,6 +19,9 @@ public interface AdministratorController extends Controller{
     
     // my code goes here     
     
-    String deleteAdmin(String ID); 
-    
+    String getRole(String ID) ;
+    boolean deleteAdmin(String ID); 
+    boolean deleteOperator(String ID); 
+    boolean deleteAdministrator(String ID , String role); 
+     
 }
