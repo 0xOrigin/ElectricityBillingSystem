@@ -109,4 +109,21 @@ public class CustomerDashboardControllerImp implements CustomerDashboardControll
         return this.targetMeterCode;
     }
     
+    private boolean areThereUnPaidBills(String meterCode){
+
+        return (this.dbContext.getBillModel().getNumOfUnpaidBills(meterCode) > 0) ; 
+    }
+    
+    @Override
+    public boolean deleteCustomer(String meterCode){
+        
+        if(!areThereUnPaidBills(meterCode)){
+            this.dbContext.getCustomerModel().delete(meterCode);
+            return true ; 
+        }
+        else
+            return false ; 
+        
+    }
+    
 }

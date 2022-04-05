@@ -4,6 +4,7 @@ import Controllers.Interface.Controller;
 import Controllers.Interface.CustomerDashboardController;
 import Views.View;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -34,10 +35,19 @@ public class DeleteCustomerView extends javax.swing.JFrame implements View{
     private void initComponents() {
 
         BackButton = new javax.swing.JButton();
+        delete = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        Meter_code = new javax.swing.JLabel();
+        meterCodeField = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Delete Customer");
         setResizable(false);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         BackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/BackIcon.png"))); // NOI18N
         BackButton.setToolTipText("Back");
@@ -47,21 +57,59 @@ public class DeleteCustomerView extends javax.swing.JFrame implements View{
             }
         });
 
+        delete.setFont(new java.awt.Font("Liberation Sans", 0, 16)); // NOI18N
+        delete.setText("Delete");
+        delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Liberation Sans", 0, 16)); // NOI18N
+        jLabel4.setText("Are You Sure You Want to Delete This Customer ? ");
+
+        Meter_code.setFont(new java.awt.Font("Liberation Sans", 0, 16)); // NOI18N
+        Meter_code.setText("Meter Code ");
+
+        meterCodeField.setFont(new java.awt.Font("Liberation Sans", 0, 16)); // NOI18N
+        meterCodeField.setText(".");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(336, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(160, 160, 160)
+                        .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Meter_code)
+                                .addGap(69, 69, 69)
+                                .addComponent(meterCodeField, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BackButton)
-                .addContainerGap(248, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Meter_code)
+                    .addComponent(meterCodeField))
+                .addGap(39, 39, 39)
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
+                .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
 
         pack();
@@ -73,6 +121,30 @@ public class DeleteCustomerView extends javax.swing.JFrame implements View{
         this.previousFrame.revalidate();
         this.previousFrame.setVisible(true);
     }//GEN-LAST:event_BackButtonActionPerformed
+
+    private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
+
+        boolean isDeleted = this.controller.deleteCustomer(this.meterCode); 
+        String message = "" ; 
+        
+        if(isDeleted){
+        
+            message = "Customer Has Deleted Successfully"; 
+            JOptionPane.showMessageDialog(this, message,"Customer Deleted", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else{
+            message = "Please Pay the Unpaid Bills First" ; 
+            JOptionPane.showMessageDialog(this, message,"Faild to Delete", JOptionPane.ERROR_MESSAGE); 
+        }
+        
+        this.BackButtonActionPerformed(null);
+    }//GEN-LAST:event_deleteActionPerformed
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        // TODO add your handling code here:
+        this.meterCode = controller.getTargetMeterCode(); 
+        this.meterCodeField.setText(this.meterCode) ; 
+    }//GEN-LAST:event_formComponentShown
 
     @Override
     public final void setSpecialSettings() {
@@ -100,8 +172,13 @@ public class DeleteCustomerView extends javax.swing.JFrame implements View{
     
     private CustomerDashboardController controller;
     private javax.swing.JFrame previousFrame;
+    private String meterCode ; 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackButton;
+    private javax.swing.JLabel Meter_code;
+    private javax.swing.JButton delete;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel meterCodeField;
     // End of variables declaration//GEN-END:variables
 }

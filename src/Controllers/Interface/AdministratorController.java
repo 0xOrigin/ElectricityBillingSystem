@@ -17,4 +17,11 @@ public interface AdministratorController extends Controller{
     
     List<Map<Enum, Object>> getAllBillsOfRegion(String governmentCode);
     
+    // my code goes here     
+    
+    String getRole(String ID) ;
+    boolean deleteAdmin(String ID); 
+    boolean deleteOperator(String ID); 
+    boolean deleteAdministrator(String ID , String role); 
+     
 }
