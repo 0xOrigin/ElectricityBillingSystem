@@ -113,4 +113,8 @@ public class CustomerDashboardControllerImp implements CustomerDashboardControll
         return false;         
     }
     
+    @Override 
+    public void toggleActivation(String meterCode){
+       this.dbContext.getCustomerModel().toggleActivation(meterCode);
+    }
 }
