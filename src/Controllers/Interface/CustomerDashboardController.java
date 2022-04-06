@@ -27,6 +27,8 @@ public interface CustomerDashboardController extends Controller {
     
     String getMeterCode();
     
+    void toggleActivation(String meterCode) ;
+    
     boolean deleteCustomer(String meterCode) ; 
     
 }
