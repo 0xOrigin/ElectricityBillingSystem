@@ -41,7 +41,7 @@ abstract class DataGenerator {
     
     String generatePassword(){
         
-        final String AVAILABLE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789~!@#$%&*()_+=-";
+        final String AVAILABLE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789~@#$%&*()_+=-";
         final int PASSWORD_LENGTH = 10;
         
         String password = "";
