@@ -168,6 +168,7 @@ public class MeterCodeVerificator extends javax.swing.JFrame implements View{
         
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+        this.MeterCodeField.setDocument(new FixedSizeDocument(15));
     }
     
     @Override

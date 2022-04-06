@@ -168,6 +168,7 @@ public class IdVerificator extends javax.swing.JFrame implements View{
         
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+        this.IDField.setDocument(new FixedSizeDocument(10));
     }
     
     @Override

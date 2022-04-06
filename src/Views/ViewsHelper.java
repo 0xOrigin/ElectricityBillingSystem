@@ -27,6 +27,21 @@ public class ViewsHelper {
         return names;
     }
     
+    public static String getEnumValue(String value){
+    
+        return underscoreSetter(value);
+    }
+    
+    public static String handelPath(String path){
+    
+        return path.replaceAll("\\\\", "/");
+    }
+    
+    private static String underscoreSetter(String value){
+    
+        return value.replaceAll(" ", "_");
+    }
+    
     private static String underscoreReplacer(String value){
     
         return value.replaceAll("_", " ");

@@ -1,5 +1,6 @@
 package Controllers;
 
+import Models.Enum.Gender;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
@@ -13,22 +14,12 @@ abstract class DataGenerator {
     DataGenerator() {
         
     }
+    
     String generateGender(String nationalID){
         
-        if(isMale(nationalID)){
-            return("Male");
-        }else{
-            return ("Female");
-        }
-    }
-    private boolean isMale(String nationalID){
-        
         int checkNumber = Integer.parseInt(nationalID.substring(12,13));
-        if(checkNumber % 2 == 0){
-            return false;
-        }else{
-            return true;
-        }
+        
+        return (checkNumber % 2 == 0 ? Gender.Female.name() : Gender.Male.name());
     }
     
     String generateDateOfBirth(String nationalID){
@@ -37,29 +28,8 @@ abstract class DataGenerator {
         String birthMonth = getBirthMonth(nationalID);
         String birthYear = getBirthYear(nationalID);
         String dateOfBirth = birthDay + "/" + birthMonth + "/" + birthYear;
+        
         return dateOfBirth;
-    }
-    
-    private String getBirthDay(String nationalID){
-        
-        String birthDay = nationalID.substring(5, 7);
-        return birthDay;
-        
-    }
-            
-    private String getBirthMonth(String nationalID){
-        
-        String birthMonth = nationalID.substring(3, 5);
-        return birthMonth;
-        
-    }
-    
-    private String getBirthYear(String nationalID){
-        
-        int birthYear = Integer.parseInt(nationalID.substring(0, 3));
-        birthYear += 1700;
-        return birthYear + "";
-        
     }
     
     String generateDateOfContract(){
@@ -68,22 +38,64 @@ abstract class DataGenerator {
         SimpleDateFormat formatDate = new SimpleDateFormat("E, dd/MM/yyyy, hh:mm:ss a");
         return formatDate.format(currentDate);
     }
+    
+    String generatePassword(){
+        
+        final String AVAILABLE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789~!@#$%&*()_+=-";
+        final int PASSWORD_LENGTH = 10;
+        
+        String password = "";
+        
+        for (int counter = 0; counter < PASSWORD_LENGTH; counter++) {
+            
+            int randomNumber = generateRandomNumber(AVAILABLE_CHARS.length());
+            char randomChar = generateRandomChar(AVAILABLE_CHARS , randomNumber);
+            password += randomChar;
+        }
+        
+        return password;   
+    }
+    
+    
+    private String getBirthDay(String nationalID){
+
+        return nationalID.substring(5, 7); 
+    }
+            
+    private String getBirthMonth(String nationalID){
+        
+        return nationalID.substring(3, 5);
+    }
+    
+    private String getBirthYear(String nationalID){
+        
+        int birthYear = Integer.parseInt(nationalID.substring(0, 3));
+        birthYear += 1700;
+        
+        return String.valueOf(birthYear);
+    }
+    
+    
     protected String generateRandomNumbers(int count ){
         
         final int MAXNUMBER = 9;
         String randomNumbers = "";
         
-        for (int counter = 0; counter < count; counter++) {
+        for (int counter = 0; counter < count; counter++)
             randomNumbers += generateRandomNumber(MAXNUMBER) + "";
-        }
-        return randomNumbers;
         
+        return randomNumbers;
     }
     
     protected int generateRandomNumber(int maxNumber){
         
         int randomNumber = new Random().nextInt(maxNumber);
         return randomNumber;
+    }
+    
+    protected char generateRandomChar(String availableChars, int randomNumber){
+        
+        return availableChars.charAt(randomNumber);   
     }
     
 }

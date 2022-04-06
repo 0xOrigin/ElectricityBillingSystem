@@ -212,10 +212,18 @@ public class BillComplainView extends javax.swing.JFrame implements View{
 
     private void BillsTableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BillsTableMousePressed
         
-        this.selectedBill = this.getNumOfBill();
+        if(!this.NumOfBillsField.getText().equals("0"))
+            this.selectedBill = this.getNumOfBill();
     }//GEN-LAST:event_BillsTableMousePressed
 
     private void SubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitButtonActionPerformed
+        
+        if(this.NumOfBillsField.getText().equals("0")){
+            
+            String message = "No invoices to submit a complaint.";
+            JOptionPane.showMessageDialog(this, message, "Unsuccessful operation", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         
         if(this.controller.isValidComplaint(this.ComplainField.getText())){
             
@@ -240,6 +248,8 @@ public class BillComplainView extends javax.swing.JFrame implements View{
         this.tableModel.setRowCount(numOfRows - 1);
         
         this.updateNumOfBills();
+        this.selectNextBill();
+        this.BillsTableMousePressed(null);
     }
     
     private int getNumOfBill(){
@@ -286,6 +296,12 @@ public class BillComplainView extends javax.swing.JFrame implements View{
     private void updateNumOfBills(){
     
         this.NumOfBillsField.setText(String.valueOf(this.tableModel.getRowCount()));
+    }
+    
+    private void selectNextBill(){
+    
+        if(!this.NumOfBillsField.getText().equals("0"))
+            this.BillsTable.setRowSelectionInterval(0, 0);
     }
     
     

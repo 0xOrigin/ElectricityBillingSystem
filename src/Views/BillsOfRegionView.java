@@ -194,7 +194,7 @@ public class BillsOfRegionView extends javax.swing.JFrame implements View{
 
     private void RegionFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegionFieldActionPerformed
 
-        String governmentCode = this.RegionField.getSelectedItem().toString().replaceAll(" ", "_");
+        String governmentCode = ViewsHelper.getEnumValue(this.RegionField.getSelectedItem().toString());
         governmentCode = GovernmentCode.valueOf(governmentCode).getCode();
         
         this.bills = this.controller.getAllBillsOfRegion(governmentCode);

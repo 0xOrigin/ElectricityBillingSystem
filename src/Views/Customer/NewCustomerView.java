@@ -440,13 +440,15 @@ public class NewCustomerView extends javax.swing.JFrame implements View{
                                              this.getTypeOfUse(), this.PropertyOwnershipContractField.getText().replaceAll("\\\\", "/"));
             
             JOptionPane.showMessageDialog(this, message, "Successful operation", JOptionPane.INFORMATION_MESSAGE);
+            
+            this.BackButtonActionPerformed(null);
         }
         
     }//GEN-LAST:event_RequestButtonActionPerformed
 
     private void NameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameFieldActionPerformed
         
-        if(this.NameField.getText().isBlank() || !this.controller.isValidName(this.NameField.getText())){
+        if(!this.controller.isValidName(this.NameField.getText())){
         
             this.globalValidationState = false;
             
@@ -456,7 +458,7 @@ public class NewCustomerView extends javax.swing.JFrame implements View{
 
     private void NationalIDFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NationalIDFieldActionPerformed
         
-        if(this.NationalIDField.getText().isBlank() || !this.controller.isValidNationalID(this.NationalIDField.getText())){
+        if(!this.controller.isValidNationalID(this.NationalIDField.getText())){
         
             this.globalValidationState = false;
             
@@ -468,7 +470,7 @@ public class NewCustomerView extends javax.swing.JFrame implements View{
 
     private void AddressFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddressFieldActionPerformed
         
-        if(this.AddressField.getText().isBlank() || !this.controller.isValidAddress(this.AddressField.getText())){
+        if(!this.controller.isValidAddress(this.AddressField.getText())){
         
             this.globalValidationState = false;
             
@@ -478,7 +480,7 @@ public class NewCustomerView extends javax.swing.JFrame implements View{
 
     private void EmailFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailFieldActionPerformed
         
-        if(this.EmailField.getText().isBlank() || !this.controller.isValidEmail(this.EmailField.getText())){
+        if(!this.controller.isValidEmail(this.EmailField.getText())){
         
             this.globalValidationState = false;
             
@@ -488,7 +490,7 @@ public class NewCustomerView extends javax.swing.JFrame implements View{
 
     private void PhoneNumberFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PhoneNumberFieldActionPerformed
         
-        if(this.PhoneNumberField.getText().isBlank() || !this.controller.isValidPhoneNumber(this.PhoneNumberField.getText())){
+        if(!this.controller.isValidPhoneNumber(this.PhoneNumberField.getText())){
         
             this.globalValidationState = false;
             
@@ -498,7 +500,8 @@ public class NewCustomerView extends javax.swing.JFrame implements View{
 
     private void PropertyOwnershipContractFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PropertyOwnershipContractFieldActionPerformed
         
-        File file = new File(this.PropertyOwnershipContractField.getText().replaceAll("\\\\", "/"));
+        String filePath = ViewsHelper.handelPath(this.PropertyOwnershipContractField.getText());
+        File file = new File(filePath);
         
         if(!file.exists()){
         
@@ -552,7 +555,8 @@ public class NewCustomerView extends javax.swing.JFrame implements View{
     
     private String getGovernmentCode(){
     
-        return GovernmentCode.valueOf(this.GovernmentField.getSelectedItem().toString()).getCode();
+        String enumValue = ViewsHelper.getEnumValue(this.GovernmentField.getSelectedItem().toString());
+        return GovernmentCode.valueOf(enumValue).getCode();
     }
     
     private String getTypeOfUse(){
