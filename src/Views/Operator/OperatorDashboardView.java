@@ -4,6 +4,7 @@ import Controllers.CustomerLoginControllerImp;
 import Controllers.Interface.Controller;
 import Controllers.Interface.OperatorDashboardController;
 import Models.EBS_DbContext;
+import Views.Admin.DeleteCustomerView;
 import Views.BillsOfRegionView;
 import Views.MeterCodeVerificator;
 import Views.View;
@@ -196,7 +197,7 @@ public class OperatorDashboardView extends javax.swing.JFrame implements View{
     private void CancelSubscripButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelSubscripButtonActionPerformed
         
         this.dispose();
-        new MeterCodeVerificator(this, new CustomerLoginControllerImp(null, new EBS_DbContext()), new Stop_CancelSubscriptionView(this));
+        new MeterCodeVerificator(this, new CustomerLoginControllerImp(null, new EBS_DbContext()), new DeleteCustomerView(this));
     }//GEN-LAST:event_CancelSubscripButtonActionPerformed
 
     private void SignedAsFieldAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_SignedAsFieldAncestorAdded

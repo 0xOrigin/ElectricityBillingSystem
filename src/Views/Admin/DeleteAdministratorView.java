@@ -116,7 +116,7 @@ public class DeleteAdministratorView extends javax.swing.JFrame implements View{
         this.role = this.controller.getRole(this.ID); 
         this.idField.setText(this.ID);
         this.roleField.setText(this.role);
-        this.confirmDeletionMessage.setText("Sure You Want To delete This "+ this.role + "?"); 
+        this.confirmDeletionMessage.setText("Sure you want to delete this "+ this.role + "?"); 
     }//GEN-LAST:event_formComponentShown
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
@@ -128,13 +128,13 @@ public class DeleteAdministratorView extends javax.swing.JFrame implements View{
         
         if(isDeleted){
             
-            message = "This " + this.role + " Has deleted Successfully" ; 
+            message = "This " + this.role + " sas deleted successfully" ; 
             JOptionPane.showMessageDialog(this, message,this.role +"Deleted", JOptionPane.INFORMATION_MESSAGE);
             
         } else{
             
-            message = "Can't Preform The Deletion Only One "+ this.role + " Left" ; 
-            JOptionPane.showMessageDialog(this, message,"Faild To Delete", JOptionPane.ERROR_MESSAGE); 
+            message = "Can't perform the deletion only one "+ this.role + " left" ; 
+            JOptionPane.showMessageDialog(this, message,"Faild to Delete", JOptionPane.ERROR_MESSAGE); 
         }
         
         if(this.ID.equals(loggedAdminID) && this.role.equals(Role.Admin.name()) && isDeleted){

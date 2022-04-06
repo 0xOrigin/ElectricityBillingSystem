@@ -59,9 +59,7 @@ public class AdministratorControllerImp implements AdministratorController{
     public String getLoggedInID(){
     
         return this.ID;
-    }
-    
-    // my code goes here 
+    } 
     
     @Override
     public String getRole(String ID) {
@@ -115,7 +113,7 @@ public class AdministratorControllerImp implements AdministratorController{
     @Override
     public boolean deleteAdministrator(String ID , String role){
         
-        if(role.equals("Admin"))
+        if(role.equals(Role.Admin.name()))
             return this.deleteAdmin(ID ); 
         else
             return this.deleteOperator(ID); 
