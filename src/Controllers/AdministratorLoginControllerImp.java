@@ -21,7 +21,7 @@ public class AdministratorLoginControllerImp implements AdministratorLoginContro
     
         this.view = view;
         this.dbContext = dbContext;
-        
+         
         this.registerInView();
     }
     
@@ -68,6 +68,6 @@ public class AdministratorLoginControllerImp implements AdministratorLoginContro
         String messageText = "Your new Password is " + password + " .";
             
         SendEmail.setDefaultConfig(new EmailConfigImp()).send(email, messageSubject, messageText);
-    }
-    
+    } 
+      
 }

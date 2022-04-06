@@ -15,4 +15,17 @@ public interface AdministratorController extends Controller{
     
     List<Map<Enum, Object>> getAllBillsOfRegion(String governmentCode);
     
+    boolean isValidAddress(String address);
+    
+    boolean isValidEmail(String email);
+    
+    boolean isValidPhoneNumber(String phoneNumber);
+    
+    public void updateAdmin(List<Enum> fields,List<Object> values,String ID);
+    
+    public Map<Enum, Object> getInfo(List<Enum> fields, String ID);
+    
+    public int getNumOfRegisteredInRole(String role);
+    
+    
 }
