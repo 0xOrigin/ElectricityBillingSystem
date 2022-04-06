@@ -226,8 +226,8 @@ public class CustomerDashboardView extends javax.swing.JFrame implements View{
     }//GEN-LAST:event_ActivationStateLabelAncestorAdded
 
     private void SignedAsFieldAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_SignedAsFieldAncestorAdded
-        
-        this.SignedAsField.setText(this.controller.getLoggedinMeterCode());
+
+        this.SignedAsField.setText(this.controller.getMeterCode());
     }//GEN-LAST:event_SignedAsFieldAncestorAdded
 
     

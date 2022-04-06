@@ -288,7 +288,7 @@ public class AdminDashboardView extends javax.swing.JFrame implements View {
     private void UpdateCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateCustomerButtonActionPerformed
         
         this.dispose();
-        new MeterCodeVerificator(this, new CustomerLoginControllerImp(null, new EBS_DbContext()), new UpdateCustomerView(this), this.controller.getLoggedInID());
+        new MeterCodeVerificator(this, new CustomerLoginControllerImp(null, new EBS_DbContext()), new UpdateCustomerView(this));
     }//GEN-LAST:event_UpdateCustomerButtonActionPerformed
 
     private void DeleteAdministratorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteAdministratorButtonActionPerformed
@@ -300,7 +300,7 @@ public class AdminDashboardView extends javax.swing.JFrame implements View {
     private void DeleteCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteCustomerButtonActionPerformed
         
         this.dispose();
-        new MeterCodeVerificator(this, new CustomerLoginControllerImp(null, new EBS_DbContext()), new DeleteCustomerView(this), this.controller.getLoggedInID());
+        new MeterCodeVerificator(this, new CustomerLoginControllerImp(null, new EBS_DbContext()), new DeleteCustomerView(this));
     }//GEN-LAST:event_DeleteCustomerButtonActionPerformed
 
     private void SignedAsFieldAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_SignedAsFieldAncestorAdded

@@ -110,13 +110,19 @@ public class OperatorBillsView extends javax.swing.JFrame implements View{
         
         this.setLocationRelativeTo(null);
         
-        this.bills = this.controller.getAllBillsOfMeterCode();
+        
     }
     
     @Override
     public final void setController(Controller controller){
         
         this.controller = (CustomerDashboardController) controller;
+        this.loadAllBills();
+    }
+    
+    private void loadAllBills(){
+    
+        this.bills = this.controller.getAllBillsOfMeterCode();
     }
     
     @Override

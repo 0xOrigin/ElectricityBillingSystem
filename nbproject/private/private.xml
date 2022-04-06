@@ -3,24 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/pit0u0/electricity-billing-system/ElectricityBillingSystem/src/Controllers/AdministratorLoginControllerImp.java</file>
-            <file>file:/home/pit0u0/electricity-billing-system/ElectricityBillingSystem/src/Controllers/AdministratorControllerImp.java</file>
-            <file>file:/home/pit0u0/electricity-billing-system/ElectricityBillingSystem/src/Views/MeterCodeVerificator.java</file>
-            <file>file:/home/pit0u0/electricity-billing-system/ElectricityBillingSystem/src/Views/ViewsHelper.java</file>
-            <file>file:/home/pit0u0/electricity-billing-system/ElectricityBillingSystem/src/Views/BillsOfRegionView.java</file>
-            <file>file:/home/pit0u0/electricity-billing-system/ElectricityBillingSystem/src/Controllers/Interface/AdministratorController.java</file>
-            <file>file:/home/pit0u0/electricity-billing-system/ElectricityBillingSystem/src/Views/Admin/DeleteAdministratorView.java</file>
-            <file>file:/home/pit0u0/electricity-billing-system/ElectricityBillingSystem/src/Views/Admin/ConsumptionStatisticsForRegion.java</file>
-            <file>file:/home/pit0u0/electricity-billing-system/ElectricityBillingSystem/src/Views/Admin/DeleteCustomerView.java</file>
-            <file>file:/home/pit0u0/electricity-billing-system/ElectricityBillingSystem/src/Views/AdministratorLoginView.java</file>
-            <file>file:/home/pit0u0/electricity-billing-system/ElectricityBillingSystem/src/Controllers/Bill/MakeConsumptionStats.java</file>
-            <file>file:/home/pit0u0/electricity-billing-system/ElectricityBillingSystem/src/ElectricityBillingSystem.java</file>
-            <file>file:/home/pit0u0/electricity-billing-system/ElectricityBillingSystem/src/Controllers/CustomerDashboardControllerImp.java</file>
-            <file>file:/home/pit0u0/electricity-billing-system/ElectricityBillingSystem/src/Controllers/Interface/Controller.java</file>
-            <file>file:/home/pit0u0/electricity-billing-system/ElectricityBillingSystem/src/Views/CustomerLoginView.java</file>
-            <file>file:/home/pit0u0/electricity-billing-system/ElectricityBillingSystem/src/Views/IdVerificator.java</file>
-            <file>file:/home/pit0u0/electricity-billing-system/ElectricityBillingSystem/src/Models/Database/ModelUtility.java</file>
-            <file>file:/home/pit0u0/electricity-billing-system/ElectricityBillingSystem/src/Controllers/Interface/CustomerDashboardController.java</file>
+            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Views/Admin/AdminDashboardView.java</file>
+            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Controllers/Interface/CustomerDashboardController.java</file>
+            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Views/Customer/CustomerDashboardView.java</file>
+            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Views/Operator/OperatorBillsView.java</file>
+            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Views/Operator/OperatorDashboardView.java</file>
+            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Views/Admin/DeleteAdministratorView.java</file>
+            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Views/CustomerLoginView.java</file>
+            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Controllers/CustomerDashboardControllerImp.java</file>
+            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Views/MeterCodeVerificator.java</file>
+            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Views/Admin/DeleteCustomerView.java</file>
         </group>
     </open-files>
 </project-private>
