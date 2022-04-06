@@ -6,6 +6,6 @@ package Models.Enum;
  */
 public enum ActivationState {
     
-    Active, Inactive;
+    Active, Inactive, activate ,deactivate;
     
 }
