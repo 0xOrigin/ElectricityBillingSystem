@@ -212,10 +212,10 @@ public class ActivationView extends javax.swing.JFrame implements View {
      
         int exitTheProcess = 1;
         exitTheProcess = JOptionPane.showConfirmDialog(null, "Are you sure to " + switchActivationStateWarning(toSwitchState) + " this meter :" + this.controller.getMeterCode(), toSwitchState, JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-////////////////
+        
         if (exitTheProcess == 1) {
             return;
-        }
+        }// if "No" exitTheProcess equal "1"
 
         changeActivationStateLabelText(toSwitchState);
         this.controller.toggleActivation(this.controller.getMeterCode());
