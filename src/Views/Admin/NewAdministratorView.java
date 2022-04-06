@@ -1,9 +1,13 @@
 package Views.Admin;
 
+import Controllers.Interface.AdminDashboardController;
 import Controllers.Interface.AdministratorController;
 import Controllers.Interface.Controller;
+import Models.Enum.Role;
 import Views.View;
+import Views.ViewsHelper;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -34,10 +38,34 @@ public class NewAdministratorView extends javax.swing.JFrame implements View{
     private void initComponents() {
 
         BackButton = new javax.swing.JButton();
+        Required6 = new javax.swing.JLabel();
+        GovernmentLabel = new javax.swing.JLabel();
+        Required1 = new javax.swing.JLabel();
+        FrameDescription = new javax.swing.JLabel();
+        Required2 = new javax.swing.JLabel();
+        Required3 = new javax.swing.JLabel();
+        NameLabel = new javax.swing.JLabel();
+        Required4 = new javax.swing.JLabel();
+        NameField = new javax.swing.JTextField();
+        Required5 = new javax.swing.JLabel();
+        NationalIDLabel = new javax.swing.JLabel();
+        NationalIDField = new javax.swing.JTextField();
+        EmailLabel = new javax.swing.JLabel();
+        EmailField = new javax.swing.JTextField();
+        AddressLabel = new javax.swing.JLabel();
+        AddressField = new javax.swing.JTextField();
+        PhoneNumberLabel = new javax.swing.JLabel();
+        PhoneNumberField = new javax.swing.JTextField();
+        Required7 = new javax.swing.JLabel();
+        RoleLabel = new javax.swing.JLabel();
+        RoleField = new javax.swing.JComboBox<>();
+        SubmitButton = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("New Administrator Registration");
         setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/BackIcon.png"))); // NOI18N
         BackButton.setToolTipText("Back");
@@ -46,23 +74,159 @@ public class NewAdministratorView extends javax.swing.JFrame implements View{
                 BackButtonActionPerformed(evt);
             }
         });
+        getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 58, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(336, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BackButton)
-                .addContainerGap(248, Short.MAX_VALUE))
-        );
+        Required6.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        Required6.setForeground(new java.awt.Color(255, 0, 0));
+        getContentPane().add(Required6, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 646, -1, -1));
+
+        GovernmentLabel.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        GovernmentLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(GovernmentLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 646, -1, 26));
+
+        Required1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        Required1.setForeground(new java.awt.Color(255, 0, 0));
+        Required1.setText("*");
+        getContentPane().add(Required1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, -1, -1));
+
+        FrameDescription.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        FrameDescription.setText("Add Administrator");
+        FrameDescription.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        getContentPane().add(FrameDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 11, -1, 46));
+
+        Required2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        Required2.setForeground(new java.awt.Color(255, 0, 0));
+        Required2.setText("*");
+        getContentPane().add(Required2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, -1, -1));
+
+        Required3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        Required3.setForeground(new java.awt.Color(255, 0, 0));
+        Required3.setText("*");
+        getContentPane().add(Required3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, -1, -1));
+
+        NameLabel.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        NameLabel.setText("Name");
+        NameLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(NameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, -1, 26));
+
+        Required4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        Required4.setForeground(new java.awt.Color(255, 0, 0));
+        Required4.setText("*");
+        getContentPane().add(Required4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, -1, -1));
+
+        NameField.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        NameField.setToolTipText("Enter your name");
+        NameField.setMinimumSize(new java.awt.Dimension(64, 30));
+        NameField.setPreferredSize(new java.awt.Dimension(64, 30));
+        NameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NameFieldActionPerformed(evt);
+            }
+        });
+        getContentPane().add(NameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 218, -1));
+
+        Required5.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        Required5.setForeground(new java.awt.Color(255, 0, 0));
+        Required5.setText("*");
+        getContentPane().add(Required5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 370, -1, -1));
+
+        NationalIDLabel.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        NationalIDLabel.setText("National ID");
+        NationalIDLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(NationalIDLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, -1, 26));
+
+        NationalIDField.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        NationalIDField.setToolTipText("Enter your national id");
+        NationalIDField.setMinimumSize(new java.awt.Dimension(64, 30));
+        NationalIDField.setPreferredSize(new java.awt.Dimension(64, 30));
+        NationalIDField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NationalIDFieldActionPerformed(evt);
+            }
+        });
+        getContentPane().add(NationalIDField, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 218, -1));
+
+        EmailLabel.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        EmailLabel.setText("Email");
+        EmailLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(EmailLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, -1, 26));
+
+        EmailField.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        EmailField.setToolTipText("Enter your email");
+        EmailField.setMinimumSize(new java.awt.Dimension(64, 30));
+        EmailField.setName(""); // NOI18N
+        EmailField.setPreferredSize(new java.awt.Dimension(64, 30));
+        EmailField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EmailFieldActionPerformed(evt);
+            }
+        });
+        getContentPane().add(EmailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 218, -1));
+
+        AddressLabel.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        AddressLabel.setText("Address");
+        AddressLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(AddressLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, -1, 26));
+
+        AddressField.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        AddressField.setToolTipText("Enter your address");
+        AddressField.setMinimumSize(new java.awt.Dimension(64, 30));
+        AddressField.setPreferredSize(new java.awt.Dimension(64, 30));
+        AddressField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddressFieldActionPerformed(evt);
+            }
+        });
+        getContentPane().add(AddressField, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, 218, -1));
+
+        PhoneNumberLabel.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        PhoneNumberLabel.setText("Phone Number");
+        PhoneNumberLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(PhoneNumberLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 370, -1, 26));
+
+        PhoneNumberField.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        PhoneNumberField.setToolTipText("Enter your phone number");
+        PhoneNumberField.setMinimumSize(new java.awt.Dimension(64, 30));
+        PhoneNumberField.setPreferredSize(new java.awt.Dimension(64, 30));
+        PhoneNumberField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PhoneNumberFieldActionPerformed(evt);
+            }
+        });
+        getContentPane().add(PhoneNumberField, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 400, 218, -1));
+
+        Required7.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        Required7.setForeground(new java.awt.Color(255, 0, 0));
+        Required7.setText("*");
+        getContentPane().add(Required7, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 453, -1, -1));
+
+        RoleLabel.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        RoleLabel.setLabelFor(RoleField);
+        RoleLabel.setText("Role");
+        RoleLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(RoleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 448, -1, 26));
+
+        RoleField.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        RoleField.setToolTipText("Select your governorate");
+        RoleField.setMinimumSize(new java.awt.Dimension(76, 30));
+        RoleField.setPreferredSize(new java.awt.Dimension(76, 30));
+        RoleField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                RoleFieldFocusLost(evt);
+            }
+        });
+        getContentPane().add(RoleField, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 481, 218, -1));
+
+        SubmitButton.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        SubmitButton.setText("Submit");
+        SubmitButton.setToolTipText("Request a meter");
+        SubmitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SubmitButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(SubmitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 571, 218, 44));
+        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 512, 10));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -74,6 +238,104 @@ public class NewAdministratorView extends javax.swing.JFrame implements View{
         this.previousFrame.setVisible(true);
     }//GEN-LAST:event_BackButtonActionPerformed
 
+    private void NameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameFieldActionPerformed
+
+        if(this.NameField.getText().isBlank() || !this.controller.isValidName(this.NameField.getText())){
+
+            this.globalValidationState = false;
+
+            JOptionPane.showMessageDialog(this, "Please enter a valid name.", "Name field", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_NameFieldActionPerformed
+
+    private void NationalIDFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NationalIDFieldActionPerformed
+
+        if(this.NationalIDField.getText().isBlank() || !this.controller.isValidNationalID(this.NationalIDField.getText())){
+
+            this.globalValidationState = false;
+
+            String message = "The national number has been entered incorrectly or you are already registered.";
+
+            JOptionPane.showMessageDialog(this, message, "National ID field", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_NationalIDFieldActionPerformed
+
+    private void EmailFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailFieldActionPerformed
+
+        if(this.EmailField.getText().isBlank() || !this.controller.isValidEmail(this.EmailField.getText())){
+
+            this.globalValidationState = false;
+
+            JOptionPane.showMessageDialog(this, "Please enter a valid email.", "Email field", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_EmailFieldActionPerformed
+
+    private void AddressFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddressFieldActionPerformed
+
+        if(this.AddressField.getText().isBlank() || !this.controller.isValidAddress(this.AddressField.getText())){
+
+            this.globalValidationState = false;
+
+            JOptionPane.showMessageDialog(this, "Please enter a valid address.", "Address field", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_AddressFieldActionPerformed
+
+    private void PhoneNumberFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PhoneNumberFieldActionPerformed
+
+        if(this.PhoneNumberField.getText().isBlank() || !this.controller.isValidPhoneNumber(this.PhoneNumberField.getText())){
+
+            this.globalValidationState = false;
+
+            JOptionPane.showMessageDialog(this, "Please enter a valid phone number.", "Phone number field", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_PhoneNumberFieldActionPerformed
+
+    private void RoleFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RoleFieldFocusLost
+
+        if(this.RoleField.getSelectedIndex() == 0){
+
+            this.globalValidationState = false;
+
+            JOptionPane.showMessageDialog(this, "Please select your role.", "Role field", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_RoleFieldFocusLost
+
+    private void SubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitButtonActionPerformed
+
+        this.globalValidationState = true;
+
+        this.NameFieldActionPerformed(null);
+        this.NationalIDFieldActionPerformed(null);
+        this.AddressFieldActionPerformed(null);
+        this.EmailFieldActionPerformed(null);
+        this.PhoneNumberFieldActionPerformed(null);
+        this.RoleFieldFocusLost(null);
+        
+
+        if(this.globalValidationState){
+
+            String message = "You will receive an email with your ID and Password";
+
+            this.controller.registerAdministrator(this.NameField.getText(), this.NationalIDField.getText(),
+                this.AddressField.getText(), this.EmailField.getText(),
+                this.RoleField.getSelectedItem().toString(), this.PhoneNumberField.getText()
+                );
+
+                    JOptionPane.showMessageDialog(this, message, "Successful operation", JOptionPane.INFORMATION_MESSAGE);
+                }
+
+    }//GEN-LAST:event_SubmitButtonActionPerformed
+
+    private void fillRoleField(){
+    
+        String[] roles = ViewsHelper.getSortedEnumValues(Role.values());
+        
+        this.RoleField.addItem(this.RoleFieldInitialState);
+        this.RoleField.setSelectedIndex(0);
+
+        for(String role : roles)
+            this.RoleField.addItem(role);            
+    }
     @Override
     public final void setSpecialSettings() {
         
@@ -84,7 +346,7 @@ public class NewAdministratorView extends javax.swing.JFrame implements View{
     @Override
     public void setController(Controller controller){
     
-        this.controller = (AdministratorController) controller;
+        this.controller = (AdminDashboardController) controller;
     }
     
     @Override
@@ -98,11 +360,35 @@ public class NewAdministratorView extends javax.swing.JFrame implements View{
     
         return this.previousFrame;
     }
-    
-    private AdministratorController controller;
+    private final String RoleFieldInitialState = "Select Role";
+    private boolean globalValidationState = false;
+    private AdminDashboardController controller;
     private javax.swing.JFrame previousFrame;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField AddressField;
+    private javax.swing.JLabel AddressLabel;
     private javax.swing.JButton BackButton;
+    private javax.swing.JTextField EmailField;
+    private javax.swing.JLabel EmailLabel;
+    private javax.swing.JLabel FrameDescription;
+    private javax.swing.JLabel GovernmentLabel;
+    private javax.swing.JTextField NameField;
+    private javax.swing.JLabel NameLabel;
+    private javax.swing.JTextField NationalIDField;
+    private javax.swing.JLabel NationalIDLabel;
+    private javax.swing.JTextField PhoneNumberField;
+    private javax.swing.JLabel PhoneNumberLabel;
+    private javax.swing.JLabel Required1;
+    private javax.swing.JLabel Required2;
+    private javax.swing.JLabel Required3;
+    private javax.swing.JLabel Required4;
+    private javax.swing.JLabel Required5;
+    private javax.swing.JLabel Required6;
+    private javax.swing.JLabel Required7;
+    private javax.swing.JComboBox<String> RoleField;
+    private javax.swing.JLabel RoleLabel;
+    private javax.swing.JButton SubmitButton;
+    private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables
 }
