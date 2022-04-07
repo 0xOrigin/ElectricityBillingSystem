@@ -1,7 +1,6 @@
 package Views.Admin;
 
 import Controllers.Interface.AdminDashboardController;
-import Controllers.Interface.AdministratorController;
 import Controllers.Interface.Controller;
 import Models.Enum.Role;
 import Views.FixedSizeDocument;
@@ -64,7 +63,6 @@ public class NewAdministratorView extends javax.swing.JFrame implements View{
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("New Administrator Registration");
         setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/BackIcon.png"))); // NOI18N
         BackButton.setToolTipText("Back");
@@ -73,42 +71,34 @@ public class NewAdministratorView extends javax.swing.JFrame implements View{
                 BackButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 58, -1));
 
         Required1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         Required1.setForeground(new java.awt.Color(255, 0, 0));
         Required1.setText("*");
-        getContentPane().add(Required1, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 49, -1, -1));
 
         Required2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         Required2.setForeground(new java.awt.Color(255, 0, 0));
         Required2.setText("*");
-        getContentPane().add(Required2, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 118, -1, -1));
 
         Required3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         Required3.setForeground(new java.awt.Color(255, 0, 0));
         Required3.setText("*");
-        getContentPane().add(Required3, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 187, -1, -1));
 
         Required4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         Required4.setForeground(new java.awt.Color(255, 0, 0));
         Required4.setText("*");
-        getContentPane().add(Required4, new org.netbeans.lib.awtextra.AbsoluteConstraints(132, 256, -1, -1));
 
         Required5.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         Required5.setForeground(new java.awt.Color(255, 0, 0));
         Required5.setText("*");
-        getContentPane().add(Required5, new org.netbeans.lib.awtextra.AbsoluteConstraints(196, 325, -1, -1));
 
         Required6.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         Required6.setForeground(new java.awt.Color(255, 0, 0));
         Required6.setText("*");
-        getContentPane().add(Required6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, 10, -1));
 
         EmailLabel.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         EmailLabel.setText("Email");
         EmailLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(EmailLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 251, -1, 26));
 
         EmailField.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         EmailField.setToolTipText("Enter your email");
@@ -120,12 +110,10 @@ public class NewAdministratorView extends javax.swing.JFrame implements View{
                 EmailFieldActionPerformed(evt);
             }
         });
-        getContentPane().add(EmailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 284, 218, -1));
 
         AddressLabel.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         AddressLabel.setText("Address");
         AddressLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(AddressLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 182, -1, 26));
 
         AddressField.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         AddressField.setToolTipText("Enter your address");
@@ -136,29 +124,25 @@ public class NewAdministratorView extends javax.swing.JFrame implements View{
                 AddressFieldActionPerformed(evt);
             }
         });
-        getContentPane().add(AddressField, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 215, 218, -1));
 
         PhoneNumberLabel.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         PhoneNumberLabel.setLabelFor(PhoneNumberField);
         PhoneNumberLabel.setText("Phone Number");
         PhoneNumberLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(PhoneNumberLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 320, -1, 26));
 
         RoleLabel.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         RoleLabel.setLabelFor(RoleField);
         RoleLabel.setText("Role");
         RoleLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(RoleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, -1, 26));
 
         FrameDescription.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        FrameDescription.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         FrameDescription.setText("Add Administrator");
         FrameDescription.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        getContentPane().add(FrameDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 6, -1, -1));
 
         NameLabel.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         NameLabel.setText("Name");
         NameLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(NameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 44, -1, 26));
 
         NameField.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         NameField.setToolTipText("Enter your name");
@@ -169,12 +153,10 @@ public class NewAdministratorView extends javax.swing.JFrame implements View{
                 NameFieldActionPerformed(evt);
             }
         });
-        getContentPane().add(NameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 77, 218, -1));
 
         NationalIDLabel.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         NationalIDLabel.setText("National ID");
         NationalIDLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(NationalIDLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 113, -1, 26));
 
         NationalIDField.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         NationalIDField.setToolTipText("Enter your national id");
@@ -185,7 +167,6 @@ public class NewAdministratorView extends javax.swing.JFrame implements View{
                 NationalIDFieldActionPerformed(evt);
             }
         });
-        getContentPane().add(NationalIDField, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 146, 218, -1));
 
         PhoneNumberField.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         PhoneNumberField.setToolTipText("Enter your phone number");
@@ -196,7 +177,6 @@ public class NewAdministratorView extends javax.swing.JFrame implements View{
                 PhoneNumberFieldActionPerformed(evt);
             }
         });
-        getContentPane().add(PhoneNumberField, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, 218, -1));
 
         SubmitButton.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         SubmitButton.setText("Submit");
@@ -206,14 +186,142 @@ public class NewAdministratorView extends javax.swing.JFrame implements View{
                 SubmitButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(SubmitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 486, 218, 44));
-        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 470, 388, 10));
 
         RoleField.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         RoleField.setToolTipText("Select your type of use");
         RoleField.setMinimumSize(new java.awt.Dimension(76, 30));
         RoleField.setPreferredSize(new java.awt.Dimension(76, 30));
-        getContentPane().add(RoleField, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 420, 220, -1));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(75, 75, 75)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(3, 3, 3)
+                                        .addComponent(NameLabel))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(49, 49, 49)
+                                        .addComponent(Required1))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(78, 78, 78)
+                                .addComponent(NameField, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(78, 78, 78)
+                                .addComponent(NationalIDLabel)
+                                .addGap(10, 10, 10)
+                                .addComponent(Required2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(78, 78, 78)
+                                .addComponent(NationalIDField, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(78, 78, 78)
+                                .addComponent(AddressLabel)
+                                .addGap(10, 10, 10)
+                                .addComponent(Required3))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(78, 78, 78)
+                                .addComponent(AddressField, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(78, 78, 78)
+                                .addComponent(EmailLabel)
+                                .addGap(7, 7, 7)
+                                .addComponent(Required4))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(78, 78, 78)
+                                .addComponent(EmailField, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(78, 78, 78)
+                                .addComponent(PhoneNumberLabel)
+                                .addGap(10, 10, 10)
+                                .addComponent(Required5))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(80, 80, 80)
+                                .addComponent(PhoneNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(80, 80, 80)
+                                .addComponent(RoleLabel)
+                                .addGap(10, 10, 10)
+                                .addComponent(Required6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(80, 80, 80)
+                                .addComponent(RoleField, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(80, 80, 80)
+                                .addComponent(SubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21)
+                        .addComponent(FrameDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BackButton)
+                    .addComponent(FrameDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(NameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(Required1)))
+                .addGap(6, 6, 6)
+                .addComponent(NameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(NationalIDLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(Required2)))
+                .addGap(6, 6, 6)
+                .addComponent(NationalIDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(AddressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(Required3)))
+                .addGap(6, 6, 6)
+                .addComponent(AddressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(EmailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(Required4)))
+                .addGap(6, 6, 6)
+                .addComponent(EmailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(PhoneNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(Required5)))
+                .addGap(13, 13, 13)
+                .addComponent(PhoneNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(RoleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Required6))
+                .addGap(4, 4, 4)
+                .addComponent(RoleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(SubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -246,15 +354,17 @@ public class NewAdministratorView extends javax.swing.JFrame implements View{
                 this.RoleField.getSelectedItem().toString(), this.PhoneNumberField.getText()
                 );
 
-                    JOptionPane.showMessageDialog(this, message, "Successful operation", JOptionPane.INFORMATION_MESSAGE);
-                }
+            JOptionPane.showMessageDialog(this, message, "Successful operation", JOptionPane.INFORMATION_MESSAGE);
+            
+            this.BackButtonActionPerformed(null);
+        }
 
     }//GEN-LAST:event_SubmitButtonActionPerformed
     
 
     private void EmailFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailFieldActionPerformed
 
-        if(this.EmailField.getText().isBlank() || !this.controller.isValidEmail(this.EmailField.getText())){
+        if(!this.controller.isValidEmail(this.EmailField.getText())){
 
             this.globalValidationState = false;
 
@@ -264,7 +374,7 @@ public class NewAdministratorView extends javax.swing.JFrame implements View{
 
     private void AddressFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddressFieldActionPerformed
 
-        if(this.AddressField.getText().isBlank() || !this.controller.isValidAddress(this.AddressField.getText())){
+        if(!this.controller.isValidAddress(this.AddressField.getText())){
 
             this.globalValidationState = false;
 
@@ -274,7 +384,7 @@ public class NewAdministratorView extends javax.swing.JFrame implements View{
 
     private void NameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameFieldActionPerformed
 
-        if(this.NameField.getText().isBlank() || !this.controller.isValidName(this.NameField.getText())){
+        if(!this.controller.isValidName(this.NameField.getText())){
 
             this.globalValidationState = false;
 
@@ -284,7 +394,7 @@ public class NewAdministratorView extends javax.swing.JFrame implements View{
 
     private void NationalIDFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NationalIDFieldActionPerformed
 
-        if(this.NationalIDField.getText().isBlank() || !this.controller.isValidNationalID(this.NationalIDField.getText())){
+        if(!this.controller.isValidNationalID(this.NationalIDField.getText())){
 
             this.globalValidationState = false;
 
@@ -295,8 +405,8 @@ public class NewAdministratorView extends javax.swing.JFrame implements View{
     }//GEN-LAST:event_NationalIDFieldActionPerformed
 
     private void PhoneNumberFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PhoneNumberFieldActionPerformed
-        // TODO add your handling code here:
-        if(this.PhoneNumberField.getText().isBlank() || !this.controller.isValidPhoneNumber(this.PhoneNumberField.getText())){
+
+        if(!this.controller.isValidPhoneNumber(this.PhoneNumberField.getText())){
 
                 this.globalValidationState = false;
 
@@ -317,15 +427,15 @@ public class NewAdministratorView extends javax.swing.JFrame implements View{
 
         if(this.globalValidationState){
 
-            String message = "You will receive an email with your Meter code and Password";
+            String message = "You will receive an email with your ID and Password";
 
             this.controller.registerAdministrator(this.NameField.getText(), this.NationalIDField.getText(),
                 this.AddressField.getText(), this.EmailField.getText(),
                 this.RoleField.getSelectedItem().toString(), this.PhoneNumberField.getText()
                 );
 
-                    JOptionPane.showMessageDialog(this, message, "Successful operation", JOptionPane.INFORMATION_MESSAGE);
-                }
+            JOptionPane.showMessageDialog(this, message, "Successful operation", JOptionPane.INFORMATION_MESSAGE);
+        }
 
     }//GEN-LAST:event_RequestButtonActionPerformed
 
@@ -335,7 +445,7 @@ public class NewAdministratorView extends javax.swing.JFrame implements View{
 
             this.globalValidationState = false;
 
-            JOptionPane.showMessageDialog(this, "Please select your type of use.", "Type of use field", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Please select your Role.", "Role field", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_TypeOfUseFieldFocusLost
 
