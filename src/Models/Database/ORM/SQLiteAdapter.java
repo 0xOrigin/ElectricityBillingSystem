@@ -77,9 +77,20 @@ public class SQLiteAdapter extends DML implements Adapter {
         int size = values.size();
         String valuesString = "";
         
-        for(Object value : values)
-            valuesString = valuesString.concat((isFile(value) ? " ? " : (value instanceof String && !((String) value).matches(".*[+|-|\\*].*") ? ("\'" + value + "\'") : value)) + (size-- == 1 ? "" : ", "));
+        for(Object value : values){
         
+            if(isFile(value))
+                valuesString = valuesString.concat(" ? ");
+            
+            else if(value instanceof String && !((String) value).matches(".*[+|-|\\*].*")) // To support +=, -=, *= 
+                valuesString = valuesString.concat("\'" + value + "\'");
+            
+            else
+                valuesString = valuesString.concat(value.toString());
+         
+            valuesString = valuesString.concat((size-- == 1 ? "" : ", ")); // For String ending.
+        }
+            
         return valuesString;
     }
     
@@ -104,7 +115,7 @@ public class SQLiteAdapter extends DML implements Adapter {
         
         for(Object value : values)
             if(isFile(value))
-                imagesPaths.add((String) value);
+                imagesPaths.add(String.valueOf(value));
         
         return imagesPaths;
     }

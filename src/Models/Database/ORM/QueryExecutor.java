@@ -87,6 +87,8 @@ public class QueryExecutor {
 
             if(query.contains(" ? ")){
 
+                // Replaces ? that written by SQLiteAdapter.processValues in the Query.
+                
                 int iterator = 1;
 
                 while(!imagesPaths.isEmpty()){

@@ -14,9 +14,9 @@ abstract class DML {
     
         String statement = " ( " + field.name() + " " + operator + " ";
         
-        if(value instanceof String && !((String) value).toLowerCase().contains("select"))
+        if(value instanceof String && !String.valueOf(value).toLowerCase().contains("select"))
             statement += "\'" + value + "\'";
-        else if(String.valueOf(value).toLowerCase().contains("select"))
+        else if(String.valueOf(value).toLowerCase().contains("select")) // To support nested Select queries.
             statement += "( " + value + " )";
         else
             statement += value;
