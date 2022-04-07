@@ -27,8 +27,18 @@ public interface CustomerDashboardController extends Controller {
     
     String getMeterCode();
     
-    void toggleActivation(String meterCode) ;
+    void toggleActivation(String meterCode);
     
-    boolean deleteCustomer(String meterCode) ; 
+    boolean deleteCustomer(String meterCode);
+    
+    boolean isValidAddress(String address);
+    
+    boolean isValidEmail(String email);
+    
+    boolean isValidPhoneNumber(String phoneNumber);
+    
+    public void updateCustomer(List<Enum> fields,List<Object> values,String meterCode);
+    
+    public Map<Enum, Object> getInfo(List<Enum> fields, String MeterCode);
     
 }

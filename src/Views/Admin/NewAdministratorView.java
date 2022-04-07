@@ -423,7 +423,7 @@ public class NewAdministratorView extends javax.swing.JFrame implements View{
         this.AddressFieldActionPerformed(null);
         this.EmailFieldActionPerformed(null);
         this.PhoneNumberFieldActionPerformed(null);
-        
+        this.RoleFieldFocusLost(null);
 
         if(this.globalValidationState){
 
@@ -459,6 +459,7 @@ public class NewAdministratorView extends javax.swing.JFrame implements View{
         for(String role : roles)
             this.RoleField.addItem(role);            
     }
+    
     @Override
     public final void setSpecialSettings() {
         
