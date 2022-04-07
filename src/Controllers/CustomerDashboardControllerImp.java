@@ -2,9 +2,11 @@ package Controllers;
 
 import Controllers.Bill.ReadingValidator;
 import Controllers.Bill.BillCalculations;
+import Controllers.Email.SendEmail;
 import Models.Enum.Column;
 import java.util.Arrays;
 import Controllers.Interface.CustomerDashboardController;
+import Models.AppDate.EmailConfigImp;
 import Models.DbContext;
 import Views.View;
 import java.util.List;
@@ -41,7 +43,7 @@ public class CustomerDashboardControllerImp implements CustomerDashboardControll
     @Override
     public String getActivationState(){
             
-        return (String) this.dbContext.getCustomerModel().getInfo(Arrays.asList(Column.Activation), this.meterCode).get(Column.Activation);
+        return String.valueOf(this.dbContext.getCustomerModel().getInfo(Arrays.asList(Column.Activation), this.meterCode).get(Column.Activation));
     }
     
     @Override
@@ -54,7 +56,7 @@ public class CustomerDashboardControllerImp implements CustomerDashboardControll
     public String[] getLastReleaseDate(){
         
         // dd/dddd [index 0 -> dd, index 1 - > dddd].
-        return ((String) this.dbContext.getBillModel().getLastBillInfo(Arrays.asList(Column.ReleaseDate), this.meterCode).get(Column.ReleaseDate)).split("/");
+        return String.valueOf(this.dbContext.getBillModel().getLastBillInfo(Arrays.asList(Column.ReleaseDate), this.meterCode).get(Column.ReleaseDate)).split("/");
     }
     
     @Override
@@ -71,8 +73,28 @@ public class CustomerDashboardControllerImp implements CustomerDashboardControll
         this.dbContext.getBillModel().releaseNewBill(this.meterCode, releaseDate, currentReading,
                 billCalculations.getConsumption(), billCalculations.getMoneyValue(), billCalculations.getTariff()
         );
+        
+        if(this.unpaidEmailDeterminer(this.meterCode))
+            this.sendUnpaidBillsEmail(this.getCustomerEmail(this.meterCode), this.meterCode);
     }
 
+    private String getCustomerEmail(String meterCode){
+    
+        return String.valueOf(this.dbContext.getCustomerModel().getInfo(Arrays.asList(Column.Email), meterCode).get(Column.Email));
+    }
+    
+    private boolean unpaidEmailDeterminer(String meterCode){
+    
+        return this.dbContext.getBillModel().getNumOfUnpaidBills(meterCode) >= 3;
+    }
+    
+    private void sendUnpaidBillsEmail(String email, String meterCode){
+    
+        String messageSubject = "Alert: bills are accumulated!";
+        String messageText = "You haven't paid your bills for three months or more at the meter number: " + meterCode + " .";
+            
+        SendEmail.setDefaultConfig(new EmailConfigImp()).send(email, messageSubject, messageText);
+    }
     
     @Override
     public List<Map<Enum, Object>> getAllBillsOfMeterCode(){
