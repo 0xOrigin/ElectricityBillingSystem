@@ -204,24 +204,24 @@ public class ActivationView extends javax.swing.JFrame implements View {
 
     private void toggleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toggleActionPerformed
 
-        String state = this.controller.getActivationState();
+        String state = this.ActivationStateLabel.getText();
         String toSwitchState = switchActivationState(state);
         
-     
-        int exitTheProcess = 1;
-        exitTheProcess = JOptionPane.showConfirmDialog(null, "Are you sure to " + switchActivationStateWarning(toSwitchState) + " this meter :" + this.controller.getMeterCode(), toSwitchState, JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        String message = "Are you sure to " + switchActivationStateWarning(toSwitchState) + " this meter: " + this.controller.getMeterCode() + " ?";
+        
+        int exitTheProcess = JOptionPane.showConfirmDialog(this, message, toSwitchState, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 
-        if (exitTheProcess == 1) {
+        if (exitTheProcess == JOptionPane.NO_OPTION)
             return;
-        }// if "No" exitTheProcess equal "1"
 
         changeActivationStateLabelText(toSwitchState);
         this.controller.toggleActivation(this.controller.getMeterCode());
         this.ActivationStateLabel.setBackground(Color.BLACK);
-         toggle.setToolTipText("Click to deactivate");
+        toggle.setToolTipText("Click to deactivate");
     }//GEN-LAST:event_toggleActionPerformed
     
     private String switchActivationStateWarning(String toSwitchState){
+        
         if (toSwitchState.equals(ActivationState.Active.name())) {
             return ActivationState.activate.name();
         } else if (toSwitchState.equals(ActivationState.Inactive.name())) {
