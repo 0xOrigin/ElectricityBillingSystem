@@ -19,13 +19,15 @@ public class CustomerDashboardControllerImp implements CustomerDashboardControll
     private final View view;
     private final DbContext dbContext;
     private final String meterCode;
+    private final DataValidator validator;
     
     public CustomerDashboardControllerImp(View view, DbContext dbContext, String loggedinMeterCode){
     
         this.view = view;
         this.dbContext = dbContext;
         this.meterCode = loggedinMeterCode;
-
+        this.validator = new DataValidator();
+        
         this.registerInView();
     }
     
@@ -87,7 +89,7 @@ public class CustomerDashboardControllerImp implements CustomerDashboardControll
     @Override
     public boolean isValidComplaint(String complaint){
     
-        return new DataValidator().isValidComplaint(complaint);
+        return this.validator.isValidComplaint(complaint);
     }
     
     @Override
@@ -115,6 +117,38 @@ public class CustomerDashboardControllerImp implements CustomerDashboardControll
     
     @Override 
     public void toggleActivation(String meterCode){
+        
        this.dbContext.getCustomerModel().toggleActivation(meterCode);
+    }
+    
+    @Override
+    public boolean isValidAddress(String address) {
+        return this.validator.isValidAddress(address);
+    }
+
+    @Override
+    public boolean isValidEmail(String email) {
+        
+        return this.validator.isValidEmail(email);
+
+    }
+
+    @Override
+    public boolean isValidPhoneNumber(String phoneNumber) {
+        
+        return this.validator.isValidPhoneNumber(phoneNumber);
+
+    }
+
+    @Override
+    public void updateCustomer(List<Enum> fields, List<Object> values, String meterCode) {
+        
+         this.dbContext.getCustomerModel().update(fields, values, meterCode);
+    }
+
+    @Override
+    public Map<Enum, Object> getInfo(List<Enum> fields, String MeterCode) {
+        
+        return this.dbContext.getCustomerModel().getInfo(fields, MeterCode);
     }
 }
