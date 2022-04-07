@@ -211,7 +211,7 @@ public class ActivationView extends javax.swing.JFrame implements View {
         
         int exitTheProcess = JOptionPane.showConfirmDialog(this, message, toSwitchState, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 
-        if (exitTheProcess == JOptionPane.NO_OPTION)
+        if (exitTheProcess != JOptionPane.YES_OPTION)
             return;
 
         changeActivationStateLabelText(toSwitchState);
