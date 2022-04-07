@@ -31,6 +31,7 @@ public class AdminDashboardControllerImp extends AdministratorControllerImp impl
         this.validator = new DataValidator();
         this.generator = new AdministratorDataGenerator();
         this.registerInView(this);
+        
     }
     @Override
     public void registerAdministrator(String name, String nationalID, String address, String email, String Role,

@@ -23,5 +23,7 @@ public interface AdminDashboardController extends AdministratorController{
 
     public void registerAdministrator(String name, String nationalID, String address,
             String email, String Role,String phoneNumber);
+
+    
     
 }
