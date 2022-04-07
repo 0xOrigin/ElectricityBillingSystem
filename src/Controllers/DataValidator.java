@@ -34,11 +34,11 @@ class DataValidator {
     }
     
     public boolean isValidComplaint(String complaint){
-        return complaint.matches("[a-zA-z0-9]+");
+        return complaint.matches("[a-zA-z0-9 ]+");
     }
     
     public static boolean isValidPassword(String password){
-        return password.matches("[0-9a-zA-Z!@#&()–{}:;',?/*~$^+=<>]{4,10}");
+        return password.matches("[0-9a-zA-Z!@#&()–{}:;',?/~$=<>]{4,10}");
     }
     
 }

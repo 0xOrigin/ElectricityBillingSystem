@@ -208,6 +208,7 @@ public class BillComplainView extends javax.swing.JFrame implements View{
     private void BillsTableAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_BillsTableAncestorAdded
 
         this.fillBillsTableByStatus(PaymentState.Unpaid.toString());
+        this.selectNextBill();
     }//GEN-LAST:event_BillsTableAncestorAdded
 
     private void BillsTableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BillsTableMousePressed
