@@ -242,7 +242,7 @@ public class CustomerBillsView extends javax.swing.JFrame implements View{
     
     private void fillStatusField(){
     
-        String[] states = ViewsHelper.getEnumValues(PaymentState.values());
+        String[] states = ViewsHelper.getStringValues(PaymentState.values());
         
         for(String state : states)
             this.StatusField.addItem(state);

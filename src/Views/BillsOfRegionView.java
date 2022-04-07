@@ -194,16 +194,16 @@ public class BillsOfRegionView extends javax.swing.JFrame implements View{
 
     private void RegionFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegionFieldActionPerformed
 
-        String governmentCode = ViewsHelper.getEnumValue(this.RegionField.getSelectedItem().toString());
-        governmentCode = GovernmentCode.valueOf(governmentCode).getCode();
+        String governorate = ViewsHelper.getEnumValueAsString(this.RegionField.getSelectedItem().toString());
+        String governorateCode = GovernmentCode.valueOf(governorate).getCode();
         
-        this.bills = this.controller.getAllBillsOfRegion(governmentCode);
+        this.bills = this.controller.getAllBillsOfRegion(governorateCode);
         this.fillBillsTableByRegion();
     }//GEN-LAST:event_RegionFieldActionPerformed
 
     private void fillRegionField(){
     
-        String[] governorates = ViewsHelper.getSortedEnumValues(GovernmentCode.values());
+        String[] governorates = ViewsHelper.getSortedStringValues(GovernmentCode.values());
         
         for(String governorate : governorates)
             this.RegionField.addItem(governorate);

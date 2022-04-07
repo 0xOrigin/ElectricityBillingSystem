@@ -335,30 +335,6 @@ public class NewAdministratorView extends javax.swing.JFrame implements View{
 
     private void RequestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitButtonActionPerformed
 
-        this.globalValidationState = true;
-
-        this.NameFieldActionPerformed(null);
-        this.NationalIDFieldActionPerformed(null);
-        this.AddressFieldActionPerformed(null);
-        this.EmailFieldActionPerformed(null);
-        this.PhoneNumberFieldActionPerformed(null);
-        this.RoleFieldFocusLost(null);
-        
-
-        if(this.globalValidationState){
-
-            String message = "You will receive an email with your ID and Password";
-
-            this.controller.registerAdministrator(this.NameField.getText(), this.NationalIDField.getText(),
-                this.AddressField.getText(), this.EmailField.getText(),
-                this.RoleField.getSelectedItem().toString(), this.PhoneNumberField.getText()
-                );
-
-            JOptionPane.showMessageDialog(this, message, "Successful operation", JOptionPane.INFORMATION_MESSAGE);
-            
-            this.BackButtonActionPerformed(null);
-        }
-
     }//GEN-LAST:event_SubmitButtonActionPerformed
     
 
@@ -435,6 +411,8 @@ public class NewAdministratorView extends javax.swing.JFrame implements View{
                 );
 
             JOptionPane.showMessageDialog(this, message, "Successful operation", JOptionPane.INFORMATION_MESSAGE);
+            
+            this.BackButtonActionPerformed(null);
         }
 
     }//GEN-LAST:event_RequestButtonActionPerformed
@@ -451,7 +429,7 @@ public class NewAdministratorView extends javax.swing.JFrame implements View{
 
     private void fillRoleField(){
     
-        String[] roles = ViewsHelper.getSortedEnumValues(Role.values());
+        String[] roles = ViewsHelper.getSortedStringValues(Role.values());
         
         this.RoleField.addItem(this.RoleFieldInitialState);
         this.RoleField.setSelectedIndex(0);

@@ -9,14 +9,14 @@ import java.util.Comparator;
  */
 public class ViewsHelper {
     
-    public static String[] getSortedEnumValues(Enum[] enumValues){
+    public static String[] getSortedStringValues(Enum[] enumValues){
         
         Arrays.sort(enumValues, Comparator.comparing(Enum::name));
         
-        return getEnumValues(enumValues);
+        return getStringValues(enumValues);
     }
     
-    public static String[] getEnumValues(Enum[] enumValues){
+    public static String[] getStringValues(Enum[] enumValues){
     
         String[] names = new String[enumValues.length];
         
@@ -27,9 +27,14 @@ public class ViewsHelper {
         return names;
     }
     
-    public static String getEnumValue(String value){
+    public static String getEnumValueAsString(String value){
     
         return underscoreSetter(value);
+    }
+    
+    public static String getStringValueFromEnumStringValue(String enumValue){
+    
+        return underscoreReplacer(enumValue);
     }
     
     public static String handelPath(String path){

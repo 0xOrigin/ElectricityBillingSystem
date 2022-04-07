@@ -326,10 +326,10 @@ public class UpdateCustomerView extends javax.swing.JFrame implements View{
     private void GovernmentFieldAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_GovernmentFieldAncestorAdded
         
         this.fillGovernate();
-        this.oldGovernate =(String) this.controller.getInfo(Arrays.asList(Column.GovernmentCode), this.controller.getMeterCode()).get(Column.GovernmentCode);
+        this.oldGovernorateCode = String.valueOf(this.controller.getInfo(Arrays.asList(Column.GovernmentCode), this.controller.getMeterCode()).get(Column.GovernmentCode));
         
-        String itemName = GovernmentCode.getEnumNameForValue(this.oldGovernate).replaceAll("_", " ");
-        System.out.println(this.oldGovernate + "  added " + itemName);
+        String itemName = ViewsHelper.getStringValueFromEnumStringValue(GovernmentCode.getEnumNameForValue(this.oldGovernorateCode));
+
         this.GovernmentField.setSelectedItem(itemName);
     }//GEN-LAST:event_GovernmentFieldAncestorAdded
 
@@ -344,7 +344,7 @@ public class UpdateCustomerView extends javax.swing.JFrame implements View{
     
     private void fillTypeOfUse(){
     
-        String[] typeOfUseList = ViewsHelper.getEnumValues(TypeOfUse.values());    
+        String[] typeOfUseList = ViewsHelper.getStringValues(TypeOfUse.values());    
         
         for(String typeofuse : typeOfUseList) {
             this.TypeOfUseField.addItem(typeofuse);
@@ -353,7 +353,7 @@ public class UpdateCustomerView extends javax.swing.JFrame implements View{
     
     private void fillGovernate(){
     
-        String[] governorates = ViewsHelper.getSortedEnumValues(GovernmentCode.values());
+        String[] governorates = ViewsHelper.getSortedStringValues(GovernmentCode.values());
         
         for(String governorate : governorates)
             this.GovernmentField.addItem(governorate);  
@@ -370,16 +370,14 @@ public class UpdateCustomerView extends javax.swing.JFrame implements View{
     
     private void GovernateFieldPropertyChangeChecker() {
         
-        String newGovernmentCode = GovernmentCode.valueOf(ViewsHelper.getEnumValue(this.GovernmentField.getSelectedItem().toString())).getCode();
+        String newGovernmentCode = GovernmentCode.valueOf(ViewsHelper.getEnumValueAsString(this.GovernmentField.getSelectedItem().toString())).getCode();
         
         
-        if(!this.oldGovernate.equals(newGovernmentCode)) {
+        if(!this.oldGovernorateCode.equals(newGovernmentCode)) {
              
             this.fields.add(Column.GovernmentCode);
             
-            String governmentCode = GovernmentCode.valueOf(ViewsHelper.getEnumValue(this.GovernmentField.getSelectedItem().toString())).getCode();
-            
-            this.values.add(governmentCode);
+            this.values.add(newGovernmentCode);
         }
     }
     
@@ -387,7 +385,7 @@ public class UpdateCustomerView extends javax.swing.JFrame implements View{
     
         this.oldAddress = this.AddressField.getText();
         this.oldEmail = this.EmailField.getText();
-        this.oldGovernate = GovernmentCode.valueOf(ViewsHelper.getEnumValue(this.GovernmentField.getSelectedItem().toString())).getCode();
+        this.oldGovernorateCode = GovernmentCode.valueOf(ViewsHelper.getEnumValueAsString(this.GovernmentField.getSelectedItem().toString())).getCode();
         this.oldPhone = this.PhoneNumberField.getText();
         this.oldTypeOfUse = this.TypeOfUseField.getSelectedItem().toString();
     }
@@ -431,7 +429,7 @@ public class UpdateCustomerView extends javax.swing.JFrame implements View{
     private String oldAddress;
     private String oldPhone;
     private String oldEmail;
-    private String oldGovernate;
+    private String oldGovernorateCode;
     private String oldTypeOfUse;
     private List<Enum> fields = new ArrayList<>();
     private List<Object> values = new ArrayList<>();

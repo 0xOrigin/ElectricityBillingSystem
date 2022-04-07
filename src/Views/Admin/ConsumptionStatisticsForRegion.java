@@ -168,10 +168,10 @@ public class ConsumptionStatisticsForRegion extends javax.swing.JFrame implement
 
     private void RegionFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegionFieldActionPerformed
 
-        String governmentCode = this.RegionField.getSelectedItem().toString().replaceAll(" ", "_");
-        governmentCode = GovernmentCode.valueOf(governmentCode).getCode();
+        String governorate = ViewsHelper.getEnumValueAsString(this.RegionField.getSelectedItem().toString());
+        String governorateCode = GovernmentCode.valueOf(governorate).getCode();
 
-        this.statInfo = this.controller.getConsumptionStatOfRegion(governmentCode);
+        this.statInfo = this.controller.getConsumptionStatOfRegion(governorateCode);
         
         this.updateActualNumOfConsumers();
         this.updateSumOfConsumptions();
@@ -195,7 +195,7 @@ public class ConsumptionStatisticsForRegion extends javax.swing.JFrame implement
     
     private void fillRegionField(){
     
-        String[] governorates = ViewsHelper.getSortedEnumValues(GovernmentCode.values());
+        String[] governorates = ViewsHelper.getSortedStringValues(GovernmentCode.values());
         
         for(String governorate : governorates)
             this.RegionField.addItem(governorate);

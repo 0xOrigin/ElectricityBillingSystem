@@ -437,7 +437,7 @@ public class NewCustomerView extends javax.swing.JFrame implements View{
             this.controller.registerCustomer(this.NameField.getText(), this.NationalIDField.getText(),
                                              this.AddressField.getText(), this.EmailField.getText(),
                                              this.getGovernmentCode(), this.PhoneNumberField.getText(),
-                                             this.getTypeOfUse(), this.PropertyOwnershipContractField.getText().replaceAll("\\\\", "/"));
+                                             this.getTypeOfUse(), ViewsHelper.handelPath(this.PropertyOwnershipContractField.getText()));
             
             JOptionPane.showMessageDialog(this, message, "Successful operation", JOptionPane.INFORMATION_MESSAGE);
             
@@ -533,7 +533,7 @@ public class NewCustomerView extends javax.swing.JFrame implements View{
     
      private void fillGovernmentField(){
     
-        String[] governorates = ViewsHelper.getSortedEnumValues(GovernmentCode.values());
+        String[] governorates = ViewsHelper.getSortedStringValues(GovernmentCode.values());
         
         this.GovernmentField.addItem(this.governmentFieldInitialState);
         this.GovernmentField.setSelectedIndex(0);
@@ -544,7 +544,7 @@ public class NewCustomerView extends javax.swing.JFrame implements View{
     
     private void fillTypeOfUse(){
     
-        String[] types = ViewsHelper.getEnumValues(TypeOfUse.values());
+        String[] types = ViewsHelper.getStringValues(TypeOfUse.values());
         
         this.TypeOfUseField.addItem(typeOfUseFieldInitialState);
         this.TypeOfUseField.setSelectedIndex(0);
@@ -555,8 +555,8 @@ public class NewCustomerView extends javax.swing.JFrame implements View{
     
     private String getGovernmentCode(){
     
-        String enumValue = ViewsHelper.getEnumValue(this.GovernmentField.getSelectedItem().toString());
-        return GovernmentCode.valueOf(enumValue).getCode();
+        String governorate = ViewsHelper.getEnumValueAsString(this.GovernmentField.getSelectedItem().toString());
+        return GovernmentCode.valueOf(governorate).getCode();
     }
     
     private String getTypeOfUse(){

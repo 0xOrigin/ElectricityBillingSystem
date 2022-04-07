@@ -278,7 +278,7 @@ public class UpdateAdministratorView extends javax.swing.JFrame implements View{
         if(this.globalValidationState && !this.fields.isEmpty()) {
             
             String message = "Admin has been updated";
-            this.controller.updateAdmin(fields,values,this.controller.getTargetID());
+            this.controller.updateAdmin(fields, values, this.controller.getTargetID());
             
             this.updateOldValues();
             
@@ -345,7 +345,7 @@ public class UpdateAdministratorView extends javax.swing.JFrame implements View{
     
     private void fillRole(){
     
-        String[] roles = ViewsHelper.getEnumValues(Role.values());    
+        String[] roles = ViewsHelper.getStringValues(Role.values());    
         
         for(String role : roles) {
             this.RoleField.addItem(role);
