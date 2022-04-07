@@ -358,6 +358,7 @@ public class NewAdministratorView extends javax.swing.JFrame implements View{
         this.NameField.setDocument(new FixedSizeDocument(60));
         this.NationalIDField.setDocument(new FixedSizeDocument(14));
         this.EmailField.setDocument(new FixedSizeDocument(100));
+        this.PhoneNumberField.setDocument(new FixedSizeDocument(11));
     }
     
     @Override
