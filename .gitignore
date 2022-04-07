@@ -1,4 +1,4 @@
 build
 dist
-*.db
+lib/App_Data/DB/EBS.db
 *.class
