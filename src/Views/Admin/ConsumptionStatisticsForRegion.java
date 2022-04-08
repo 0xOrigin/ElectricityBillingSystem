@@ -1,6 +1,5 @@
 package Views.Admin;
 
-import Controllers.Interface.AdminDashboardController;
 import Controllers.Interface.Controller;
 import Models.Enum.ConsumptionStat;
 import Models.Enum.GovernmentCode;
@@ -8,6 +7,7 @@ import Views.View;
 import Views.ViewsHelper;
 import java.util.Map;
 import javax.swing.JFrame;
+import Controllers.Interface.AdministratorController;
 
 /**
  *
@@ -220,7 +220,7 @@ public class ConsumptionStatisticsForRegion extends javax.swing.JFrame implement
     @Override
     public final void setController(Controller controller){
         
-        this.controller = (AdminDashboardController) controller;
+        this.controller = (AdministratorController) controller;
     }
     
     @Override
@@ -236,7 +236,7 @@ public class ConsumptionStatisticsForRegion extends javax.swing.JFrame implement
     }
     
     Map<Enum, Object> statInfo;
-    private AdminDashboardController controller;
+    private AdministratorController controller;
     private javax.swing.JFrame previousFrame;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -1,6 +1,5 @@
 package Views.Admin;
 
-import Controllers.Interface.AdminDashboardController;
 import Controllers.Interface.Controller;
 import Models.Enum.Role;
 import Views.FixedSizeDocument;
@@ -8,6 +7,7 @@ import Views.View;
 import Views.ViewsHelper;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import Controllers.Interface.NewAdministratorController;
 
 /**
  *
@@ -453,7 +453,7 @@ public class NewAdministratorView extends javax.swing.JFrame implements View{
     @Override
     public void setController(Controller controller){
     
-        this.controller = (AdminDashboardController) controller;
+        this.controller = (NewAdministratorController) controller;
     }
     
     @Override
@@ -469,7 +469,7 @@ public class NewAdministratorView extends javax.swing.JFrame implements View{
     }
     private final String RoleFieldInitialState = "Select Role";
     private boolean globalValidationState = false;
-    private AdminDashboardController controller;
+    private NewAdministratorController controller;
     private javax.swing.JFrame previousFrame;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

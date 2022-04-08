@@ -3,9 +3,9 @@ package Views.Customer;
 import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
 import Controllers.Interface.Controller;
-import Controllers.Interface.CustomerDashboardController;
 import Views.View;
 import javax.swing.JFrame;
+import Controllers.Interface.CustomerController;
 
 /**
  *
@@ -18,7 +18,7 @@ public class MonthlyReadingView extends javax.swing.JFrame implements View {
      * @param previousFrame
      * @param controller
      */
-    public MonthlyReadingView(javax.swing.JFrame previousFrame, CustomerDashboardController controller) {
+    public MonthlyReadingView(javax.swing.JFrame previousFrame, CustomerController controller) {
         
         this.setPreviousFrame(previousFrame);
         this.setController(controller);
@@ -344,7 +344,7 @@ public class MonthlyReadingView extends javax.swing.JFrame implements View {
     @Override
     public final void setController(Controller controller){
         
-        this.controller = (CustomerDashboardController) controller;
+        this.controller = (CustomerController) controller;
     }
     
     @Override
@@ -360,7 +360,7 @@ public class MonthlyReadingView extends javax.swing.JFrame implements View {
     }
     
     
-    private CustomerDashboardController controller;
+    private CustomerController controller;
     private final String[] lastDate;
     private final String lastReading;
     private boolean globalValidationState = false;

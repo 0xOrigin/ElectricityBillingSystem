@@ -28,7 +28,7 @@ public class ImageConverter {
                 byteArrayOutputStream.write(buffer, 0, length);
             
         } catch (FileNotFoundException exception) {
-            System.err.println("File not Found!");
+            System.err.println("Image not Found!");
         } catch (IOException exception) {
             System.err.println(exception.getMessage());
         }

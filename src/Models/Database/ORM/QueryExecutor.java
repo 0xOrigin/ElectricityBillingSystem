@@ -3,6 +3,7 @@ package Models.Database.ORM;
 import Models.Database.ORM.Utilities.ImageConverter;
 import Models.Database.ORM.Utilities.Debugger;
 import Models.AppDate.ConnectionStringImp;
+import Models.ModelExceptionHandler;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -45,7 +46,7 @@ public class QueryExecutor {
             }
             
         } catch(SQLException ex){
-            System.out.println(ex);
+            ModelExceptionHandler.handle(ex, true);
         }
         
         new Resource(preparedStatement).close();       
@@ -67,8 +68,8 @@ public class QueryExecutor {
 
             resultSet = preparedStatement.executeQuery();
             
-        } catch (SQLException exception) {
-            System.out.println(exception);
+        } catch (SQLException ex) {
+            ModelExceptionHandler.handle(ex, true);
         }
         
         return resultSet;
@@ -98,7 +99,7 @@ public class QueryExecutor {
             }
             
         } catch (SQLException ex){
-            System.out.println(ex);
+            ModelExceptionHandler.handle(ex, true);
         }
            
         return preparedStatement;

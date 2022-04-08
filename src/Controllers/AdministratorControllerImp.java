@@ -1,5 +1,6 @@
 package Controllers;
 
+import Controllers.Bill.MakeConsumptionStats;
 import Controllers.Interface.AdministratorController;
 import Controllers.Interface.Controller;
 import Models.DbContext;
@@ -90,12 +91,12 @@ public class AdministratorControllerImp implements AdministratorController{
     public boolean deleteAdmin(String ID){
         
        if(getAdminsCount() == 1)
-           return false ;
+           return false;
        
        else{
       
            this.dbContext.getAdministratorModel().delete(ID);
-           return true ; 
+           return true; 
        }
     }
     
@@ -103,12 +104,12 @@ public class AdministratorControllerImp implements AdministratorController{
     public boolean deleteOperator(String ID){
         
        if(getOperatorsCount() == 1)
-           return false ; 
+           return false; 
        
        else{
        
            this.dbContext.getAdministratorModel().delete(ID);
-           return true ;  
+           return true;  
        }
     }
     
@@ -140,6 +141,7 @@ public class AdministratorControllerImp implements AdministratorController{
     }
     
     
+    @Override
     public void updateAdmin(List<Enum> fields,List<Object> values,String ID){
     
         this.dbContext.getAdministratorModel().update(fields,values, ID);    
@@ -156,6 +158,18 @@ public class AdministratorControllerImp implements AdministratorController{
     public int getNumOfRegisteredInRole(String role) {
         
         return this.dbContext.getAdministratorModel().getNumOfRegisteredInRole(Role.valueOf(role));
+    }
+    
+    @Override
+    public String getTotalCollectedMoney(){
+    
+        return String.format("%.2f", this.dbContext.getCollectedMoneyModel().getTotalCollected());
+    }
+    
+    @Override
+    public Map<Enum, Object> getConsumptionStatOfRegion(String governmentCode){
+    
+        return new MakeConsumptionStats(this.dbContext, governmentCode).make();
     }
     
 }

@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import Models.Database.ORM.*;
 import Models.Database.ORM.Adapter;
+import Models.ModelExceptionHandler;
 
 /**
  *
@@ -46,7 +47,7 @@ public class CollectedMoney{
                 totalCollected = this.resultSet.getDouble(Column.TotalCollected.name());
             
         } catch(SQLException ex){
-            System.out.println(ex);
+            ModelExceptionHandler.handle(ex, true);
         } finally {
             this.resource.close();
         }

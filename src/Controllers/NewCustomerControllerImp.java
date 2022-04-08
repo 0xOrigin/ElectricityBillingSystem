@@ -45,6 +45,9 @@ public class NewCustomerControllerImp implements NewCustomerController {
     @Override
     public boolean isValidNationalID(String nationalID) {
         
+        if(this.dbContext.getCustomerModel().isNationalIdExists(nationalID))
+            return false;
+        
         return this.validator.isValidNationalID(nationalID);
     }
 

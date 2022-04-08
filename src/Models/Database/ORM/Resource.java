@@ -1,6 +1,7 @@
 package Models.Database.ORM;
 
 import Models.Database.ORM.Utilities.Debugger;
+import Models.ModelExceptionHandler;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
@@ -27,7 +28,7 @@ public class Resource {
             this.connection = resource.getStatement().getConnection();
             
         } catch (SQLException ex) {
-            System.out.println(ex);
+            ModelExceptionHandler.handle(ex, true);
         }
     }
     
@@ -42,7 +43,7 @@ public class Resource {
             this.connection = resource.getConnection();
         
         } catch (SQLException ex) {
-            System.out.println(ex);
+            ModelExceptionHandler.handle(ex, true);
         } 
     }
     
@@ -57,7 +58,7 @@ public class Resource {
             return this.resultSet == null || this.resultSet.isClosed();
             
         } catch (SQLException ex) {
-            System.out.println(ex);
+            ModelExceptionHandler.handle(ex, true);
         }
         
         return false;
@@ -72,7 +73,7 @@ public class Resource {
             this.connection.close();
             
         } catch (SQLException ex) {
-            System.out.println(ex);
+            ModelExceptionHandler.handle(ex, true);
         }
     }
     

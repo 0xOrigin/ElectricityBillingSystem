@@ -3,9 +3,9 @@ package Views.Customer;
 import Models.Enum.ActivationState;
 import java.awt.Color;
 import Controllers.Interface.Controller;
-import Controllers.Interface.CustomerDashboardController;
 import Views.View;
 import javax.swing.JFrame;
+import Controllers.Interface.CustomerController;
 
 /**
  *
@@ -245,7 +245,7 @@ public class CustomerDashboardView extends javax.swing.JFrame implements View{
     @Override
     public void setController(Controller controller){
         
-        this.controller = (CustomerDashboardController) controller;
+        this.controller = (CustomerController) controller;
     }
     
     @Override
@@ -261,7 +261,7 @@ public class CustomerDashboardView extends javax.swing.JFrame implements View{
     }
     
     
-    private CustomerDashboardController controller;
+    private CustomerController controller;
     private javax.swing.JFrame previousFrame;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ActivationLabel;

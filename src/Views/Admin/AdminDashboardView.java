@@ -1,9 +1,7 @@
 package Views.Admin;
 
-import Controllers.AdminDashboardControllerImp;
 import Controllers.AdministratorLoginControllerImp;
 import Controllers.CustomerLoginControllerImp;
-import Controllers.Interface.AdminDashboardController;
 import Controllers.Interface.Controller;
 import Controllers.NewCustomerControllerImp;
 import Models.EBS_DbContext;
@@ -14,6 +12,8 @@ import Views.Customer.NewCustomerView;
 import Views.View;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import Controllers.Interface.AdministratorController;
+import Controllers.NewAdministratorControllerImp;
 
 /**
  *
@@ -270,7 +270,7 @@ public class AdminDashboardView extends javax.swing.JFrame implements View {
     private void AddAdministratorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddAdministratorButtonActionPerformed
         
         this.dispose();
-        new AdminDashboardControllerImp(new NewAdministratorView(this), new EBS_DbContext());
+        new NewAdministratorControllerImp(new NewAdministratorView(this), new EBS_DbContext());
     }//GEN-LAST:event_AddAdministratorButtonActionPerformed
 
     private void AddCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddCustomerButtonActionPerformed
@@ -318,7 +318,7 @@ public class AdminDashboardView extends javax.swing.JFrame implements View {
     @Override
     public void setController(Controller controller){
     
-        this.controller = (AdminDashboardController) controller;
+        this.controller = (AdministratorController) controller;
     }
     
     @Override
@@ -333,7 +333,7 @@ public class AdminDashboardView extends javax.swing.JFrame implements View {
         return this.previousFrame;
     }
     
-    private AdminDashboardController controller;
+    private AdministratorController controller;
     private javax.swing.JFrame previousFrame;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddAdministratorButton;

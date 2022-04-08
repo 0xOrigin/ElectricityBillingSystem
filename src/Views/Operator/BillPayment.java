@@ -1,19 +1,15 @@
 package Views.Operator;
 
 import Controllers.Interface.Controller;
-import Controllers.Interface.CustomerDashboardController;
 import Models.Enum.Column;
 import Models.Enum.GovernmentCode;
-import Models.Enum.PaymentState;
 import Views.View;
-import java.util.List;
+import Views.ViewsHelper;
 import java.util.Map;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import Controllers.Interface.CustomerController;
 
 /**
  *
@@ -21,18 +17,22 @@ import javax.swing.table.DefaultTableModel;
  */
 public class BillPayment extends javax.swing.JFrame implements View {
 
-    private static Map<Enum, Object> bill;
+    
 
     /**
      * Creates new form BillPayment
      *
      * @param previousFrame
+     * @param controller
+     * @param bill
      */
     public BillPayment(javax.swing.JFrame previousFrame, Controller controller, Map<Enum, Object> bill) {
 
         this.setPreviousFrame(previousFrame);
         this.setController(controller);
+        
         this.bill = bill;
+        
         initComponents();
         this.setSpecialSettings();
     }
@@ -362,6 +362,8 @@ public class BillPayment extends javax.swing.JFrame implements View {
         }
 
         this.controller.payBill(this.controller.getMeterCode());
+        this.controller.collectPayment(String.format("%.2f", bill.get(Column.MoneyValue)));
+        
         JOptionPane.showMessageDialog(null, "\t Bill No." + this.bill.get(Column.Num) + " have been successfully Paid! \t");
         BackButtonActionPerformed(null);
     }//GEN-LAST:event_PayBillActionPerformed
@@ -399,7 +401,9 @@ public class BillPayment extends javax.swing.JFrame implements View {
     }//GEN-LAST:event_ReleaseDateFieldAncestorAdded
 
     private void GovernorateFieldAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_GovernorateFieldAncestorAdded
-        this.GovernorateField.setText(GovernmentCode.getEnumNameForValue(bill.get(Column.GovernmentCode)).replaceAll("_", " "));
+        
+        String governorate = ViewsHelper.getStringValueFromEnumStringValue(GovernmentCode.getEnumNameForValue(bill.get(Column.GovernmentCode)));
+        this.GovernorateField.setText(governorate);
     }//GEN-LAST:event_GovernorateFieldAncestorAdded
 
     private void StatusFieldAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_StatusFieldAncestorAdded
@@ -410,14 +414,12 @@ public class BillPayment extends javax.swing.JFrame implements View {
 
         this.setLocationRelativeTo(null);
         this.setVisible(true);
-
-        this.bills = this.controller.getAllBillsOfMeterCode();
     }
 
     @Override
     public final void setController(Controller controller) {
 
-        this.controller = (CustomerDashboardController) controller;
+        this.controller = (CustomerController) controller;
     }
 
     @Override
@@ -433,9 +435,9 @@ public class BillPayment extends javax.swing.JFrame implements View {
     }
 
     int selectedBill = 0;
-    List<Map<Enum, Object>> bills;
+    private final Map<Enum, Object> bill;
     DefaultTableModel tableModel;
-    private CustomerDashboardController controller;
+    private CustomerController controller;
     private javax.swing.JFrame previousFrame;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

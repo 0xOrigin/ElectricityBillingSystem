@@ -1,7 +1,7 @@
 package Views;
 
 import Views.Customer.CustomerDashboardView;
-import Controllers.CustomerDashboardControllerImp;
+import Controllers.CustomerControllerImp;
 import Models.EBS_DbContext;
 import javax.swing.JOptionPane;
 import Controllers.Interface.Controller;
@@ -243,7 +243,7 @@ public class CustomerLoginView extends javax.swing.JFrame implements View {
     public void redirectToCustomerDashboard(){
     
         this.dispose();
-        new CustomerDashboardControllerImp(new CustomerDashboardView(this.previousFrame), new EBS_DbContext(), this.MeterCodeField.getText());
+        new CustomerControllerImp(new CustomerDashboardView(this.previousFrame), new EBS_DbContext(), this.MeterCodeField.getText());
     }
     
     @Override

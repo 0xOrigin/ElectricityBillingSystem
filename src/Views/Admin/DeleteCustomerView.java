@@ -1,10 +1,10 @@
 package Views.Admin;
 
 import Controllers.Interface.Controller;
-import Controllers.Interface.CustomerDashboardController;
 import Views.View;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import Controllers.Interface.CustomerController;
 
 /**
  *
@@ -159,7 +159,7 @@ public class DeleteCustomerView extends javax.swing.JFrame implements View{
     @Override
     public void setController(Controller controller){
     
-        this.controller = (CustomerDashboardController) controller;
+        this.controller = (CustomerController) controller;
     }
     
     @Override
@@ -174,7 +174,7 @@ public class DeleteCustomerView extends javax.swing.JFrame implements View{
         return this.previousFrame;
     }
     
-    private CustomerDashboardController controller;
+    private CustomerController controller;
     private javax.swing.JFrame previousFrame;
     private String meterCode ; 
 

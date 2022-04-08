@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import Models.Database.ORM.Adapter;
+import Models.ModelExceptionHandler;
 
 /**
  *
@@ -135,7 +136,7 @@ public class Bill{
             }
             
         } catch(SQLException ex){
-            System.out.println(ex);
+            ModelExceptionHandler.handle(ex, true);
         } finally {
             this.resource.close();
         }
@@ -163,7 +164,7 @@ public class Bill{
                 numOfUnpaidBills = this.resultSet.getInt(1);
             
         } catch(SQLException ex){
-            System.out.println(ex);
+            ModelExceptionHandler.handle(ex, true);
         } finally {
             this.resource.close();
         }
@@ -190,7 +191,7 @@ public class Bill{
                 sumOfConsumptions = this.resultSet.getInt(1);
             
         } catch(SQLException ex){
-            System.out.println(ex);
+            ModelExceptionHandler.handle(ex, true);
         } finally {
             this.resource.close();
         }
@@ -223,7 +224,7 @@ public class Bill{
                 actualNumberOfConsumers = this.resultSet.getInt(1);
             
         } catch(SQLException ex){
-            System.out.println(ex);
+            ModelExceptionHandler.handle(ex, true);
         } finally {
             this.resource.close();
         }
@@ -252,7 +253,7 @@ public class Bill{
                     lastBillInfo.put(field, this.resultSet.getObject(field.name()));
             
         } catch(SQLException ex){
-            System.out.println(ex);
+            ModelExceptionHandler.handle(ex, true);
         } finally {
             this.resource.close();
         }

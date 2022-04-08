@@ -1,6 +1,6 @@
 package Views;
 
-import Controllers.CustomerDashboardControllerImp;
+import Controllers.CustomerControllerImp;
 import Controllers.Interface.Controller;
 import Controllers.Interface.CustomerLoginController;
 import Models.EBS_DbContext;
@@ -158,8 +158,8 @@ public class MeterCodeVerificator extends javax.swing.JFrame implements View{
     private void redirectToNextFrame(){
     
         this.dispose();
-           
-        new CustomerDashboardControllerImp(this.nextFrame, new EBS_DbContext(), this.MeterCodeField.getText());
+        
+        new CustomerControllerImp(this.nextFrame, new EBS_DbContext(), this.MeterCodeField.getText());
         this.nextFrame.setVisible(true);
     }
     

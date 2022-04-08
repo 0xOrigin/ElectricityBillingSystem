@@ -1,7 +1,6 @@
 package Views.Operator;
 
 import Controllers.Interface.Controller;
-import Controllers.Interface.CustomerDashboardController;
 import Models.Enum.ActivationState;
 import Models.Enum.Column;
 import Models.Enum.GovernmentCode;
@@ -15,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import Controllers.Interface.CustomerController;
 
 /**
  *
@@ -195,34 +195,67 @@ public class OperatorBillsView extends javax.swing.JFrame implements View {
     }//GEN-LAST:event_BillsTablePropertyChange
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
+        
         this.dispose();
         this.previousFrame.revalidate();
         this.previousFrame.setVisible(true);
     }//GEN-LAST:event_BackButtonActionPerformed
 
     private void StatusFieldAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_StatusFieldAncestorAdded
+        
         this.fillStatusField();
         this.loadAllBills();
         this.fillBillsTableByStatus(this.StatusField.getSelectedItem().toString());
     }//GEN-LAST:event_StatusFieldAncestorAdded
 
     private void StatusFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StatusFieldActionPerformed
+        
         this.fillBillsTableByStatus(this.StatusField.getSelectedItem().toString());
     }//GEN-LAST:event_StatusFieldActionPerformed
 
     private void PayBillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PayBillActionPerformed
+        
+        this.StatusField.setSelectedIndex(1);
+        
         if (this.controller.getActivationState().equals(ActivationState.Inactive.name())) {
             JOptionPane.showMessageDialog(null, "\t This meter is inactive \t");
             return;
         }
-        this.StatusField.setSelectedIndex(1);
+        
         if (this.tableModel.getRowCount() < 1) {
             JOptionPane.showMessageDialog(null, "\t There is no unpaid bill! \t");
             return;
         }
+        
         this.dispose();
-        new BillPayment(this, this.controller, this.bills.get(((int) this.BillsTable.getValueAt(0, 0)) - 1));
+        new BillPayment(this, this.controller, this.getChosenBillMap());
     }//GEN-LAST:event_PayBillActionPerformed
+    
+    private Map<Enum, Object> getChosenBillMap(){
+        
+        int start = 0, end = this.bills.size() - 1, mid;
+        
+        int selectedBillNumFromTable = Integer.valueOf(this.BillsTable.getValueAt(0, 0).toString());
+
+        while(start <= end){
+        
+            mid = (start + end) / 2;
+
+            int billNumber = Integer.valueOf(this.bills.get(mid).get(Column.Num).toString());
+            
+            if(billNumber == selectedBillNumFromTable)
+                return this.bills.get(mid);
+            
+            if(billNumber < selectedBillNumFromTable)
+                start = mid + 1;
+            
+            else
+                end = mid - 1;
+        }
+                
+        return null;
+    }
+    
     private void fillBillsTableByStatus(String status) {
 
         this.tableModel = (DefaultTableModel) this.BillsTable.getModel();
@@ -259,7 +292,7 @@ public class OperatorBillsView extends javax.swing.JFrame implements View {
 
         Object[] billInfo = new Object[9];
         billInfo[0] = bill.get(Column.Num);
-        billInfo[1] = GovernmentCode.getEnumNameForValue(bill.get(Column.GovernmentCode)).replaceAll("_", " ");
+        billInfo[1] = ViewsHelper.getStringValueFromEnumStringValue(GovernmentCode.getEnumNameForValue(bill.get(Column.GovernmentCode)));
         billInfo[2] = bill.get(Column.Tariff);
         billInfo[3] = bill.get(Column.LastReading);
         billInfo[4] = bill.get(Column.CurrentReading);
@@ -283,7 +316,7 @@ public class OperatorBillsView extends javax.swing.JFrame implements View {
 
     @Override
     public final void setController(Controller controller) {
-        this.controller = (CustomerDashboardController) controller;
+        this.controller = (CustomerController) controller;
         this.loadAllBills();
     }
 
@@ -304,7 +337,7 @@ public class OperatorBillsView extends javax.swing.JFrame implements View {
 
     List<Map<Enum, Object>> bills;
     DefaultTableModel tableModel;
-    private CustomerDashboardController controller;
+    private CustomerController controller;
     private javax.swing.JFrame previousFrame;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

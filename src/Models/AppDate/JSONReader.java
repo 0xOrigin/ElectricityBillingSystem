@@ -32,15 +32,15 @@ class JSONReader {
     }
     
     
-    Object getValue(Enum name){
+    Object getValue(Enum value){
         
-        return this.json.get(name.name());
+        return this.json.get(value.name());
     }
     
     
-    Map<Object, Object> getMap(Enum name){
+    Map<Object, Object> getMap(Enum value){
         
-        Map map = (Map) this.json.get(name.name());
+        Map map = (Map) this.json.get(value.name());
         Map<Object, Object> data = new HashMap<>();
         
         Iterator<Map.Entry> iterator = map.entrySet().iterator();

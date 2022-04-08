@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import Models.Database.ORM.Adapter;
+import Models.ModelExceptionHandler;
 
 /**
  *
@@ -51,7 +52,7 @@ abstract class ModelUtility {
                     info.put(field, this.resultSet.getObject(field.name()));
             
         } catch(SQLException ex){
-            System.out.println(ex);
+            ModelExceptionHandler.handle(ex, true);
         } finally {
             this.resource.close();
         }
@@ -78,7 +79,7 @@ abstract class ModelUtility {
                 isExists = (this.resultSet.getInt(1) == 1);
             
         } catch(SQLException ex){
-            System.out.println(ex);
+            ModelExceptionHandler.handle(ex, true);
         } finally {
             this.resource.close();
         }
@@ -104,7 +105,7 @@ abstract class ModelUtility {
                 isMatch = this.resultSet.getString(Column.Password.name()).equals(password);
             
         } catch(SQLException ex){
-            System.out.println(ex);
+            ModelExceptionHandler.handle(ex, true);
         } finally {
             this.resource.close();
         }

@@ -2,8 +2,7 @@ package Views;
 
 import Views.Admin.AdminDashboardView;
 import Views.Operator.OperatorDashboardView;
-import Controllers.AdminDashboardControllerImp;
-import Controllers.OperatorDashboardControllerImp;
+import Controllers.AdministratorControllerImp;
 import Models.EBS_DbContext;
 import Models.Enum.Role;
 import javax.swing.JOptionPane;
@@ -250,14 +249,14 @@ public class AdministratorLoginView extends javax.swing.JFrame implements View {
     public void openAdminDashboard(){
     
         this.dispose();
-        new AdminDashboardControllerImp(new AdminDashboardView(this.previousFrame), new EBS_DbContext(), this.IDField.getText());
+        new AdministratorControllerImp(new AdminDashboardView(this.previousFrame), new EBS_DbContext(), this.IDField.getText());
     }
     
     
     public void openOperatorDashboard(){
     
         this.dispose();
-        new OperatorDashboardControllerImp(new OperatorDashboardView(this.previousFrame), new EBS_DbContext(), this.IDField.getText());
+        new AdministratorControllerImp(new OperatorDashboardView(this.previousFrame), new EBS_DbContext(), this.IDField.getText());
     }
     
     @Override

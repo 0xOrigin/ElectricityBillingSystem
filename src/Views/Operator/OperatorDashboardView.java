@@ -1,8 +1,8 @@
 package Views.Operator;
 
+import Controllers.AdministratorControllerImp;
 import Controllers.CustomerLoginControllerImp;
 import Controllers.Interface.Controller;
-import Controllers.Interface.OperatorDashboardController;
 import Models.EBS_DbContext;
 import Views.Admin.DeleteCustomerView;
 import Views.BillsOfRegionView;
@@ -215,7 +215,7 @@ public class OperatorDashboardView extends javax.swing.JFrame implements View{
     @Override
     public void setController(Controller controller){
     
-        this.controller = (OperatorDashboardController) controller;
+        this.controller = (AdministratorControllerImp) controller;
     }
     
     @Override
@@ -230,7 +230,7 @@ public class OperatorDashboardView extends javax.swing.JFrame implements View{
         return this.previousFrame;
     }
     
-    private OperatorDashboardController controller;
+    private AdministratorControllerImp controller;
     private javax.swing.JFrame previousFrame;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

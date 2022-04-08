@@ -13,6 +13,7 @@ import Models.Enum.PaymentState;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import Models.Database.ORM.Adapter;
+import Models.ModelExceptionHandler;
 
 /**
  *
@@ -104,7 +105,7 @@ public class Customer extends ModelUtility{
                 numOfCustomers = this.resultSet.getInt(1);
             
         } catch(SQLException ex){
-            System.out.println(ex);
+            ModelExceptionHandler.handle(ex, true);
         } finally {
             this.resource.close();
         }
@@ -130,7 +131,7 @@ public class Customer extends ModelUtility{
                 isExists = (this.resultSet.getInt(1) == 1);
             
         } catch(SQLException ex){
-            System.out.println(ex);
+            ModelExceptionHandler.handle(ex, true);
         } finally {
             this.resource.close();
         }
@@ -159,7 +160,7 @@ public class Customer extends ModelUtility{
                 isActive = (this.resultSet.getString(Column.Activation.name()).equals(ActivationState.Active.name()));
             
         } catch(SQLException ex){
-            System.out.println(ex);
+            ModelExceptionHandler.handle(ex, true);
         } finally {
             this.resource.close();
         }

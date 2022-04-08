@@ -31,10 +31,14 @@ public interface AdministratorController extends Controller{
     
     boolean isValidPhoneNumber(String phoneNumber);
     
-    public void updateAdmin(List<Enum> fields,List<Object> values,String ID);
+    void updateAdmin(List<Enum> fields,List<Object> values,String ID);
     
-    public Map<Enum, Object> getInfo(List<Enum> fields, String ID);
+    Map<Enum, Object> getInfo(List<Enum> fields, String ID);
     
-    public int getNumOfRegisteredInRole(String role);
+    int getNumOfRegisteredInRole(String role);
+    
+    String getTotalCollectedMoney();
+    
+    Map<Enum, Object> getConsumptionStatOfRegion(String governmentCode);
     
 }

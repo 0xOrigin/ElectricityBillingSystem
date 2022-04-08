@@ -1,7 +1,7 @@
 package Views.Admin;
 
-import Controllers.CustomerDashboardControllerImp;
 import Controllers.Interface.Controller;
+import Controllers.Interface.CustomerController;
 import Models.Enum.Column;
 import Models.Enum.GovernmentCode;
 import Models.Enum.TypeOfUse;
@@ -407,7 +407,7 @@ public class UpdateCustomerView extends javax.swing.JFrame implements View{
     @Override
     public void setController(Controller controller){
     
-        this.controller = (CustomerDashboardControllerImp) controller;
+        this.controller = (CustomerController) controller;
     }
     
     @Override
@@ -422,7 +422,7 @@ public class UpdateCustomerView extends javax.swing.JFrame implements View{
         return this.previousFrame;
     }
     
-    private CustomerDashboardControllerImp controller;
+    private CustomerController controller;
     private javax.swing.JFrame previousFrame;
     private boolean globalValidationState = false;
     

@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import Models.Database.ORM.*;
 import Models.Database.ORM.Adapter;
+import Models.ModelExceptionHandler;
 
 /**
  *
@@ -72,7 +73,7 @@ public class Administrator extends ModelUtility{
                 isExists = (this.resultSet.getInt(1) == 1);
             
         } catch(SQLException ex){
-            System.out.println(ex);
+            ModelExceptionHandler.handle(ex, true);
         } finally {
             this.resource.close();
         }
@@ -98,7 +99,7 @@ public class Administrator extends ModelUtility{
                 numOfRegisteredInRole = this.resultSet.getInt(1);
             
         } catch(SQLException ex){
-            System.out.println(ex);
+            ModelExceptionHandler.handle(ex, true);
         } finally {
             this.resource.close();
         }

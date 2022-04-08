@@ -1,12 +1,12 @@
 package Views.Operator;
 
 import Controllers.Interface.Controller;
-import Controllers.Interface.CustomerDashboardController;
 import Models.Enum.ActivationState;
 import Views.View;
 import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import Controllers.Interface.CustomerController;
 
 /**
  *
@@ -239,7 +239,7 @@ public class ActivationView extends javax.swing.JFrame implements View {
     @Override
     public final void setController(Controller controller) {
 
-        this.controller = (CustomerDashboardController) controller;
+        this.controller = (CustomerController) controller;
     }
 
     @Override
@@ -254,7 +254,7 @@ public class ActivationView extends javax.swing.JFrame implements View {
         return this.previousFrame;
     }
 
-    private CustomerDashboardController controller;
+    private CustomerController controller;
     private javax.swing.JFrame previousFrame;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -1,11 +1,11 @@
 package Views.Customer;
 
 import Controllers.Interface.Controller;
-import Controllers.Interface.CustomerDashboardController;
 import Models.Enum.Column;
 import Models.Enum.GovernmentCode;
 import Models.Enum.PaymentState;
 import Views.View;
+import Views.ViewsHelper;
 import java.util.List;
 import java.util.Map;
 import javax.swing.JFrame;
@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import Controllers.Interface.CustomerController;
 
 /**
  *
@@ -282,7 +283,7 @@ public class BillComplainView extends javax.swing.JFrame implements View{
     
         Object[] billInfo = new Object[9];
         billInfo[0] = bill.get(Column.Num);
-        billInfo[1] = GovernmentCode.getEnumNameForValue(bill.get(Column.GovernmentCode)).replaceAll("_", " ");
+        billInfo[1] = ViewsHelper.getStringValueFromEnumStringValue(GovernmentCode.getEnumNameForValue(bill.get(Column.GovernmentCode)));
         billInfo[2] = bill.get(Column.Tariff);
         billInfo[3] = bill.get(Column.LastReading);
         billInfo[4] = bill.get(Column.CurrentReading);
@@ -318,7 +319,7 @@ public class BillComplainView extends javax.swing.JFrame implements View{
     @Override
     public final void setController(Controller controller){
         
-        this.controller = (CustomerDashboardController) controller;
+        this.controller = (CustomerController) controller;
     }
     
     @Override
@@ -336,7 +337,7 @@ public class BillComplainView extends javax.swing.JFrame implements View{
     int selectedBill = 0;
     List<Map<Enum, Object>> bills;
     DefaultTableModel tableModel;
-    private CustomerDashboardController controller;
+    private CustomerController controller;
     private javax.swing.JFrame previousFrame;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackButton;

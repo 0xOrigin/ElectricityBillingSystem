@@ -4,6 +4,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import Models.AppDate.ConnectionString;
+import java.io.File;
 
 /**
  *
@@ -38,8 +39,13 @@ class DatabaseConnection {
         
         try {
             
+            String connectionPath = connStrings.getConnectionPath();
+            
+            if(!this.isValidPath(connectionPath))
+                this.endOfExecution(connectionPath);
+            
             Class.forName(connStrings.getClassName());
-            connection = DriverManager.getConnection(connStrings.getConnectionPath());
+            connection = DriverManager.getConnection(connectionPath);
             
             try(PreparedStatement preparedStatement = connection.prepareStatement("PRAGMA foreign_keys = ON;");){
                 
@@ -59,5 +65,23 @@ class DatabaseConnection {
 
         return connection;
     }
+    
+    private String getPath(String connectionPath){
+    
+        int start = connectionPath.lastIndexOf(":") + 1;
+        
+        return connectionPath.substring(start);
+    }
+    
+    private boolean isValidPath(String connectionPath){
+    
+        return new File(this.getPath(connectionPath)).exists();
+    }
        
+    private void endOfExecution(String connectionPath){
+    
+        System.out.println("The database file not found at: " + this.getPath(connectionPath));
+        System.exit(0);
+    }
+    
 }
