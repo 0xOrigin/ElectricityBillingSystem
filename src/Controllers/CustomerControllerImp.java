@@ -5,7 +5,7 @@ import Controllers.Bill.BillCalculations;
 import Controllers.Email.SendEmail;
 import Models.Enum.Column;
 import java.util.Arrays;
-import Models.AppDate.EmailConfigImp;
+import Models.AppData.EmailConfigImp;
 import Models.DbContext;
 import Views.View;
 import java.util.List;

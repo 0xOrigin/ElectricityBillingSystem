@@ -5,7 +5,7 @@ import java.util.Properties;
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
-import Models.AppDate.EmailConfig;
+import Models.AppData.EmailConfig;
 
 /**
  *

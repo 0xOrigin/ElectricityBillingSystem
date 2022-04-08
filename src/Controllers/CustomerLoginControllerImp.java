@@ -1,7 +1,7 @@
 package Controllers;
 
 import Controllers.Email.SendEmail;
-import Models.AppDate.EmailConfigImp;
+import Models.AppData.EmailConfigImp;
 import Models.Enum.Column;
 import java.util.Arrays;
 import Controllers.Interface.CustomerLoginController;

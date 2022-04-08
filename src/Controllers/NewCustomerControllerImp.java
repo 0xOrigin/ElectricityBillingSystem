@@ -1,7 +1,7 @@
 package Controllers;
 
 import Controllers.Email.SendEmail;
-import Models.AppDate.EmailConfigImp;
+import Models.AppData.EmailConfigImp;
 import Models.Enum.ActivationState;
 import Controllers.Interface.NewCustomerController;
 import Models.DbContext;

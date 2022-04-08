@@ -1,4 +1,4 @@
-package Models.AppDate;
+package Models.AppData;
 
 import Models.Enum.AppData;
 import java.util.Map;

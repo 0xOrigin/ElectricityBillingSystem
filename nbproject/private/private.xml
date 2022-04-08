@@ -6,6 +6,7 @@
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Views/Customer/CustomerDashboardView.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Views/FixedSizeDocument.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Controllers/Interface/CustomerLoginController.java</file>
+            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/AppData/ConnectionStringImp.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Views/Admin/UpdateAdministratorView.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/Database/ORM/Utilities/ImageConverter.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/ElectricityBillingSystem.java</file>
@@ -14,13 +15,11 @@
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Views/Admin/ConsumptionStatisticsForRegion.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Views/MainView.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/Database/ORM/SelectBuilder.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/AppDate/JSONReader.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Controllers/Bill/MakeConsumptionStats.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Views/Admin/DeleteCustomerView.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/Database/Customer.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/AppDate/ConfigPath.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/Database/Administrator.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/AppDate/EmailConfig.java</file>
+            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/AppData/ConnectionString.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Controllers/Interface/AdministratorLoginController.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/Enum/Role.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Views/Customer/BillComplainView.java</file>
@@ -58,23 +57,24 @@
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Controllers/CustomerControllerImp.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Views/BillsOfRegionView.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/Database/ORM/SelectQuery.java</file>
+            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/AppData/JSONReader.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Views/Operator/OperatorDashboardView.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Controllers/Interface/AdministratorController.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Controllers/AdministratorLoginControllerImp.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/Database/CollectedMoney.java</file>
+            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/AppData/ConfigPath.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/Enum/TypeOfUse.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Controllers/AdministratorDataGenerator.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Controllers/CustomerLoginControllerImp.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/DbContext.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Controllers/AdministratorControllerImp.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Controllers/CustomerDataGenerator.java</file>
+            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/AppData/EmailConfig.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/Enum/AppData.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/AppDate/EmailConfigImp.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Views/View.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Controllers/Bill/BillCalculations.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Views/Operator/ActivationView.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/Database/ModelUtility.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/AppDate/ConnectionString.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/Enum/Column.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/Database/ORM/DatabaseConnection.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Controllers/Interface/NewCustomerController.java</file>
@@ -84,8 +84,8 @@
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/Enum/Table.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Views/Customer/NewCustomerView.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/Database/ORM/DML.java</file>
+            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/AppData/EmailConfigImp.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Views/AdministratorLoginView.java</file>
-            <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Models/AppDate/ConnectionStringImp.java</file>
             <file>file:/mnt/Data1/Projects/Level3/2nd%20semester/SE2-Sa2/ElectricityBillingSystem/src/Controllers/Bill/ReadingValidator.java</file>
         </group>
     </open-files>

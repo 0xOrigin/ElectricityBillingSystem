@@ -2,7 +2,7 @@ package Controllers.Email;
 
 import javax.mail.MessagingException;
 import javax.mail.Transport;
-import Models.AppDate.EmailConfig;
+import Models.AppData.EmailConfig;
 
 /**
  *

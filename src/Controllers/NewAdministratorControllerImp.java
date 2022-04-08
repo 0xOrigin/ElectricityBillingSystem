@@ -2,7 +2,7 @@ package Controllers;
 
 import Controllers.Email.SendEmail;
 import Controllers.Interface.NewAdministratorController;
-import Models.AppDate.EmailConfigImp;
+import Models.AppData.EmailConfigImp;
 import Models.DbContext;
 import Views.View;
 

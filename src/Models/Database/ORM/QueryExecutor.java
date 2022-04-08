@@ -2,7 +2,7 @@ package Models.Database.ORM;
 
 import Models.Database.ORM.Utilities.ImageConverter;
 import Models.Database.ORM.Utilities.Debugger;
-import Models.AppDate.ConnectionStringImp;
+import Models.AppData.ConnectionStringImp;
 import Models.ModelExceptionHandler;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
