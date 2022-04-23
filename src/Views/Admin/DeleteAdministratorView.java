@@ -20,10 +20,10 @@ public class DeleteAdministratorView extends javax.swing.JFrame implements View{
      * @param previousFrame
      */
     
-    public DeleteAdministratorView(javax.swing.JFrame previousFrame) {
+    public DeleteAdministratorView(javax.swing.JFrame previousFrame, javax.swing.JFrame mainFrame) {
         
         this.setPreviousFrame(previousFrame);
-        
+        this.mainFrame = mainFrame;
         initComponents();
         
         this.setSpecialSettings(); 
@@ -140,7 +140,8 @@ public class DeleteAdministratorView extends javax.swing.JFrame implements View{
         if(this.ID.equals(loggedAdminID) && this.role.equals(Role.Admin.name()) && isDeleted){
             
             this.dispose();
-            new MainView().setVisible(true);
+            this.mainFrame.revalidate();
+            this.mainFrame.setVisible(true);
             
         } else{
             
@@ -175,6 +176,7 @@ public class DeleteAdministratorView extends javax.swing.JFrame implements View{
     
     private AdministratorController controller;
     private javax.swing.JFrame previousFrame;
+    private final javax.swing.JFrame mainFrame;
     private String ID , role ; 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

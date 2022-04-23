@@ -294,7 +294,7 @@ public class AdminDashboardView extends javax.swing.JFrame implements View {
     private void DeleteAdministratorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteAdministratorButtonActionPerformed
         
         this.dispose();
-        new IdVerificator(this, new AdministratorLoginControllerImp(null, new EBS_DbContext()), new DeleteAdministratorView(this), this.controller.getLoggedInID());
+        new IdVerificator(this, new AdministratorLoginControllerImp(null, new EBS_DbContext()), new DeleteAdministratorView(this, this.previousFrame), this.controller.getLoggedInID());
     }//GEN-LAST:event_DeleteAdministratorButtonActionPerformed
 
     private void DeleteCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteCustomerButtonActionPerformed
