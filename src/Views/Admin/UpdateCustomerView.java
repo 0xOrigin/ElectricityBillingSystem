@@ -44,16 +44,16 @@ public class UpdateCustomerView extends javax.swing.JFrame implements View{
 
         BackButton = new javax.swing.JButton();
         FrameDescription = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        AddressLabel = new javax.swing.JLabel();
         AddressField = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        EmailLabel = new javax.swing.JLabel();
         EmailField = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        PhoneNumLabel = new javax.swing.JLabel();
         PhoneNumberField = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        GovernorateLabel = new javax.swing.JLabel();
         GovernmentField = new javax.swing.JComboBox<>();
         Update = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
+        TypeOfUseLabel = new javax.swing.JLabel();
         TypeOfUseField = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -73,7 +73,7 @@ public class UpdateCustomerView extends javax.swing.JFrame implements View{
         FrameDescription.setText(" Update a customer ");
         FrameDescription.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel1.setText("Adress");
+        AddressLabel.setText("Address");
 
         AddressField.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         AddressField.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -91,7 +91,7 @@ public class UpdateCustomerView extends javax.swing.JFrame implements View{
             }
         });
 
-        jLabel2.setText("E-mail");
+        EmailLabel.setText("E-mail");
 
         EmailField.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         EmailField.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -109,7 +109,7 @@ public class UpdateCustomerView extends javax.swing.JFrame implements View{
             }
         });
 
-        jLabel3.setText("Phone Number");
+        PhoneNumLabel.setText("Phone Number");
 
         PhoneNumberField.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         PhoneNumberField.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -127,7 +127,7 @@ public class UpdateCustomerView extends javax.swing.JFrame implements View{
             }
         });
 
-        jLabel4.setText("Governorate");
+        GovernorateLabel.setText("Governorate");
 
         GovernmentField.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         GovernmentField.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -147,7 +147,7 @@ public class UpdateCustomerView extends javax.swing.JFrame implements View{
             }
         });
 
-        jLabel5.setText("Type Of Use");
+        TypeOfUseLabel.setText("Type Of Use");
 
         TypeOfUseField.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         TypeOfUseField.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -178,11 +178,11 @@ public class UpdateCustomerView extends javax.swing.JFrame implements View{
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(FrameDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(EmailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(AddressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PhoneNumLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(GovernorateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TypeOfUseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(87, 87, 87))
         );
@@ -194,23 +194,23 @@ public class UpdateCustomerView extends javax.swing.JFrame implements View{
                     .addComponent(BackButton)
                     .addComponent(FrameDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(AddressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(AddressField, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
+                .addComponent(EmailLabel)
                 .addGap(3, 3, 3)
                 .addComponent(EmailField, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
-                .addComponent(jLabel3)
+                .addComponent(PhoneNumLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PhoneNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
+                .addComponent(GovernorateLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(GovernmentField, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5)
+                .addComponent(TypeOfUseLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TypeOfUseField, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
@@ -436,17 +436,17 @@ public class UpdateCustomerView extends javax.swing.JFrame implements View{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AddressField;
+    private javax.swing.JLabel AddressLabel;
     private javax.swing.JButton BackButton;
     private javax.swing.JTextField EmailField;
+    private javax.swing.JLabel EmailLabel;
     private javax.swing.JLabel FrameDescription;
     private javax.swing.JComboBox<String> GovernmentField;
+    private javax.swing.JLabel GovernorateLabel;
+    private javax.swing.JLabel PhoneNumLabel;
     private javax.swing.JTextField PhoneNumberField;
     private javax.swing.JComboBox<String> TypeOfUseField;
+    private javax.swing.JLabel TypeOfUseLabel;
     private javax.swing.JButton Update;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 }

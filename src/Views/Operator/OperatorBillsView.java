@@ -45,7 +45,7 @@ public class OperatorBillsView extends javax.swing.JFrame implements View {
     private void initComponents() {
 
         NumOfBillsField = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        ScrollPane = new javax.swing.JScrollPane();
         BillsTable = new javax.swing.JTable();
         BackButton = new javax.swing.JButton();
         StatusField = new javax.swing.JComboBox<>();
@@ -90,7 +90,7 @@ public class OperatorBillsView extends javax.swing.JFrame implements View {
                 BillsTablePropertyChange(evt);
             }
         });
-        jScrollPane1.setViewportView(BillsTable);
+        ScrollPane.setViewportView(BillsTable);
 
         BackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/BackIcon.png"))); // NOI18N
         BackButton.setToolTipText("Back");
@@ -154,7 +154,7 @@ public class OperatorBillsView extends javax.swing.JFrame implements View {
                                     .addComponent(NumOfBillsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(NumOfBillsField, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
@@ -178,7 +178,7 @@ public class OperatorBillsView extends javax.swing.JFrame implements View {
                             .addGap(0, 0, Short.MAX_VALUE)
                             .addComponent(NumOfBillsField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap()))
         );
 
@@ -346,8 +346,8 @@ public class OperatorBillsView extends javax.swing.JFrame implements View {
     private javax.swing.JLabel NumOfBillsField;
     private javax.swing.JLabel NumOfBillsLabel;
     private javax.swing.JButton PayBill;
+    private javax.swing.JScrollPane ScrollPane;
     private javax.swing.JComboBox<String> StatusField;
     private javax.swing.JLabel StatusLabel;
-    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

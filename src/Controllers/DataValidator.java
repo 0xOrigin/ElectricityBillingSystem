@@ -20,7 +20,7 @@ class DataValidator {
     }
 
     public boolean isValidAddress(String address) {
-        return address.matches("[a-zA-Z0-9,_'-.]+");
+        return address.matches("[a-zA-Z 0-9,_'-.]+");
     }
 
     public boolean isValidEmail(String email) {
@@ -34,7 +34,7 @@ class DataValidator {
     }
     
     public boolean isValidComplaint(String complaint){
-        return complaint.matches("[a-zA-z0-9 ]+");
+        return complaint.matches("[a-zA-z0-9,. ]+");
     }
     
     public boolean isValidPassword(String password){

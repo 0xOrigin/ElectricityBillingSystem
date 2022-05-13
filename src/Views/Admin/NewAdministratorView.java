@@ -57,7 +57,7 @@ public class NewAdministratorView extends javax.swing.JFrame implements View{
         NationalIDField = new javax.swing.JTextField();
         PhoneNumberField = new javax.swing.JTextField();
         SubmitButton = new javax.swing.JButton();
-        jSeparator2 = new javax.swing.JSeparator();
+        Separator = new javax.swing.JSeparator();
         RoleField = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -254,7 +254,7 @@ public class NewAdministratorView extends javax.swing.JFrame implements View{
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(80, 80, 80)
                                 .addComponent(RoleField, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Separator, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(80, 80, 80)
                                 .addComponent(SubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -317,7 +317,7 @@ public class NewAdministratorView extends javax.swing.JFrame implements View{
                 .addGap(4, 4, 4)
                 .addComponent(RoleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Separator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(SubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(14, Short.MAX_VALUE))
@@ -493,7 +493,7 @@ public class NewAdministratorView extends javax.swing.JFrame implements View{
     private javax.swing.JLabel Required6;
     private javax.swing.JComboBox<String> RoleField;
     private javax.swing.JLabel RoleLabel;
+    private javax.swing.JSeparator Separator;
     private javax.swing.JButton SubmitButton;
-    private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables
 }

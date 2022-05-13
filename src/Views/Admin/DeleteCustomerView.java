@@ -36,7 +36,7 @@ public class DeleteCustomerView extends javax.swing.JFrame implements View{
 
         BackButton = new javax.swing.JButton();
         delete = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        MessageLabel = new javax.swing.JLabel();
         Meter_code = new javax.swing.JLabel();
         meterCodeField = new javax.swing.JLabel();
 
@@ -65,9 +65,9 @@ public class DeleteCustomerView extends javax.swing.JFrame implements View{
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Liberation Sans", 0, 16)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Are you sure you want to cancel subscription and delete this Customer ?");
+        MessageLabel.setFont(new java.awt.Font("Liberation Sans", 0, 16)); // NOI18N
+        MessageLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        MessageLabel.setText("Are you sure you want to cancel subscription and delete this Customer ?");
 
         Meter_code.setFont(new java.awt.Font("Liberation Sans", 0, 16)); // NOI18N
         Meter_code.setText("Meter Code:");
@@ -90,7 +90,7 @@ public class DeleteCustomerView extends javax.swing.JFrame implements View{
                                 .addGap(12, 12, 12)
                                 .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE))
+                    .addComponent(MessageLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(120, 120, 120)
@@ -109,7 +109,7 @@ public class DeleteCustomerView extends javax.swing.JFrame implements View{
                     .addComponent(Meter_code, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(meterCodeField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(MessageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(22, Short.MAX_VALUE))
@@ -180,9 +180,9 @@ public class DeleteCustomerView extends javax.swing.JFrame implements View{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackButton;
+    private javax.swing.JLabel MessageLabel;
     private javax.swing.JLabel Meter_code;
     private javax.swing.JButton delete;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel meterCodeField;
     // End of variables declaration//GEN-END:variables
 }

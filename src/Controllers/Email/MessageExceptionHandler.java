@@ -9,10 +9,10 @@ class MessageExceptionHandler {
     static void handle(String exception, String messageSubject, String messageText){
     
         print(exception);
-//        System.out.println("----------------------------------------------------------");
-//        System.out.println("Mail subject: \n\t" + messageSubject);
-//        System.out.println("Mail text: \n" + messageText);
-//        System.out.println("----------------------------------------------------------");
+        System.out.println("----------------------------------------------------------");
+        System.out.println("Mail subject: \n\t" + messageSubject);
+        System.out.println("Mail text: \n" + messageText);
+        System.out.println("----------------------------------------------------------");
     }
     
     static void print(String exception){

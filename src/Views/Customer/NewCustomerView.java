@@ -61,7 +61,7 @@ public class NewCustomerView extends javax.swing.JFrame implements View{
         PropertyOwnershipContractField = new javax.swing.JTextField();
         BrowseButton = new javax.swing.JButton();
         RequestButton = new javax.swing.JButton();
-        jSeparator2 = new javax.swing.JSeparator();
+        Separator = new javax.swing.JSeparator();
         Required1 = new javax.swing.JLabel();
         Required2 = new javax.swing.JLabel();
         Required3 = new javax.swing.JLabel();
@@ -264,7 +264,7 @@ public class NewCustomerView extends javax.swing.JFrame implements View{
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator2)
+                    .addComponent(Separator)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
@@ -382,7 +382,7 @@ public class NewCustomerView extends javax.swing.JFrame implements View{
                     .addComponent(PropertyOwnershipContractField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BrowseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Separator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(RequestButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(8, Short.MAX_VALUE))
@@ -631,8 +631,8 @@ public class NewCustomerView extends javax.swing.JFrame implements View{
     private javax.swing.JLabel Required6;
     private javax.swing.JLabel Required7;
     private javax.swing.JLabel Required8;
+    private javax.swing.JSeparator Separator;
     private javax.swing.JComboBox<String> TypeOfUseField;
     private javax.swing.JLabel TypeOfUseLabel;
-    private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables
 }

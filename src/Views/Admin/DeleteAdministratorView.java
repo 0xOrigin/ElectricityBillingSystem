@@ -39,18 +39,16 @@ public class DeleteAdministratorView extends javax.swing.JFrame implements View{
     private void initComponents() {
 
         BackButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         id = new javax.swing.JLabel();
         idField = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        IdLabel = new javax.swing.JLabel();
+        RoleLabel = new javax.swing.JLabel();
         roleField = new javax.swing.JLabel();
         confirmDeletionMessage = new javax.swing.JLabel();
         delete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Delete Administrator");
-        setPreferredSize(new java.awt.Dimension(422, 222));
         setResizable(false);
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -67,7 +65,6 @@ public class DeleteAdministratorView extends javax.swing.JFrame implements View{
             }
         });
         getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 58, -1));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(388, 188, 297, -1));
 
         id.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         getContentPane().add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(247, 194, 67, -1));
@@ -75,13 +72,13 @@ public class DeleteAdministratorView extends javax.swing.JFrame implements View{
         idField.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
         getContentPane().add(idField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 85, 28));
 
-        jLabel3.setFont(new java.awt.Font("Liberation Sans", 0, 16)); // NOI18N
-        jLabel3.setText("ID:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 32, 28));
+        IdLabel.setFont(new java.awt.Font("Liberation Sans", 0, 16)); // NOI18N
+        IdLabel.setText("ID:");
+        getContentPane().add(IdLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 32, 28));
 
-        jLabel5.setFont(new java.awt.Font("Liberation Sans", 0, 16)); // NOI18N
-        jLabel5.setText("Role:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 70, 45, 28));
+        RoleLabel.setFont(new java.awt.Font("Liberation Sans", 0, 16)); // NOI18N
+        RoleLabel.setText("Role:");
+        getContentPane().add(RoleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 70, 45, 28));
 
         roleField.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
         getContentPane().add(roleField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 110, 28));
@@ -181,13 +178,12 @@ public class DeleteAdministratorView extends javax.swing.JFrame implements View{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackButton;
+    private javax.swing.JLabel IdLabel;
+    private javax.swing.JLabel RoleLabel;
     private javax.swing.JLabel confirmDeletionMessage;
     private javax.swing.JButton delete;
     private javax.swing.JLabel id;
     private javax.swing.JLabel idField;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel roleField;
     // End of variables declaration//GEN-END:variables
 }

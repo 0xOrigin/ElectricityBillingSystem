@@ -48,25 +48,25 @@ public class BillPayment extends javax.swing.JFrame implements View {
 
         BackButton = new javax.swing.JButton();
         PayBill = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        MeterCodeLabel = new javax.swing.JLabel();
         MeterCodeField = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        TotalValueLabel = new javax.swing.JLabel();
+        BillNumberLabel = new javax.swing.JLabel();
         TariffField = new javax.swing.JLabel();
         BillNumberField = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        CurrentReadingLabel = new javax.swing.JLabel();
+        TariffLabel = new javax.swing.JLabel();
         LastReadingField = new javax.swing.JLabel();
-        jLabel = new javax.swing.JLabel();
+        StatusLabel = new javax.swing.JLabel();
         ConsumptionField = new javax.swing.JLabel();
         CurrentReadingField = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        ConsumptionLabel = new javax.swing.JLabel();
         TotalValueField = new javax.swing.JLabel();
         ReleaseDateField = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        ReleaseDateLabel = new javax.swing.JLabel();
+        GovernorateLabel = new javax.swing.JLabel();
         GovernorateField = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        LastReadingLabel = new javax.swing.JLabel();
         StatusField = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -88,8 +88,8 @@ public class BillPayment extends javax.swing.JFrame implements View {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        jLabel1.setText("Meter Code:");
+        MeterCodeLabel.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        MeterCodeLabel.setText("Meter Code:");
 
         MeterCodeField.setFont(new java.awt.Font("Chandas", 1, 15)); // NOI18N
         MeterCodeField.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -103,11 +103,11 @@ public class BillPayment extends javax.swing.JFrame implements View {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        jLabel2.setText("Total Value:");
+        TotalValueLabel.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        TotalValueLabel.setText("Total Value:");
 
-        jLabel3.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        jLabel3.setText("Bill number:");
+        BillNumberLabel.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        BillNumberLabel.setText("Bill number:");
 
         TariffField.setFont(new java.awt.Font("Chandas", 1, 14)); // NOI18N
         TariffField.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -133,11 +133,11 @@ public class BillPayment extends javax.swing.JFrame implements View {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        jLabel4.setText("Current reading:");
+        CurrentReadingLabel.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        CurrentReadingLabel.setText("Current reading:");
 
-        jLabel5.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        jLabel5.setText("Tariff:");
+        TariffLabel.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        TariffLabel.setText("Tariff:");
 
         LastReadingField.setFont(new java.awt.Font("Chandas", 1, 14)); // NOI18N
         LastReadingField.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -151,8 +151,8 @@ public class BillPayment extends javax.swing.JFrame implements View {
             }
         });
 
-        jLabel.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        jLabel.setText("Status:");
+        StatusLabel.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        StatusLabel.setText("Status:");
 
         ConsumptionField.setFont(new java.awt.Font("Chandas", 1, 14)); // NOI18N
         ConsumptionField.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -178,8 +178,8 @@ public class BillPayment extends javax.swing.JFrame implements View {
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        jLabel8.setText("Consumption:");
+        ConsumptionLabel.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        ConsumptionLabel.setText("Consumption:");
 
         TotalValueField.setFont(new java.awt.Font("Chandas", 1, 14)); // NOI18N
         TotalValueField.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -205,11 +205,11 @@ public class BillPayment extends javax.swing.JFrame implements View {
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        jLabel9.setText("Release Date:");
+        ReleaseDateLabel.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        ReleaseDateLabel.setText("Release Date:");
 
-        jLabel7.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        jLabel7.setText("Governorate:");
+        GovernorateLabel.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        GovernorateLabel.setText("Governorate:");
 
         GovernorateField.setFont(new java.awt.Font("Chandas", 1, 14)); // NOI18N
         GovernorateField.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -223,8 +223,8 @@ public class BillPayment extends javax.swing.JFrame implements View {
             }
         });
 
-        jLabel10.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        jLabel10.setText("Last reading:");
+        LastReadingLabel.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        LastReadingLabel.setText("Last reading:");
 
         StatusField.setFont(new java.awt.Font("Chandas", 1, 14)); // NOI18N
         StatusField.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -251,9 +251,9 @@ public class BillPayment extends javax.swing.JFrame implements View {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(ReleaseDateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(TotalValueLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(StatusLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -267,15 +267,15 @@ public class BillPayment extends javax.swing.JFrame implements View {
                                 .addComponent(ReleaseDateField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(MeterCodeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(GovernorateLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGap(2, 2, 2)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(BillNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TariffLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ConsumptionLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(CurrentReadingLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(LastReadingLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(ConsumptionField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -296,21 +296,21 @@ public class BillPayment extends javax.swing.JFrame implements View {
                 .addComponent(BackButton)
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(MeterCodeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(MeterCodeField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(GovernorateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(GovernorateField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BillNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(BillNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(TariffField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TariffLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -320,23 +320,23 @@ public class BillPayment extends javax.swing.JFrame implements View {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(CurrentReadingField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(CurrentReadingLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(8, 8, 8)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(ConsumptionField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(ConsumptionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(8, 8, 8)
                                 .addComponent(TotalValueField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TotalValueLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(StatusLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(StatusField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(ReleaseDateField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(ReleaseDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(LastReadingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(PayBill, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
                 .addContainerGap())
@@ -443,26 +443,26 @@ public class BillPayment extends javax.swing.JFrame implements View {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackButton;
     private javax.swing.JLabel BillNumberField;
+    private javax.swing.JLabel BillNumberLabel;
     private javax.swing.JLabel ConsumptionField;
+    private javax.swing.JLabel ConsumptionLabel;
     private javax.swing.JLabel CurrentReadingField;
+    private javax.swing.JLabel CurrentReadingLabel;
     private javax.swing.JLabel GovernorateField;
+    private javax.swing.JLabel GovernorateLabel;
     private javax.swing.JLabel LastReadingField;
+    private javax.swing.JLabel LastReadingLabel;
     private javax.swing.JLabel MeterCodeField;
+    private javax.swing.JLabel MeterCodeLabel;
     private javax.swing.JButton PayBill;
     private javax.swing.JLabel ReleaseDateField;
+    private javax.swing.JLabel ReleaseDateLabel;
     private javax.swing.JLabel StatusField;
+    private javax.swing.JLabel StatusLabel;
     private javax.swing.JLabel TariffField;
+    private javax.swing.JLabel TariffLabel;
     private javax.swing.JLabel TotalValueField;
-    private javax.swing.JLabel jLabel;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel TotalValueLabel;
     // End of variables declaration//GEN-END:variables
 
 }

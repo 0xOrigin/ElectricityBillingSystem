@@ -98,7 +98,7 @@
                               <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
                               <Component id="RoleField" min="-2" pref="220" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jSeparator2" alignment="0" min="-2" pref="388" max="-2" attributes="0"/>
+                          <Component id="Separator" alignment="0" min="-2" pref="388" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
                               <Component id="SubmitButton" min="-2" pref="218" max="-2" attributes="0"/>
@@ -180,7 +180,7 @@
               <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
               <Component id="RoleField" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-              <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
+              <Component id="Separator" min="-2" pref="10" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="SubmitButton" min="-2" pref="44" max="-2" attributes="0"/>
               <EmptySpace pref="14" max="32767" attributes="0"/>
@@ -438,7 +438,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SubmitButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JSeparator" name="jSeparator2">
+    <Component class="javax.swing.JSeparator" name="Separator">
     </Component>
     <Component class="javax.swing.JComboBox" name="RoleField">
       <Properties>

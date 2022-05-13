@@ -43,13 +43,13 @@ public class UpdateAdministratorView extends javax.swing.JFrame implements View{
 
         BackButton = new javax.swing.JButton();
         FrameDescription = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        AddressLabel = new javax.swing.JLabel();
         AddressField = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        EmailLabel = new javax.swing.JLabel();
         EmailField = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        PhoneNumLabel = new javax.swing.JLabel();
         PhoneNumberField = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        RoleLabel = new javax.swing.JLabel();
         RoleField = new javax.swing.JComboBox<>();
         UpdateButton = new javax.swing.JButton();
 
@@ -70,7 +70,7 @@ public class UpdateAdministratorView extends javax.swing.JFrame implements View{
         FrameDescription.setText(" Update an admin ");
         FrameDescription.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel1.setText("Address");
+        AddressLabel.setText("Address");
 
         AddressField.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         AddressField.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -88,7 +88,7 @@ public class UpdateAdministratorView extends javax.swing.JFrame implements View{
             }
         });
 
-        jLabel2.setText("E-mail");
+        EmailLabel.setText("E-mail");
 
         EmailField.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         EmailField.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -106,7 +106,7 @@ public class UpdateAdministratorView extends javax.swing.JFrame implements View{
             }
         });
 
-        jLabel3.setText("Phone number");
+        PhoneNumLabel.setText("Phone number");
 
         PhoneNumberField.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         PhoneNumberField.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -124,7 +124,7 @@ public class UpdateAdministratorView extends javax.swing.JFrame implements View{
             }
         });
 
-        jLabel4.setText("Role");
+        RoleLabel.setText("Role");
 
         RoleField.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         RoleField.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -159,7 +159,7 @@ public class UpdateAdministratorView extends javax.swing.JFrame implements View{
                 .addGap(58, 58, 58)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(RoleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -171,9 +171,9 @@ public class UpdateAdministratorView extends javax.swing.JFrame implements View{
                             .addComponent(EmailField, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(EmailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(AddressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(PhoneNumLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(140, 140, 140))))
         );
@@ -185,19 +185,19 @@ public class UpdateAdministratorView extends javax.swing.JFrame implements View{
                     .addComponent(FrameDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BackButton))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1)
+                .addComponent(AddressLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(AddressField, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
-                .addComponent(jLabel2)
+                .addComponent(EmailLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(EmailField, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
+                .addComponent(PhoneNumLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PhoneNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
+                .addComponent(RoleLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(RoleField, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
@@ -409,15 +409,15 @@ public class UpdateAdministratorView extends javax.swing.JFrame implements View{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AddressField;
+    private javax.swing.JLabel AddressLabel;
     private javax.swing.JButton BackButton;
     private javax.swing.JTextField EmailField;
+    private javax.swing.JLabel EmailLabel;
     private javax.swing.JLabel FrameDescription;
+    private javax.swing.JLabel PhoneNumLabel;
     private javax.swing.JTextField PhoneNumberField;
     private javax.swing.JComboBox<String> RoleField;
+    private javax.swing.JLabel RoleLabel;
     private javax.swing.JButton UpdateButton;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }

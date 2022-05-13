@@ -35,9 +35,9 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLabel9" max="32767" attributes="0"/>
-                          <Component id="jLabel2" max="32767" attributes="0"/>
-                          <Component id="jLabel" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
+                          <Component id="ReleaseDateLabel" max="32767" attributes="0"/>
+                          <Component id="TotalValueLabel" max="32767" attributes="0"/>
+                          <Component id="StatusLabel" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
@@ -57,16 +57,16 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="jLabel1" max="32767" attributes="0"/>
-                          <Component id="jLabel7" alignment="0" max="32767" attributes="0"/>
+                          <Component id="MeterCodeLabel" max="32767" attributes="0"/>
+                          <Component id="GovernorateLabel" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                              <Component id="jLabel3" min="-2" pref="103" max="-2" attributes="0"/>
+                              <Component id="BillNumberLabel" min="-2" pref="103" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jLabel5" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jLabel8" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jLabel4" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jLabel10" alignment="1" max="32767" attributes="0"/>
+                          <Component id="TariffLabel" alignment="1" max="32767" attributes="0"/>
+                          <Component id="ConsumptionLabel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="CurrentReadingLabel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="LastReadingLabel" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -93,25 +93,25 @@
               <Component id="BackButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jLabel1" min="-2" pref="27" max="-2" attributes="0"/>
+                  <Component id="MeterCodeLabel" min="-2" pref="27" max="-2" attributes="0"/>
                   <Component id="MeterCodeField" min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jLabel7" min="-2" pref="27" max="-2" attributes="0"/>
+                  <Component id="GovernorateLabel" min="-2" pref="27" max="-2" attributes="0"/>
                   <Component id="GovernorateField" min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel3" min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="BillNumberLabel" min="-2" pref="27" max="-2" attributes="0"/>
                           <Component id="BillNumberField" min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="TariffField" min="-2" pref="25" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jLabel5" min="-2" pref="27" max="-2" attributes="0"/>
+                  <Component id="TariffLabel" min="-2" pref="27" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -122,30 +122,30 @@
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="CurrentReadingField" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
-                                  <Component id="jLabel4" alignment="1" min="-2" pref="27" max="-2" attributes="0"/>
+                                  <Component id="CurrentReadingLabel" alignment="1" min="-2" pref="27" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="ConsumptionField" min="-2" pref="25" max="-2" attributes="0"/>
-                                  <Component id="jLabel8" min="-2" pref="27" max="-2" attributes="0"/>
+                                  <Component id="ConsumptionLabel" min="-2" pref="27" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                               <Component id="TotalValueField" min="-2" pref="25" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jLabel2" alignment="1" min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="TotalValueLabel" alignment="1" min="-2" pref="27" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLabel" min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="StatusLabel" min="-2" pref="27" max="-2" attributes="0"/>
                           <Component id="StatusField" min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="ReleaseDateField" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
-                          <Component id="jLabel9" min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="ReleaseDateLabel" min="-2" pref="27" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="jLabel10" min="-2" pref="27" max="-2" attributes="0"/>
+                  <Component id="LastReadingLabel" min="-2" pref="27" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="PayBill" pref="36" max="32767" attributes="0"/>
@@ -174,7 +174,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PayBillActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="MeterCodeLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="15" style="0"/>
@@ -193,7 +193,7 @@
         <EventHandler event="ancestorAdded" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="MeterCodeFieldAncestorAdded"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="TotalValueLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="15" style="0"/>
@@ -201,7 +201,7 @@
         <Property name="text" type="java.lang.String" value="Total Value:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
+    <Component class="javax.swing.JLabel" name="BillNumberLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="15" style="0"/>
@@ -231,7 +231,7 @@
         <EventHandler event="ancestorAdded" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="BillNumberFieldAncestorAdded"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
+    <Component class="javax.swing.JLabel" name="CurrentReadingLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="15" style="0"/>
@@ -239,7 +239,7 @@
         <Property name="text" type="java.lang.String" value="Current reading:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel5">
+    <Component class="javax.swing.JLabel" name="TariffLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="15" style="0"/>
@@ -258,7 +258,7 @@
         <EventHandler event="ancestorAdded" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="LastReadingFieldAncestorAdded"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel">
+    <Component class="javax.swing.JLabel" name="StatusLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="15" style="0"/>
@@ -288,7 +288,7 @@
         <EventHandler event="ancestorAdded" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="CurrentReadingFieldAncestorAdded"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel8">
+    <Component class="javax.swing.JLabel" name="ConsumptionLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="15" style="0"/>
@@ -318,7 +318,7 @@
         <EventHandler event="ancestorAdded" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="ReleaseDateFieldAncestorAdded"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel9">
+    <Component class="javax.swing.JLabel" name="ReleaseDateLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="15" style="0"/>
@@ -326,7 +326,7 @@
         <Property name="text" type="java.lang.String" value="Release Date:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel7">
+    <Component class="javax.swing.JLabel" name="GovernorateLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="15" style="0"/>
@@ -345,7 +345,7 @@
         <EventHandler event="ancestorAdded" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="GovernorateFieldAncestorAdded"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel10">
+    <Component class="javax.swing.JLabel" name="LastReadingLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="15" style="0"/>

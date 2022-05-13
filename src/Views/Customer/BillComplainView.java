@@ -45,12 +45,12 @@ public class BillComplainView extends javax.swing.JFrame implements View{
     private void initComponents() {
 
         BackButton = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        SelectBillLabel = new javax.swing.JLabel();
+        ComplainScrollPane = new javax.swing.JScrollPane();
         ComplainField = new javax.swing.JTextArea();
-        jLabel4 = new javax.swing.JLabel();
+        EnterComplainLabel = new javax.swing.JLabel();
         SubmitButton = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        BillsScrollPane = new javax.swing.JScrollPane();
         BillsTable = new javax.swing.JTable();
         NumOfBillsLabel = new javax.swing.JLabel();
         NumOfBillsField = new javax.swing.JLabel();
@@ -67,17 +67,17 @@ public class BillComplainView extends javax.swing.JFrame implements View{
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel2.setText("Select bill");
+        SelectBillLabel.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        SelectBillLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        SelectBillLabel.setText("Select bill");
 
         ComplainField.setColumns(20);
         ComplainField.setRows(5);
-        jScrollPane2.setViewportView(ComplainField);
+        ComplainScrollPane.setViewportView(ComplainField);
 
-        jLabel4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel4.setText("Enter Complain");
+        EnterComplainLabel.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        EnterComplainLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        EnterComplainLabel.setText("Enter Complain");
 
         SubmitButton.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         SubmitButton.setText("Submit");
@@ -131,7 +131,7 @@ public class BillComplainView extends javax.swing.JFrame implements View{
                 BillsTablePropertyChange(evt);
             }
         });
-        jScrollPane1.setViewportView(BillsTable);
+        BillsScrollPane.setViewportView(BillsTable);
 
         NumOfBillsLabel.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         NumOfBillsLabel.setText("Number of Bills: ");
@@ -150,18 +150,18 @@ public class BillComplainView extends javax.swing.JFrame implements View{
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(25, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ComplainScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(327, 327, 327)
                         .addComponent(SubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EnterComplainLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(NumOfBillsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(SelectBillLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(NumOfBillsLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(NumOfBillsField, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BillsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
@@ -172,16 +172,16 @@ public class BillComplainView extends javax.swing.JFrame implements View{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(SelectBillLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(NumOfBillsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(NumOfBillsField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BillsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(EnterComplainLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ComplainScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(SubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(19, Short.MAX_VALUE))
@@ -341,14 +341,14 @@ public class BillComplainView extends javax.swing.JFrame implements View{
     private javax.swing.JFrame previousFrame;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackButton;
+    private javax.swing.JScrollPane BillsScrollPane;
     private javax.swing.JTable BillsTable;
     private javax.swing.JTextArea ComplainField;
+    private javax.swing.JScrollPane ComplainScrollPane;
+    private javax.swing.JLabel EnterComplainLabel;
     private javax.swing.JLabel NumOfBillsField;
     private javax.swing.JLabel NumOfBillsLabel;
+    private javax.swing.JLabel SelectBillLabel;
     private javax.swing.JButton SubmitButton;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
